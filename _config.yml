@@ -1,1 +1,11 @@
 theme: jekyll-theme-slate
+repository: open-simulation-platform/cse-core
+title: "Core Simulation Environment"
+description: "co-simulation software"
+
+plugins:
+  - jekyll-github-metadata
+  - jekyll-mentions
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jemoji

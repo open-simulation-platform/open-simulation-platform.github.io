@@ -1,5 +1,23 @@
-## This is a test title
-The quick brown fox jumps over the lazy dog
+---
+layout: default
+title: "CSE"
+permalink: /
+---
 
-### Subtitle
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## Core Simulation Environment
+
+#### CSE core
+
+- [documentation](./cse-core/doxygen/){:target="_blank"}
+- [more details](./cse-core/cse)
+
+#### CSE demo application
+This is an application that demonstrates the features of cse-core. The intention is to show how cse-core can be used in an application and to provide a simple graphical user interface for easy exploration of the cse-core features.
+ 
+[more details](./cse-core/cse)
+
+#### CSE CLI
+
+
+#### Demo simulation models
+
