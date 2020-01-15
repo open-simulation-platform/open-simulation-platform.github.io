@@ -1,4 +1,4 @@
-#local dev
+# local dev
 
 Local development of github pages using Jekyll is described here: https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll
 
