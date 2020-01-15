@@ -5,7 +5,10 @@ permalink: /cse-core/cse
 ---
 
 ## cse-core
-Table example:
+##### image example:
+![foo](/assets/img/cse.png "title")
+
+##### table example:
 
 | title 1        | title 2      |title 3         |
 | :---           |:---:         | ---:           |
