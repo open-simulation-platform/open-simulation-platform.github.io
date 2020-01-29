@@ -5,19 +5,9 @@ permalink: /cse-core/cse
 ---
 
 ## cse-core
-##### image example:
-![foo](/assets/img/cse.png "title")
-
-##### table example:
-
-| title 1        | title 2      |title 3         |
-| :---           |:---:         | ---:           |
-| left-aligned   | centered     | right-aligned  |
-| content        | content      | content        |
-| content        | content      | content        |
 
 
-###cse concepts
+### cse concepts
 
 - Slaves
 - Functions
@@ -44,5 +34,15 @@ permalink: /cse-core/cse
 - using fmu-proxy with CSE
 - link to FMU-proxy doc
 
+##### image example:
+![foo](/assets/img/cse.png "title")
+
+##### table example:
+
+| title 1        | title 2      |title 3         |
+| :---           |:---:         | ---:           |
+| left-aligned   | centered     | right-aligned  |
+| content        | content      | content        |
+| content        | content      | content        |
 
 
