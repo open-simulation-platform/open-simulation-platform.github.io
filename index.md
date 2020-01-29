@@ -8,7 +8,7 @@ permalink: /
 
 #### CSE core
 
-- [documentation](./cse-core/doxygen/){:target="_blank"}
+- documentation: [v0.6.0](./cse-core/doxygen/0.6.0){:target="_blank"}
 - [more details](./cse-core/cse)
 
 #### CSE demo application

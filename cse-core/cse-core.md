@@ -16,14 +16,33 @@ permalink: /cse-core/cse
 | content        | content      | content        |
 | content        | content      | content        |
 
+
+###cse concepts
+
+- Slaves
+- Functions
+- Manipulator
+- Observer
+- Modifiers
+
 ### Configuration
+
+- Document OspSystemStructure.xml with link to .xsd
+- Document OspModelDescription.xml with link to .xsd
 
 ### Scenario
 
-### Logging
+- Document scenario file format
+
+### Results logging
+
+- Document results format
+- Document logging configuration format
 
 ### Distributed co-simulation
 
+- using fmu-proxy with CSE
+- link to FMU-proxy doc
 
 
 
