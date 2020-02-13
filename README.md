@@ -3,6 +3,7 @@
 Local development of github pages using Jekyll is described here: https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll
 
 To avoid installing Ruby and Bundler, the starefossen/github-pages docker image is a good alternative.
+Get docker at https://docs.docker.com/
 
 `docker pull starefossen/github-pages`
 
