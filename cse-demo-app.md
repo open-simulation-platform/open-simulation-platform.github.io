@@ -25,4 +25,4 @@ permalink: /cse-demo-app
 
 - DPShip
 - House
-- Quarter-Truck
+- [Quarter-Truck](./Quarter-Truck.md)
