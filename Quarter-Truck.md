@@ -28,3 +28,5 @@ The following parameters are used:
 
 ### Simulation Scenario 
 The ground profile is defined as a step function. Starting from equilibrium state, the ground profile is excited by the jump 0.1m in z-direction at 1s. Figure 2 shows the displacements of the masses.  
+![foo](/assets/img/Position.png "Figure 2")
+![foo](/assets/img/PositionCosim.png "Figure 3")
