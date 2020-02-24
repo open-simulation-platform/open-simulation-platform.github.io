@@ -23,6 +23,6 @@ permalink: /cse-demo-app
     
 ### Demo co-simulation case(s)
 
-- DPShip
+- [DPShip](./DPShip.md)
 - House
 - [Quarter-Truck](./Quarter-Truck.md)
