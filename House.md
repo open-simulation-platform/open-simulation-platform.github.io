@@ -37,6 +37,7 @@ Table 1 gives the fmus and their interfaces for connections.
 |        |    T_heatStart     | T_room1     |    h_room2   |
 |        |    T_heatStop     | T_room2    |    roomStates   |
 |        |    transferTime     |    |       |
+
 ### Simulation using the cse-demo-app
 
 User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](./cse-demo-app.md). Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
