@@ -37,7 +37,7 @@ The following parameters are used:
 | Chassis Damper Coefficient         | dChassis     |  1000 Nsm^-1      |
 
 ### Simulation Results 
-The following senario is performed as example. The system starts from equilibrium state where zWheel = zChassis = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. The accuracy can be improved by applying advanced master algorithms provided variable co-simulation time steps, and optionally th support of setting/getting derivatives, getting/setting states. In order to enforce reliable macro-step control algorithms, error estimation is needed. Classic Richardson extrapolation and a modified error estimator is described in [1]. Figure 4 show the results of using an energy-based algorithm (ECCO) for error correction [2].     
+The following scenario is performed as example. The system starts from equilibrium state where zWheel = zChassis = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. The accuracy can be improved by applying advanced master algorithms provided variable co-simulation time steps, and optionally th support of setting/getting derivatives, getting/setting states. In order to enforce reliable macro-step control algorithms, error estimation is needed. Classic Richardson extrapolation and a modified error estimator is described in [1]. Figure 4 show the results of using an energy-based algorithm (ECCO) for error correction [2].     
 
 ![foo](/assets/img/QuarterTruckFig2.png "Figure 2")
 ![foo](/assets/img/QuarterTruckFig3.png "Figure 3")
@@ -46,8 +46,8 @@ The following senario is performed as example. The system starts from equilibriu
 ### Simulation using cse-demo-app 
 User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](./cse-demo-app.md). Figure 5 shows the demo application set up and Figure 6 shows the time series of the simulation output.
 
-![foo](/assets/img/QuarterTruckFig5.png "Figure 5")
-![foo](/assets/img/QuarterTruckFig6.png "Figure 6")
+![foo](/assets/img/QuarterTruckFig5.png   "Figure 5")
+![foo](/assets/img/QuarterTruckFig6.png  "Figure 6")
 
 ### References 
 [1] Arnold, M., Clauss, C., & Schierz, T. (2014). Error analysis and error estimates for co-simulation in FMI for model exchange and co-simulation V2. 0. In Progress in Differential-Algebraic Equations (pp. 107-125). Springer, Berlin, Heidelberg.
