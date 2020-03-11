@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "cse-demo-app"
-permalink: /House
+title: "House"
+permalink: /cse-demo-app/House
 ---
 
 ## CSE demo application - House
@@ -13,9 +13,12 @@ This demo case simulates the temperature deviations of a house which consists of
 ### Model Description
 A simplified model represents the heat exchange dynamics of a house as shown in Figure 1.  
 
-![foo](/assets/img/HouseFig1.png "Figure 1")
+<figure>
+<img src="/assets/img/HouseFig1.png" width="400"> 
+<figcaption>Fig.1 A simplified house model</figcaption>
+</figure>
 
-Table 1 gives the fmus and their interfaces for connections.  
+**Table 1:** *List of FMUs of the house model and their input/output variables for connection.*
 
 | FMU Name      | Local Parameters    | Input      | Output        |
 | :---          |:---:                | :---:      | :---:         |
@@ -41,7 +44,7 @@ Table 1 gives the fmus and their interfaces for connections.
 
 ### Simulation using the cse-demo-app
 
-User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](./cse-demo-app.md). Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
+User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
 
 ![foo](/assets/img/HouseFig2.png "Figure 2")
 ![foo](/assets/img/HouseFig3.png "Figure 3")

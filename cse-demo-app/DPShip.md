@@ -1,12 +1,11 @@
 ---
 layout: default
-title: "cse-demo-app"
-permalink: /DPShip
+title: "DPShip"
+permalink: /cse-demo-app/DPShip
 ---
 
 ## CSE demo application - DP Ship
 
-## Description of the simplified *DP-vessel* demo in OSP
 This file contains a minimal description of the DP-vessel demonstrator.
 
 ### Introduction
@@ -254,7 +253,7 @@ ThMPC.refMz             <-  DPController.ControlMz
 
 ###Simulation using the cse-demo-app
 
-User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](./cse-demo-app.md). Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.
+User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.
 
 ![foo](/assets/img/DPShipFig1.png "Figure 1")
 ![foo](/assets/img/DPShipFig2.png "Figure 2")

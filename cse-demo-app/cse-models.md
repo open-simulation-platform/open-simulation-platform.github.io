@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "cse-cli"
-permalink: /cse-models
+title: "cse-demo-models"
+permalink: /cse-demo-app/cse-demo-models
 ---
 
 ## CSE demo models

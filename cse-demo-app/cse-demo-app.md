@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "cse-cli"
-permalink: /cse-demo-app
+title: "cse-demo-app"
+permalink: /cse-demo-app/cse-demo-app
 ---
 
 ## CSE demo application
@@ -23,6 +23,9 @@ permalink: /cse-demo-app
     
 ### Demo co-simulation case(s)
 
-- [DPShip](./DPShip.md)
-- [House](./House.md)
-- [Quarter-Truck](./Quarter-Truck.md)
+- [DPShip](./DPShip)
+- [House](./House)
+- [Quarter-Truck](./Quarter-Truck)
+
+#### Demo simulation models
+[Download](./cse-demo-models)
