@@ -42,10 +42,11 @@ The local parameters in the model are listed in Table 2.
 ### Simulation Results 
 The following scenario is performed as example. The system starts from equilibrium state where *zWheel* = *zChassis* = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. The accuracy can be improved by applying advanced master algorithms provided variable co-simulation time steps, and optionally th support of setting/getting derivatives, getting/setting states. In order to enforce reliable macro-step control algorithms, error estimation is needed. Classic Richardson extrapolation and a modified error estimator is described in [1]. Figure 4 show the results of using an energy-based algorithm (ECCO) for error correction [2].     
 
-![foo](/assets/img/QuarterTruckFig2.png "Figure 2") 
-<img src="/assets/img/QuarterTruckFig2.png" width="100" > 
-![foo](/assets/img/QuarterTruckFig3.png "Figure 3")
-![foo](/assets/img/QuarterTruckFig4.png "Figure 4")
+
+<img src="/assets/img/QuarterTruckFig2.png" width="80%" > 
+<img src="/assets/img/QuarterTruckFig3.png" width="200" > 
+<img src="/assets/img/QuarterTruckFig4.png" > 
+
 
 ### Simulation using cse-demo-app 
 User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](./cse-demo-app.md). Figure 5 shows the demo application set up and Figure 6 shows the time series of the simulation output.
