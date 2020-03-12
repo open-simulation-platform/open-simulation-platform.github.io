@@ -25,22 +25,22 @@ The local parameters in the model are listed in Table 2.
 
 | Output Variable     |Input Variable  |
 |:---:         | :---:           |
-| *chassis.p.e*     | *wheel.p.e*      |
-| *wheel.p.f*   | *chassis.p.f*        |
-| *wheel.p.e*     | *ground.p.e*     |
-| *ground.p.f*     | *wheel.p.f*     |
+| `chassis.p.e`     | `wheel.p.e`      |
+| `wheel.p.f`   | `chassis.p.f`        |
+| `wheel.p.e`     | `ground.p.e`     |
+| `ground.p.f`     | `wheel.p.f`     |
 
 
 **Table 2:** *Local parameters of the quarter truck model*
 
 | Name        | Parameter      |Default Value        |
 | :---           |:---:         | :---:           |
-| Wheel Mass        | *mWheel*      | 40 kg       |
-| Chassis Mass        | *mChassis*     | 400 kg        |
-| Wheel Spring Stiffness      | *kWheel*      | 150000 Nm^-1     |
-| Wheel Damper Coefficient        | *dWheel*     | 0 Nsm^-1      |
-| Chassis Spring Stiffness         | *kChassis*     | 15000 Nm^-1       |
-| Chassis Damper Coefficient         | *dChassis*     |  1000 Nsm^-1      |
+| Wheel Mass        | `mWheel`      | 40 kg       |
+| Chassis Mass        | `mChassis`     | 400 kg        |
+| Wheel Spring Stiffness      | `kWheel`      | 150000 Nm^-1     |
+| Wheel Damper Coefficient        | `dWheel`     | 0 Nsm^-1      |
+| Chassis Spring Stiffness         | `kChassis`     | 15000 Nm^-1       |
+| Chassis Damper Coefficient         | `dChassis`     |  1000 Nsm^-1      |
 
 ### Simulation Results 
 The following scenario is performed as example. The system starts from equilibrium state where *zWheel* = *zChassis* = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. 

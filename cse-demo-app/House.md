@@ -22,25 +22,25 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 
 | FMU Name      | Local Parameters    | Input      | Output        |
 | :---          |:---:                | :---:      | :---:         |
-| Clock         | Reset               | -          | Clock      |
-| InnerWall     |k            | T_room1    | h_wall        |
-|     |           |  T_room2     |       |
-| OuterWall1     |   k_outsidewall       | T_outside     | h_wall        |
-|        |         | T_room1       |       |
-| OuterWall2     |   k_outsidewall       | T_outside     | h_wall        |
-|        |         | T_room2       |       |
-| Room1    |   Tinit_Room1     | TRoomReset    | T_room       |
-|        |         | h_InnerWall     |       |
-|        |         | h_OuterWall    |       |
-|        |         | h_powerHeater    |       |
-| Room2    |   Tinit_Room2     | TRoomReset    | T_room       |
-|        |         | h_InnerWall     |       |
-|        |         | h_OuterWall    |       |
-|        |         | h_powerHeater    |       |
-| TempController    |   OvenHeatTransfer     | T_clock    |h_room1      |
-|        |    T_heatStart     | T_room1     |    h_room2   |
-|        |    T_heatStop     | T_room2    |    roomStates   |
-|        |    transferTime     |    |       |
+| Clock         | `Reset`               | -          | `Clock`      |
+| InnerWall     |`k`            | `T_room1`    | `h_wall`        |
+|     |           |  `T_room2`     |       |
+| OuterWall1     |   `k_outsidewall`       | `T_outside`     | `h_wall`        |
+|        |         | `T_room1`       |       |
+| OuterWall2     |   `k_outsidewall`       | `T_outside`    | `h_wall`        |
+|        |         | `T_room2`       |       |
+| Room1    |   `Tinit_Room1`     | `TRoomReset`    | `T_room`       |
+|        |         | `h_InnerWall`     |       |
+|        |         |`h_OuterWall`    |       |
+|        |         | `h_powerHeater`    |       |
+| Room2    |   `Tinit_Room2`     | `TRoomReset`    | `T_room`       |
+|        |         | `h_InnerWall`     |       |
+|        |         | `h_OuterWall`    |       |
+|        |         | `h_powerHeater`    |       |
+| TempController    |   `OvenHeatTransfer`     | `T_clock`    |`h_room1`      |
+|        |    `T_heatStart`     | `T_room1`     |    `h_room2`   |
+|        |    `T_heatStop`     | `T_room2`    |    `roomStates`   |
+|        |    `transferTime`     |    |       |
 
 ### Simulation using the cse-demo-app
 
