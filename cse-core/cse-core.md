@@ -21,17 +21,46 @@ permalink: /cse-core/cse
 
 ### Scenario
 
-- Document scenario file format
+A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file. First is the `"description"` of what does this scenario do. 
+`"action"` declares the action type which can be `"override"` , `"bias"`  or `"reset"`. `"events"` includes the `"time"` in second when the action takes place, on which `"model"`, the "`variable"` name in this model and the `"value"` for this variable (except for `"reset"` action type which doesn't require a value) .
+
+<figure>
+<img src="/assets/img/csecoreFig3.png" width="400"> 
+</figure>
 
 ### Results logging
 
-- Document results format
-- Document logging configuration format
+In order to log signal values from a simulation to data files, an output directory must be specified in the result folder field on the simulation setup. By
+default, all signals will be logged and persisted on every sample. There will be one file generated pr. simulator. This can quickly lead to a large
+amount of data being generated, so it is recommended instead specifying what signals to log using the configurable log format outlined below.
+CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
+including case) and placed in the same folder as the simulators. 
+
+<figure>
+<img src="/assets/img/csecoreFig1.png" width="500"> 
+</figure>
+
+The simulators to be logged must be enclosed in a `<simulators>` tag, and each signal must specify its name in separate `<variable>` tags under each `<simulator>`. 
+Leaving out any `<variable>` tags on a `<simulator>` will lead to all variables for that simulator
+being logged. 
+Each simulator has an optional attribute decimationFactor that specifies that simulator's decimation factor when logging variables. For example a decimation factor of 20 will lead to every 20th sample being logged. If this is
+not specified, every sample will be logged. 
+Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
+
+Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
+An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
+<figure>
+<img src="/assets/img/csecoreFig2.png" width="600"> 
+</figure>
 
 ### Distributed co-simulation
-Distributed simulation is currently enabled through integration with the software FMU Proxy.
-- using fmu-proxy with CSE
-- link to FMU-proxy doc
+Distributed simulation using fmu-proxy allows you to:
+
+1. Run multiple instances of a model even though the FMU only allows it to be instantiated once.
+2. Run FMUs that are not compatible with your OS or bitness.
+3. Parallelize the workload onto multiple computation nodes.
+
+Distributed simulation is currently enabled through integration with the software FMU Proxy. Both FMI 1.0 and FMI 2.0 for Co-simulation is supported.
 
 FMU-proxy is a framework for accessing FMUs compatible with FMI for Co-simulation and Model Exchange 2.0 in a language and platform independent way. This is achieved using well established RPC technologies. Due to the technologies involved, clients and servers for FMU-proxy can be written in almost any language, on any platform!
 
@@ -43,3 +72,23 @@ The idea is that other applications should use FMU-proxy whenever FMUs are requi
 
 [more details](./fmuproxy)
 
+- Using fmu-proxy with CSE
+
+Download the current build of fmu-proxy from [fmu-proxy-0.6.1.jar] 
+
+To get started, start the server executable fmu-proxy.jar from a command line or use the bundled startup script, where -thrift/tcp 9090 tells fmu-proxy to start a Thrift RPC server listening to port 9090.
+
+`start java -jar fmu-proxy.jar -thrift/tcp=9090`
+
+Start as many as necesssary servers on the same PC, but remember to use unique port numbers for each one. Please check that this port matches the
+one(s) used in the configuration file.
+
+FMUs can be pre-loaded on the server by appending the path to the FMUs. E.g.
+
+`java -jar fmu-proxy.jar -thrift/tcp=9090 "path/to/fmu1.fmu" "path/to/fmu2.fmu"`
+
+See below for three different ways to specify the FMU to be loaded by fmu-proxy.
+
+<figure>
+<img src="/assets/img/fmuproxyFig6.png" width="500"> 
+</figure>
