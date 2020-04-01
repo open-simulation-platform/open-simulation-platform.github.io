@@ -18,29 +18,29 @@ Figure 1 shows a simplified model of a quarter truck with two masses mWheel and 
     
 ### Model Description
 
-For co-simulation, three FMUs are generated namely the chassis, wheel and ground. The ground and chassis each have one variable group for connection to the wheel which has two variable groups that are commutative to those of the ground and chassis. Table 1 shows the connections for these variables.
-The local parameters in the model are listed in Table 2.
+For co-simulation, three FMUs are generated namely the chassis, wheel and ground. The ground and chassis each have one variable group for connection to the wheel which has two variable groups that are commutative to those of the ground and chassis. Table 1 shows the connections for these variables. Specifically for this example, the first element in the variable name indicates which fmu it belongs to. 
+The local default parameters used in the model are listed in Table 2.
 
 **Table 1:** *Input and output variables of the quarter truck fmus for connection*
 
-| Output Variable     |Input Variable  |
-|:---:         | :---:           |
-| `chassis.p.e`     | `wheel.p.e`      |
-| `wheel.p.f`   | `chassis.p.f`        |
-| `wheel.p.e`     | `ground.p.e`     |
-| `ground.p.f`     | `wheel.p.f`     |
+| Output     |Input   | Description  |
+|:---:         | :---:           |  :---         |
+| `chassis.p.e`     | `wheel.p.e`      | Vertical force from the chassis suspension applied to the wheel  |
+| `wheel.p.f`   | `chassis.p.f`        | Vertical velocity of the wheel sent to the chassis part|
+| `wheel.p.e`     | `ground.p.e`     | Vertical force from the truck wheel tyres applied to the ground  |
+| `ground.p.f`     | `wheel.p.f`     | Ground profile, given as the vertical velocity variation sent to the truck wheel|
 
 
 **Table 2:** *Local parameters of the quarter truck model*
 
-| Name        | Parameter      |Default Value        |
-| :---           |:---:         | :---:           |
-| Wheel Mass        | `mWheel`      | 40 kg       |
-| Chassis Mass        | `mChassis`     | 400 kg        |
-| Wheel Spring Stiffness      | `kWheel`      | 150000 Nm^-1     |
-| Wheel Damper Coefficient        | `dWheel`     | 0 Nsm^-1      |
-| Chassis Spring Stiffness         | `kChassis`     | 15000 Nm^-1       |
-| Chassis Damper Coefficient         | `dChassis`     |  1000 Nsm^-1      |
+|  Parameter   |Default Value        | Description       |
+| :---           |:---:         | :---          |
+| `mWheel`      | 40 kg       |Wheel Mass        | 
+| `mChassis`     | 400 kg        |Chassis Mass        | 
+|  `kWheel`      | 150000 Nm^-1     |Wheel Spring Stiffness      |
+|  `dWheel`     | 0 Nsm^-1      |Wheel Damper Coefficient        |
+| `kChassis`     | 15000 Nm^-1       |Chassis Spring Stiffness         | 
+|  `dChassis`     |  1000 Nsm^-1      |Chassis Damper Coefficient         |
 
 ### Simulation Results 
 The following scenario is performed as example. The system starts from equilibrium state where *zWheel* = *zChassis* = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. 
