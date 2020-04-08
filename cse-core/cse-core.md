@@ -4,9 +4,14 @@ title: "CSE"
 permalink: /cse-core/cse
 ---
 
-## cse-core
+## CSE-core
+The C/C++ co-simulation library orchestrates the co-simulation of models that conform to the Functional Mock-up Interface (FMI) . 
+The co-simulation library includes a fixed-step master algorithm with a configurable base step size. It allows for individually defined time steps for the models, with the requirement of being a multiple of the master algorithm base step size. During simulation, there are features to observe and manipulate simulation variables either through dedicated interfaces or with a scenario runner. It is possible to apply arbitrary operations to variable values without modifying the subsystem models themselves. 
+Examples include arithmetics, logical operations, transformations, unit conversions and more. This is necessity if variables connected between models must be summed or transformed by linear transformation or between coordinate frames. There are interfaces for client applications to include their own implementation of many of the included features. 
 
-### cse concepts
+[C/C++ co-simulation library](./doxygen/0.6.0){:target="_blank"}
+
+### CSE concepts
 
 - Slaves
 - Functions
@@ -24,9 +29,29 @@ permalink: /cse-core/cse
 A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file. First is the `"description"` of what does this scenario do. 
 `"action"` declares the action type which can be `"override"` , `"bias"`  or `"reset"`. `"events"` includes the `"time"` in second when the action takes place, on which `"model"`, the "`variable"` name in this model and the `"value"` for this variable (except for `"reset"` action type which doesn't require a value) .
 
-<figure>
-<img src="/assets/img/csecoreFig3.png" width="400"> 
-</figure>
+```
+{
+  "description": "description of the scnario",
+  "defaults": {
+    "model": "model name",
+    "action": "override"
+  },
+  "events": [
+    {
+      "time": event time,
+      "variable": "variable name",
+      "value": variable value
+    },
+    {
+      ...      event 2       ...
+    },
+    {
+      ...      event 3       ...
+    }
+  ],
+  "end": scenario stop time
+}
+```
 
 ### Results logging
 
@@ -36,9 +61,18 @@ amount of data being generated, so it is recommended instead specifying what sig
 CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
 including case) and placed in the same folder as the simulators. 
 
-<figure>
-<img src="/assets/img/csecoreFig1.png" width="500"> 
-</figure>
+```
+<simulators>
+    <simulator name="model name 1" decimationFactor="20">
+        <variable name="variable name 1"/>
+        <variable name="variable name 2"/>
+    </simulator>
+    <simulator name="model name 1">
+        <variable name="variable name 1"/>
+        <variable name="variable name 2"/>
+    </simulator>
+</simulators>
+```
 
 The simulators to be logged must be enclosed in a `<simulators>` tag, and each signal must specify its name in separate `<variable>` tags under each `<simulator>`. 
 Leaving out any `<variable>` tags on a `<simulator>` will lead to all variables for that simulator
@@ -46,12 +80,6 @@ being logged.
 Each simulator has an optional attribute decimationFactor that specifies that simulator's decimation factor when logging variables. For example a decimation factor of 20 will lead to every 20th sample being logged. If this is
 not specified, every sample will be logged. 
 Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
-
-Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
-An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
-<figure>
-<img src="/assets/img/csecoreFig2.png" width="600"> 
-</figure>
 
 ### Distributed co-simulation
 Distributed simulation using fmu-proxy allows you to:
@@ -70,25 +98,6 @@ FMU-proxy is different from other framework for distributed FMU invocations such
 
 The idea is that other applications should use FMU-proxy whenever FMUs are required to run distributed, rather than having each application creating their own solution.
 
-[more details](./fmuproxy)
+[Using fmu-proxy with CSE](./fmuproxy)
 
-- Using fmu-proxy with CSE
 
-Download the current build of fmu-proxy from [fmu-proxy-0.6.1.jar] 
-
-To get started, start the server executable fmu-proxy.jar from a command line or use the bundled startup script, where -thrift/tcp 9090 tells fmu-proxy to start a Thrift RPC server listening to port 9090.
-
-`start java -jar fmu-proxy.jar -thrift/tcp=9090`
-
-Start as many as necesssary servers on the same PC, but remember to use unique port numbers for each one. Please check that this port matches the
-one(s) used in the configuration file.
-
-FMUs can be pre-loaded on the server by appending the path to the FMUs. E.g.
-
-`java -jar fmu-proxy.jar -thrift/tcp=9090 "path/to/fmu1.fmu" "path/to/fmu2.fmu"`
-
-See below for three different ways to specify the FMU to be loaded by fmu-proxy.
-
-<figure>
-<img src="/assets/img/fmuproxyFig6.png" width="500"> 
-</figure>

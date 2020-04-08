@@ -44,10 +44,8 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 
 ### Simulation using the cse-demo-app
 
-User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
+Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
 
 ![foo](/assets/img/HouseFig2.png "Figure 2")
 ![foo](/assets/img/HouseFig3.png "Figure 3")
 ![foo](/assets/img/HouseFig4.png "Figure 4")
-
-### References

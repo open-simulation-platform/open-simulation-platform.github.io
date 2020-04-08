@@ -5,6 +5,10 @@ permalink: /cse-demo-app/cse-demo-app
 ---
 
 ## CSE demo application
+
+The demo application is developed to showcase how the CSE co-simulation library can be used in an application and to provide a graphical user interface to manage co-simulations. It allows for loading configuration, controlling the co-simulation and easy exploration of the co-simulation library’s features. There are options for real time execution or simulation in free mode (as fast as the hardware allows). During simulation, the user can observe simulation variables, manipulate these and visualise the simulation with plotting features. 
+A scenario management feature allows change of the simulation variables automatically based on a scenario file. It is possible to log the simulation variables of all FMUs in dedicated data files based on predefined rules.
+
 A STEP BY STEP USER GUIDE ON HOW TO USE THE OSP CORE SIMULATION ENVIRONMENT (CSE) DEMO APPLICATION.
 
 VERSION: 0.6.0
@@ -96,8 +100,30 @@ It is possible to override any input, output or parameter variable.
 
 Scenarios can be defined with the syntax described in the table below. [link to scenario format spec].
 
-![foo](/assets/img/CSEuserguideFig8.png "Figure 8")
-
+```
+{
+{
+  "description": "descritpion of the scenario",
+  "defaults": {
+    "model": "model name",
+    "action": "override"
+  },
+  "events": [
+    {
+      "time": event time,
+      "variable": "variable name",
+      "value": variable value
+    },
+    {
+      ...      event2       ...
+    },
+    {
+      ...      event3       ...
+    }
+  ],
+  "end": scenario stop time
+}
+```
 1. Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically be loaded and made visible in the
 Scenarios section.The dp-ship example comes with three scenario files for demonstration purposes.
 2. Click the scenarios to see its contents.
@@ -114,7 +140,33 @@ use the PlugSocketConnections and the BondConnections, you will also have to pro
 to schema OspModelDescription.xsd for each of the FMUs that will use them. The dp-ship, quarter-truck and house examples each contain a
 OspSystemStructure.xml file that demonstrates how this is done.
 
-![foo](/assets/img/CSEuserguideFig10.png "Figure 10")
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<OspSystemStructure
+xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
+    <BaseStepSize>0.01</BaseStepSize>
+    <Simulators>
+        <Simulator name="ModelX" source="fmu1.fmu">
+            <InitialValues>
+                <InitialValue variable="input1">
+                    <Real value="42"/>
+                </InitialValue>
+            </InitialValues>
+        </Simulator>
+        <Simulator name="ModelY" source="fmu2.fmu" stepSize="0.1"/>
+        <Simulator name="ModelZ" source="fmu3.fmu" stepSize="0.05"/>
+    </Simulators>
+
+    <PlugSocketConnections/>
+    <BondConnections/>
+    <VariableConnections>
+        <ScalarConnection>
+            <Source simulator="ModelX" endpoint="p.out"/>
+            <Target simulator="ModelY" endpoint="p.in"/>
+        </ScalarConnection>
+    </VariableConnections>
+</OspSystemStructure>
+```
 
 Co-simulation configuration using the SSP standard (https://ssp-standard.org/) is also partially supported. [Link to ssp support]. The dp-ship and house examples each
 contain a SystemStructure.ssd file that demonstrates this.
@@ -129,7 +181,19 @@ amount of data being generated, so we recommend instead specifying what signals 
 CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
 including case) and placed in the same folder as the simulators. A basic example of the currently supported syntax is;
 
-![foo](/assets/img/CSEuserguideFig11.png "Figure 11")
+```
+<simulators>
+    <simulator name="model_1" decimationFactor="20">
+        <variable name="model_input"/>
+        <variable name="model_output"/>
+    </simulator>
+    <simulator name="model_2" decimationFactor="10">
+        <variable name="model_input"/>
+        <variable name="model_output"/>
+    </simulator>
+        <simulator name="model_3"/>
+</simulators>
+```
 
 The simulators to be logged must be enclosed in a <simulators> tag, and each signal must specify the name, data type, and causality as
 parameters in separate <variable> tags under each <simulator>. Each simulator has an optional attribute decimationFactor that specifies that
@@ -137,7 +201,45 @@ simulator's decimation factor when logging variables. For example a decimation f
 not specified, every sample will be logged. Finally, leaving out any <variable> tags on a <simulator> will lead to all variables for that simulator
 being logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file pr.
 simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
-    
+
+#### Plot
+Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
+An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
+```
+{
+  "plots": [
+    {
+      "label": "label",
+      "plotType": "trend",
+      "variables": [
+        {
+          "simulator": "model name 1",
+          "variable": "variable name 1"
+        },
+        {
+          "simulator": "model name 2",
+          "variable": "variable name 2"
+        }
+      ]
+    },
+    {
+      "label": "Room temp XY",
+      "plotType": "scatter",
+      "variables": [
+        {
+          "simulator": "model name 1",
+          "variable": "variable name 1"
+        },
+        {
+          "simulator": "model name 2",
+          "variable": "variable name 2"
+        }
+      ]
+    }
+  ]
+}
+```
+   
 ### Demo co-simulation case(s)
 
 - [DPShip](./DPShip)
@@ -145,4 +247,4 @@ simulator. The log is written in CSV format only, there is currently no support 
 - [Quarter-Truck](./Quarter-Truck)
 
 #### Demo simulation models
-[Download](./cse-demo-models)
+The above demo models can be downloaded from [here](https://github.com/open-simulation-platform/cse-demos).

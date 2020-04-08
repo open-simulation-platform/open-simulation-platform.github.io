@@ -159,9 +159,9 @@ This fmu contains the DP-controller which controls the position and the orientat
 | `dx`              | Filtered north-rate measurements from `NLPobserver`                       | continuous    | input     | - m/s         |
 | `dy_ref`          | Continuous east-rate reference from `ReferenceGenerator`                  | continuous    | input     | - m/s         |
 | `dy`              | Filtered east-rate measurements from `NLPobserver`                        | continuous    | input     | - m/s         |
-| `ControlMz        | Global thrust torque (yaw) from DP-controller                             | continuous    | ouput     | - Nm          |
-| `Controlx         | Global thrust in north from DP-controller                                 | continuous    | output    | - N           |
-| `Controly         | Global thrust in east from DP-controller                                  | continuous    | output    | - N           |
+| `ControlMz`         | Global thrust torque (yaw) from DP-controller                             | continuous    | ouput     | - Nm          |
+| `Controlx`         | Global thrust in north from DP-controller                                 | continuous    | output    | - N           |
+| `Controly`          | Global thrust in east from DP-controller                                  | continuous    | output    | - N           |
 
 #### ThMPC
 This fmu contains the thrust allocation algorithm that takes the commanded global thrust forces from the DP-controller and distributes them as local thruster signals in type of thruster orientation and thrust amplitude. This thrust allocation algorithm is based on *Model Predictive Control*-theory (MPC) and is thoroughly presented in [5]. Hence, no details will be given here.

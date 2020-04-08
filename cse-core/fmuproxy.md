@@ -6,45 +6,8 @@ permalink: /cse-core/fmuproxy
 
 ## FMUProxy
 
-The software architecture is shown in Fig. 1 and consists of three main parts:
 
-<figure>
-<img src="/assets/img/fmuproxyFig1.png" > 
-<figcaption>Fig.1 FMU-Proxy software architecture </figcaption>
-</figure>
-
-
-### 1. Discovery Services
-
-A discovery service is a web application whose main responsibility is to communicate to users information about and the location of available FMUs. This information can be obtained visually through a web interface, or programmatically through an HTTP request. 
-The discovery service has the following three HTTP services:
-
-- /availablefmus: Called by user applications. Returns a JSON formatted string containing information about all available FMUs registered with the discovery service. The information include data from the modelDescription.xml as well as the IP address of the host machine and the RPC port(s).
-
-- /register: Called by proxy-servers on start-up. Registers the server with the discovery server. Transmits network information, and information about the modelDescription.xml for each locally available FMU.
-
-- /ping: Called by the proxy-servers at regular   intervals, otherwise they will be considered to be offline by the discovery service.
-
-The discovery service is an optional feature and is not required when the remote end-point of an RPC service is known to the client application, for instance when running the server on a physically accessible machine.
-
-Multiple discovery services may be online at any given time. They may be public or used internally in a restricted network.
-
-The discovery service has been implemented in Kotlin, a
-statically typed language 100% interoperable with Java.
-The front-end seen in Fig. 2 has been implemented using
-PrimeFaces, a UI component framework for Java Server
-Faces (JSF). It offers basic functionality such as the ability
-for users to download available RPC schemas and to view
-information about available FMUs in a structured way.
-
-<figure>
-<img src="/assets/img/fmuproxyFig2.png" > 
-<figcaption>Fig.2 The discovery service’s web interface. </figcaption>
-</figure>
-
-
-
-### 2. Proxy-server
+### 1. Proxy-server
 
 A proxy-server is responsible for making available one or more FMUs over a set of RPCs. Implementations should support Thrift and or gRPC. Additional RPCs, such as JSON-RPC can also be supported.
 
@@ -63,7 +26,7 @@ will excel at everything.
 
 The JVM implementation is written in Kotlin and rely on FMI4j, an FMI implementation for JVM languages that supports FMI 1.0 and 2.0 for CS and ME. Out of the box, ME models can be wrapped as CS ones using solvers from the Apache Commons Math3 package. Compared to other open-source FMI implementations targeting the JVM, such as JFMI and JavaFMI, FMI4j is the only one to support ME for 2.0. Furthermore, FMI4j uses the Java Native Interface (JNI) rather than Java Native Access (JNA) for interfacing with the native FMI functions, which significantly improves performance. The calling overhead for a single native call using JNA can be an order of magnitude greater than equivalent JNI.
 
-The implementation supports Thrift (TCP/IP - binary, HTTP - JSON), gRPC (HTTP2 - protocol buffers) as well as JSON-RPC (HTTP, TCP/IP and WebSockets), and is considered as the reference implementation.
+The implementation supports Thrift (TCP/IP - binary, HTTP - JSON), gRPC (HTTP2 - protocol buffers) and is considered as the reference implementation.
 
 #### C++
 
@@ -71,7 +34,7 @@ The C++ implementation is cross-platform and is written in modern C++17. All dep
 
 FMI4cpp, an FMI 2.0 implementation for C++, is used for interacting with FMUs. It supports both CS and ME, where the latter can be wrapped as the former using solvers from Boost odeint. The main goal of the FMI4cpp library is to be as easy to use and install as possible. To achieve this, it makes use of modern C++ features and supports installation using the vcpkg and conan package managers.
 
-### 3. Proxy-clients
+### 2. Proxy-clients
 
 Proxy clients are used to connect with the FMUs hosted by the remote server(s). FMU-proxy aims to provide flexibility, such that clients can be implemented in a wide variety of languages and platform. 
 Using Thrift or gRPC, the process of generating the required source-code for interacting with an remote FMU is quite straightforward. Listing. 1 shows the command required for generating the required sources when targeting Thrift in JavaScript. Similarly, Listing. 2 shows how C++ sources for gRPC are generated.
@@ -113,13 +76,99 @@ existing code base. See Listing. 3 for an example.
 </figure>
 
 **Listing 3. JVM Thrift example, written in Kotlin.**
-<figure>
-<img src="/assets/img/fmuproxyFig4.png" width="500"> 
-</figure>
+```
+val localModel: Model = Fmu.from (<url or file>) //FMI4j API
+val remoteModel: Model = ThriftFmuClient.
+    socketClient(<host>, <port>). load(<guid, url or file>)
+     
+val model = ... // pne of the above
+
+val stepSize = ---
+val slave = model.newInstance()
+slave.simpleSetup()
+slave.doStep(stepSize)
+slave.terminate()
+```
 
 After running the JavaScript code generation using the command shown earlier in Listing. 1, the code shown in Listing. 4 can be written. Here, Thrift is configured to use HTTP transport and JSON encoding. Subsequently an FMU slave is instantiated on the remote server and stepped for 1s until termination. The process is similar for the 14+ other languages supported by Thrift, as well as gRPC and its many supported languages.
 
 **Listing 4. Invoking an FMU from JavaScript using Thrift over HTTP.**
-<figure>
-<img src="/assets/img/fmuproxyFig5.png" width="500"> 
-</figure>
+```
+var transport = new Thrift.TXHRTransport("http://localhost:9091/thrift")
+var protocol = new Thrift.TJSONProtocol(transport)
+var client = new FmuServiceClient(protocol)
+var fmu_id = client.loadFromXXX() //load from url or guid
+var slave_id = client.creatInstanceFromCS(fmu_id)
+
+client.setupExperiment(slave_id)
+client.enterInitializationMode(slave_id)
+client.exitInitializationMode(slave_id)
+
+var stop =1.0
+var step_size = 1.0/100
+do {
+    var result = client.step(slave_id, step_size)
+    if (result.status !=0) {
+        break
+    }
+} while (result.simulationTime <=stop)
+client.terminate(slave_id)
+```
+
+### 3. Install dependencies
+#### Conan:
+Just add a new remote and re-run conan install with `-o fmuproxy=True`
+
+conan remote add `helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"`
+#### Manual building:
+thrift can be built manually following these [steps](https://thrift.apache.org/lib/cpp)
+
+Download a FMU-proxy server:
+[FMU-proxy v0.5.2](https://github.com/NTNU-IHB/FMU-proxy/releases/tag/v0.5.2) 
+
+
+
+FMU-proxy server comes in two flavors: C++ and JVM.
+
+Prefer to use the JVM version as it is cross-platform and has more features. Like support for FMI 1.0.
+
+### 4. Run the FMU-proxy server:
+
+To get started, start the server executable fmu-proxy.jar from a command line or use the bundled startup script, where -thrift/tcp 9090 tells fmu-proxy to start a Thrift RPC server listening to port 9090.
+Start as many as necesssary servers on the same PC, but remember to use unique port numbers for each one. Please check that this port matches the
+one(s) used in the configuration file.
+
+#### C++:
+`./fmu_proxy_cpp -thrift/tcp 9090` 
+You can pre-load FMUs using the -f switch.
+
+#### JVM:
+`start java -jar fmu-proxy.jar -thrift/tcp 9090` 
+FMUs can be pre-loaded by appending the paths at the end of the command, no switch needed.
+
+For each executable -h will display a help message with available options.
+
+### 5. Run the fmuproxy_test located in the test folder
+This test takes 3 arguments:
+
+- url
+- host
+- port
+
+See below for three different ways to specify the FMU to be loaded by fmu-proxy.
+```
+<Simulators>
+    <Simulator name="FMU1"
+        source="fmu-proxy://localhost:9090?file=path/to/fmu1.fmu"/>
+    <Simulator name="FMU2"
+        source="fmu-proxy://localhost:9090?http://example.com/fmu2.fmu"/>
+    <Simulator name="FMU3"
+        source="fmu-proxy://localhost:9090?guid=<fmu-guid-from-modelDescriptiongoes-
+here>"/>
+</Simulators>
+```
+
+[Example](http://folk.ntnu.no/laht/files/ControlledTemperature.fmu) localhost 9090
+
+Note: If you pre-loaded the server executable with some FMUs, you can use from_guid rather than from_url. (the guid is the guid found in the modelDescription.xml of the requested FMU)
+
