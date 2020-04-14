@@ -21,8 +21,11 @@ Examples include arithmetics, logical operations, transformations, unit conversi
 
 ### Configuration
 
-- Document OspSystemStructure.xml with link to .xsd
-- Document OspModelDescription.xml with link to .xsd
+The configuration format is based on the MSMI standard developed in WP2 and is used to configure the simulation system structure, including
+connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
+OspSystemStructure.xsd. [Link to OspSystemStructure spec]. Connections can be configured as variables and variableGroups. 
+
+Co-simulation configuration using the SSP standard (https://ssp-standard.org/) is also partially supported. [Link to ssp support]. 
 
 ### Scenario
 
