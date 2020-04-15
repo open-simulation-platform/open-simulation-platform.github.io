@@ -1,17 +1,17 @@
 ---
 layout: default
 title: "CSE"
-permalink: /
+permalink: /index
 ---
 
 ## Core Simulation Environment
 The Core Simulation Environment (CSE) is an open source software for co-simulation, built on a combination of technical solutions from the Open Simulation Platform (OSP) initiators and other established industrial solutions. The key working principle has been to use the best available technology and knowledge to meet the requirements for the OSP to efficiently serve its purpose. The CSE source code will be made available on GitHub, free of charge, through the MPL 2.0 open source licence.
-The open-source software coined the Core Simulation Environment (CSE) produced in the OSP JIP consists of the following elements:
+The open-source software coined the CSE produced in the OSP JIP consists of the following elements:
 
-- [CSE core](./cse-core/cse) --> Download [cse-core v0.6.0](https://osp-jenkins.azurewebsites.net/job/open-simulation-platform/)
-- [CSE demo application](./cse-demo-app/cse-demo-app) --> Download [cse-server-go v0.6.0](https://osp-jenkins.azurewebsites.net/job/open-simulation-platform/)
-- [Command-line interface](./cse-cli)
-- [Model interface validator](./model-interface-validator)
+- [CSE core](./cse-core/cse) --> Download [cse-core](https://github.com/open-simulation-platform/cse-core/releases)
+- [CSE demo application](./cse-demo-app/cse-demo-app) --> Download [cse-server-go](https://github.com/open-simulation-platform/cse-server-go/releases)
+- [Command-line interface](./cse-cli) --> Download [cse-cli](https://github.com/open-simulation-platform/cse-cli/releases)
+- [Model interface validator](./model-interface-validator) --> Download [MSMI-validator](https://github.com/open-simulation-platform/msmi-validator/releases)
 - [CSE Java wrapper](./cse-java-wrapper)
 
 The conceptual architecture of the co-simulation is illustrated as in figure below. The models are connected using the standardized Functional Mock-up Interface (FMI) co-simulation interface. Based on the input-output variable mapping included in the configuration file, the OSP master algorithm routes the data between the models. 
