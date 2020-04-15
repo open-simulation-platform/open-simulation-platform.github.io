@@ -11,7 +11,7 @@ The open-source software coined the CSE produced in the OSP JIP consists of the 
 - [CSE core](./cse-core/cse) --> Download [cse-core](https://github.com/open-simulation-platform/cse-core/releases)
 - [CSE demo application](./cse-demo-app/cse-demo-app) --> Download [cse-server-go](https://github.com/open-simulation-platform/cse-server-go/releases)
 - [Command-line interface](./cse-cli) --> Download [cse-cli](https://github.com/open-simulation-platform/cse-cli/releases)
-- [Model interface validator](./model-interface-validator) --> Download [MSMI-validator](https://github.com/open-simulation-platform/msmi-validator/releases)
+- [Model interface validator](./model-interface-validator) --> Download [msmi-validator](https://github.com/open-simulation-platform/msmi-validator/releases)
 - [CSE Java wrapper](./cse-java-wrapper)
 
 The conceptual architecture of the co-simulation is illustrated as in figure below. The models are connected using the standardized Functional Mock-up Interface (FMI) co-simulation interface. Based on the input-output variable mapping included in the configuration file, the OSP master algorithm routes the data between the models. 
