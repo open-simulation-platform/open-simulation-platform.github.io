@@ -50,7 +50,7 @@ Antivirus alert: Be aware that your virus protection software might react to the
 as possible.
 3. RTF (Real time factor) indicates simulation speed related to real time. RTF = 2 means that simulation runs twice the speed of real time.
 4. Real time factor target value can be altered to set a specific RTF.
-5. Click play/pause to start or pause the simulation.
+5. Click Play/Pause to start or pause the simulation.
 6. To close the current simulation for loading another configuration, click the "Tear down" button.
 
 ![foo](/assets/img/CSEuserguideFig4.png "Figure 4")
