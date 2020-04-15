@@ -75,8 +75,6 @@ It is possible to override any input, output or parameter variable.
 
 ### Scenarios
 
-Scenarios can be defined with the syntax described in the table below. [link to scenario format spec].
-
 1. Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically loaded and made visible in the
 Scenarios section.The dp-ship example comes with three scenario files for demonstration purposes.
 2. Click the scenarios to see its contents.
