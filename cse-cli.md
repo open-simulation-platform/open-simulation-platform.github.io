@@ -40,12 +40,12 @@ Here, we specify the functionality of the software in the form of imagined inter
 
 #### General usage
 
-```shell script
+```shell
 > cse
 Error: Missing command-line arguments.  Run "cse help" to get help.
 ```
 
-```shell script
+```shell
 > cse help
 NAME
     cse - Command line interface to the Core Simulation Environment.
@@ -89,13 +89,13 @@ COMMANDS
         Runs a simulation with a single subsimulator.
 ```
 
-```shell script
+```shell
 > cse --version
 CSE CLI 0.2.0
 ```
 
 #### Getting information about a model
-```shell script
+```shell
 > cse help inspect
 NAME
     cse inspect - Shows information about a model
@@ -114,7 +114,7 @@ DESCRIPTION
     The model can be specified with a URI, or, if it's a local FMU, by its
     path.  Using a path is equivalent to using a `file` URI.
 ```
-```shell script
+```shell
 > cse inspect models/relativistic_energy.fmu
 name: physics.relativity.energy
 author: Albert Einstein
@@ -135,7 +135,7 @@ variables:
     variability: continuous
 ```
 
-```shell script
+```shell
 > cse inspect fmu-proxy://10.0.0.65:9090?url=http://simple-models.com/circle_area.fmu
 name: math.geometry.area.circle
 author: Archimedes
@@ -153,7 +153,7 @@ variables:
 ```
 #### Running a simulation
 
-```shell script
+```shell
 > cse help run
 NAME
     cse run - Runs a simulation.
@@ -192,7 +192,7 @@ OPTIONS
         The step size.
 ```
 
-```shell script
+```shell
 > cse run sea_trial.ssp -d 3600 --output-dir=sim/results --log-level=info
 [info] Initialising models
 [info] Starting simulation, t = 0
@@ -210,7 +210,7 @@ OPTIONS
 
 #### Running a single model
 
-```shell script
+```shell
 > cse help run-single
 NAME
     cse run-single - Runs a simulation with a single subsimulator.
@@ -254,6 +254,6 @@ OPTIONS
         The step size.
 ```
 
-```shell script
+```shell
 > cse run-single powerplant.fmu -d 3600 --output-dir=sim/results
 ```
