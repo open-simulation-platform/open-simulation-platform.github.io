@@ -32,14 +32,15 @@ Co-simulation configuration using the SSP standard (https://ssp-standard.org/) i
 A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file. First is the `"description"` of what does this scenario do. 
 `"action"` declares the action type which can be `"override"` , `"bias"`  or `"reset"`. `"events"` includes the `"time"` in second when the action takes place, on which `"model"`, the "`variable"` name in this model and the `"value"` for this variable (except for `"reset"` action type which doesn't require a value) .
 
-```
-{
-  "description": "description of the scnario",
-  "defaults": {
+```xml
+{ "description": "description of the scnario",
+  "defaults": 
+  {
     "model": "model name",
     "action": "override"
   },
-  "events": [
+  "events": 
+  [
     {
       "time": event time,
       "variable": "variable name",
@@ -64,7 +65,7 @@ amount of data being generated, so it is recommended instead specifying what sig
 CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
 including case) and placed in the same folder as the simulators. 
 
-```
+```xml
 <simulators>
     <simulator name="model name 1" decimationFactor="20">
         <variable name="variable name 1"/>
