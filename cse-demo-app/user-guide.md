@@ -151,7 +151,7 @@ simulator. The log is written in CSV format only, there is currently no support 
 Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
 An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
 
-```xml
+```json
 {
   "plots": [
     {

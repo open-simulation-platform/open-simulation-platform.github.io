@@ -41,13 +41,13 @@ Using Thrift or gRPC, the process of generating the required source-code for int
 
 **Listing 1. Generating JavaScript sources for interfacing ith remote FMUs using Thrift.**
 
-```xml
+```java
 thrift -js service.thift
 ```
 
 **Listing 2. Generating C++ sources for interfacing with remote FMUs using gRPC.**
 
-```xml
+```java
 protoc -I=. --plugin=protoc-gen-grpc= grpc_cpp_plugin --cpp_out=. -- grpc_out=. service.proto
 ```
 
@@ -81,7 +81,7 @@ existing code base. See Listing. 3 for an example.
 
 **Listing 3. JVM Thrift example, written in Kotlin.**
 
-```xml
+```kotlin
 val localModel: Model = Fmu.from (<url or file>) //FMI4j API
 val remoteModel: Model = ThriftFmuClient.
     socketClient(<host>, <port>). load(<guid, url or file>)
@@ -99,7 +99,7 @@ After running the JavaScript code generation using the command shown earlier in 
 
 **Listing 4. Invoking an FMU from JavaScript using Thrift over HTTP.**
 
-```xml
+```java
 var transport = new Thrift.TXHRTransport("http://localhost:9091/thrift")
 var protocol = new Thrift.TJSONProtocol(transport)
 var client = new FmuServiceClient(protocol)
@@ -124,12 +124,12 @@ client.terminate(slave_id)
 ### 3. Install dependencies
 #### Conan:
 Just add a new remote and re-run conan install with 
-```xml
+```
 -o fmuproxy=True
 ```
 
 conan remote add 
-```xml
+```
 helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
 ```
 
@@ -153,13 +153,13 @@ one(s) used in the configuration file.
 
 #### C++:
 
-```xml
+```
 ./fmu_proxy_cpp -thrift/tcp 9090
 ```
 
 You can pre-load FMUs using the -f switch.
 
-```xml
+```
 FMU-proxy
 Options:
   -h [ --help ]         Print this help message and quits.
@@ -171,7 +171,7 @@ Options:
 
 #### JVM:
 
-```xml
+```java
 start java -jar fmu-proxy.jar -thrift/tcp 9090
 ```
 
@@ -179,7 +179,7 @@ FMUs can be pre-loaded by appending the paths at the end of the command, no swit
 
 For each executable -h will display a help message with available options.
 
-```xml
+```
 Usage: fmu-proxy [-h] 
                  [-grpc=<grpcPort>]
                  [-r=<remote>] [-thrift/http=<thriftHttpPort>]
@@ -204,6 +204,7 @@ Download an [Example](http://folk.ntnu.no/laht/files/ControlledTemperature.fmu) 
 Note: If you pre-loaded the server executable with some FMUs, you can use from_guid rather than from_url. (The guid is the guid found in the modelDescription.xml of the requested FMU)
 
 See below for three different ways to specify the FMU to be loaded by fmu-proxy.
+
 ```xml
 <Simulators>
     <Simulator name="FMU1"
