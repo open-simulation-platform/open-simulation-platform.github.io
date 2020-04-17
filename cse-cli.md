@@ -68,7 +68,8 @@ OPTIONS
                              trace.
   -v [ --verbose ]           Shorthand for --log-level=info.
   --version                  Display program version information and exit.
- 
+ ```
+
 ```shell
 > cse --version
 CSE CLI 0.2.0
@@ -76,24 +77,31 @@ CSE CLI 0.2.0
 
 #### Getting information about a model
 ```shell
-> cse help inspect
 NAME
-    cse inspect - Shows information about a model
- 
+  cse inspect - Shows information about a model
+
 SYNOPSIS
-    cse inspect <uri>
- 
-    cse inspect <path>
- 
+  cse inspect <uri_or_path> [options...]
+
 DESCRIPTION
-    This command shows information about a model, such as its name,
-    description, author, version, and so on.  It also lists information
-    about the model's variables, like their names, types, causalities,
-    variabilities, etc.
- 
-    The model can be specified with a URI, or, if it's a local FMU, by its
-    path.  Using a path is equivalent to using a `file` URI.
+  This command shows information about a model, such as its name, description, author, version, and so on.  It also lists
+  information about the model's variables, like their names, types, causalities, variabilities, etc.
+
+  The model can be specified with a URI, or, if it's a local FMU, by its path.  Using a path is equivalent to using a `file`
+  URI.
+
+PARAMETERS
+  uri_or_path           A model URI or FMU path.
+
+OPTIONS
+  --help                     Display a help message and exit.
+  --log-level arg (=warning) Sets the detail/severity level of diagnostic program output.  Valid argument values, in order of
+                             increasing detail (and decreasing severity), are: error, warning, info, debug, trace.
+  --no-vars                  Do not print information about variables.
+  -v [ --verbose ]           Shorthand for --log-level=info.
+  --version                  Display program version information and exit.
 ```
+
 ```shell
 > cse inspect models/relativistic_energy.fmu
 name: physics.relativity.energy
@@ -134,35 +142,6 @@ variables:
 #### Running a simulation
 
 ```shell
-> cse help run
-NAME
-    cse run - Runs a simulation.
- 
-SYNOPSIS
-  cse run <system_structure_path> [options...]
- 
-DESCRIPTION
-  The Core Simulation Environment is free and open-source software for running distributed co-simulations.
-
-SUBCOMMANDS
-  help                Shows documentation
-  inspect             Shows information about a model
-  run                 Runs a simulation
-  run-single          Runs a simulation with a single subsimulator
-
-OPTIONS
-  --help                     Display a help message and exit.
-  --log-level arg (=warning) Sets the detail/severity level of diagnostic program output.  Valid argument values, in
-                             order of increasing detail (and decreasing severity), are: error, warning, info, debug,
-                             trace.
-  -v [ --verbose ]           Shorthand for --log-level=info.
-  --version                  Display program version information and exit.
-
-
-C:\Users\yingguangc\Downloads\cse-cli-v0.2.0-win64\bin>cse help <inspect>
-The syntax of the command is incorrect.
-
-C:\Users\yingguangc\Downloads\cse-cli-v0.2.0-win64\bin>cse help run
 NAME
   cse run - Runs a simulation
 
