@@ -10,8 +10,8 @@ The validator loads the OSPModelDescription.xml and the ontology, and checks tha
 
 [Link to MSMI]()
 
-Multivariable connections: One of the main benefits of MSMI is that it enables the implementation of multi-variable connections with simultaneous verification of semantical correctness. 
-Today connection of two FMUs is a matter of connecting signal by signal,  as shown in Fig. 2, interpreting the signal names and deducing which connections are probably correct. 
+Multi-variable connections: One of the main benefits of MSMI is that it enables the implementation of multi-variable connections with simultaneous verification of semantical correctness. 
+Today connection of two FMUs is a matter of connecting signal by signal,  as shown in Fig. 1, interpreting the signal names and deducing which connections are probably correct. 
 Also, ensuring matching units might be a matter of consulting documentation, or possibly communication with the model developers. 
 
 <figure>

@@ -87,7 +87,7 @@ Scenarios section.The dp-ship example comes with three scenario files for demons
 The dp-ship, quarter-truck and house examples each contains a
 OspSystemStructure.xml file that demonstrates how this is done.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <OspSystemStructure
 xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
@@ -126,7 +126,7 @@ amount of data being generated, so we recommend instead specifying what signals 
 CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
 including case) and placed in the same folder as the simulators. A basic example of the currently supported syntax is;
 
-```
+```xml
 <simulators>
     <simulator name="model_1" decimationFactor="20">
         <variable name="model_input"/>
@@ -150,7 +150,8 @@ simulator. The log is written in CSV format only, there is currently no support 
 ### Plot
 Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
 An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
-```
+
+```json
 {
   "plots": [
     {

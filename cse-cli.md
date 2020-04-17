@@ -39,11 +39,13 @@ The following is an unsorted list of loose design ideas and desirable features. 
 Here, we specify the functionality of the software in the form of imagined interactions with a user. This includes a somewhat formal specification given by the output of the cse help commands.
 
 #### General usage
-```
+
+```shell
 > cse
 Error: Missing command-line arguments.  Run "cse help" to get help.
 ```
-```
+
+```shell
 > cse help
 NAME
     cse - Command line interface to the Core Simulation Environment.
@@ -86,12 +88,14 @@ COMMANDS
     run-single
         Runs a simulation with a single subsimulator.
 ```
-```
+
+```shell
 > cse --version
 CSE CLI 0.2.0
 ```
+
 #### Getting information about a model
-```
+```shell
 > cse help inspect
 NAME
     cse inspect - Shows information about a model
@@ -110,8 +114,7 @@ DESCRIPTION
     The model can be specified with a URI, or, if it's a local FMU, by its
     path.  Using a path is equivalent to using a `file` URI.
 ```
-```
-
+```shell
 > cse inspect models/relativistic_energy.fmu
 name: physics.relativity.energy
 author: Albert Einstein
@@ -131,7 +134,8 @@ variables:
     causality: output
     variability: continuous
 ```
-```
+
+```shell
 > cse inspect fmu-proxy://10.0.0.65:9090?url=http://simple-models.com/circle_area.fmu
 name: math.geometry.area.circle
 author: Archimedes
@@ -148,7 +152,8 @@ variables:
     variability: continuous
 ```
 #### Running a simulation
-```
+
+```shell
 > cse help run
 NAME
     cse run - Runs a simulation.
@@ -186,8 +191,8 @@ OPTIONS
     -s <number>, --stepsize=<number>        (default: 0.01)
         The step size.
 ```
-```
 
+```shell
 > cse run sea_trial.ssp -d 3600 --output-dir=sim/results --log-level=info
 [info] Initialising models
 [info] Starting simulation, t = 0
@@ -204,7 +209,8 @@ OPTIONS
 ```
 
 #### Running a single model
-```
+
+```shell
 > cse help run-single
 NAME
     cse run-single - Runs a simulation with a single subsimulator.
@@ -247,6 +253,7 @@ OPTIONS
     -s <number>, --stepsize=<number>        (default: 0.01)
         The step size.
 ```
-```
+
+```shell
 > cse run-single powerplant.fmu -d 3600 --output-dir=sim/results
 ```
