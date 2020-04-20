@@ -9,23 +9,20 @@ The C/C++ co-simulation library orchestrates the co-simulation of models that co
 The co-simulation library includes a fixed-step master algorithm with a configurable base step size. It allows for individually defined time steps for the models, with the requirement of being a multiple of the master algorithm base step size. During simulation, there are features to observe and manipulate simulation variables either through dedicated interfaces or with a scenario runner. It is possible to apply arbitrary operations to variable values without modifying the subsystem models themselves. 
 Examples include arithmetics, logical operations, transformations, unit conversions and more. This is necessity if variables connected between models must be summed or transformed by linear transformation or between coordinate frames. There are interfaces for client applications to include their own implementation of many of the included features. 
 
-[C/C++ co-simulation library](./doxygen/0.6.0){:target="_blank"}
+The main concepts of CSE interfaces are shown in the figure below. 
+Detailed descriptions can be found via [C/C++ co-simulation library](./doxygen/0.6.0){:target="_blank"}.
 
-### CSE concepts
-
-- Slaves
-- Functions
-- Manipulator
-- Observer
-- Modifiers
+<figure>
+<img src="/assets/img/cseFig2.png" width="800"> 
+</figure>
 
 ### Configuration
 
-The configuration format is based on the MSMI standard developed in WP2 and is used to configure the simulation system structure, including
+The configuration format is based on the [MSMI standard]() and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
-OspSystemStructure.xsd. [Link to OspSystemStructure spec]. Connections can be configured as variables and variableGroups. 
+[OspSystemStructure.xsd](). Connections can be configured as variables and variableGroups. 
 
-Co-simulation configuration using the SSP standard (https://ssp-standard.org/) is also partially supported. [Link to ssp support]. 
+Co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also partially supported. 
 
 ### Scenario
 
