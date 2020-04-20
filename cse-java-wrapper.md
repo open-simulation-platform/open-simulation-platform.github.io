@@ -5,7 +5,7 @@ permalink: /cse-java-wrapper
 ---
 
 ## CSE Java wrapper
-The Java wrapper, _cse-core4j_, enables Java applications to make use of the co-simulation library.
+The Java wrapper, _cse-core4j_, enables Java applications to make use of the `cse-core` co-simulation library.
 It uses the Java Native Interface (JNI) to efficiently interact with _cse-core_. 
 To make the it accessible, all native dependencies for Linux and Windows have been pre-built and are bundled with the library.
 
