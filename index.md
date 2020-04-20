@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: splash
+classes: landing
 title: "CSE"
 permalink: /
 ---

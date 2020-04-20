@@ -12,3 +12,7 @@ Get docker at https://docs.docker.com/
 For some fields you'll need a personal access token from github. See how to get it [here](
 https://github.com/jekyll/github-metadata/blob/master/docs/authentication.md).
 To use it run the docker container with the following option `-e JEKYLL_GITHUB_TOKEN=****`
+
+`docker pull jekyll/jekyll:3.8`
+
+`docker run --rm --volume="c:\path\open-simulation-platform.github.io:/srv/jekyll" -e JEKYLL_GITHUB_TOKEN=*************** -p 4000:4000 -it jekyll/jekyll:3.8 bash -c "bundle update && bundle install && bundle exec jekyll serve -H 0.0.0.0"`

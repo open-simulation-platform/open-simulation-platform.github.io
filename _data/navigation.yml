@@ -1,0 +1,5 @@
+main:
+  - title: "CSE"
+    url: /cse-core/cse/
+  - title: "demo app"
+    url: /cse-demo-app/cse-demo-app/
