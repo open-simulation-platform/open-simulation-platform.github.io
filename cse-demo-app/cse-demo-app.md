@@ -1,6 +1,7 @@
 ---
 layout: default
-title: "cse-demo-app"
+title: "CSE Demo App"
+has_children: true
 permalink: /cse-demo-app/cse-demo-app
 ---
 
