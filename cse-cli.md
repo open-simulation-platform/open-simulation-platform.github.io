@@ -5,37 +5,26 @@ permalink: /cse-cli
 ---
 
 ## CSE CLI
-For the cases where a graphical user interface is not available or needed, the CSE comes as a command line application. CSE-CLI is a command-line interface (CLI) to CSE. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
+CSE-CLI is a command-line interface (CLI) to CSE for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
 It has three primary use cases:
 
 - Running simulations from other programs or scripts
 - FMU testing and debugging
 - Users who simply prefer to work from the command line
 
-The command line application is suitable when multiple sets of simulations can be executed in parallel. An example for such use case could be in design, where there typically are multiple system variants and parameterization of the system.
-It can simulate single FMUs and show the model descriptions. Besides being a necessary simulation tool, the CSE command line interface also serves as a demonstration for how client applications can make use of the CSE co-simulation library.
-With the command-line interface, the co-simulation library is used to enable co-simulation from the command-line. 
+The CLI is especially suitable when multiple sets of simulation to be executed in parallel. An example for such use case could be in design, where there typically are multiple system variants and parameterization of the system.
+It can simulate a single FMU and show the model description. Besides being a necessary simulation tool, the CLI also serves as a demonstration for how client applications can make use of the CSE co-simulation library.
+With the CLI, the co-simulation library is used to enable co-simulation from the command-line. 
 
+### Functional specification
 
-### Functionality and design
-
-CSE-CLI should be able to perform the following tasks:
+CSE-CLI is able to perform the following tasks:
 
 - Run a simulation, where the system to simulate is specified as an SSP file.
 - Provide information about a model (usually an FMU).
 - Do a "test run" with a single model (FMU).
 
-The following is an unsorted list of loose design ideas and desirable features. A more detailed specification is given in the form of "help texts" in the next section.
-
-- Ability to access both local and remote models, using paths or URIs.
-- Logging of simulation results to disk.
-- Git-like CLI
---Subcommands for main operations
---GNU-style long options (--option) with one-letter short forms (-o) for the most commonly used ones
---Built-in help/documentation.
-
-### Functional specification
-
+Detailed specifications are given in the form of "help texts" in the next section.
 
 #### General usage
 
