@@ -2,6 +2,8 @@
 layout: default
 title: "CSE Core"
 permalink: /cse-core/cse
+has_children: true
+nav_order: 1
 ---
 
 ## CSE-core

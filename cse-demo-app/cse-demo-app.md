@@ -3,6 +3,7 @@ layout: default
 title: "CSE Demo App"
 has_children: true
 permalink: /cse-demo-app/cse-demo-app
+nav_order: 3
 ---
 
 ## CSE demo application
@@ -27,12 +28,3 @@ We use one of the demo test cases (dp-ship) to show the process. The demo cases 
 ### [User guide](./user-guide)
 
 
-
-### Demo co-simulation case(s)
-
-- [DPShip](./DPShip)
-- [House](./House)
-- [Quarter-Truck](./Quarter-Truck)
-
-#### Demo simulation models
-The above demo models can be downloaded from [here](https://github.com/open-simulation-platform/cse-demos).

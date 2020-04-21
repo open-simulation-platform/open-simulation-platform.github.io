@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "House"
+parent: "Demo Cases"
 permalink: /cse-demo-app/House
 ---
 

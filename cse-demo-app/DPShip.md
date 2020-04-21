@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "DPShip"
+parent: "Demo Cases"
 permalink: /cse-demo-app/DPShip
 ---
 
