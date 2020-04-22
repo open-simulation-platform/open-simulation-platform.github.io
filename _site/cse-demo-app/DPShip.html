@@ -1,0 +1,1125 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DPShip - Core Simulation Environment</title>
+<meta name="description" content="co-simulation software ">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Core Simulation Environment">
+<meta property="og:title" content="DPShip">
+<meta property="og:url" content="http://0.0.0.0:4000/cse-demo-app/DPShip">
+
+
+  <meta property="og:description" content="co-simulation software ">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/cse-demo-app/DPShip">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Core Simulation Environment
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="cse-demo-application---dp-ship">CSE demo application - DP Ship</h2>
+
+<p>This file contains a minimal description of the DP-vessel demonstrator.</p>
+
+<h3 id="introduction">Introduction</h3>
+<p>This co-simulation demonstrator is based on the work presented in [1,2], and the reader is referred to these references and the references within for more details. Hence, any in-depth details regarding the submodels are considered out of scope here, except information useful for running the co-simulation demonstrator.</p>
+
+<p>The demonstrator includes five different fmus, and a short description of these are given in Table 1.</p>
+
+<p><strong>Table 1:</strong> <em>List of FMUs in the DP-vessel demonstrator case.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>FMU name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>OSOM</em></td>
+      <td>This is a model of a simplified offshore DP-vessel [1,2].</td>
+    </tr>
+    <tr>
+      <td><em>NLPobserver</em></td>
+      <td>This is the wave-filter, a <em>Non-Linear Passive observer</em> [3].</td>
+    </tr>
+    <tr>
+      <td><em>ReferenceGenerator</em></td>
+      <td>This is a model that based on way-points, given as scenario parameters from the user, generates reference signals for the DP-system.</td>
+    </tr>
+    <tr>
+      <td><em>DPController</em></td>
+      <td>This is the DP-controller model that controls the position and the orientation of the vessel.</td>
+    </tr>
+    <tr>
+      <td><em>ThMPC</em></td>
+      <td>This is the thrust allocation algorithm.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that all these fmus contains binaries for both <code class="language-plaintext highlighter-rouge">win64</code> and <code class="language-plaintext highlighter-rouge">linux64</code>.</p>
+
+<h3 id="model-descriptions">Model Descriptions</h3>
+<p>In the following, each model in Table 1 is presented with focus on running the demonstrator.</p>
+
+<h4 id="osom">OSOM</h4>
+<p>This fmu contains a simplified vessel model including an irregular sea-state, currents and simple hydrodynamics based on potential theory (including second order wave forces) [4]. The vessel model also contains two rotatable main propulsors placed symmetrical at the stern and one tunnel thruster in the bow.</p>
+
+<p>This model has been exported from <em>20Sim</em> and because of a limitation in the exporter, the model parameters cannot be changed by the user in a co-simulation. Some of the main parameters that are hard-coded are given in Table 2. The model I/O for the OSOM fmu are described in Table 3.</p>
+
+<p><strong>Table 2:</strong> <em>Main vessel parameters.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mass</td>
+      <td>2365000 kg</td>
+    </tr>
+    <tr>
+      <td>Length</td>
+      <td>107 m</td>
+    </tr>
+    <tr>
+      <td>Width</td>
+      <td>22 m</td>
+    </tr>
+    <tr>
+      <td>Draught</td>
+      <td>5 m</td>
+    </tr>
+    <tr>
+      <td>Significant wave hight</td>
+      <td>1.5 m</td>
+    </tr>
+    <tr>
+      <td>Wave spektrum peak period</td>
+      <td>8 s</td>
+    </tr>
+    <tr>
+      <td>Wave encounter direction</td>
+      <td>from north</td>
+    </tr>
+    <tr>
+      <td>Northward current</td>
+      <td>-0.2 m/s</td>
+    </tr>
+    <tr>
+      <td>Number of wave components</td>
+      <td>50 -</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table 3:</strong> <em>Vessel model inputs and outputs (I/O).</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>I/O</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Thrust_d[1]</code></td>
+      <td>I</td>
+      <td>Global thrust force always pointing towards north (NED convention)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Thrust_d[2]</code></td>
+      <td>I</td>
+      <td>Global thrust force always pointing towards east (NED convention)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Thrust_d[3]</code></td>
+      <td>I</td>
+      <td>Global thrust force (torque) in yaw (NED convention)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">input[1]</code></td>
+      <td>I</td>
+      <td>Port-side main thruster azimuth angle</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">input[2]</code></td>
+      <td>I</td>
+      <td>Starboard-side main thruster azimuth angle</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">q[1]</code></td>
+      <td>O</td>
+      <td>North position coordinate (global)<sup>1</sup></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">q[2]</code></td>
+      <td>O</td>
+      <td>East position coordinate (global)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">q[3]</code></td>
+      <td>O</td>
+      <td>Yaw orientation coordinate (global, ≈ heading)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="nlpobserver">NLPobserver</h4>
+<p>This fmu contains a wave filter (a Non-Linear Passive observer [3]). The purpose of this filter is to filter out the fastest oscillating wave-induced motion disturbances from the position and orientation measurements from the vessel, the ones that the onboard power and propulsion system cannot compensate for without drawing an enormous amount of power. The filter also estimates the position and orientation rates which the DP-controller needs for providing sufficient damping to the vessel motions. Note that also this fmu is generated from exported code from 20Sim, hence, no scenario parameters can be changed by the user. Nevertheless, the parameters hard-coded in the NLPO match the parameters in the vessel model.</p>
+
+<p>The model I/O for the NLPobserver is given in Table 4.</p>
+
+<p><strong>Table 4:</strong> <em>Wave filter inputs and outputs (I/O).</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>I/O</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">tau[1]</code></td>
+      <td>I</td>
+      <td>Global thrust force always pointing towards north (NED convention)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">tau[2]</code></td>
+      <td>I</td>
+      <td>Global thrust force always pointing towards east (NED convention)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">tau[3]</code></td>
+      <td>I</td>
+      <td>Global thrust force (torque) in yaw (NED convention)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y[1]</code></td>
+      <td>I</td>
+      <td>North position coordinate (global)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y[2]</code></td>
+      <td>I</td>
+      <td>East position coordinate (global)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y[3]</code></td>
+      <td>I</td>
+      <td>Yaw orientation coordinate (global, ≈ heading)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y_hat[1]</code></td>
+      <td>O</td>
+      <td>Filtered north position coordinate (global)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y_hat[2]</code></td>
+      <td>O</td>
+      <td>Filtered east position coordinate (global)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">yhat_[3]</code></td>
+      <td>O</td>
+      <td>Filtered yaw orientation coordinate (global, ≈ heading)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v_hat[1]</code></td>
+      <td>O</td>
+      <td>Filtered north position rate (d/dt y_hat[1])</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v_hat[2]</code></td>
+      <td>O</td>
+      <td>Filtered east position rate (d/dt y_hat[2])</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v_hat[3]</code></td>
+      <td>O</td>
+      <td>Filtered yaw orientation rate (d/dt y_hat[3])</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="referencegenerator">ReferenceGenerator</h4>
+<p>This fmu contains a reference position generator, which, based on user defined inputs, generates continuous reference signals for the DP-controller (north, east and yaw). This fmu is implemented in C++ and the parameters are accessable for the user and can be changed. The most important parameters are listed and described in Table 5.</p>
+
+<p><strong>Table 5:</strong> <em>Main parameters and I/Os in <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code>.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Variability</th>
+      <th>Causality</th>
+      <th>Start value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Tpsi</code></td>
+      <td>Internal low-pass filter time constant for yaw reference</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>50.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Tx</code></td>
+      <td>Internal low-pass filter time constant for north reference</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>50.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Ty</code></td>
+      <td>Internal low-pass filter time constant for east reference</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>50.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dpsiMax</code></td>
+      <td>Maximal yaw-rate in yaw reference output</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.003 rad/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dxMax</code></td>
+      <td>Maximal north-rate in north reference output</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dyMax</code></td>
+      <td>Maximal east-rate in north reference output</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">timeStep</code></td>
+      <td>Local fmu solver time-step size</td>
+      <td>continuous</td>
+      <td>internal</td>
+      <td>0.01 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">solverType</code></td>
+      <td>Type of numerical solver used</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>“Euler”</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psi_wp</code></td>
+      <td>Yaw way-point input</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 rad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psi_tp</code></td>
+      <td>Global simulation time when <code class="language-plaintext highlighter-rouge">psi_wp</code> should be reached</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x_wp</code></td>
+      <td>North way-point input</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x_tp</code></td>
+      <td>Global simulation time when <code class="language-plaintext highlighter-rouge">x_wp</code> should be reached</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y_wp</code></td>
+      <td>East way-point input</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y_tp</code></td>
+      <td>Global simulation time when <code class="language-plaintext highlighter-rouge">y_tp</code> should be reached</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psi_ref</code></td>
+      <td>Continuous yaw reference for DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- rad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x_ref</code></td>
+      <td>Continuous north reference for DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y_ref</code></td>
+      <td>Continuous east reference for DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dpsi_ref</code></td>
+      <td>Continuous yaw-rate reference for DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- rad/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dx_ref</code></td>
+      <td>Continuous north-rate reference for DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dy_ref</code></td>
+      <td>Continuous east-rate reference for DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- m/s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To illustrate how the <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code> works, consider the following:<br />
+At co-simulation time <code class="language-plaintext highlighter-rouge">t0</code> the vessel heading is <code class="language-plaintext highlighter-rouge">psi0</code> and the user sets</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psi_wp = psi0 + pi/4
+psi_tp = t0 + 50.0
+</code></pre></div></div>
+<p>Then, as long as</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi/200.0 &lt;= dpsiMax
+</code></pre></div></div>
+<p>The rate of the yaw-reference signal is set to <code class="language-plaintext highlighter-rouge">pi/200</code>. If not, it is set to dpsiMax. Next, this yaw-rate gets integrated and smoothed using low-pass filter (with filter time constant <code class="language-plaintext highlighter-rouge">Tpsi</code>). Note that also the signal rate (<code class="language-plaintext highlighter-rouge">dpsi_ref</code>) gets smoothed using a low-pass filter. Afterwards, both <code class="language-plaintext highlighter-rouge">dPsi_ref</code> and <code class="language-plaintext highlighter-rouge">psi_ref</code> are fed to the DP-controller.</p>
+
+<h4 id="dpcontroller">DPController</h4>
+<p>This fmu contains the DP-controller which controls the position and the orientation of the vessel. Also this fmu is implemented in C++ and the parameters (controller tuning gains) are accessable for the user and can be changed. However, the controller <em>has</em> been tuned and there is no need for changing these paremeters and it is recommended that these parameters are left as is. Table 6 lists the main paramters and I/Os in the fmu. The control law itself is a simple PID-based control law including the rotational matrix for the vessel orientation (yaw).</p>
+
+<p><strong>Table 6:</strong> <em>Main parameters and I/Os in <code class="language-plaintext highlighter-rouge">DPController</code>.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Variability</th>
+      <th>Causality</th>
+      <th>Start value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ActivationTime</code></td>
+      <td>Global simulation time when the DP controller is activated</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ComTimeStep</code></td>
+      <td>The communication time-step size between the control system and the vessel</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>1.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">timeStep</code></td>
+      <td>Local fmu solver time-step size</td>
+      <td>continuous</td>
+      <td>internal</td>
+      <td>1.0 s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">solverType</code></td>
+      <td>Type of numerical solver used</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>“Euler”</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kppsi</code></td>
+      <td>Proportional yaw gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>1.5e+08</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kpx</code></td>
+      <td>Proportional north gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20000</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kpy</code></td>
+      <td>Proportional east gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20000</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kdpsi</code></td>
+      <td>Derivative yaw gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>1e+09</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kdx</code></td>
+      <td>Derivative north gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>500000</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kdy</code></td>
+      <td>Derivative east gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>500000</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kipsi</code></td>
+      <td>Integral yaw gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>50000</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kix</code></td>
+      <td>Integral north gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>750</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Kiy</code></td>
+      <td>Integral east gain</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>750</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psi_ref</code></td>
+      <td>Continuous yaw reference from <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- rad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psi</code></td>
+      <td>Filtered yaw measurement from <code class="language-plaintext highlighter-rouge">NLPobserver</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- rad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x_ref</code></td>
+      <td>Continuous north reference from <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x</code></td>
+      <td>Filtered north measurements from <code class="language-plaintext highlighter-rouge">NLPobserver</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y_ref</code></td>
+      <td>Continuous east reference from <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">y</code></td>
+      <td>Filtered east measurements from <code class="language-plaintext highlighter-rouge">NLPobserver</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dpsi_ref</code></td>
+      <td>Continuous yaw-rate reference from <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- rad/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dpsi</code></td>
+      <td>Filtered yaw-rate measurements from <code class="language-plaintext highlighter-rouge">NLPobserver</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- rad/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dx_ref</code></td>
+      <td>Continuous north-rate reference from <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dx</code></td>
+      <td>Filtered north-rate measurements from <code class="language-plaintext highlighter-rouge">NLPobserver</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dy_ref</code></td>
+      <td>Continuous east-rate reference from <code class="language-plaintext highlighter-rouge">ReferenceGenerator</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dy</code></td>
+      <td>Filtered east-rate measurements from <code class="language-plaintext highlighter-rouge">NLPobserver</code></td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>- m/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ControlMz</code></td>
+      <td>Global thrust torque (yaw) from DP-controller</td>
+      <td>continuous</td>
+      <td>ouput</td>
+      <td>- Nm</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Controlx</code></td>
+      <td>Global thrust in north from DP-controller</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>- N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Controly</code></td>
+      <td>Global thrust in east from DP-controller</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>- N</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="thmpc">ThMPC</h4>
+<p>This fmu contains the thrust allocation algorithm that takes the commanded global thrust forces from the DP-controller and distributes them as local thruster signals in type of thruster orientation and thrust amplitude. This thrust allocation algorithm is based on <em>Model Predictive Control</em>-theory (MPC) and is thoroughly presented in [5]. Hence, no details will be given here.
+The main parameters and I/Os in this fmu is given in Table 7.</p>
+
+<p><strong>Table 7:</strong> <em>Main parameters and I/Os in <code class="language-plaintext highlighter-rouge">ThMPC</code>.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Variability</th>
+      <th>Causality</th>
+      <th>Start value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Fmax</code></td>
+      <td>Maximal local trust force generated by each thruster (constraint)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>1e+07 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MaxIter</code></td>
+      <td>Maximal number of interations allowed in the solution procecdure (QP solver)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QF1x</code></td>
+      <td>Cost function weight for thrust force in x-direction (vessel coord. sys) for thruster 1 (main stern, port-side)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QF1y</code></td>
+      <td>Cost function weight for thrust force in y-direction (vessel coord. sys) for thruster 1 (main stern, port-side)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QF2x</code></td>
+      <td>Cost function weight for thrust force in x-direction (vessel coord. sys) for thruster 2 (main stern, starboard)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QF2y</code></td>
+      <td>Cost function weight for thrust force in y-direction (vessel coord. sys) for thruster 2 (main stern, starboard)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QF3</code></td>
+      <td>Cost function weight for thrust force in y-direction (vessel coord. sys) for thruster 3 (tunnel thruster, bow)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.1 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QeMz</code></td>
+      <td>Cost function weight for global thrust error in Mz (torque) for the time steps in the horizon</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>100.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QeMzN</code></td>
+      <td>Cost function weight for global thrust error in Mz (torque) for the time steps outside the horizon</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>100.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qex</code></td>
+      <td>Cost function weight for global thrust error in north for the time steps in the horizon</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>100.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QexN</code></td>
+      <td>Cost function weight for global thrust error in north for the time steps outside the horizon</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>100.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qey</code></td>
+      <td>Cost function weight for global thrust error in east for the time steps in the horizon</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>100.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QeyN</code></td>
+      <td>Cost function weight for global thrust error in east for the time steps outside the horizon</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>100.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qu1x</code></td>
+      <td>Cost function weight for thrust force rate in x-direction (vessel coord. sys) for thruster 1</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qu1y</code></td>
+      <td>Cost function weight for thrust force rate in y-direction (vessel coord. sys) for thruster 1</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qu2x</code></td>
+      <td>Cost function weight for thrust force rate in x-direction (vessel coord. sys) for thruster 2</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qu2y</code></td>
+      <td>Cost function weight for thrust force rate in y-direction (vessel coord. sys) for thruster 2</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Qu3</code></td>
+      <td>Cost function weight for thrust force rate in y-direction (vessel coord. sys) for thruster 3</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>20.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">QuF</code></td>
+      <td>Cost function weight balansing thrust rates and thrust magnitudes (see [5] for more details)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>500.0 -</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">biasAngDeg</code></td>
+      <td>Bias angles for the two main thrusters placed at the stern</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>10.0 deg</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dalphaMax</code></td>
+      <td>Maximal azimuth angle rathes for the thrusters</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>0.2 rad/s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">uFmax</code></td>
+      <td>Maximal local thrust rate magnitudes for the thrusters</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>2000.0 N/s</td>
+    </tr>
+    <tr>
+      <td>(<code class="language-plaintext highlighter-rouge">x1</code>,<code class="language-plaintext highlighter-rouge">y1</code>)</td>
+      <td>xy-position of thruster 1 (vessel coord. sys)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>(-45.0,-7.0) m</td>
+    </tr>
+    <tr>
+      <td>(<code class="language-plaintext highlighter-rouge">x2</code>,<code class="language-plaintext highlighter-rouge">y2</code>)</td>
+      <td>xy-position of thruster 2 (vessel coord. sys)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>(-45.0, 7.0) m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x3</code></td>
+      <td>x-position of thruster 3 (tunnel thruster, vessel coord. sys)</td>
+      <td>parameter</td>
+      <td>internal</td>
+      <td>53 m</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">refMz</code></td>
+      <td>Global yaw thrust torque input</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 Nm</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">refx</code></td>
+      <td>Global north thrust force input</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">refy</code></td>
+      <td>Global east thrust force input</td>
+      <td>continuous</td>
+      <td>input</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">F1c</code></td>
+      <td>Local commanded thrust force thruster 1</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">F2c</code></td>
+      <td>Local commanded thrust force thruster 2</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">F3c</code></td>
+      <td>Local commanded thrust force thruster 3</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Fxg</code></td>
+      <td>Global commanded north-ward thrust based on local thrust commands</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Fyg</code></td>
+      <td>Global commanded east-ward thrust based on local thrust commands</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 N</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Mzg</code></td>
+      <td>Global commanded yaw thrust torque based on local thrust commands</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 Nm</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alpha1</code></td>
+      <td>Commanded azimuth angle for thruster 1</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 rad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alpha2</code></td>
+      <td>Commanded azimuth angle for thruster 2</td>
+      <td>continuous</td>
+      <td>output</td>
+      <td>0.0 rad</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that there also exists other parameters and variables, but these are the most important. To see the others the readers are referred to the <code class="language-plaintext highlighter-rouge">ModelDescription.xml</code>-file in the fmu. Also note that the ThMPC-fmu  only runs the MPC solver routine every second, and uses the obtained thrust-rates to calculate thruster commands inbetween these quadratic problem  (QP) solver time steps.</p>
+
+<h3 id="model-connections">Model Connections</h3>
+<p>In this demonstrator case, the model connections are given as follows:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OSOM.Thrust_d[1]        &lt;-  ThMPC.F1c
+OSOM.Thrust_d[2]        &lt;-  ThMPC.F2c
+OSOM.Thrust_d[3]        &lt;-  ThMPC.F3ci
+
+OSOM.input[1]           &lt;-  ThMPC.alpha1
+OSOM.input[2]           &lt;-  ThMPC.alpha2
+
+DPController.x          &lt;-  NLPobserver.y_hat[1]
+DPController.y          &lt;-  NLPobserver.y_hat[2]
+DPController.psi        &lt;-  NLPobserver.y_hat[3]
+
+DPController.dx         &lt;-  NLPobserver.v_hat[1]
+DPController.dy         &lt;-  NLPobserver.v_hat[2]
+DPController.dpsi       &lt;-  NLPobserver.v_hat[3]
+
+DPController.x_ref      &lt;-  ReferenceGenerator.x_ref
+DPController.y_ref      &lt;-  ReferenceGenerator.y_ref
+DPController.psi_ref    &lt;- ReferenceGenerator.psi_ref
+
+DPController.dx_ref     &lt;-  ReferenceGenerator.dx_ref
+DPController.dy_ref     &lt;-  ReferenceGenerator.dy_ref
+DPController.dpsi_ref   &lt;- ReferenceGenerator.dpsi_ref
+
+NLPobserver.y[1]        &lt;-  OSOM.q[1]
+NLPobserver.y[2]        &lt;-  OSOM.q[2]
+NLPobserver.y[3]        &lt;-  OSOM.q[3]
+
+NLPobserver.tau[1]      &lt;-  ThMPC.Fxg
+NLPobserver.tau[2]      &lt;-  ThMPC.Fyg
+NLPobserver.tau[3]      &lt;-  ThMPC.Mzg
+
+ThMPC.refx              &lt;-  DPController.Controlx
+ThMPC.refy              &lt;-  DPController.Controly
+ThMPC.refMz             &lt;-  DPController.ControlMz
+
+</code></pre></div></div>
+
+<p>###Simulation using the cse-demo-app</p>
+
+<p>User guide of the cse demo application, i.e., cse-server-go can be found <a href="/cse-demo-app/cse-demo-app">cse-demo-app</a>. Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.</p>
+
+<p><img src="/assets/img/DPShipFig1.png" alt="foo" title="Figure 1" />
+<img src="/assets/img/DPShipFig2.png" alt="foo" title="Figure 2" />
+<img src="/assets/img/DPShipFig3.png" alt="foo" title="Figure 3" /></p>
+
+<h3 id="references-and-footnotes">References and Footnotes</h3>
+
+<p>[1] S. Skjong, M. Rindarøy, L. T. Kyllingstad, V. Æsøy, and E. Pedersen, “Virtual prototyping of maritime systems and operations: applications of distributed co-simulations,” J. Mar. Sci. Technol., pp. 1–19, 2017.<br />
+[2] S. Skjong and E. Pedersen, “Co-Simulation of a Marine Offshore Vessel in DP-Operations including Hardware-In-the-Loop (HIL),” in Proceedings of the ASME 2017 36th International Conference on Ocean, Offshore, and Arctic Engineering OMAE 2017, 2017.<br />
+[3] T. I. Fossen and J. P. Strand, “Passive nonlinear observer design for ships using lyapunov methods: full-scale experiments with a supply vessel,” Automatica, vol. 35, no. 1, pp. 3–16, Jan. 1999.<br />
+[4] O. Faltinsen, Sea Loads on Ships and Offshore Structures. Cambridge University Press, 1993.
+[5] S. Skjong and E. Pedersen, “Non-angular MPC-based Thrust Allocation Algorithm for Marine Vessels -A Study of Optimal Thruster Commands.”</p>
+
+<hr />
+<p><sup>1</sup>Note that <code class="language-plaintext highlighter-rouge">q</code> is used here as name for the vector containing the vessel position and orientation. This has to do with the name convensions in bond graph modelling theory, where q is often used for the state vector containing position and orientations in mechanical systems.</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

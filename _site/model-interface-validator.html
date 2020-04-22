@@ -1,0 +1,203 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Model Interface Validator - Core Simulation Environment</title>
+<meta name="description" content="co-simulation software ">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Core Simulation Environment">
+<meta property="og:title" content="Model Interface Validator">
+<meta property="og:url" content="http://0.0.0.0:4000/model-interface-validator">
+
+
+  <meta property="og:description" content="co-simulation software ">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/model-interface-validator">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Core Simulation Environment
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="model-interface-validator">Model interface validator</h2>
+<p>The Model interface validator is a tool to verify that the simulation model complies to MSMI. 
+The validator loads the OSPModelDescription.xml and the ontology, and checks that the configuration is correct. It can be used to verify that a given FMU with an OSPModelDescription.xml complies with MSMI. Or, it can be used to verify that the connections between two FMUs are semantically correct.</p>
+
+<p><a href="">Link to MSMI</a></p>
+
+<p>Multi-variable connections: One of the main benefits of MSMI is that it enables the implementation of multi-variable connections with simultaneous verification of semantical correctness. 
+Today connection of two FMUs is a matter of connecting signal by signal,  as shown in Fig. 1, interpreting the signal names and deducing which connections are probably correct. 
+Also, ensuring matching units might be a matter of consulting documentation, or possibly communication with the model developers.</p>
+
+<figure>
+<img src="/assets/img/validatorFig1.png" width="300" /> 
+<figcaption>Fig.1 FMU variable connections today </figcaption>
+</figure>
+
+<p>With MSMI it is possible to connect groups of signals simultaneously by grouping signals representing the same real-world phenomena into one connector, as shown in Fig. 2. Furthermore, it is possible to implement automatic checking of semantic correctness. Which could be used to guide the person performing the connections, possibly by disabling invalid connections as shown in Fig. 3.
+The unit part of the ontology is developed such that it is possible to check if two signals are of the same unit. If they are, they can be connected, if they are not it is possible to check if they can be converted to the same unit and then connected. If they can be converted, the conversion factors can be retrieved from the OSPModelDescription.xml and a conversion can be inserted.</p>
+
+<figure>
+<img src="/assets/img/validatorFig2.png" width="300" /> 
+<figcaption>Fig.2 FMU multivariable connections</figcaption>
+</figure>
+
+<figure>
+<img src="/assets/img/validatorFig3.png" width="300" /> 
+<figcaption>Fig.3 FMU multivariable connections with semantic correctness checks – Example one valid connection can be made.</figcaption>
+</figure>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -99,6 +99,6 @@ FMU-proxy is different from other framework for distributed FMU invocations such
 
 The idea is that other applications should use FMU-proxy whenever FMUs are required to run distributed, rather than having each application creating their own solution.
 
-[Using fmu-proxy with CSE](./fmuproxy)
+[Using fmu-proxy with CSE](https://github.com/NTNU-IHB/FMU-proxy)
 
 

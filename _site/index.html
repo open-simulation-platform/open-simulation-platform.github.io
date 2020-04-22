@@ -1,0 +1,200 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CSE - Core Simulation Environment</title>
+<meta name="description" content="co-simulation software ">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Core Simulation Environment">
+<meta property="og:title" content="CSE">
+<meta property="og:url" content="http://0.0.0.0:4000/">
+
+
+  <meta property="og:description" content="co-simulation software ">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Core Simulation Environment
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="core-simulation-environment">Core Simulation Environment</h2>
+<p>The Core Simulation Environment (CSE) is an open source software for co-simulation, built on a combination of technical solutions from the Open Simulation Platform (OSP) initiators and other established industrial solutions. The key working principle has been to use the best available technology and knowledge to meet the requirements for the OSP to efficiently serve its purpose. The CSE source code will be made available on GitHub, free of charge, through the MPL 2.0 open source licence.
+The open-source software coined the CSE produced in the OSP JIP consists of the following elements:</p>
+
+<ul>
+  <li><a href="./cse-core/cse">CSE core</a> –&gt; Download <a href="https://github.com/open-simulation-platform/cse-core/releases">cse-core</a></li>
+  <li><a href="./cse-demo-app/cse-demo-app">CSE demo application</a> –&gt; Download <a href="https://github.com/open-simulation-platform/cse-server-go/releases">cse-server-go</a></li>
+  <li><a href="./cse-cli">Command-line interface</a> –&gt; Download <a href="https://github.com/open-simulation-platform/cse-cli/releases">cse-cli</a></li>
+  <li><a href="./model-interface-validator">Model interface validator</a> –&gt; Download <a href="https://github.com/open-simulation-platform/msmi-validator/releases">msmi-validator</a></li>
+  <li><a href="./cse-java-wrapper">CSE Java wrapper</a></li>
+</ul>
+
+<p>The conceptual architecture of the co-simulation is illustrated as in figure below. The models are connected using the standardized Functional Mock-up Interface (FMI) co-simulation interface. Based on the input-output variable mapping included in the configuration file, the OSP master algorithm routes the data between the models.</p>
+
+<figure>
+<img src="/assets/img/cseFig1.png" width="500" /> 
+</figure>
+
+<p>Currently, the OSP is supporting <a href="https://fmi-standard.org/">FMI 2.0 and FMI 1.0</a> and will be updated to support FMI 3.0 when this standard becomes operational. 
+The structure of the co-simulated system can be defined using the System Structure &amp; Parameterization (SSP) standard or the new model interface standard MSMI (Marine System Model Interface) developed in the OSP project. 
+Both standards can be used to include Functional Mock-up Unit (FMUs), defining their interconnections, initial values for simulation variables and individual model step sizes. 
+The benefit introduced with MSMI is the possibility to defining FMU interconnections at a higher level, i.e. variable group connections rather than scalar connections. 
+Additionally, it enables automatic unit conversions and provides the a priori validation of the system configuration utilizing an ontology that models the connection types. 
+CSE comes with example configurations containing FMUs and co-simulation configuration exemplified in both MSMI and SSP.</p>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

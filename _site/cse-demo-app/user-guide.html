@@ -1,0 +1,376 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>user-guide - Core Simulation Environment</title>
+<meta name="description" content="co-simulation software ">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Core Simulation Environment">
+<meta property="og:title" content="user-guide">
+<meta property="og:url" content="http://0.0.0.0:4000/cse-demo-app/user-guide">
+
+
+  <meta property="og:description" content="co-simulation software ">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/cse-demo-app/user-guide">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Core Simulation Environment
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="user-guide">User guide</h2>
+
+<h3 id="download-and-install">Download and install</h3>
+
+<p>Antivirus alert: Be aware that your virus protection software might react to the cse application. It’s not harmful and you can allow it to run.</p>
+
+<ul>
+  <li>Windows
+    <ol>
+      <li>Download the latest CSE demo application. cse-vX.Y.Z-win64.zip</li>
+      <li>Extract the files and you will have a root folder looking like below</li>
+      <li>Download dp-ship example models: dp-ship.zip</li>
+      <li>Extract the demo models, for instance next to the cse-vX.Y.Z-win64.zip folder</li>
+      <li>Run startup script: run-windows.cmd</li>
+      <li>The application should open in your web browser at url http://localhost:8000.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><img src="/assets/img/CSEuserguideFig1.png" alt="foo" title="Figure 1" /></p>
+
+<ul>
+  <li>Linux
+    <ol>
+      <li>Download CSE demo application archive: cse-server-go-vX.Y.Z.tar.gz</li>
+      <li>Extract archive: tar -xzvf cse-server-go-vX.Y.Z.tar.gz</li>
+      <li>Download dp-ship example models: dp-ship.zip</li>
+      <li>Extract the demo models, for instance next to the cse-vX.Y.Z-win64 folder</li>
+      <li>Run startup script: run-linux</li>
+      <li>The application should open in your web browser at url http://localhost:8000.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="loading-configuration">Loading Configuration</h3>
+<ol>
+  <li>Switch to your web browser at url http://localhost:8000.</li>
+  <li>Enter the path to the dp-ship folder on your machine.</li>
+  <li>Enter the path to a directory where you want the logs to be written. Leave it blank to disable file logging.</li>
+  <li>Previously used configurations are available below.</li>
+  <li>Click “Load simulation” to load the configuration.</li>
+</ol>
+
+<p><img src="/assets/img/CSEuserguideFig2.png" alt="foo" title="Figure 2" /></p>
+
+<h3 id="models-and-variables">Models and variables</h3>
+<ol>
+  <li>The models in the simulation will appear on the left hand side.</li>
+  <li>Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.</li>
+  <li>The simulation starts when clicking “Play”.</li>
+</ol>
+
+<p><img src="/assets/img/CSEuserguideFig3.png" alt="foo" title="Figure 3" /></p>
+
+<h3 id="simulation-control">Simulation control</h3>
+<ol>
+  <li>Click “Simulation status” to see details about the simulation and to access some simulation controls.</li>
+  <li>By clicking “Enable” on the real time target, the simulation will run in real time. If real time target is disabled, the simulation will run as fast
+as possible.</li>
+  <li>RTF (Real time factor) indicates simulation speed related to real time. RTF = 2 means that simulation runs twice the speed of real time.</li>
+  <li>Real time factor target value can be altered to set a specific RTF.</li>
+  <li>Click Play/Pause to start or pause the simulation.</li>
+  <li>To close the current simulation for loading another configuration, click the “Tear down” button.</li>
+</ol>
+
+<p><img src="/assets/img/CSEuserguideFig4.png" alt="foo" title="Figure 4" /></p>
+
+<h3 id="plotting-variables">Plotting variables</h3>
+<ol>
+  <li>Click “Create new time series” or “Create new XY plot” to obtain a time series plot or an XY plot that variables can be added to.</li>
+  <li>Any variable can be added to a plot by clicking “Add to plot” in the variable overview.</li>
+  <li>Select where to plot the variable from the list of available plots.</li>
+  <li>Click the plot names to see the charts.</li>
+</ol>
+
+<p><img src="/assets/img/CSEuserguideFig5.png" alt="foo" title="Figure 5" />
+<img src="/assets/img/CSEuserguideFig6.png" alt="foo" title="Figure 6" /></p>
+
+<h3 id="overriding-variables">Overriding variables</h3>
+
+<p>It is possible to override any input, output or parameter variable.</p>
+<ol>
+  <li>Click the edit icon to the left of the variable.</li>
+  <li>Type in the value and click the check icon.</li>
+  <li>Click the eraser symbol to remove the override.</li>
+</ol>
+
+<p><img src="/assets/img/CSEuserguideFig7.png" alt="foo" title="Figure 7" /></p>
+
+<h3 id="scenarios">Scenarios</h3>
+
+<ol>
+  <li>Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically loaded and made visible in the
+Scenarios section.The dp-ship example comes with three scenario files for demonstration purposes.</li>
+  <li>Click the scenarios to see its contents.</li>
+  <li>To execute a scenario click “Load scenario” before starting the simulation.</li>
+</ol>
+
+<p><img src="/assets/img/CSEuserguideFig9.png" alt="foo" title="Figure 9" /></p>
+
+<h3 id="co-simulation-configuration">Co-simulation configuration</h3>
+
+<p>The dp-ship, quarter-truck and house examples each contains a
+OspSystemStructure.xml file that demonstrates how this is done.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;OspSystemStructure</span>
+<span class="na">xmlns=</span><span class="s">"http://opensimulationplatform.com/MSMI/OSPSystemStructure"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;BaseStepSize&gt;</span>0.01<span class="nt">&lt;/BaseStepSize&gt;</span>
+    <span class="nt">&lt;Simulators&gt;</span>
+        <span class="nt">&lt;Simulator</span> <span class="na">name=</span><span class="s">"ModelX"</span> <span class="na">source=</span><span class="s">"fmu1.fmu"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;InitialValues&gt;</span>
+                <span class="nt">&lt;InitialValue</span> <span class="na">variable=</span><span class="s">"input1"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;Real</span> <span class="na">value=</span><span class="s">"42"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/InitialValue&gt;</span>
+            <span class="nt">&lt;/InitialValues&gt;</span>
+        <span class="nt">&lt;/Simulator&gt;</span>
+        <span class="nt">&lt;Simulator</span> <span class="na">name=</span><span class="s">"ModelY"</span> <span class="na">source=</span><span class="s">"fmu2.fmu"</span> <span class="na">stepSize=</span><span class="s">"0.1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Simulator</span> <span class="na">name=</span><span class="s">"ModelZ"</span> <span class="na">source=</span><span class="s">"fmu3.fmu"</span> <span class="na">stepSize=</span><span class="s">"0.05"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Simulators&gt;</span>
+
+    <span class="nt">&lt;PlugSocketConnections/&gt;</span>
+    <span class="nt">&lt;BondConnections/&gt;</span>
+    <span class="nt">&lt;VariableConnections&gt;</span>
+        <span class="nt">&lt;ScalarConnection&gt;</span>
+            <span class="nt">&lt;Source</span> <span class="na">simulator=</span><span class="s">"ModelX"</span> <span class="na">endpoint=</span><span class="s">"p.out"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;Target</span> <span class="na">simulator=</span><span class="s">"ModelY"</span> <span class="na">endpoint=</span><span class="s">"p.in"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ScalarConnection&gt;</span>
+    <span class="nt">&lt;/VariableConnections&gt;</span>
+<span class="nt">&lt;/OspSystemStructure&gt;</span>
+</code></pre></div></div>
+
+<p>The examples each contains a SystemStructure.ssd file that demonstrates configuration using the SSP standard.
+CSE currently supports using a fixed step algorithm. The step size can be altered in the SystemStructure.ssd file.
+The new MSMI connection types are not supported when using the SSP standard.</p>
+
+<h3 id="configurable-logging">Configurable logging</h3>
+<p>In order to log signal values from a simulation to file, an output directory must be specified in the “Log folder” field on the simulation setup. By
+default, all signals will be logged and persisted on every sample. There will be one file generated per simulator. This can quickly lead to a large
+amount of data being generated, so we recommend instead specifying what signals to log using the configurable log format outlined below.
+CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named “LogConfig.xml” (exactly
+including case) and placed in the same folder as the simulators. A basic example of the currently supported syntax is;</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;simulators&gt;</span>
+    <span class="nt">&lt;simulator</span> <span class="na">name=</span><span class="s">"model_1"</span> <span class="na">decimationFactor=</span><span class="s">"20"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"model_input"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"model_output"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/simulator&gt;</span>
+    <span class="nt">&lt;simulator</span> <span class="na">name=</span><span class="s">"model_2"</span> <span class="na">decimationFactor=</span><span class="s">"10"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"model_input"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"model_output"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/simulator&gt;</span>
+        <span class="nt">&lt;simulator</span> <span class="na">name=</span><span class="s">"model_3"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/simulators&gt;</span>
+</code></pre></div></div>
+
+<p>The simulators to be logged must be enclosed in a <simulators> tag, and each signal must specify the name, data type, and causality as
+parameters in separate <variable> tags under each <simulator>. Each simulator has an optional attribute decimationFactor that specifies that
+simulator's decimation factor when logging variables. For example a decimation factor of 20 will lead to every 20th sample being logged. If this is
+not specified, every sample will be logged. Finally, leaving out any <variable> tags on a <simulator> will lead to all variables for that simulator
+being logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file pr.
+simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.</simulator></variable></simulator></variable></simulators></p>
+
+<h3 id="plot">Plot</h3>
+<p>Two types of plot are supported by the cse-demo-application, namely <strong>trend</strong> and <strong>scatter</strong>. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.   <br />
+An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"plots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"plotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trend"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"simulator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model name 1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"variable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variable name 1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"simulator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model name 2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"variable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variable name 2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room temp XY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"plotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scatter"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"simulator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model name 1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"variable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variable name 1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"simulator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model name 2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"variable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variable name 2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

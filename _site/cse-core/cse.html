@@ -1,0 +1,273 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CSE - Core Simulation Environment</title>
+<meta name="description" content="co-simulation software ">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Core Simulation Environment">
+<meta property="og:title" content="CSE">
+<meta property="og:url" content="http://0.0.0.0:4000/cse-core/cse">
+
+
+  <meta property="og:description" content="co-simulation software ">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/cse-core/cse">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Core Simulation Environment
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="cse-core">CSE-core</h2>
+<p>The C/C++ co-simulation library orchestrates the co-simulation of models that conform to the Functional Mock-up Interface (FMI) . 
+The co-simulation library includes a fixed-step master algorithm with a configurable base step size. It allows for individually defined time steps for the models, with the requirement of being a multiple of the master algorithm base step size. During simulation, there are features to observe and manipulate simulation variables either through dedicated interfaces or with a scenario runner. It is possible to apply arbitrary operations to variable values without modifying the subsystem models themselves. 
+Examples include arithmetics, logical operations, transformations, unit conversions and more. This is necessity if variables connected between models must be summed or transformed by linear transformation or between coordinate frames. There are interfaces for client applications to include their own implementation of many of the included features.</p>
+
+<p>The main concepts of CSE interfaces are shown in the figure below. 
+Detailed descriptions can be found via <a href="./doxygen/0.6.0" target="_blank">C/C++ co-simulation library</a>.</p>
+
+<figure>
+<img src="/assets/img/cseFig2.png" width="800" /> 
+</figure>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>The configuration format is based on the <a href="">MSMI standard</a> and is used to configure the simulation system structure, including
+connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
+<a href="">OspSystemStructure.xsd</a>. Connections can be configured as variables and variableGroups.</p>
+
+<p>Co-simulation configuration using the <a href="https://ssp-standard.org/">SSP standard</a> is also partially supported.</p>
+
+<h3 id="scenario">Scenario</h3>
+
+<p>A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file. First is the <code class="language-plaintext highlighter-rouge">"description"</code> of what does this scenario do. 
+<code class="language-plaintext highlighter-rouge">"action"</code> declares the action type which can be <code class="language-plaintext highlighter-rouge">"override"</code> , <code class="language-plaintext highlighter-rouge">"bias"</code>  or <code class="language-plaintext highlighter-rouge">"reset"</code>. <code class="language-plaintext highlighter-rouge">"events"</code> includes the <code class="language-plaintext highlighter-rouge">"time"</code> in second when the action takes place, on which <code class="language-plaintext highlighter-rouge">"model"</code>, the “<code class="language-plaintext highlighter-rouge">variable"</code> name in this model and the <code class="language-plaintext highlighter-rouge">"value"</code> for this variable (except for <code class="language-plaintext highlighter-rouge">"reset"</code> action type which doesn’t require a value) .</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description of the scnario"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"override"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="err">event</span><span class="w"> </span><span class="err">time</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variable name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">variable</span><span class="w"> </span><span class="err">value</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">...</span><span class="w">      </span><span class="err">event</span><span class="w"> </span><span class="mi">2</span><span class="w">       </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">...</span><span class="w">      </span><span class="err">event</span><span class="w"> </span><span class="mi">3</span><span class="w">       </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="err">scenario</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">time</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="results-logging">Results logging</h3>
+
+<p>In order to log signal values from a simulation to data files, an output directory must be specified in the result folder field on the simulation setup. By
+default, all signals will be logged and persisted on every sample. There will be one file generated pr. simulator. This can quickly lead to a large
+amount of data being generated, so it is recommended instead specifying what signals to log using the configurable log format outlined below.
+CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named “LogConfig.xml” (exactly
+including case) and placed in the same folder as the simulators.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;simulators&gt;</span>
+    <span class="nt">&lt;simulator</span> <span class="na">name=</span><span class="s">"model name 1"</span> <span class="na">decimationFactor=</span><span class="s">"20"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"variable name 1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"variable name 2"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/simulator&gt;</span>
+    <span class="nt">&lt;simulator</span> <span class="na">name=</span><span class="s">"model name 1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"variable name 1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"variable name 2"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/simulator&gt;</span>
+<span class="nt">&lt;/simulators&gt;</span>
+</code></pre></div></div>
+
+<p>The simulators to be logged must be enclosed in a <code class="language-plaintext highlighter-rouge">&lt;simulators&gt;</code> tag, and each signal must specify its name in separate <code class="language-plaintext highlighter-rouge">&lt;variable&gt;</code> tags under each <code class="language-plaintext highlighter-rouge">&lt;simulator&gt;</code>. 
+Leaving out any <code class="language-plaintext highlighter-rouge">&lt;variable&gt;</code> tags on a <code class="language-plaintext highlighter-rouge">&lt;simulator&gt;</code> will lead to all variables for that simulator
+being logged. 
+Each simulator has an optional attribute decimationFactor that specifies that simulator’s decimation factor when logging variables. For example a decimation factor of 20 will lead to every 20th sample being logged. If this is
+not specified, every sample will be logged. 
+Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.</p>
+
+<h3 id="distributed-co-simulation">Distributed co-simulation</h3>
+<p>Distributed simulation using fmu-proxy allows you to:</p>
+
+<ol>
+  <li>Run multiple instances of a model even though the FMU only allows it to be instantiated once.</li>
+  <li>Run FMUs that are not compatible with your OS or bitness.</li>
+  <li>Parallelize the workload onto multiple computation nodes.</li>
+</ol>
+
+<p>Distributed simulation is currently enabled through integration with the software FMU Proxy. Both FMI 1.0 and FMI 2.0 for Co-simulation is supported.</p>
+
+<p>FMU-proxy is a framework for accessing FMUs compatible with FMI for Co-simulation and Model Exchange 2.0 in a language and platform independent way. This is achieved using well established RPC technologies. Due to the technologies involved, clients and servers for FMU-proxy can be written in almost any language, on any platform!</p>
+
+<p>Server implementations already exists for C++ and JVM, while client implementations exists for C++, JVM, Python and (browser) JavaScript. And its easy to add additional implementations, as the RPC frameworks will generate most of the code for you!</p>
+
+<p>FMU-proxy is different from other framework for distributed FMU invocations such as DACCOSIM, FMI GO! and Coral in that it completely separates itself from the master algorithm (logically and physically). FMU-proxy is a completely standalone project which provides access to FMUs over the wire. And just that.</p>
+
+<p>The idea is that other applications should use FMU-proxy whenever FMUs are required to run distributed, rather than having each application creating their own solution.</p>
+
+<p><a href="https://github.com/NTNU-IHB/FMU-proxy">Using fmu-proxy with CSE</a></p>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,424 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>cse-cli - Core Simulation Environment</title>
+<meta name="description" content="co-simulation software ">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Core Simulation Environment">
+<meta property="og:title" content="cse-cli">
+<meta property="og:url" content="http://0.0.0.0:4000/cse-cli">
+
+
+  <meta property="og:description" content="co-simulation software ">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/cse-cli">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Core Simulation Environment
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h2 id="cse-cli">CSE CLI</h2>
+<p>For the cases where a graphical user interface is not available or needed, the CSE comes as a command line application. CSE CLI is a command-line interface (CLI) to the Core Simulation Environment (CSE). It facilitates for running co-simulations of systems configured with SSP or MSMI. 
+It has three primary use cases:</p>
+
+<ul>
+  <li>Running simulations from other programs or scripts</li>
+  <li>FMU testing and debugging</li>
+  <li>Users who simply prefer to work from the command line</li>
+</ul>
+
+<p>The command line application is suitable when multiple sets of simulations can be executed in parallel. An example for such use case could be in design, where there typically are multiple system variants and parametrizations of the system.
+It can simulate single FMUs and show the model descriptions. Besides being a necessary simulation tool, the CSE command line interface also serves as a demonstration for how client applications can make use of the CSE co-simulation library.
+With the command-line interface, the co-simulation library is used to enable co-simulation from the command-line.</p>
+
+<p>This page collects design ideas for the CSE command-line interface (CLI).</p>
+
+<h3 id="functionality-and-design">Functionality and design</h3>
+
+<p>CSE-CLI should be able to perform the following tasks:</p>
+
+<ul>
+  <li>Run a simulation, where the system to simulate is specified as an SSP file.</li>
+  <li>Provide information about a model (usually an FMU).</li>
+  <li>
+    <p>Do a “test run” with a single model (FMU).
+The following is an unsorted list of loose design ideas and desirable features. A more detailed specification is given in the form of “help texts” in the next section.</p>
+  </li>
+  <li>Ability to access both local and remote models, using paths or URIs.</li>
+  <li>Logging of simulation results to disk.</li>
+  <li>Git-like CLI
+–Subcommands for main operations
+–GNU-style long options (–option) with one-letter short forms (-o) for the most commonly used ones
+–Built-in help/documentation.</li>
+</ul>
+
+<h3 id="functional-specification">Functional specification</h3>
+
+<p>Here, we specify the functionality of the software in the form of imagined interactions with a user. This includes a somewhat formal specification given by the output of the cse help commands.</p>
+
+<h4 id="general-usage">General usage</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse
+Error: Missing command-line arguments.  Run <span class="s2">"cse help"</span> to get help.
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help
+</span>NAME
+    cse - Command line interface to the Core Simulation Environment.
+ 
+SYNOPSIS
+    cse <span class="o">[</span><span class="nt">--version</span><span class="o">]</span> <span class="o">[</span><span class="nt">--help</span><span class="o">]</span> <span class="o">[</span><span class="nt">--log-level</span><span class="o">=</span>&lt;level&gt;] &lt;<span class="nb">command</span><span class="o">&gt;</span> <span class="o">[</span>&lt;args&gt;]
+ 
+DESCRIPTION
+    The Core Simulation Environment is free and open-source software <span class="k">for
+    </span>running distributed co-simulations.
+ 
+OPTIONS
+    <span class="nt">--version</span>
+        Prints the CSE version number.
+ 
+    <span class="nt">--help</span>
+        Prints <span class="nb">help </span>on using CSE.  Include a subcommand to get detailed
+        <span class="nb">help </span>on that command.  The following are equivalent:
+            cse <span class="nt">--help</span> <span class="o">[</span>&lt;<span class="nb">command</span><span class="o">&gt;]</span>
+            cse <span class="o">[</span>&lt;<span class="nb">command</span><span class="o">&gt;]</span> <span class="nt">--help</span>
+            cse <span class="nb">help</span> <span class="o">[</span>&lt;<span class="nb">command</span><span class="o">&gt;]</span>
+ 
+    <span class="nt">--log-level</span><span class="o">=</span>&lt;level&gt;      <span class="o">(</span>default: <span class="nt">--log-level</span><span class="o">=</span>warning<span class="o">)</span>
+        Sets the detail/severity level of diagnostic program output.
+        Valid &lt;level&gt; values, <span class="k">in </span>order of increasing detail <span class="o">(</span>and decreasing
+        severity<span class="o">)</span> are: error, warning, info, debug, trace.
+ 
+COMMANDS
+ 
+    <span class="nb">help
+        </span>Shows documentation.  Run <span class="s2">"cse help &lt;command&gt;"</span> <span class="k">for </span>detailed
+        information on one of the above commands.
+ 
+    inspect
+        Shows information about a model.
+ 
+    run
+        Runs a simulation.
+ 
+    run-single
+        Runs a simulation with a single subsimulator.
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nt">--version</span>
+CSE CLI 0.2.0
+</code></pre></div></div>
+
+<h4 id="getting-information-about-a-model">Getting information about a model</h4>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>inspect
+NAME
+    cse inspect - Shows information about a model
+ 
+SYNOPSIS
+    cse inspect &lt;uri&gt;
+ 
+    cse inspect &lt;path&gt;
+ 
+DESCRIPTION
+    This <span class="nb">command </span>shows information about a model, such as its name,
+    description, author, version, and so on.  It also lists information
+    about the model<span class="s1">'s variables, like their names, types, causalities,
+    variabilities, etc.
+ 
+    The model can be specified with a URI, or, if it'</span>s a <span class="nb">local </span>FMU, by its
+    path.  Using a path is equivalent to using a <span class="sb">`</span>file<span class="sb">`</span> URI.
+</code></pre></div></div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse inspect models/relativistic_energy.fmu
+name: physics.relativity.energy
+author: Albert Einstein
+version: 1.0
+description: Calculates relativistic energy, E^2 <span class="o">=</span> m^2 c^4 + p^2 c^2
+variables:
+  - name: mass
+    <span class="nb">type</span>: real
+    causality: parameter
+    variability: tunable
+  - name: momentum
+    <span class="nb">type</span>: real
+    causality: input
+    variability: continuous
+  - name: energy
+    <span class="nb">type</span>: real
+    causality: output
+    variability: continuous
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse inspect fmu-proxy://10.0.0.65:9090?url<span class="o">=</span>http://simple-models.com/circle_area.fmu
+name: math.geometry.area.circle
+author: Archimedes
+version: 3.14.159
+description: Calculates the area of a circle, A <span class="o">=</span> pi r^2
+variables:
+  - name: radius
+    <span class="nb">type</span>: real
+    causality: input
+    variability: continuous
+  - name: area
+    <span class="nb">type</span>: real
+    causality: output
+    variability: continuous
+</code></pre></div></div>
+<h4 id="running-a-simulation">Running a simulation</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>run
+NAME
+    cse run - Runs a simulation.
+ 
+SYNOPSIS
+    cse run &lt;ssp file&gt; <span class="o">[</span><span class="nt">-a</span> &lt;algorithm&gt;] <span class="o">[</span><span class="nt">-b</span> &lt;number&gt;]
+        <span class="o">[</span><span class="nt">-d</span> &lt;number&gt; | <span class="nt">-e</span> &lt;number&gt;] <span class="o">[</span><span class="nt">-s</span> &lt;number&gt;] <span class="o">[</span><span class="nt">--rtf</span><span class="o">=</span>&lt;number&gt;]
+        <span class="o">[</span><span class="nt">--output-dir</span> &lt;directory&gt;]
+ 
+DESCRIPTION
+    This <span class="nb">command </span>runs a simulation based on an SSP file that specifies
+    which models to include and the connections between them.
+ 
+OPTIONS
+    <span class="nt">-a</span> &lt;algorithm&gt;, <span class="nt">--algorithm</span><span class="o">=</span>&lt;algorithm&gt;     <span class="o">(</span>default: fixed-stepsize<span class="o">)</span>
+        Which co-simulation algorithm to use.  Available algorithms are:
+        fixed-stepsize.
+ 
+    <span class="nt">-b</span> &lt;number&gt;, <span class="nt">--begintime</span><span class="o">=</span>&lt;number&gt;       <span class="o">(</span>default: 0<span class="o">)</span>
+        The logical <span class="nb">time </span>at which the simulation should start.
+ 
+    <span class="nt">-d</span> &lt;number&gt;, <span class="nt">--duration</span><span class="o">=</span>&lt;number&gt;        <span class="o">(</span>default: 1<span class="o">)</span>
+        The duration of the simulation, <span class="k">in </span>logical time.  Excludes <span class="nt">-e</span><span class="nb">.</span>
+ 
+    <span class="nt">-e</span> &lt;number&gt;, <span class="nt">--endtime</span><span class="o">=</span>&lt;number&gt;
+        The logical end <span class="nb">time </span>of the simulation. Excludes <span class="nt">-d</span><span class="nb">.</span>
+ 
+    <span class="nt">--output-dir</span><span class="o">=</span>&lt;directory&gt;                <span class="o">(</span>default: .<span class="o">)</span>
+        Where to write log files with simulation results.
+ 
+    <span class="nt">--rtf</span>
+        The desired real-time factor. 1 means real time. The default <span class="k">if
+        </span>not specified is to run as fast as possible.
+ 
+    <span class="nt">-s</span> &lt;number&gt;, <span class="nt">--stepsize</span><span class="o">=</span>&lt;number&gt;        <span class="o">(</span>default: 0.01<span class="o">)</span>
+        The step size.
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse run sea_trial.ssp <span class="nt">-d</span> 3600 <span class="nt">--output-dir</span><span class="o">=</span>sim/results <span class="nt">--log-level</span><span class="o">=</span>info
+<span class="o">[</span>info] Initialising models
+<span class="o">[</span>info] Starting simulation, t <span class="o">=</span> 0
+<span class="o">[</span>info] 10% <span class="nb">complete</span>, t <span class="o">=</span> 360
+<span class="o">[</span>info] 20% <span class="nb">complete</span>, t <span class="o">=</span> 720
+<span class="o">[</span>info] 30% <span class="nb">complete</span>, t <span class="o">=</span> 1080
+<span class="o">[</span>info] 40% <span class="nb">complete</span>, t <span class="o">=</span> 1440
+<span class="o">[</span>info] 50% <span class="nb">complete</span>, t <span class="o">=</span> 1800
+<span class="o">[</span>info] 60% <span class="nb">complete</span>, t <span class="o">=</span> 2160
+<span class="o">[</span>info] 70% <span class="nb">complete</span>, t <span class="o">=</span> 2520
+<span class="o">[</span>info] 80% <span class="nb">complete</span>, t <span class="o">=</span> 2880
+<span class="o">[</span>info] 90% <span class="nb">complete</span>, t <span class="o">=</span> 3240
+<span class="o">[</span>info] Simulation <span class="nb">complete</span>, t <span class="o">=</span> 3600    
+</code></pre></div></div>
+
+<h4 id="running-a-single-model">Running a single model</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>run-single
+NAME
+    cse run-single - Runs a simulation with a single subsimulator.
+ 
+SYNOPSIS
+    cse run-single <span class="o">(</span>&lt;uri&gt; | &lt;path&gt;<span class="o">)</span> <span class="o">[</span>&lt;variable&gt;<span class="o">=</span>&lt;value&gt; ...] <span class="o">[</span><span class="nt">-b</span> &lt;number&gt;]
+        <span class="o">[</span><span class="nt">-d</span> &lt;number&gt; | <span class="nt">-e</span> &lt;number&gt;] <span class="o">[</span><span class="nt">-s</span> &lt;number&gt;] <span class="o">[</span><span class="nt">--rtf</span><span class="o">=</span>&lt;number&gt;]
+        <span class="o">[</span><span class="nt">--output-file</span><span class="o">=</span>&lt;path&gt;]
+ 
+DESCRIPTION
+    This <span class="nb">command </span>runs a simulation consisting of a single subsimulator.
+    This is mainly meant <span class="k">for </span>testing and debugging. The simulator is
+    therefore run directly, without the overhead and extra machinery of
+    a full co-simulation.
+ 
+    The model to simulate can be specified with a URI, or, <span class="k">if </span>it<span class="s1">'s a local
+    FMU, by its path.  Using a path is equivalent to using a `file` URI.
+ 
+    Initial variable values may be specified after the model URI/path, by
+    supplying a list of name=value pairs as individual command-line
+    arguments
+ 
+OPTIONS
+    -b &lt;number&gt;, --begintime=&lt;number&gt;       (default: 0)
+        The logical time at which the simulation should start.
+ 
+    -d &lt;number&gt;, --duration=&lt;number&gt;        (default: 1)
+        The duration of the simulation, in logical time.  Excludes -e.
+ 
+    -e &lt;number&gt;, --endtime=&lt;number&gt;
+        The logical end time of the simulation. Excludes -d.
+ 
+    --output-file=&lt;path&gt;                    (default: model-output.csv)
+        The file to which simulation results will be written.
+ 
+    --rtf
+        The desired real-time factor. 1 means real time. The default if
+        not specified is to run as fast as possible.
+ 
+    -s &lt;number&gt;, --stepsize=&lt;number&gt;        (default: 0.01)
+        The step size.
+</span></code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse run-single powerplant.fmu <span class="nt">-d</span> 3600 <span class="nt">--output-dir</span><span class="o">=</span>sim/results
+</code></pre></div></div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
