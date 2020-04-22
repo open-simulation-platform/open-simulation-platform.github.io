@@ -1,185 +1,6 @@
-<!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
-  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="en" class="no-js">
-  <head>
-    <meta charset="utf-8">
-
-<!-- begin _includes/seo.html --><title>cse-cli - Core Simulation Environment</title>
-<meta name="description" content="co-simulation software ">
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Core Simulation Environment">
-<meta property="og:title" content="cse-cli">
-<meta property="og:url" content="http://0.0.0.0:4000/cse-cli">
-
-
-  <meta property="og:description" content="co-simulation software ">
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="canonical" href="http://0.0.0.0:4000/cse-cli">
-
-
-
-
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    
-      "@type": "Person",
-      "name": null,
-      "url": "http://0.0.0.0:4000/"
-    
-  }
-</script>
-
-
-
-
-
-
-<!-- end _includes/seo.html -->
-
-
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Core Simulation Environment Feed">
-
-<!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-</script>
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
-
-
-
-    <!-- start custom head snippets -->
-
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-
-<!-- end custom head snippets -->
-
-  </head>
-
-  <body class="layout--default">
-    <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
-  <ul>
-    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
-    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
-    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
-  </ul>
-</nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
-    
-
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        
-        <a class="site-title" href="/">
-          Core Simulation Environment
-          
-        </a>
-        <ul class="visible-links"></ul>
-        
-        <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
-          <div class="navicon"></div>
-        </button>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
-  </div>
-</div>
-
-
-    <div class="initial-content">
-      <h2 id="cse-cli">CSE CLI</h2>
-<p>For the cases where a graphical user interface is not available or needed, the CSE comes as a command line application. CSE CLI is a command-line interface (CLI) to the Core Simulation Environment (CSE). It facilitates for running co-simulations of systems configured with SSP or MSMI. 
-It has three primary use cases:</p>
-
-<ul>
-  <li>Running simulations from other programs or scripts</li>
-  <li>FMU testing and debugging</li>
-  <li>Users who simply prefer to work from the command line</li>
-</ul>
-
-<p>The command line application is suitable when multiple sets of simulations can be executed in parallel. An example for such use case could be in design, where there typically are multiple system variants and parametrizations of the system.
-It can simulate single FMUs and show the model descriptions. Besides being a necessary simulation tool, the CSE command line interface also serves as a demonstration for how client applications can make use of the CSE co-simulation library.
-With the command-line interface, the co-simulation library is used to enable co-simulation from the command-line.</p>
-
-<p>This page collects design ideas for the CSE command-line interface (CLI).</p>
-
-<h3 id="functionality-and-design">Functionality and design</h3>
-
-<p>CSE-CLI should be able to perform the following tasks:</p>
-
-<ul>
-  <li>Run a simulation, where the system to simulate is specified as an SSP file.</li>
-  <li>Provide information about a model (usually an FMU).</li>
-  <li>
-    <p>Do a “test run” with a single model (FMU).
-The following is an unsorted list of loose design ideas and desirable features. A more detailed specification is given in the form of “help texts” in the next section.</p>
-  </li>
-  <li>Ability to access both local and remote models, using paths or URIs.</li>
-  <li>Logging of simulation results to disk.</li>
-  <li>Git-like CLI
-–Subcommands for main operations
-–GNU-style long options (–option) with one-letter short forms (-o) for the most commonly used ones
-–Built-in help/documentation.</li>
-</ul>
-
-<h3 id="functional-specification">Functional specification</h3>
-
-<p>Here, we specify the functionality of the software in the form of imagined interactions with a user. This includes a somewhat formal specification given by the output of the cse help commands.</p>
-
-<h4 id="general-usage">General usage</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <title>cse-cli - Core Simulation Environment</title> <link rel="shortcut icon" href="http://localhost:4000/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="http://localhost:4000/assets/css/just-the-docs.css"> <script type="text/javascript" src="http://localhost:4000/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="http://localhost:4000/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.6.1 --> <title>cse-cli | Core Simulation Environment</title> <meta name="generator" content="Jekyll v3.8.5" /> <meta property="og:title" content="cse-cli" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="co-simulation software" /> <meta property="og:description" content="co-simulation software" /> <link rel="canonical" href="http://localhost:4000/cse-cli" /> <meta property="og:url" content="http://localhost:4000/cse-cli" /> <meta property="og:site_name" content="Core Simulation Environment" /> <script type="application/ld+json"> {"@type":"WebPage","headline":"cse-cli","url":"http://localhost:4000/cse-cli","description":"co-simulation software","@context":"https://schema.org"}</script> <!-- End Jekyll SEO tag --> </head> <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="link" viewBox="0 0 16 16"> <title>Link</title> <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path> </symbol> </svg> <div class="page-wrap"> <div class="side-bar"> <div class="site-header"> <a href="http://localhost:4000" class="site-title lh-tight"> Core Simulation Environment </a> <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button> </div> <div class="navigation main-nav js-main-nav"> <nav role="navigation" aria-label="Main navigation"> <ul class="navigation-list"><li class="navigation-list-item"><a href="http://localhost:4000/404.html" class="navigation-list-link">page not found</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-demo-app/DPShip" class="navigation-list-link">DPShip</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-demo-app/House" class="navigation-list-link">House</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-demo-app/Quarter-Truck" class="navigation-list-link">Quarter-Truck</a></li><li class="navigation-list-item active"><a href="http://localhost:4000/cse-cli" class="navigation-list-link active">cse-cli</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-core/cse" class="navigation-list-link">CSE</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-demo-app/cse-demo-app" class="navigation-list-link">cse-demo-app</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-java-wrapper" class="navigation-list-link">cse-java-wrapper</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-core/fmuproxy" class="navigation-list-link">fmuproxy</a></li><li class="navigation-list-item"><a href="http://localhost:4000/" class="navigation-list-link">CSE</a></li><li class="navigation-list-item"><a href="http://localhost:4000/model-interface-validator" class="navigation-list-link">Model Interface Validator</a></li><li class="navigation-list-item"><a href="http://localhost:4000/cse-demo-app/user-guide" class="navigation-list-link">user-guide</a></li></ul> </nav> </div> <footer class="site-footer"> <p class="text-small text-grey-dk-000 mb-4">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p> </footer> </div> <div class="main-content-wrap js-main-content" tabindex="0"> <div class="main-content"> <div class="page-header js-page-header"> <div class="search"> <div class="search-input-wrap"> <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search Core Simulation Environment" aria-label="Search Core Simulation Environment" autocomplete="off"> <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg> </div> <div class="js-search-results search-results-wrap"></div> </div> </div> <div class="page"> <div id="main-content" class="page-content" role="main"> <h2 id="cse-cli"> <a href="#cse-cli" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> CSE CLI </h2> <p>For the cases where a graphical user interface is not available or needed, the CSE comes as a command line application. CSE CLI is a command-line interface (CLI) to the Core Simulation Environment (CSE). It facilitates for running co-simulations of systems configured with SSP or MSMI. It has three primary use cases:</p> <ul> <li>Running simulations from other programs or scripts</li> <li>FMU testing and debugging</li> <li>Users who simply prefer to work from the command line</li> </ul> <p>The command line application is suitable when multiple sets of simulations can be executed in parallel. An example for such use case could be in design, where there typically are multiple system variants and parametrizations of the system. It can simulate single FMUs and show the model descriptions. Besides being a necessary simulation tool, the CSE command line interface also serves as a demonstration for how client applications can make use of the CSE co-simulation library. With the command-line interface, the co-simulation library is used to enable co-simulation from the command-line.</p> <p>This page collects design ideas for the CSE command-line interface (CLI).</p> <h3 id="functionality-and-design"> <a href="#functionality-and-design" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Functionality and design </h3> <p>CSE-CLI should be able to perform the following tasks:</p> <ul> <li>Run a simulation, where the system to simulate is specified as an SSP file.</li> <li>Provide information about a model (usually an FMU).</li> <li> <p>Do a “test run” with a single model (FMU). The following is an unsorted list of loose design ideas and desirable features. A more detailed specification is given in the form of “help texts” in the next section.</p> </li> <li>Ability to access both local and remote models, using paths or URIs.</li> <li>Logging of simulation results to disk.</li> <li>Git-like CLI –Subcommands for main operations –GNU-style long options (–option) with one-letter short forms (-o) for the most commonly used ones –Built-in help/documentation.</li> </ul> <h3 id="functional-specification"> <a href="#functional-specification" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Functional specification </h3> <p>Here, we specify the functionality of the software in the form of imagined interactions with a user. This includes a somewhat formal specification given by the output of the cse help commands.</p> <h4 id="general-usage"> <a href="#general-usage" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> General usage </h4> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse
 Error: Missing command-line arguments.  Run <span class="s2">"cse help"</span> to get help.
-</code></pre></div></div>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help
 </span>NAME
     cse - Command line interface to the Core Simulation Environment.
  
@@ -220,14 +41,9 @@ COMMANDS
  
     run-single
         Runs a simulation with a single subsimulator.
-</code></pre></div></div>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nt">--version</span>
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nt">--version</span>
 CSE CLI 0.2.0
-</code></pre></div></div>
-
-<h4 id="getting-information-about-a-model">Getting information about a model</h4>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>inspect
+</code></pre></div></div> <h4 id="getting-information-about-a-model"> <a href="#getting-information-about-a-model" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Getting information about a model </h4> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>inspect
 NAME
     cse inspect - Shows information about a model
  
@@ -244,8 +60,7 @@ DESCRIPTION
  
     The model can be specified with a URI, or, if it'</span>s a <span class="nb">local </span>FMU, by its
     path.  Using a path is equivalent to using a <span class="sb">`</span>file<span class="sb">`</span> URI.
-</code></pre></div></div>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse inspect models/relativistic_energy.fmu
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse inspect models/relativistic_energy.fmu
 name: physics.relativity.energy
 author: Albert Einstein
 version: 1.0
@@ -263,9 +78,7 @@ variables:
     <span class="nb">type</span>: real
     causality: output
     variability: continuous
-</code></pre></div></div>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse inspect fmu-proxy://10.0.0.65:9090?url<span class="o">=</span>http://simple-models.com/circle_area.fmu
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse inspect fmu-proxy://10.0.0.65:9090?url<span class="o">=</span>http://simple-models.com/circle_area.fmu
 name: math.geometry.area.circle
 author: Archimedes
 version: 3.14.159
@@ -279,10 +92,7 @@ variables:
     <span class="nb">type</span>: real
     causality: output
     variability: continuous
-</code></pre></div></div>
-<h4 id="running-a-simulation">Running a simulation</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>run
+</code></pre></div></div> <h4 id="running-a-simulation"> <a href="#running-a-simulation" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Running a simulation </h4> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>run
 NAME
     cse run - Runs a simulation.
  
@@ -318,9 +128,7 @@ OPTIONS
  
     <span class="nt">-s</span> &lt;number&gt;, <span class="nt">--stepsize</span><span class="o">=</span>&lt;number&gt;        <span class="o">(</span>default: 0.01<span class="o">)</span>
         The step size.
-</code></pre></div></div>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse run sea_trial.ssp <span class="nt">-d</span> 3600 <span class="nt">--output-dir</span><span class="o">=</span>sim/results <span class="nt">--log-level</span><span class="o">=</span>info
+</code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse run sea_trial.ssp <span class="nt">-d</span> 3600 <span class="nt">--output-dir</span><span class="o">=</span>sim/results <span class="nt">--log-level</span><span class="o">=</span>info
 <span class="o">[</span>info] Initialising models
 <span class="o">[</span>info] Starting simulation, t <span class="o">=</span> 0
 <span class="o">[</span>info] 10% <span class="nb">complete</span>, t <span class="o">=</span> 360
@@ -333,11 +141,7 @@ OPTIONS
 <span class="o">[</span>info] 80% <span class="nb">complete</span>, t <span class="o">=</span> 2880
 <span class="o">[</span>info] 90% <span class="nb">complete</span>, t <span class="o">=</span> 3240
 <span class="o">[</span>info] Simulation <span class="nb">complete</span>, t <span class="o">=</span> 3600    
-</code></pre></div></div>
-
-<h4 id="running-a-single-model">Running a single model</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>run-single
+</code></pre></div></div> <h4 id="running-a-single-model"> <a href="#running-a-single-model" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Running a single model </h4> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse <span class="nb">help </span>run-single
 NAME
     cse run-single - Runs a simulation with a single subsimulator.
  
@@ -378,47 +182,5 @@ OPTIONS
  
     -s &lt;number&gt;, --stepsize=&lt;number&gt;        (default: 0.01)
         The step size.
-</span></code></pre></div></div>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse run-single powerplant.fmu <span class="nt">-d</span> 3600 <span class="nt">--output-dir</span><span class="o">=</span>sim/results
-</code></pre></div></div>
-
-    </div>
-
-    
-
-    <div id="footer" class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
-
-<!-- end custom footer snippets -->
-        <div class="page__footer-follow">
-  <ul class="social-icons">
-    
-
-    
-
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
-  </ul>
-</div>
-
-<div class="page__footer-copyright">&copy; 2020 Core Simulation Environment. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
-
-      </footer>
-    </div>
-
-    
-  <script src="/assets/js/main.min.js"></script>
-  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
-
-
-
-
-
-
-
-
-
-
-  </body>
-</html>
+</span></code></pre></div></div> <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> cse run-single powerplant.fmu <span class="nt">-d</span> 3600 <span class="nt">--output-dir</span><span class="o">=</span>sim/results
+</code></pre></div></div> </div> </div> </div> </div> </body> </html>
