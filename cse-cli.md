@@ -18,7 +18,7 @@ With the CLI, the co-simulation library is used to enable co-simulation from the
 
 ### Functional specification
 
-CSE-CLI is able to perform the following tasks:
+CSE CLI is able to perform the following tasks:
 
 - Run a simulation, where the system to simulate is specified as an SSP file.
 - Provide information about a model (usually an FMU).
