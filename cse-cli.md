@@ -2,6 +2,7 @@
 layout: default
 title: "CSE CLI"
 permalink: /cse-cli
+nav_order: 2
 ---
 
 ## CSE CLI

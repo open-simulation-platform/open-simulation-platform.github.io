@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "user-guide"
+title: "User guide"
 permalink: /cse-demo-app/user-guide
 parent: "CSE Demo App"
 ---

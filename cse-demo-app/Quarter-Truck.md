@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Quarter-Truck"
+parent: "Demo Cases"
+nav_order: 2
 permalink: /cse-demo-app/Quarter-Truck
 ---
 
