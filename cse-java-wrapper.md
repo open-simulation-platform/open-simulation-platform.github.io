@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Java Wrapper"
+title: "CSE Java Wrapper"
 permalink: /cse-java-wrapper
 nav_order: 4
 ---

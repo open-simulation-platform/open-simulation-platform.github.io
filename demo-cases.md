@@ -7,11 +7,12 @@ nav_order: 5
 has_toc: false
 ---
 
-# Demo co-simulation case(s)
+# Demo Cases
 
 - [DPShip](./cse-demo-app/DPShip)
-- [House](./cse-demo-app/House)
 - [Quarter-Truck](./cse-demo-app/Quarter-Truck)
+- [House](./cse-demo-app/House)
+
 
 #### Demo simulation models
 The above demo models can be downloaded from [here](https://github.com/open-simulation-platform/cse-demos).

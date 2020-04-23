@@ -2,6 +2,7 @@
 layout: default
 title: "House"
 parent: "Demo Cases"
+nav_order: 3
 permalink: /cse-demo-app/House
 ---
 

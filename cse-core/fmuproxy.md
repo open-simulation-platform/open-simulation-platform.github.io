@@ -5,7 +5,7 @@ permalink: /cse-core/fmuproxy
 parent: "CSE Core"
 ---
 
-## FMUProxy
+## FMU Proxy
 
 
 ### 1. Proxy-server
