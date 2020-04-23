@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "CSE"
+title: "CSE Core"
 permalink: /cse-core/cse
 ---
 
