@@ -8,6 +8,8 @@ permalink: /model-interface-validator
 The Model interface validator is a tool to verify that the simulation model complies to MSMI. 
 The validator loads the OSPModelDescription.xml and the ontology, and checks that the configuration is correct. It can be used to verify that a given FMU with an OSPModelDescription.xml complies with MSMI. Or, it can be used to verify that the connections between two FMUs are semantically correct.
 
+<video src="/assets/videos/MSMI.mp4" width="640" height="400" controls preload></video>
+
 [Link to MSMI]()
 
 Multi-variable connections: One of the main benefits of MSMI is that it enables the implementation of multi-variable connections with simultaneous verification of semantical correctness. 
