@@ -28,7 +28,7 @@ Prefer to use the JVM version as it is cross-platform and has more features. Lik
 ## Run the FMU-proxy server:
 
 To get started, start the server executable fmu-proxy.jar from a command line or use the bundled startup script, where -thrift/tcp 9090 tells fmu-proxy to start a Thrift RPC server listening to port 9090.
-Start as many as necesssary servers on the same PC, but remember to use unique port numbers for each one. Please check that this port matches the one(s) used in the configuration file.
+Start as many as necessary servers on the same PC, but remember to use unique port numbers for each one. Please check that this port matches the one(s) used in the configuration file.
 
 ### C++:
 
