@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "CSE"
+title: "Home"
 permalink: /
 youtubeId: E5KumnkeKO8
 ---
