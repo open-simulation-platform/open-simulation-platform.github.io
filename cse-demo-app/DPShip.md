@@ -6,11 +6,11 @@ nav_order: 1
 permalink: /cse-demo-app/DPShip
 ---
 
-## CSE demo application - DP Ship
+# CSE demo application - DP Ship
 
 This file contains a minimal description of the DP-vessel demonstrator.
 
-### Introduction
+## Introduction
 This co-simulation demonstrator is based on the work presented in [1,2], and the reader is referred to these references and the references within for more details. Hence, any in-depth details regarding the submodels are considered out of scope here, except information useful for running the co-simulation demonstrator.
 
 The demonstrator includes five different fmus, and a short description of these are given in Table 1.
@@ -27,11 +27,11 @@ The demonstrator includes five different fmus, and a short description of these 
 
 Note that all these fmus contains binaries for both `win64` and `linux64`.
 
-### Model Descriptions
+## Model Descriptions
 In the following, each model in Table 1 is presented with focus on running the demonstrator. 
 
 
-#### OSOM
+### OSOM
 This fmu contains a simplified vessel model including an irregular sea-state, currents and simple hydrodynamics based on potential theory (including second order wave forces) [4]. The vessel model also contains two rotatable main propulsors placed symmetrical at the stern and one tunnel thruster in the bow.
 
 This model has been exported from *20Sim* and because of a limitation in the exporter, the model parameters cannot be changed by the user in a co-simulation. Some of the main parameters that are hard-coded are given in Table 2. The model I/O for the OSOM fmu are described in Table 3.
@@ -66,7 +66,7 @@ This model has been exported from *20Sim* and because of a limitation in the exp
 | `q[3]`        | O     | Yaw orientation coordinate (global, ≈ heading)                    |
 
 
-#### NLPobserver
+### NLPobserver
 This fmu contains a wave filter (a Non-Linear Passive observer [3]). The purpose of this filter is to filter out the fastest oscillating wave-induced motion disturbances from the position and orientation measurements from the vessel, the ones that the onboard power and propulsion system cannot compensate for without drawing an enormous amount of power. The filter also estimates the position and orientation rates which the DP-controller needs for providing sufficient damping to the vessel motions. Note that also this fmu is generated from exported code from 20Sim, hence, no scenario parameters can be changed by the user. Nevertheless, the parameters hard-coded in the NLPO match the parameters in the vessel model.
 
 The model I/O for the NLPobserver is given in Table 4.
@@ -88,7 +88,7 @@ The model I/O for the NLPobserver is given in Table 4.
 | `v_hat[2]`    | O     | Filtered east position rate (d/dt y_hat[2])                       |
 | `v_hat[3]`    | O     | Filtered yaw orientation rate (d/dt y_hat[3])                     |
 
-#### ReferenceGenerator
+### ReferenceGenerator
 This fmu contains a reference position generator, which, based on user defined inputs, generates continuous reference signals for the DP-controller (north, east and yaw). This fmu is implemented in C++ and the parameters are accessable for the user and can be changed. The most important parameters are listed and described in Table 5.
 
 **Table 5:** *Main parameters and I/Os in `ReferenceGenerator`.*
@@ -129,7 +129,7 @@ pi/200.0 <= dpsiMax
 ```
 The rate of the yaw-reference signal is set to `pi/200`. If not, it is set to dpsiMax. Next, this yaw-rate gets integrated and smoothed using low-pass filter (with filter time constant `Tpsi`). Note that also the signal rate (`dpsi_ref`) gets smoothed using a low-pass filter. Afterwards, both `dPsi_ref` and `psi_ref` are fed to the DP-controller.
 
-#### DPController
+### DPController
 This fmu contains the DP-controller which controls the position and the orientation of the vessel. Also this fmu is implemented in C++ and the parameters (controller tuning gains) are accessable for the user and can be changed. However, the controller *has* been tuned and there is no need for changing these paremeters and it is recommended that these parameters are left as is. Table 6 lists the main paramters and I/Os in the fmu. The control law itself is a simple PID-based control law including the rotational matrix for the vessel orientation (yaw).
 
 **Table 6:** *Main parameters and I/Os in `DPController`.*
@@ -165,7 +165,7 @@ This fmu contains the DP-controller which controls the position and the orientat
 | `Controlx`         | Global thrust in north from DP-controller                                 | continuous    | output    | - N           |
 | `Controly`          | Global thrust in east from DP-controller                                  | continuous    | output    | - N           |
 
-#### ThMPC
+### ThMPC
 This fmu contains the thrust allocation algorithm that takes the commanded global thrust forces from the DP-controller and distributes them as local thruster signals in type of thruster orientation and thrust amplitude. This thrust allocation algorithm is based on *Model Predictive Control*-theory (MPC) and is thoroughly presented in [5]. Hence, no details will be given here.
 The main parameters and I/Os in this fmu is given in Table 7.
 
@@ -213,7 +213,7 @@ The main parameters and I/Os in this fmu is given in Table 7.
 
 Note that there also exists other parameters and variables, but these are the most important. To see the others the readers are referred to the `ModelDescription.xml`-file in the fmu. Also note that the ThMPC-fmu  only runs the MPC solver routine every second, and uses the obtained thrust-rates to calculate thruster commands inbetween these quadratic problem  (QP) solver time steps.
 
-### Model Connections
+## Model Connections
 In this demonstrator case, the model connections are given as follows:
 ```
 OSOM.Thrust_d[1]        <-  ThMPC.F1c
@@ -253,7 +253,7 @@ ThMPC.refMz             <-  DPController.ControlMz
 
 ```
 
-###Simulation using the cse-demo-app
+## Simulation using the cse-demo-app
 
 User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.
 
@@ -261,7 +261,7 @@ User guide of the cse demo application, i.e., cse-server-go can be found [cse-de
 ![foo](/assets/img/DPShipFig2.png "Figure 2")
 ![foo](/assets/img/DPShipFig3.png "Figure 3")
 
-### References and Footnotes
+## References and Footnotes
 
 [1] S. Skjong, M. Rindarøy, L. T. Kyllingstad, V. Æsøy, and E. Pedersen, “Virtual prototyping of maritime systems and operations: applications of distributed co-simulations,” J. Mar. Sci. Technol., pp. 1–19, 2017.  
 [2] S. Skjong and E. Pedersen, “Co-Simulation of a Marine Offshore Vessel in DP-Operations including Hardware-In-the-Loop (HIL),” in Proceedings of the ASME 2017 36th International Conference on Ocean, Offshore, and Arctic Engineering OMAE 2017, 2017.  
