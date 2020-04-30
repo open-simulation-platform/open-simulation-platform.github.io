@@ -15,4 +15,4 @@ has_toc: false
 
 
 ## Demo simulation models
-The above demo models can be downloaded from [here](https://github.com/open-simulation-platform/cse-demos).
+The above demo models can be downloaded from [here](./downloads).

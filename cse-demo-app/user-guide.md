@@ -9,29 +9,32 @@ parent: "CSE Demo App"
 
 ## Download and install 
 
-Antivirus alert: Be aware that your virus protection software might react to the cse application. It's not harmful and you can allow it to run.
+*Antivirus alert: Be aware that your virus protection software might react to the cse application. 
+It's not harmful and you can allow it to run.*
 
-- Windows
-1. Download the latest CSE demo application. cse-vX.Y.Z-win64.zip
-2. Extract the files and you will have a root folder looking like below
-3. Download dp-ship example models: dp-ship.zip
+>**Windows**
+
+1. [Download](../downloads) the latest CSE demo application. cse-vX.Y.Z-win64.zip
+2. Extract the files and you will have a root folder looking like the figure below
+3. [Download](../downloads) the dp-ship example (dp-ship.zip)
 4. Extract the demo models, for instance next to the cse-vX.Y.Z-win64.zip folder
-5. Run startup script: run-windows.cmd
+5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
-
 ![foo](/assets/img/CSEuserguideFig1.png "Figure 1")
 
-- Linux
-1. Download CSE demo application archive: cse-server-go-vX.Y.Z.tar.gz
+>**Linux**
+
+1. [Download](../downloads) CSE demo application archive: cse-server-go-vX.Y.Z.tar.gz
 2. Extract archive: tar -xzvf cse-server-go-vX.Y.Z.tar.gz
-3. Download dp-ship example models: dp-ship.zip
+3. [Download](../downloads) the dp-ship example (dp-ship.zip)
 4. Extract the demo models, for instance next to the cse-vX.Y.Z-win64 folder
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
 
-## Loading Configuration
+## Load a Configuration
+*Note: Each item below is highlighted in the figure with its corresponding enumeration.*
 1. Switch to your web browser at url http://localhost:8000.
-2. Enter the path to the dp-ship folder on your machine.
+2. Enter the path to the dp-ship folder on your machine. 
 3. Enter the path to a directory where you want the logs to be written. Leave it blank to disable file logging.
 4. Previously used configurations are available below.
 5. Click "Load simulation" to load the configuration.
