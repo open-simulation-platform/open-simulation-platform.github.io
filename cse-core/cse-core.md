@@ -6,14 +6,14 @@ has_children: true
 nav_order: 1
 ---
 
-## CSE Core
+# CSE Core
 The C/C++ co-simulation library orchestrates the co-simulation of models that conform to the Functional Mock-up Interface (FMI) . 
 The co-simulation library includes a fixed-step master algorithm with a configurable base step size. It allows for individually defined time steps for the models, with the requirement of being a multiple of the master algorithm base step size. During simulation, there are features to observe and manipulate simulation variables either through dedicated interfaces or with a scenario runner. It is possible to apply arbitrary operations to variable values without modifying the subsystem models themselves. 
 Examples include arithmetics, logical operations, transformations, unit conversions and more. This is necessity if variables connected between models must be summed or transformed by linear transformation or between coordinate frames. There are interfaces for client applications to include their own implementation of many of the included features. 
 
 [C/C++ co-simulation library](./doxygen/0.6.0){:target="_blank"}
 
-### CSE concepts
+## CSE concepts
 
 - Slaves
 - Functions
@@ -21,7 +21,7 @@ Examples include arithmetics, logical operations, transformations, unit conversi
 - Observer
 - Modifiers
 
-### Configuration
+## Configuration
 
 The configuration format is based on the MSMI standard developed in WP2 and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
@@ -29,7 +29,7 @@ OspSystemStructure.xsd. [Link to OspSystemStructure spec]. Connections can be co
 
 Co-simulation configuration using the SSP standard (https://ssp-standard.org/) is also partially supported. [Link to ssp support]. 
 
-### Scenario
+## Scenario
 
 A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file. First is the `"description"` of what does this scenario do. 
 `"action"` declares the action type which can be `"override"` , `"bias"`  or `"reset"`. `"events"` includes the `"time"` in second when the action takes place, on which `"model"`, the "`variable"` name in this model and the `"value"` for this variable (except for `"reset"` action type which doesn't require a value) .
@@ -59,7 +59,7 @@ A scenario file defines the simulation scenario which shall be performed. This s
 }
 ```
 
-### Results logging
+## Results logging
 
 In order to log signal values from a simulation to data files, an output directory must be specified in the result folder field on the simulation setup. By
 default, all signals will be logged and persisted on every sample. There will be one file generated pr. simulator. This can quickly lead to a large
@@ -87,7 +87,7 @@ Each simulator has an optional attribute decimationFactor that specifies that si
 not specified, every sample will be logged. 
 Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
 
-### Distributed co-simulation
+## Distributed co-simulation
 Distributed simulation using fmu-proxy allows you to:
 
 1. Run multiple instances of a model even though the FMU only allows it to be instantiated once.
