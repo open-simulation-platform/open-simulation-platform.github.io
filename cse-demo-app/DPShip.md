@@ -3,6 +3,7 @@ layout: default
 title: "DPShip"
 parent: "Demo Cases"
 nav_order: 1
+has_toc: false
 permalink: /cse-demo-app/DPShip
 ---
 

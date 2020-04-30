@@ -3,6 +3,7 @@ layout: default
 title: "CSE Demo App"
 has_children: true
 permalink: /cse-demo-app/cse-demo-app
+has_toc: false
 nav_order: 3
 ---
 

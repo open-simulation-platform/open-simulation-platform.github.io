@@ -1,5 +1,6 @@
 remote_theme: pmarsceill/just-the-docs
 repository: open-simulation-platform/cse-core
 title: "Core Simulation Environment"
+footer_content: "Copyright &copy; Open Simulation Platform."
 description: "co-simulation software"
 search_enabled: true
