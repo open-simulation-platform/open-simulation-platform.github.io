@@ -5,10 +5,10 @@ permalink: /cse-core/fmuproxy
 parent: "CSE Core"
 ---
 
-## FMU Proxy
+# FMU Proxy
 
 
-### 1. Proxy-server
+## 1. Proxy-server
 
 A proxy-server is responsible for making available one or more FMUs over a set of RPCs. Implementations should support Thrift and or gRPC. Additional RPCs, such as JSON-RPC can also be supported.
 
@@ -23,19 +23,19 @@ stability, stability, quality of the available ME solvers,
 memory foot-print and performance. No one implementation
 will excel at everything.
 
-#### JVM
+### JVM
 
 The JVM implementation is written in Kotlin and rely on FMI4j, an FMI implementation for JVM languages that supports FMI 1.0 and 2.0 for CS and ME. Out of the box, ME models can be wrapped as CS ones using solvers from the Apache Commons Math3 package. Compared to other open-source FMI implementations targeting the JVM, such as JFMI and JavaFMI, FMI4j is the only one to support ME for 2.0. Furthermore, FMI4j uses the Java Native Interface (JNI) rather than Java Native Access (JNA) for interfacing with the native FMI functions, which significantly improves performance. The calling overhead for a single native call using JNA can be an order of magnitude greater than equivalent JNI.
 
 The implementation supports Thrift (TCP/IP - binary, HTTP - JSON), gRPC (HTTP2 - protocol buffers) and is considered as the reference implementation.
 
-#### C++
+### C++
 
 The C++ implementation is cross-platform and is written in modern C++17. All dependencies are available using the cross-platform package manager conan, making it easy to build. Currently, Thrift (TCP/IP - binary, HTTP - JSON) and gRPC (HTTP2 - protocol buffers) are supported RPCs.
 
 FMI4cpp, an FMI 2.0 implementation for C++, is used for interacting with FMUs. It supports both CS and ME, where the latter can be wrapped as the former using solvers from Boost odeint. The main goal of the FMI4cpp library is to be as easy to use and install as possible. To achieve this, it makes use of modern C++ features and supports installation using the vcpkg and conan package managers.
 
-### 2. Proxy-clients
+## 2. Proxy-clients
 
 Proxy clients are used to connect with the FMUs hosted by the remote server(s). FMU-proxy aims to provide flexibility, such that clients can be implemented in a wide variety of languages and platform. 
 Using Thrift or gRPC, the process of generating the required source-code for interacting with an remote FMU is quite straightforward. Listing. 1 shows the command required for generating the required sources when targeting Thrift in JavaScript. Similarly, Listing. 2 shows how C++ sources for gRPC are generated.
@@ -122,8 +122,8 @@ do {
 client.terminate(slave_id)
 ```
 
-### 3. Install dependencies
-#### Conan:
+## 3. Install dependencies
+### Conan:
 Just add a new remote and re-run conan install with 
 ```
 -o fmuproxy=True
@@ -134,7 +134,7 @@ conan remote add
 helmesjo "https://api.bintray.com/conan/helmesjo/public-conan"
 ```
 
-#### Manual building:
+### Manual building:
 thrift can be built manually following these [steps](https://thrift.apache.org/lib/cpp)
 
 Download a FMU-proxy server:
@@ -146,13 +146,13 @@ FMU-proxy server comes in two flavors: C++ and JVM.
 
 Prefer to use the JVM version as it is cross-platform and has more features. Like support for FMI 1.0.
 
-### 4. Run the FMU-proxy server:
+## 4. Run the FMU-proxy server:
 
 To get started, start the server executable fmu-proxy.jar from a command line or use the bundled startup script, where -thrift/tcp 9090 tells fmu-proxy to start a Thrift RPC server listening to port 9090.
 Start as many as necesssary servers on the same PC, but remember to use unique port numbers for each one. Please check that this port matches the
 one(s) used in the configuration file.
 
-#### C++:
+### C++:
 
 ```
 ./fmu_proxy_cpp -thrift/tcp 9090
@@ -170,7 +170,7 @@ Options:
   --grpc arg            Specify gRPC port (enables this server).
 ```
 
-#### JVM:
+### JVM:
 
 ```java
 start java -jar fmu-proxy.jar -thrift/tcp 9090
@@ -193,7 +193,7 @@ Usage: fmu-proxy [-h]
 ```
 
 
-### 5. Run the fmuproxy_test located in the test folder
+## 5. Run the fmuproxy_test located in the test folder
 This test takes 3 arguments:
 
 - url

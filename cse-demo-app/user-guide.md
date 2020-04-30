@@ -5,9 +5,9 @@ permalink: /cse-demo-app/user-guide
 parent: "CSE Demo App"
 ---
 
-## User guide
+# User guide
 
-### Download and install 
+## Download and install 
 
 Antivirus alert: Be aware that your virus protection software might react to the cse application. It's not harmful and you can allow it to run.
 
@@ -29,7 +29,7 @@ Antivirus alert: Be aware that your virus protection software might react to the
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
 
-### Loading Configuration
+## Loading Configuration
 1. Switch to your web browser at url http://localhost:8000.
 2. Enter the path to the dp-ship folder on your machine.
 3. Enter the path to a directory where you want the logs to be written. Leave it blank to disable file logging.
@@ -38,14 +38,14 @@ Antivirus alert: Be aware that your virus protection software might react to the
 
 ![foo](/assets/img/CSEuserguideFig2.png "Figure 2")
 
-### Models and variables
+## Models and variables
 1. The models in the simulation will appear on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
 3. The simulation starts when clicking "Play".
 
 ![foo](/assets/img/CSEuserguideFig3.png "Figure 3")
 
-### Simulation control
+## Simulation control
 1. Click "Simulation status" to see details about the simulation and to access some simulation controls.
 2. By clicking "Enable" on the real time target, the simulation will run in real time. If real time target is disabled, the simulation will run as fast
 as possible.
@@ -56,7 +56,7 @@ as possible.
 
 ![foo](/assets/img/CSEuserguideFig4.png "Figure 4")
 
-### Plotting variables
+## Plotting variables
 1. Click "Create new time series" or "Create new XY plot" to obtain a time series plot or an XY plot that variables can be added to.
 2. Any variable can be added to a plot by clicking "Add to plot" in the variable overview.
 3. Select where to plot the variable from the list of available plots.
@@ -65,7 +65,7 @@ as possible.
 ![foo](/assets/img/CSEuserguideFig5.png "Figure 5")
 ![foo](/assets/img/CSEuserguideFig6.png "Figure 6")
 
-### Overriding variables
+## Overriding variables
 
 It is possible to override any input, output or parameter variable.
 1. Click the edit icon to the left of the variable.
@@ -74,7 +74,7 @@ It is possible to override any input, output or parameter variable.
 
 ![foo](/assets/img/CSEuserguideFig7.png "Figure 7")
 
-### Scenarios
+## Scenarios
 
 1. Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically loaded and made visible in the
 Scenarios section.The dp-ship example comes with three scenario files for demonstration purposes.
@@ -83,7 +83,7 @@ Scenarios section.The dp-ship example comes with three scenario files for demons
 
 ![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
 
-### Co-simulation configuration
+## Co-simulation configuration
 
 The dp-ship, quarter-truck and house examples each contains a
 OspSystemStructure.xml file that demonstrates how this is done.
@@ -120,7 +120,7 @@ The examples each contains a SystemStructure.ssd file that demonstrates configur
 CSE currently supports using a fixed step algorithm. The step size can be altered in the SystemStructure.ssd file.
 The new MSMI connection types are not supported when using the SSP standard.
 
-### Configurable logging
+## Configurable logging
 In order to log signal values from a simulation to file, an output directory must be specified in the "Log folder" field on the simulation setup. By
 default, all signals will be logged and persisted on every sample. There will be one file generated per simulator. This can quickly lead to a large
 amount of data being generated, so we recommend instead specifying what signals to log using the configurable log format outlined below.
@@ -148,7 +148,7 @@ not specified, every sample will be logged. Finally, leaving out any <variable> 
 being logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file pr.
 simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
 
-### Plot
+## Plot
 Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
 An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
 
