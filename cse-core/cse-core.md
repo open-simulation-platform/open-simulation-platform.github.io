@@ -28,6 +28,27 @@ connections between FMUs and setting of initial values for input and parameter v
 
 Co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also partially supported. 
 
+### OspSystemStructure.xml
+
+`<OspSystemStructure>` is the root element that contains xml elements as specified in table X.
+
+| `<OspSystemStructure>`  | Description                                                                                                                               |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| *StartTime*             | |
+| *BaseStepSize*          | |
+| *Algorithm*             | |
+| *Simulators*            |  Contains all subsimulators in the system specified as `<simulator>` elements. See table [Y]() |
+| *Connections*           |                                            |
+
+##### _`<Simulator>` attributes:_
+
+| attributes       | Description                                                                                                                              |
+| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| *name*           | |
+| *source*         | |
+
+
+
 ## Scenario
 
 A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file. First is the `"description"` of what does this scenario do. 
