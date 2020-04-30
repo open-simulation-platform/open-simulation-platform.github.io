@@ -14,12 +14,12 @@ There are options for real time execution or simulation in free mode (as fast as
 A scenario management feature allows change of the simulation variables automatically based on a scenario file. It is also possible to log to file the simulation variable values of all models.
 
 Main features covered by the demo-app:
-- [Load a configuration](./user-guide#loading-configuration)
+- [Load a configuration](./user-guide#load-a-configuration)
 - [Control the simulation](./user-guide#simulation-control)
-- [Observe simulation variables](./user-guide#models-and-variables)
-- [Plot variables](./user-guide#plotting-variables)
-- [Override the value of variables](./user-guide#overriding-variables)
-- [Run pre-configured scenarios](./user-guide#scenarios)
+- [Observe simulation variables](./user-guide#observe-models-and-variables)
+- [Plot variables](./user-guide#plot-variables)
+- [Override the value of variables](./user-guide#override-variable-values)
+- [Run pre-configured scenarios](./user-guide#run-scenarios)
 - [Log simulation results to file](./user-guide#configurable-logging)
 
 More information on how to use the CSE-demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.

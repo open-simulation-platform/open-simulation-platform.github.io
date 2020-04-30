@@ -12,7 +12,7 @@ parent: "CSE Demo App"
 *Antivirus alert: Be aware that your virus protection software might react to the cse application. 
 It's not harmful and you can allow it to run.*
 
->**Windows**
+>**Windows:**
 
 1. [Download](../downloads) the latest CSE demo application. cse-vX.Y.Z-win64.zip
 2. Extract the files and you will have a root folder looking like the figure below
@@ -22,7 +22,7 @@ It's not harmful and you can allow it to run.*
 6. The application should open in your web browser at url http://localhost:8000.
 ![foo](/assets/img/CSEuserguideFig1.png "Figure 1")
 
->**Linux**
+>**Linux:**
 
 1. [Download](../downloads) CSE demo application archive: cse-server-go-vX.Y.Z.tar.gz
 2. Extract archive: tar -xzvf cse-server-go-vX.Y.Z.tar.gz
@@ -32,57 +32,66 @@ It's not harmful and you can allow it to run.*
 6. The application should open in your web browser at url http://localhost:8000.
 
 ## Load a Configuration
-*Note: Each item below is highlighted in the figure with its corresponding enumeration.*
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
 1. Switch to your web browser at url http://localhost:8000.
-2. Enter the path to the dp-ship folder on your machine. 
+2. Enter the path to the dp-ship folder on your machine (for example: C:\cse-demos\dp-ship\) 
 3. Enter the path to a directory where you want the logs to be written. Leave it blank to disable file logging.
 4. Previously used configurations are available below.
 5. Click "Load simulation" to load the configuration.
 
 ![foo](/assets/img/CSEuserguideFig2.png "Figure 2")
 
-## Models and variables
-1. The models in the simulation will appear on the left hand side.
+*A typical configuration folder will contain simulation models (FMUs) and configuration files. 
+Connections between models and initialization values are configured through the files "OspSystemStructure.xml" or "SystemStructure.ssd". 
+If your configuration directory contains both ("OspSystemStructure.xml" and a "SystemStructure.ssd"), the .xml file will be prioritized. 
+If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cse-demos\dp-ship\SystemStructure.ssd)*
+
+## Observe models and variables
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
+1. After loading the configuration, the simulation models are shown on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
-3. The simulation starts when clicking "Play".
 
 ![foo](/assets/img/CSEuserguideFig3.png "Figure 3")
 
 ## Simulation control
-1. Click "Simulation status" to see details about the simulation and to access some simulation controls.
-2. By clicking "Enable" on the real time target, the simulation will run in real time. If real time target is disabled, the simulation will run as fast
-as possible.
-3. RTF (Real time factor) indicates simulation speed related to real time. RTF = 2 means that simulation runs twice the speed of real time.
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
+1. Click "Simulation status" to see details about the simulation and to access additional simulation control features.
+2. By clicking "Enable" on the real time target, the simulation will run in real time. If real time target is disabled, the simulation will run in free mode (as fast
+as the hardware allows).
+3. At the navigation bar, the RTF (Real Time Factor) indicates the current simulation speed related to real time. For instance, a RTF = 2 means that simulation runs at twice the speed of real time.
 4. Real time factor target value can be altered to set a specific RTF.
-5. Click Play/Pause to start or pause the simulation.
-6. To close the current simulation for loading another configuration, click the "Tear down" button.
+5. At the navigation bar, click on "Play/Pause" to start or pause the simulation.
+6. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
 
 ![foo](/assets/img/CSEuserguideFig4.png "Figure 4")
 
-## Plotting variables
+## Plot variables
+*Note: Each item below is highlighted in the figures below with its corresponding number.*
 1. Click "Create new time series" or "Create new XY plot" to obtain a time series plot or an XY plot that variables can be added to.
 2. Any variable can be added to a plot by clicking "Add to plot" in the variable overview.
 3. Select where to plot the variable from the list of available plots.
-4. Click the plot names to see the charts.
+4. Click the plot name to see the chart.
 
 ![foo](/assets/img/CSEuserguideFig5.png "Figure 5")
 ![foo](/assets/img/CSEuserguideFig6.png "Figure 6")
 
-## Overriding variables
-
-It is possible to override any input, output or parameter variable.
+## Override variable values
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
+It is possible to override any variable value.
 1. Click the edit icon to the left of the variable.
-2. Type in the value and click the check icon.
+2. Type in the value and click the check icon to confirm the new value.
 3. Click the eraser symbol to remove the override.
 
 ![foo](/assets/img/CSEuserguideFig7.png "Figure 7")
 
-## Scenarios
+## Run Scenarios
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
 
+The scenario management allows to automatically change the value of variables at specified times. Each scenario is pre-defined on a file. 
 1. Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically loaded and made visible in the
-Scenarios section.The dp-ship example comes with three scenario files for demonstration purposes.
-2. Click the scenarios to see its contents.
-3. To execute a scenario click "Load scenario" before starting the simulation.
+"Scenarios" section. The dp-ship example comes with three scenario files for demonstration purposes. Click on each scenario to see its contents.
+2. The "Events" section show a list containing when each variable value will be modified and to which value.
+3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
 ![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
 
@@ -151,7 +160,7 @@ not specified, every sample will be logged. Finally, leaving out any <variable> 
 being logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file pr.
 simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
 
-## Plot
+## Configurable Plot
 Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
 An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
 
