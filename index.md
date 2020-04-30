@@ -2,11 +2,14 @@
 layout: default
 title: "Home"
 permalink: /
+youtubeId: E5KumnkeKO8
 ---
 
 ## Core Simulation Environment
 The Core Simulation Environment (CSE) is an open source software for co-simulation, built on a combination of technical solutions from the Open Simulation Platform (OSP) initiators and other established industrial solutions. The key working principle has been to use the best available technology and knowledge to meet the requirements for the OSP to efficiently serve its purpose. The CSE source code will be made available on GitHub, free of charge, through the MPL 2.0 open source licence.
 The open-source software coined the CSE produced in the OSP JIP consists of the following elements:
+
+{% include youtubePlayer.html id=page.youtubeId %}
 
 - [CSE Core](./cse-core/cse) --> Download [cse-core](https://github.com/open-simulation-platform/cse-core/releases)
 - [CSE Command-line interface (CLI)](./cse-cli) --> Download [cse-cli](https://github.com/open-simulation-platform/cse-cli/releases)
