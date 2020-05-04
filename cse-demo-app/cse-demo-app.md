@@ -20,6 +20,6 @@ Main features covered by the demo-app:
 - [Plot variables](./user-guide#plot-variables)
 - [Override the value of variables](./user-guide#override-variable-values)
 - [Run pre-configured scenarios](./user-guide#run-scenarios)
-- [Log simulation results to file](./user-guide#configurable-logging)
+- [Log simulation results to file](./user-guide#log-simulation-results)
 
 More information on how to use the CSE-demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.

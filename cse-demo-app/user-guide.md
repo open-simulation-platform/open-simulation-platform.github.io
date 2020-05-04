@@ -7,6 +7,20 @@ parent: "CSE Demo App"
 
 # User guide
 
+Features covered in this user guide:
+- [Download and install](./user-guide#download-and-install)
+- [Load a configuration](./user-guide#load-a-configuration)
+- [Observe models and variables](./user-guide#observe-models-and-variables)
+- [Simulation Control](./user-guide#simulation-control)
+- [Plot variables](./user-guide#plot-variables)
+- [Configurable plots](./user-guide#configurable-plot)
+- [Override variable values](./user-guide#override-variable-values)
+- [Run scenarios](./user-guide#run-scenarios)
+- [Log simulation results](./user-guide#log-simulation-results)
+- [Co-simulation configuration](./user-guide#co-simulation-configuration)
+
+<hr>
+
 ## Download and install 
 
 *Antivirus alert: Be aware that your virus protection software might react to the cse application. 
@@ -31,6 +45,8 @@ It's not harmful and you can allow it to run.*
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
 
+[back to top](./user-guide#user-guide)
+
 ## Load a Configuration
 *Note: Each item below is highlighted in the figure below with its corresponding number.*
 1. Switch to your web browser at url http://localhost:8000.
@@ -46,12 +62,16 @@ Connections between models and initialization values are configured through the 
 If your configuration directory contains both ("OspSystemStructure.xml" and a "SystemStructure.ssd"), the .xml file will be prioritized. 
 If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cse-demos\dp-ship\SystemStructure.ssd)*
 
+[back to top](./user-guide#user-guide)
+
 ## Observe models and variables
 *Note: Each item below is highlighted in the figure below with its corresponding number.*
 1. After loading the configuration, the simulation models are shown on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
 
 ![foo](/assets/img/CSEuserguideFig3.png "Figure 3")
+
+[back to top](./user-guide#user-guide)
 
 ## Simulation control
 *Note: Each item below is highlighted in the figure below with its corresponding number.*
@@ -65,6 +85,8 @@ as the hardware allows).
 
 ![foo](/assets/img/CSEuserguideFig4.png "Figure 4")
 
+[back to top](./user-guide#user-guide)
+
 ## Plot variables
 *Note: Each item below is highlighted in the figures below with its corresponding number.*
 1. Click "Create new time series" or "Create new XY plot" to obtain a time series plot or an XY plot that variables can be added to.
@@ -75,94 +97,10 @@ as the hardware allows).
 ![foo](/assets/img/CSEuserguideFig5.png "Figure 5")
 ![foo](/assets/img/CSEuserguideFig6.png "Figure 6")
 
-## Override variable values
-*Note: Each item below is highlighted in the figure below with its corresponding number.*
-It is possible to override any variable value.
-1. Click the edit icon to the left of the variable.
-2. Type in the value and click the check icon to confirm the new value.
-3. Click the eraser symbol to remove the override.
+### Configurable Plot
+Two types of plot are supported by the cse-demo-application: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
 
-![foo](/assets/img/CSEuserguideFig7.png "Figure 7")
-
-## Run Scenarios
-*Note: Each item below is highlighted in the figure below with its corresponding number.*
-
-The scenario management allows to automatically change the value of variables at specified times. Each scenario is pre-defined on a file. 
-1. Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically loaded and made visible in the
-"Scenarios" section. The dp-ship example comes with three scenario files for demonstration purposes. Click on each scenario to see its contents.
-2. The "Events" section show a list containing when each variable value will be modified and to which value.
-3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
-
-![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
-
-## Co-simulation configuration
-
-The dp-ship, quarter-truck and house examples each contains a
-OspSystemStructure.xml file that demonstrates how this is done.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<OspSystemStructure
-xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
-    <BaseStepSize>0.01</BaseStepSize>
-    <Simulators>
-        <Simulator name="ModelX" source="fmu1.fmu">
-            <InitialValues>
-                <InitialValue variable="input1">
-                    <Real value="42"/>
-                </InitialValue>
-            </InitialValues>
-        </Simulator>
-        <Simulator name="ModelY" source="fmu2.fmu" stepSize="0.1"/>
-        <Simulator name="ModelZ" source="fmu3.fmu" stepSize="0.05"/>
-    </Simulators>
-
-    <PlugSocketConnections/>
-    <BondConnections/>
-    <VariableConnections>
-        <ScalarConnection>
-            <Source simulator="ModelX" endpoint="p.out"/>
-            <Target simulator="ModelY" endpoint="p.in"/>
-        </ScalarConnection>
-    </VariableConnections>
-</OspSystemStructure>
-```
-
-The examples each contains a SystemStructure.ssd file that demonstrates configuration using the SSP standard.
-CSE currently supports using a fixed step algorithm. The step size can be altered in the SystemStructure.ssd file.
-The new MSMI connection types are not supported when using the SSP standard.
-
-## Configurable logging
-In order to log signal values from a simulation to file, an output directory must be specified in the "Log folder" field on the simulation setup. By
-default, all signals will be logged and persisted on every sample. There will be one file generated per simulator. This can quickly lead to a large
-amount of data being generated, so we recommend instead specifying what signals to log using the configurable log format outlined below.
-CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
-including case) and placed in the same folder as the simulators. A basic example of the currently supported syntax is;
-
-```xml
-<simulators>
-    <simulator name="model_1" decimationFactor="20">
-        <variable name="model_input"/>
-        <variable name="model_output"/>
-    </simulator>
-    <simulator name="model_2" decimationFactor="10">
-        <variable name="model_input"/>
-        <variable name="model_output"/>
-    </simulator>
-        <simulator name="model_3"/>
-</simulators>
-```
-
-The simulators to be logged must be enclosed in a <simulators> tag, and each signal must specify the name, data type, and causality as
-parameters in separate <variable> tags under each <simulator>. Each simulator has an optional attribute decimationFactor that specifies that
-simulator's decimation factor when logging variables. For example a decimation factor of 20 will lead to every 20th sample being logged. If this is
-not specified, every sample will be logged. Finally, leaving out any <variable> tags on a <simulator> will lead to all variables for that simulator
-being logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file pr.
-simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
-
-## Configurable Plot
-Two types of plot are supported by the cse-demo-application, namely **trend** and **scatter**. The trend type shows the curve of a variable over time, while the scatter type shows the relation between two variables, of one versus the other.     
-An example is shown below. This can be pre-defined and loaded into the cse-demo-app like the scenario file. It is also possibel to add through the demo-app user interface editor. More details and examples can be found in the demo-app descriptions. 
+In order to quickly setup the simulation environment, it is possible to store the plot configuration in a file. Start by creating a file named "PlotConfig.json" in the configuration folder. The file content is as defined in the example below. When the configuration is loaded the pre-defined plots will be automatically generated. In this configuration, simulator refers to the simulation models.
 
 ```json
 {
@@ -198,3 +136,103 @@ An example is shown below. This can be pre-defined and loaded into the cse-demo-
   ]
 }
 ```
+
+[back to top](./user-guide#user-guide)
+
+## Override variable values
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
+It is possible to override any variable value.
+1. Click the edit icon to the left of the variable.
+2. Type in the value and click the check icon to confirm the new value.
+3. Click the eraser symbol to remove the override.
+
+![foo](/assets/img/CSEuserguideFig7.png "Figure 7")
+
+[back to top](./user-guide#user-guide)
+
+## Run Scenarios
+*Note: Each item below is highlighted in the figure below with its corresponding number.*
+
+The scenario management allows to automatically change the value of variables at specified times. Each scenario is pre-defined on a file. 
+1. Scenario files placed in the ./scenarios subfolder within the configuration folder are automatically loaded and made visible in the
+"Scenarios" section. The dp-ship example comes with three scenario files for demonstration purposes. Click on each scenario to see its contents.
+2. The "Events" section show a list containing when each variable value will be modified and to which value.
+3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
+
+![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
+
+[back to top](./user-guide#user-guide)
+
+## Log simulation results
+In order to log to file signal values from a simulation, an output directory must be specified in the "Log folder" field when [loading a configuration](./user-guide#load-a-configuration). By
+default, all signals will be logged and persisted on every sample. There will be one file generated per simulator (simulation model). This can quickly lead to a large
+amount of data being stored, so it is recommended to specify which signals to log using the configurable log format outlined below.
+
+CSE supports a basic configuration containing specific signals to be logged from any simulator (model) via an XML file. This file must be named "LogConfig.xml" 
+(include the camel casing) and placed in the same folder as the configuration. A basic example of the supported syntax is:
+
+```xml
+<simulators>
+    <simulator name="model_1" decimationFactor="20">
+        <variable name="model_input"/>
+        <variable name="model_output"/>
+    </simulator>
+    <simulator name="model_2" decimationFactor="10">
+        <variable name="model_input"/>
+        <variable name="model_output"/>
+    </simulator>
+        <simulator name="model_3"/>
+</simulators>
+```
+
+The simulators to be logged must be enclosed in a &lt;simulators&gt; tag and each variable to be logged can be specified in a separate &lt;variable&gt; tag under each &lt;simulator&gt;. 
+Each simulator has an optional attribute "decimationFactor" that specifies the simulator sampling time when logging variables. For example, a decimation factor of 20 will lead to every 20th sample being logged. If this is
+not specified, every sample will be logged. 
+
+Finally, if no &lt;variable&gt; tag is specified under a tag &lt;simulator&gt; all variables for that simulator
+will be logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file per
+simulator. The log is written in CSV format only (currently there is no support for binary or other log formats).
+
+[back to top](./user-guide#user-guide)
+
+## Co-simulation configuration
+
+The co-simulation configuration can be defined by either an "OspSystemStructure.xml" or by a "SystemStructure.ssd" file (using the SSP standard). 
+These configuration files should be placed in the configuration folder. A few examples of what can be configured in such a file includes: connection between models, initial variable values or step size of a model.  
+
+The [demo cases](./demo-cases) dp-ship, quarter-truck and house have in their configuration folder examples of both "OspSystemStructure.xml" and "SystemStructure.ssd" files. 
+
+The code below is an example of a "OspSystemStructure.xml" file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<OspSystemStructure xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
+                    version="0.1">
+    <BaseStepSize>0.01</BaseStepSize>
+    <Simulators>
+        <Simulator name="ModelX" source="fmu1.fmu">
+            <InitialValues>
+                <InitialValue variable="input1">
+                    <Real value="42"/>
+                </InitialValue>
+            </InitialValues>
+        </Simulator>
+        <Simulator name="ModelY" source="fmu2.fmu" stepSize="0.1"/>
+        <Simulator name="ModelZ" source="fmu3.fmu" stepSize="0.05"/>
+    </Simulators>
+
+
+    <Connections>
+        <VariableConnection>
+            <Variable simulator="ModelX" name="model_output"/>
+            <Variable simulator="ModelY" name="model_input"/>
+        </VariableConnection>
+    </Connections>
+</OspSystemStructure>
+```
+
+If your configuration directory contains both (“OspSystemStructure.xml” and a “SystemStructure.ssd”), the .xml file will be prioritized. If you would like to load your simulation with the connections as defined on the “SystemStructure.ssd” file, include it in the path.
+
+Note: The new MSMI connection types are not supported when using the SSP standard.
+
+[back to top](./user-guide#user-guide)
