@@ -2,6 +2,7 @@
 layout: default
 title: "CSE Java Wrapper"
 permalink: /cse-java-wrapper
+has_toc: false
 nav_order: 4
 ---
 
