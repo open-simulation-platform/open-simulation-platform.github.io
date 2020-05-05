@@ -20,9 +20,7 @@ Examples include arithmetics, logical operations, transformations, unit conversi
 - Observer
 - Modifiers
 
-<figure>
-<img src="/assets/img/cseFig2.png" width="400"> 
-</figure>
+![foo](/assets/img/cseFig2.png "Figure 2")
 
 ## Configuration
 
@@ -55,20 +53,21 @@ As one of the standardization projects of the FMI, co-simulation configuration u
 | *name*           | Define an unique name for each simulator  |
 | *source*         | Source of the fmu|
 | *stepSize*        | Specify step size for this simulator, will override the base step size |
-| <InitialValues>  | Contains all initial values in `<InitialValue>` elements, with attributes `variable`, `value`|
+| *InitialValues*   | Contains all initial values in `<InitialValue>` elements, with attributes `variable`, `value`|
 
 #### _`<Functions>` attributes:_
 
-| Function      | Description                                                                                                                              |
-| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *linear_transformation*           | `offset`, `factor`|
-| *sum*         |`inputCount` |
-| *vector_sum*         | `inputCount`, `numericType`, `dimension`|
+| Function      |    attribute                       |Description                                                                                                                              |
+| :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
+| *linear_transformation*           | `offset`, `factor`|  The offset and factor value of the transformation function |
+| *sum*         |`inputCount` | Total count of the inputs |
+| *vector_sum*         | `inputCount`, `numericType`, `dimension`| Total count of the inputs, numeric type can be either real or integer, dimension of the vector |
 | **     | **  |
 
 #### _`<Connections>` attributes:_
-| Connection      |     attribute  |          Description                                                                                                              |
-| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+
+| Connection      |     attribute  |          Description                                                                        |
+| :--------------- | :------------- |:---------------------------------------------------------------------------------------------------- |
 | *VariableConnection*           | `simulator`, `name`  | simulator name and variable name  |
 | *VariableGroupConnections*         | `simulator`, `name`  | simulator name and variable group name  |
 | *SignalConnection*           | `simulator`, `name`, `function`, `name` | simulator name and variable name, function name and signal name |
