@@ -2,6 +2,7 @@
 layout: default
 title: "Home"
 permalink: /
+has_toc: false
 youtubeId: E5KumnkeKO8
 ---
 

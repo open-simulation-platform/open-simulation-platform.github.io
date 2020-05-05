@@ -2,6 +2,7 @@
 layout: default
 title: "User guide"
 permalink: /cse-demo-app/user-guide
+has_toc: false
 parent: "CSE Demo App"
 ---
 
