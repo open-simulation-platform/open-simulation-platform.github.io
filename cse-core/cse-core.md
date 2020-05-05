@@ -32,46 +32,70 @@ As defined in the MSMI specification, connections can be configured by variables
 This is especially important when different models are provided by different vendors.
 
 As one of the standardization projects of the FMI, co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also supported. 
+The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10).
 
-### OspSystemStructure.xml
 
 `<OspSystemStructure>` is the root element that contains xml elements as specified below.
 
-| `<OspSystemStructure>`  | Description                                                                                                                               |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *StartTime*             | Simulation starting time|
-| *BaseStepSize*          | Base step size of all simulators, if not specified by individual fmu|
-| *Algorithm*             | Co-simulation master algorithm, currently `fixedStep` is supported|
-| *Simulators*            | Contains all sub-simulators in the system specified as `<simulator>` elements. |
-| *Functions*             | Contains all functions                                         |
-| *Connections*           | defines all I/O interfaces for connections                                       |
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<OspSystemStructure
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://opensimulationplatform.com/MSMI/OSPSystemStructure ../../../src/cpp/xsd/OspSystemStructure.xsd"
+        xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
+        version="0.1">
+    <StartTime>0.0</StartTime>
+    <BaseStepSize>stepSize</BaseStepSize>
+    <Algorithm>fixedStep</Algorithm>
+    <Simulators>
 
-#### _`<Simulator>` attributes:_ 
+//simulator1
+   <Simulator name="simulatorName" source="simulatorSource" stepSize="stepSize">
+            <InitialValues>
+                <InitialValue variable="variableName">
+                    <Real value="variableValue"/>
+                </InitialValue>
+                <InitialValue variable="variableName">
+                    <Real value="initialValue"/>
+                </InitialValue>
+            </InitialValues>
+        </Simulator>
 
-| attributes       | Description                                                                                                                              |
-| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *name*           | Define an unique name for each simulator  |
-| *source*         | Source of the fmu|
-| *stepSize*        | Specify step size for this simulator, will override the base step size |
-| *InitialValues*   | Contains all initial values in `<InitialValue>` elements, with attributes `variable`, `value`|
+//simulator2
+   <Simulator name="simulatorName" source="simulatorSource" stepSize="stepSize">
+            <InitialValues>
+                <InitialValue variable="variableName">
+                    <Real value="variableValue"/>
+                </InitialValue>
+                <InitialValue variable="variableName">
+                    <Real value="initialValue"/>
+                </InitialValue>
+            </InitialValues>
+        </Simulator>
 
-#### _`<Functions>` attributes:_
-
-| Function      |    attribute                       |Description                                                                                                                              |
-| :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
-| *linear_transformation*           | `offset`, `factor`|  The offset and factor value of the transformation function |
-| *sum*         |`inputCount` | Total count of the inputs |
-| *vector_sum*         | `inputCount`, `numericType`, `dimension`| Total count of the inputs, numeric type can be either real or integer, dimension of the vector |
-| **     | **  |
-
-#### _`<Connections>` attributes:_
-
-| Connection      |     attribute  |          Description                                                                        |
-| :--------------- | :------------- |:---------------------------------------------------------------------------------------------------- |
-| *VariableConnection*           | `simulator`, `name`  | simulator name and variable name  |
-| *VariableGroupConnections*         | `simulator`, `name`  | simulator name and variable group name  |
-| *SignalConnection*           | `simulator`, `name`, `function`, `name` | simulator name and variable name, function name and signal name |
-| *SignalGroupConnections*         |`simulator`, `name`  | simulator name and signal group name  |
+//simulator3
+...
+    </Simulators>
+    <Functions>
+        <LinearTransformation name="functionName" factor="factorValue" offset="offsetValue"/>
+        <Sum name="functionName" inputCount="inputCount"/>
+...
+    </Functions>
+    <Connections>
+        <VariableConnection>
+            <Variable simulator="simulator1Name" name="variableName"/>
+            <Variable simulator="simulator2Name" name="variableName"/>
+        </VariableConnection>
+...
+        <SignalConnection>
+            <Variable simulator="simulator1" name="signalName"/>
+            <Signal function="functionName" name="signalName"/>
+        </SignalConnection>
+ ...   
+   
+    </Connections>
+</OspSystemStructure>
+```
 
 ## Scenario
 
