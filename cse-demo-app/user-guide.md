@@ -28,20 +28,20 @@ It's not harmful and you can allow it to run.*
 
 >**Windows:**
 
-1. [Download](../downloads) the latest CSE demo application. cse-vX.Y.Z-win64.zip
+1. [Download](https://github.com/open-simulation-platform/cse-server-go/releases) the CSE demo application.
 2. Extract the files and you will have a root folder looking like the figure below
-3. [Download](../downloads) the dp-ship example (dp-ship.zip)
-4. Extract the demo models, for instance next to the cse-vX.Y.Z-win64.zip folder
+3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the demo configuration for CSE (dp-ship is one of the examples included). 
+4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
 ![foo](/assets/img/CSEuserguideFig1.png "Figure 1")
 
 >**Linux:**
 
-1. [Download](../downloads) CSE demo application archive: cse-server-go-vX.Y.Z.tar.gz
+1. [Download](https://github.com/open-simulation-platform/cse-server-go/releases) the CSE demo application.
 2. Extract archive: tar -xzvf cse-server-go-vX.Y.Z.tar.gz
-3. [Download](../downloads) the dp-ship example (dp-ship.zip)
-4. Extract the demo models, for instance next to the cse-vX.Y.Z-win64 folder
+3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the demo configuration for CSE (dp-ship is one of the examples included).
+4. Extract the demo configuration
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
 
@@ -57,10 +57,10 @@ It's not harmful and you can allow it to run.*
 
 ![foo](/assets/img/CSEuserguideFig2.png "Figure 2")
 
-*A typical configuration folder will contain simulation models (FMUs) and configuration files. 
+A typical configuration folder will contain simulation models (FMUs) and configuration files. 
 Connections between models and initialization values are configured through the files "OspSystemStructure.xml" or "SystemStructure.ssd". 
 If your configuration directory contains both ("OspSystemStructure.xml" and a "SystemStructure.ssd"), the .xml file will be prioritized. 
-If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cse-demos\dp-ship\SystemStructure.ssd)*
+If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cse-demos\dp-ship\SystemStructure.ssd)
 
 [back to top](./user-guide#user-guide)
 
@@ -159,6 +159,7 @@ The scenario management allows to automatically change the value of variables at
 2. The "Events" section show a list containing when each variable value will be modified and to which value.
 3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
+See more details on [cse-core.](../cse-core/cse#scenario)
 ![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
 
 [back to top](./user-guide#user-guide)
@@ -166,32 +167,10 @@ The scenario management allows to automatically change the value of variables at
 ## Log simulation results
 In order to log to file signal values from a simulation, an output directory must be specified in the "Log folder" field when [loading a configuration](./user-guide#load-a-configuration). By
 default, all signals will be logged and persisted on every sample. There will be one file generated per simulator (simulation model). This can quickly lead to a large
-amount of data being stored, so it is recommended to specify which signals to log using the configurable log format outlined below.
+amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here.](../cse-core/cse#results-logging).
 
-CSE supports a basic configuration containing specific signals to be logged from any simulator (model) via an XML file. This file must be named "LogConfig.xml" 
-(include the camel casing) and placed in the same folder as the configuration. A basic example of the supported syntax is:
-
-```xml
-<simulators>
-    <simulator name="model_1" decimationFactor="20">
-        <variable name="model_input"/>
-        <variable name="model_output"/>
-    </simulator>
-    <simulator name="model_2" decimationFactor="10">
-        <variable name="model_input"/>
-        <variable name="model_output"/>
-    </simulator>
-        <simulator name="model_3"/>
-</simulators>
-```
-
-The simulators to be logged must be enclosed in a &lt;simulators&gt; tag and each variable to be logged can be specified in a separate &lt;variable&gt; tag under each &lt;simulator&gt;. 
-Each simulator has an optional attribute "decimationFactor" that specifies the simulator sampling time when logging variables. For example, a decimation factor of 20 will lead to every 20th sample being logged. If this is
-not specified, every sample will be logged. 
-
-Finally, if no &lt;variable&gt; tag is specified under a tag &lt;simulator&gt; all variables for that simulator
-will be logged. Leaving out a simulator from the configuration will disable logging for that simulator. Note that this will still generate one file per
-simulator. The log is written in CSV format only (currently there is no support for binary or other log formats).
+CSE supports a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
+(include the camel casing) and placed in the same folder as the configuration. See more details on [cse-core.](../cse-core/cse#results-logging)
 
 [back to top](./user-guide#user-guide)
 
