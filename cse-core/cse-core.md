@@ -20,34 +20,59 @@ Examples include arithmetics, logical operations, transformations, unit conversi
 - Observer
 - Modifiers
 
+<figure>
+<img src="/assets/img/cseFig2.png" width="400"> 
+</figure>
+
 ## Configuration
 
 The configuration format is based on the [MSMI specification]() and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
-[OspSystemStructure.xsd](). Connections can be configured as variables and variableGroups. 
+[OspSystemStructure.xsd](https://github.com/open-simulation-platform/cse-core/blob/master/test/data/msmi/schema/OspModelDescription.xsd). 
+As defined in the MSMI specification, connections can be configured by variables and variableGroups. It is recommended to follow the specification when designing the interfaces of a model for connections.
+`Functions` are provided to handle manipulations of variables outside individual FMUs, for example, arithmetical operation, coordinate transformation and unit conversion. 
+This is especially important when different models are provided by different vendors.
 
-Co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also partially supported. 
+As one of the standardization projects of the FMI, co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also supported. 
 
 ### OspSystemStructure.xml
 
-`<OspSystemStructure>` is the root element that contains xml elements as specified in table X.
+`<OspSystemStructure>` is the root element that contains xml elements as specified below.
 
 | `<OspSystemStructure>`  | Description                                                                                                                               |
 | :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *StartTime*             | |
-| *BaseStepSize*          | |
-| *Algorithm*             | |
-| *Simulators*            |  Contains all subsimulators in the system specified as `<simulator>` elements. See table [Y]() |
-| *Connections*           |                                            |
+| *StartTime*             | Simulation starting time|
+| *BaseStepSize*          | Base step size of all simulators, if not specified by individual fmu|
+| *Algorithm*             | Co-simulation master algorithm, currently `fixedStep` is supported|
+| *Simulators*            | Contains all sub-simulators in the system specified as `<simulator>` elements. |
+| *Functions*             | Contains all functions                                         |
+| *Connections*           | defines all I/O interfaces for connections                                       |
 
-##### _`<Simulator>` attributes:_
+#### _`<Simulator>` attributes:_ 
 
 | attributes       | Description                                                                                                                              |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *name*           | |
-| *source*         | |
+| *name*           | Define an unique name for each simulator  |
+| *source*         | Source of the fmu|
+| *stepSize*        | Specify step size for this simulator, will override the base step size |
+| <InitialValues>  | Contains all initial values in `<InitialValue>` elements, with attributes `variable`, `value`|
 
+#### _`<Functions>` attributes:_
 
+| Function      | Description                                                                                                                              |
+| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| *linear_transformation*           | `offset`, `factor`|
+| *sum*         |`inputCount` |
+| *vector_sum*         | `inputCount`, `numericType`, `dimension`|
+| **     | **  |
+
+#### _`<Connections>` attributes:_
+| Connection      |     attribute  |          Description                                                                                                              |
+| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| *VariableConnection*           | `simulator`, `name`  | simulator name and variable name  |
+| *VariableGroupConnections*         | `simulator`, `name`  | simulator name and variable group name  |
+| *SignalConnection*           | `simulator`, `name`, `function`, `name` | simulator name and variable name, function name and signal name |
+| *SignalGroupConnections*         |`simulator`, `name`  | simulator name and signal group name  |
 
 ## Scenario
 
