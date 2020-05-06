@@ -27,75 +27,42 @@ Examples include arithmetics, logical operations, transformations, unit conversi
 The configuration format is based on the [MSMI specification]() and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
 [OspSystemStructure.xsd](https://github.com/open-simulation-platform/cse-core/blob/master/test/data/msmi/schema/OspModelDescription.xsd). 
-As defined in the MSMI specification, connections can be configured by variables and variableGroups. It is recommended to follow the specification when designing the interfaces of a model for connections.
-`Functions` are provided to handle manipulations of variables outside individual FMUs, for example, arithmetical operation, coordinate transformation and unit conversion. 
+As defined in the MSMI specification, `connections` are configured through variables and variableGroups. It is recommended to follow the specification for its interfaces when exporting a model for connections.
+`Functions` are provided to handle manipulations of variables outside individual FMUs, for example, arithmetical operation. 
 This is especially important when different models are provided by different vendors.
+
+### _`<OspSystemStructure>` elements:_
+`<OspSystemStructure>` is the root element that contains xml elements as specified below. An example of the implementation can be found in the [user guide](https://open-simulation-platform.github.io/cse-demo-app/user-guide#co-simulation-configuration) of the demo app.
+
+| `<OspSystemStructure>`  | Description                                                                                                                               |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| *StartTime*             | Simulation starting time|
+| *BaseStepSize*          | Base step size of co-simulation, aka, macro time step size|
+| *Algorithm*             | Co-simulation master algorithm, currently `fixedStep` algorithm is supported|
+| *Simulators*            | Contains all sub-simulators in the system specified as `<simulator>` elements |
+| *Functions*             | Contains all functions, currently supported functions include  `LinearTransformation`, `Sum`, `VectorSum`                            |
+| *Connections*           | Contains all I/O interfaces of a simulator that available for connection                                    |
+
+### _`<Simulator>` attributes:_ 
+
+| attributes       | Description                                                                                                                              |
+| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| *name*           | Define an unique name for each simulator  |
+| *source*         | Source of the fmu|
+| *stepSize*        | Simulation step size for this individual simulator, aka. micro time step size|
+| *InitialValues*   | Contains all initial values in `<InitialValue>` element, with attributes `variable`, `value`|
+
+### _`<Functions>` attributes:_
+
+| Function      |    attribute                       |Description                                                                                                                              |
+| :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
+| *linear_transformation*           | `offset`; `factor`|  The linear transformation function is the operation that preserves the operations of addition and scalar multiplication, with attribute `offset` being the additional part and `factor` being the multiplication factor|
+| *sum*         |`inputCount` | Total count of the inputs |
+| *vector_sum*         | `inputCount`; `numericType`; `dimension`| Total count of the inputs;  Numeric type can be either real or integer;  Dimension of the vector |
+
 
 As one of the standardization projects of the FMI, co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also supported. 
 The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10).
-
-
-`<OspSystemStructure>` is the root element that contains xml elements as specified below.
-
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<OspSystemStructure
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://opensimulationplatform.com/MSMI/OSPSystemStructure ../../../src/cpp/xsd/OspSystemStructure.xsd"
-        xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
-        version="0.1">
-    <StartTime>0.0</StartTime>
-    <BaseStepSize>stepSize</BaseStepSize>
-    <Algorithm>fixedStep</Algorithm>
-    <Simulators>
-
-//simulator1
-   <Simulator name="simulatorName" source="simulatorSource" stepSize="stepSize">
-            <InitialValues>
-                <InitialValue variable="variableName">
-                    <Real value="variableValue"/>
-                </InitialValue>
-                <InitialValue variable="variableName">
-                    <Real value="initialValue"/>
-                </InitialValue>
-            </InitialValues>
-        </Simulator>
-
-//simulator2
-   <Simulator name="simulatorName" source="simulatorSource" stepSize="stepSize">
-            <InitialValues>
-                <InitialValue variable="variableName">
-                    <Real value="variableValue"/>
-                </InitialValue>
-                <InitialValue variable="variableName">
-                    <Real value="initialValue"/>
-                </InitialValue>
-            </InitialValues>
-        </Simulator>
-
-//simulator3
-...
-    </Simulators>
-    <Functions>
-        <LinearTransformation name="functionName" factor="factorValue" offset="offsetValue"/>
-        <Sum name="functionName" inputCount="inputCount"/>
-...
-    </Functions>
-    <Connections>
-        <VariableConnection>
-            <Variable simulator="simulator1Name" name="variableName"/>
-            <Variable simulator="simulator2Name" name="variableName"/>
-        </VariableConnection>
-...
-        <SignalConnection>
-            <Variable simulator="simulator1" name="signalName"/>
-            <Signal function="functionName" name="signalName"/>
-        </SignalConnection>
- ...   
-   
-    </Connections>
-</OspSystemStructure>
-```
 
 ## Scenario
 
