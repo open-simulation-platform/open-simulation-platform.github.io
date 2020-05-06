@@ -2,10 +2,11 @@
 layout: default
 title: "CSE CLI"
 permalink: /cse-cli
+has_toc: false
 nav_order: 2
 ---
 
-## CSE CLI
+# CSE CLI
 CSE CLI is a command-line interface (CLI) to CSE for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
 It has three primary use cases:
 
@@ -17,7 +18,7 @@ The CLI is especially suitable when multiple sets of simulation to be executed i
 It can simulate a single FMU and show the model description. Besides being a necessary simulation tool, the CLI also serves as a demonstration for how client applications can make use of the CSE co-simulation library.
 With the CLI, the co-simulation library is used to enable co-simulation from the command-line. 
 
-### Functional specification
+## Functional specification
 
 CSE CLI is able to perform the following tasks:
 
@@ -27,7 +28,7 @@ CSE CLI is able to perform the following tasks:
 
 Detailed specifications are given in the form of "help texts" as follows.
 
-#### General usage
+### General usage
 
 ```shell
 > cse
@@ -60,7 +61,7 @@ OPTIONS
   --version                  Display program version information and exit.
  ```
 
-#### Getting information about a model
+### Getting information about a model
 ```shell
 > cse help inspect
 NAME
@@ -125,7 +126,7 @@ variables:
     causality: output
     variability: continuous
 ```
-#### Running a simulation
+### Running a simulation
 
 ```shell
 > cse help run
@@ -186,7 +187,7 @@ OPTIONS
   --version                        Display program version information and exit.
 ```
 
-#### Running a single model
+### Running a single model
 
 ```shell
 > cse help run-single

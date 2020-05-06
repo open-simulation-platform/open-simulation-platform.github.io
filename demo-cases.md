@@ -14,5 +14,5 @@ has_toc: false
 - [House](./cse-demo-app/House)
 
 
-#### Demo simulation models
-The above demo models can be downloaded from [here](https://github.com/open-simulation-platform/cse-demos).
+## Demo simulation models
+The above demo models can be downloaded from [here](./downloads).

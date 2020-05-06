@@ -2,6 +2,7 @@
 layout: default
 title: "FMU Proxy"
 permalink: /cse-core/fmuproxy
+has_toc: false
 parent: "CSE Core"
 ---
 

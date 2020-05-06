@@ -3,16 +3,17 @@ layout: default
 title: "House"
 parent: "Demo Cases"
 nav_order: 3
+has_toc: false
 permalink: /cse-demo-app/House
 ---
 
-## CSE demo application - House
+# CSE demo application - House
 This file contains a minimal description of the House demo case.
 
-### Introduction
+## Introduction
 This demo case simulates the temperature deviations of a house which consists of two rooms.  
 
-### Model Description
+## Model Description
 A simplified model represents the heat exchange dynamics of a house as shown in Figure 1.  
 
 <figure>
@@ -44,7 +45,7 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 |        |    `T_heatStop`     | `T_room2`    |    `roomStates`   |
 |        |    `transferTime`     |    |       |
 
-### Simulation using the cse-demo-app
+## Simulation using the cse-demo-app
 
 Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
 
