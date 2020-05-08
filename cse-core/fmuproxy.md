@@ -6,17 +6,31 @@ has_toc: false
 parent: "CSE Core"
 ---
 
+[FMU-proxy](https://github.com/NTNU-IHB/FMU-proxy) is an open-source framework 
+that enables language and platform independent access to FMUs. 
+In short, FMU-proxy provides remote procedure call (RPC) mapping to the FMI 2.0 
+for co-simulation interface. This is achieved by wrapping one or more FMU in a 
+server program supporting multiple schema-based and language-independent RPC systems
+ over several network protocols. The use of schema-based RPCs allows users to easily 
+ auto-generate client/server code for a wide range of common programming languages. 
+ The framework is independent of the master algorithm, and can therefore be re-used
+ in different software projects. 
+ 
+ See below for details on how to enable distributed co-simulation in CSE using FMU-proxy. 
 
-##  Install dependencies
+##  Install dependencies:
 ### Conan:
 Run conan install with the additional option:
-```
+```bash
 -o fmuproxy=True
+```
+e.g.
+```bash
+conan install . -s build_type=Release --install-folder=cmake-build-release --build=missing -o fmuproxy=True
 ```
 
 ### Manual building:
-Thrift can be built manually following these [steps](https://thrift.apache.org/lib/cpp).
-
+[Thrift](https://thrift.apache.org) can be built manually following these [steps](https://thrift.apache.org/lib/cpp).
 
 
 ## Download and run the FMU-proxy server:
@@ -35,16 +49,14 @@ In the context of CSE, only the Thrift RPC option is supported.
  
 The command `java -jar fmu-proxy.jar -thrift/tcp 9090`
 tells fmu-proxy to start a Thrift RPC server listening to port 9090.
-Start as many fmu-proxy servers as necessary on the same PC, but remember to use unique port numbers for each one. 
+Start as many fmu-proxy servers as necessary on the same PC, but remember to use unique port numbers. 
 Please check that this port matches the source(s) specified in the configuration file.
-
-```bash
-start java -jar fmu-proxy.jar -thrift/tcp 9090
-```
 
 FMUs can be pre-loaded by appending their paths at the end of the command, no switch needed.
 
 See below for three different ways to load an FMU using fmu-proxy.
+
+##### OspSystemStructure.xml
 
 ```xml
 <Simulators>
@@ -58,4 +70,16 @@ here>"/>
 </Simulators>
 ```
 
-[More details of FMU-proxy](https://github.com/NTNU-IHB/FMU-proxy). 
+##### SystemStructure.ssp
+
+```xml
+<ssd:Elements>
+    <ssd:Component name="FMU1"
+        source="fmu-proxy://localhost:9090?file=path/to/fmu1.fmu"/>
+    <ssd:Component name="FMU2"
+        source="fmu-proxy://localhost:9090?url=http://example.com/fmu2.fmu"/>
+    <ssd:Component name="FMU3"
+        source="fmu-proxy://localhost:9090?guid=<fmu-guid-from-modelDescription-goes-
+here>"/>
+</ssd:Elements>
+```
