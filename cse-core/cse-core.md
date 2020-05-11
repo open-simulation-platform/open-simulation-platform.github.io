@@ -32,16 +32,16 @@ As defined in the MSMI specification, `connections` are configured through varia
 This is especially important when different models are provided by different vendors.
 
 ### _`<OspSystemStructure>` elements:_
-`<OspSystemStructure>` is the root element that contains xml elements as specified below. An example of the implementation can be found in the [user guide](https://open-simulation-platform.github.io/cse-demo-app/user-guide#co-simulation-configuration) of the demo app.
+`<OspSystemStructure>` is the root element that contains xml elements as specified below. 
 
 | `<OspSystemStructure>`  | Description                                                                                                                               |
 | :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *StartTime*             | Simulation starting time|
-| *BaseStepSize*          | Base step size of co-simulation, aka, macro time step size|
-| *Algorithm*             | Co-simulation master algorithm, currently `fixedStep` algorithm is supported|
-| *Simulators*            | Contains all sub-simulators in the system specified as `<simulator>` elements |
-| *Functions*             | Contains all functions, currently supported functions include  `LinearTransformation`, `Sum`, `VectorSum`                            |
-| *Connections*           | Contains all I/O interfaces of a simulator that available for connection                                    |
+| <*StartTime*>             | Simulation starting time, unit in seconds|
+| <*BaseStepSize*>          | Base step size of co-simulation, aka, macro time step size, unit in seconds|
+| <*Algorithm*>             | Co-simulation master algorithm, currently a `fixedStep` algorithm is supported|
+| <*Simulators*>            | Contains all sub-simulators in the system specified as `<simulator>` elements |
+| <*Functions*>             | Contains all functions, currently supported functions include  `LinearTransformation`, `Sum`, `VectorSum`                            |
+| <*Connections*>          | Contains all scalar and variableGroup connections between simulators, or between simulators and functions: `<VariableConnection>`, `<SignalConnection>`, `<VariableGroupConnection>` and `<SignalGroupConnection>`                                    |
 
 ### _`<Simulator>` attributes:_ 
 
@@ -50,19 +50,85 @@ This is especially important when different models are provided by different ven
 | *name*           | Define an unique name for each simulator  |
 | *source*         | Source of the fmu|
 | *stepSize*        | Simulation step size for this individual simulator, aka. micro time step size|
-| *InitialValues*   | Contains all initial values in `<InitialValue>` element, with attributes `variable`, `value`|
+| <*InitialValues*>  | Sub-element <*InitialValues*> is optional when initial values of a variable in the simulator needs to be defined. `<InitialValue>` contains attribute `variable` which is a string that refers to a FMU variable. `<InitialValue>` contains sub-element specifying the variable type `<Real>`, `<Integer>`, `<Boolean>`, or `<String>`, with attribute `value` specifying the initial value of the variable.|
 
-### _`<Functions>` attributes:_
+### _`<Function>` attributes:_
 
 | Function      |    attribute                       |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
-| *linear_transformation*           | `offset`; `factor`|  The linear transformation function is the operation that preserves the operations of addition and scalar multiplication, with attribute `offset` being the additional part and `factor` being the multiplication factor|
-| *sum*         |`inputCount` | Total count of the inputs |
-| *vector_sum*         | `inputCount`; `numericType`; `dimension`| Total count of the inputs;  Numeric type can be either real or integer;  Dimension of the vector |
+| *LinearTransformation*           | `offset`; `factor`|  The linear transformation function is the operation that preserves the operations of addition and scalar multiplication, with attribute `offset` being the additional part and `factor` being the multiplication factor|
+| *Sum*         |`inputCount` | Total count of the inputs, must match with total number of connections for this function|
+| *VectorSum*         | `inputCount`; `numericType`; `dimension`| Total count of the inputs, must match with total number of connections for this function;  Numeric type can be either real or integer;  Dimension of the vector |
+
+### _`<Connection>` attributes:_
+
+| Connection      |    attributes                    |Description                                                                                                                              |
+| :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
+| <*VariableConnection*>          | `simulator`; `name`|  Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to, and the `name` of the variable|
+| <*SignalConnection*>        |`simulator`; `function`; `name`| Contains sub-elements `<Variable>` and/or `<Signal>` with attributes specifying the `simulator` and/or `function` of which the signal belongs to, and the `name` of the signal |
+| <*VariableGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the variable group belongs to, and the `name` of the variable group|
+| <*SignalGroupConnection*>         | `simulator`;`function`; `name`| Contains sub-elements `<VariableGroup>` and/or `<SignalGroup>` with attributes specifying the `simulator` and/or `function` of which the signal group belongs to, and the `name` of the signal croup |
+
+An example of the code implementation is shown as follows. 
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<OspSystemStructure
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://opensimulationplatform.com/MSMI/OSPSystemStructure ../../../OspSystemStructure.xsd"
+        xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
+        version="0.1">
+    <StartTime>startingTimeInSeconds</StartTime>
+    <BaseStepSize>baseStepSizeInSeconds</BaseStepSize>
+    <Algorithm>fixedStep</Algorithm>
+    <Simulators>
+        <Simulator name="model1" source="fmu1.fmu" stepSize="stepSizeInSeconds">
+            <InitialValues>
+                <InitialValue variable="variable1">
+                    <Real value="variable1Value"/>
+                </InitialValue>
+                <InitialValue variable="variabl2">
+                    <Boolean value="true(orFalse)"/>
+                </InitialValue>
+            </InitialValues>
+        </Simulator>
+        <Simulator name="model2" source="fmu2.fmu" stepSize="stepSizeInSeconds"/>
+        ...
+    </Simulators>
+    <Functions>
+        <LinearTransformation name="function1" factor="function1Factor" offset="function1Offset"/>
+        <Sum name="function2" inputCount="function2InputCount"/>
+        <VectorSum name="function2" inputCount="function2InputCount" numericType="real(orInteger)" dimension="VectorDimension"/>
+    </Functions>
+    <Connections>
+        <VariableConnection>
+            <Variable simulator="simulator1" name="variable1"/>
+            <Variable simulator="simulator2" name="variable1"/>
+        </VariableConnection>
+
+        <SignalConnection>
+            <Variable simulator="simulator1" name="variable1"/>
+            <Signal function="function1" name="signal1"/>
+        </SignalConnection>
+     
+        <VariableGroupConnection>
+            <VariableGroup simulator="simulator1" name="variableGroup1"/>
+            <VariableGroup simulator="simulator2" name="variableGroup1"/>
+        </VariableGroupConnection>
+
+        <SignalGroupConnection>
+            <VariableGroup simulator="simulator1" name="variableGroup1"/>
+            <SignalGroup function="function1" name="signalGroup1"/>
+        </SignalGroupConnection>
+    </Connections>
+</OspSystemStructure>
+```
 
 
 As one of the standardization projects of the FMI, co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also supported. 
 The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10).
+In cse environment, “OspSystemStructure.xml” is recommended and prioritized when both the .xml and .ssd files are available. 
+
 
 ## Scenario
 
@@ -73,24 +139,24 @@ A scenario file defines the simulation scenario which shall be performed. This s
 { "description": "description of the scnario",
   "defaults": 
   {
-    "model": "model name",
+    "model": "model1",
     "action": "override"
   },
   "events": 
   [
     {
-      "time": event time,
-      "variable": "variable name",
-      "value": variable value
+      "time": event1Time,
+      "variable": "variable1",
+      "value": variabl1Value
     },
     {
-      ...      event 2       ...
+      ...      event2       ...
     },
     {
-      ...      event 3       ...
+      ...      event3       ...
     }
   ],
-  "end": scenario stop time
+  "end": scenarioStopTime
 }
 ```
 
@@ -104,13 +170,13 @@ including case) and placed in the same folder as the simulators.
 
 ```xml
 <simulators>
-    <simulator name="model name 1" decimationFactor="20">
-        <variable name="variable name 1"/>
-        <variable name="variable name 2"/>
+    <simulator name="model1" decimationFactor="20">
+        <variable name="variable1"/>
+        <variable name="variable2"/>
     </simulator>
-    <simulator name="model name 1">
-        <variable name="variable name 1"/>
-        <variable name="variable name 2"/>
+    <simulator name="model2">
+        <variable name="variable1"/>
+        <variable name="variable2"/>
     </simulator>
 </simulators>
 ```
