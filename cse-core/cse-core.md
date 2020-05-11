@@ -3,6 +3,7 @@ layout: default
 title: "CSE Core"
 permalink: /cse-core/cse
 has_children: true
+has_toc: false
 nav_order: 1
 ---
 
