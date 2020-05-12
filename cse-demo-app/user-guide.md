@@ -19,6 +19,7 @@ Features covered in this user guide:
 - [Run scenarios](./user-guide#run-scenarios)
 - [Log simulation results](./user-guide#log-simulation-results)
 - [Co-simulation configuration](./user-guide#co-simulation-configuration)
+- [Distributed co-simulation using fmu-proxy](./user-guide#distributed-co-simulation-using-fmu-proxy)
 
 <hr>
 
@@ -168,7 +169,7 @@ See more details on [cse-core.](../cse-core/cse#scenario)
 ## Log simulation results
 In order to log to file signal values from a simulation, an output directory must be specified in the "Log folder" field when [loading a configuration](./user-guide#load-a-configuration). By
 default, all signals will be logged and persisted on every sample. There will be one file generated per simulator (simulation model). This can quickly lead to a large
-amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here.](../cse-core/cse#results-logging).
+amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here](../cse-core/cse#results-logging).
 
 CSE supports a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
 (include the camel casing) and placed in the same folder as the configuration. See more details on [cse-core.](../cse-core/cse#results-logging)
@@ -214,5 +215,48 @@ The code below is an example of a "OspSystemStructure.xml" file:
 If your configuration directory contains both (“OspSystemStructure.xml” and a “SystemStructure.ssd”), the .xml file will be prioritized. If you would like to load your simulation with the connections as defined on the “SystemStructure.ssd” file, include it in the path.
 
 Note: The new MSMI connection types are not supported when using the SSP standard.
+
+[back to top](./user-guide#user-guide)
+
+## Distributed co-simulation using fmu-proxy
+
+Distributed simulation using fmu-proxy allows you to run multiple instances of a model, run models that are not compatible
+with your operational system or to parallelize the workload onto multiple computation nodes. See more details on [fmu-proxy.](../cse-core/fmuproxy)
+
+The demo case dp-ship has a specific configuration to be used with fmu-proxy (see the file “OspSystemStructure.xml” or “SystemStructure.ssd” 
+under the folder *\fmuproxy*). Note that the only difference when comparing to the regular configuration is related to the source of the FMU file. 
+
+There are three different ways to specify the FMU source to be loaded by the fmu-proxy. Below is an example for the "OspSystemStructure.xml":
+```xml
+<Simulators>
+    <Simulator name="FMU1" source="fmu-proxy://localhost:9090?file=path/to/fmu1.fmu"/>
+    <Simulator name="FMU2" source="fmu-proxy://localhost:9090?http://example.com/fmu2.fmu"/>
+    <Simulator name="FMU3" source="fmu-proxy://localhost:9090?guid=<fmu-guid-from-modelDescriptiongoes-here>"/>
+</Simulators>
+```
+
+Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
+
+The CSE demo application distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
+![foo](/assets/img/CSEuserguideFig1.png "Figure 10")
+
+Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
+```bash
+java -jar fmu-proxy.jar -thrift/tcp=9090
+```
+
+where -thrift/tcp 9090 tells fmu-proxy to start a server listening to port 9090, see more details on [fmu-proxy](../cse-core/fmuproxy).
+
+Multiple servers can be started on the same PC, but remember to use unique port numbers for each one. Please also check that this port matches the
+one(s) used in the configuration file. 
+
+Steps to run the CSE demo application with fmu-proxy:
+1. Execute "run-fmuproxy.cmd" to start the fmu-proxy server. 
+2. Start the CSE demo application.
+3. Load the configuration for DP-ship available under the fmu-proxy folder.
+
+The image below shows the models loaded in the CSE demo application after they were loaded by the fmu-proxy server.  
+
+![foo](/assets/img/CSEuserguideFig11.png "Figure 11")
 
 [back to top](./user-guide#user-guide)
