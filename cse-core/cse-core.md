@@ -40,7 +40,7 @@ Description of the OspSystemStructure elements and their attributes are shown be
 | <*Algorithm*>             | Co-simulation master algorithm, currently a `fixedStep` algorithm is supported.|
 | <*Simulators*>            | Contains all sub-simulators in the system specified as `<simulator>` elements.|
 | <*Functions*>             | Contains all functions, currently supported functions include  `LinearTransformation`, `Sum`, `VectorSum`.                            |
-| <*Connections*>          | Contains all scalar and variableGroup connections between simulators, or between simulators and functions: `<VariableConnection>`, `<SignalConnection>`, `<VariableGroupConnection>` and `<SignalGroupConnection>`.                                   |
+| <*Connections*>          | Contains all scalar and variableGroup connections between simulators, or between simulators and functions. Sub-elements may include: `<VariableConnection>`, `<SignalConnection>`, `<VariableGroupConnection>` and `<SignalGroupConnection>`.                                   |
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -58,15 +58,20 @@ Description of the OspSystemStructure elements and their attributes are shown be
 </OspSystemStructure>
 ```
 
-### _`<Simulator>` attributes:_ 
-Each running simulator must be assigned to a model(fmu). One FMU can be used by several simulators given different names.
+### _`<Simulator>` attributes and sub-element:_ 
+Each running simulator must be assigned to a model(fmu). One FMU can be used by several simulators given different names. 
+`<Simulator>` may contain sub-element `<InitialValues>`. `<InitialValues>` is optional when initial values of one or multiple variables in the simulator needs to be defined.
 
-| attributes       | Description                                                                                                                              |
+| attribute       | Description                                                                                                                              |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
 | *name*           | Define an unique name for each simulator.  |
 | *source*         | Source of the simulator, example below shows three different options to specify the path to a simulator.|
 | *stepSize*        | Simulation step size for this individual simulator, aka. micro time step size.|
-| <*InitialValues*>  | Sub-element <*InitialValues*> is optional when initial values of a variable in the simulator needs to be defined. `<InitialValue>` contains attribute `variable` which is a string that refers to a FMU variable. `<InitialValue>` contains sub-element specifying the variable type `<Real>`, `<Integer>`, `<Boolean>`, or `<String>`, with attribute `value` specifying the initial value of the variable.|
+
+| sub-element      | attribute | Description                                                                                                                              |
+| :--------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| <*InitialValues*> | `variable` | Contains sub-element  <*InitialValue*> defying all initial values of variables in need. Attribute `variable` is a string that refers to a variable in the simulator.|
+| <*InitialValue*> | `value`  | Contains sub-element specifying the variable type which can be `<Real>`, `<Integer>`, `<Boolean>`, or `<String>`. Attribute `value` gives the initial value of the variable.|
 
 ```xml
     <Simulators>
@@ -92,9 +97,12 @@ This is especially important when different models are provided by different ven
 
 | Function      |    attribute                       |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
-| *LinearTransformation*           | `offset`; `factor`|  The linear transformation function is the operation that preserves the operations of addition and scalar multiplication, with attribute `offset` being the additional part and `factor` being the multiplication factor.|
+| *LinearTransformation*           | `offset`|  The linear transformation function is the operation that preserves the operations of addition and scalar multiplication, with attribute `offset` being the additional part.|
+|        | `factor`|  `factor` is the multiplication factor of the linear transformation function.|
 | *Sum*         |`inputCount` | Total count of the inputs, must match with total number in connections for this function.|
-| *VectorSum*         | `inputCount`; `numericType`; `dimension`| Total count of the inputs, must match with total number in connections for this function;  Numeric type can be either real or integer;  Dimension of the vector. |
+| *VectorSum*         | `inputCount`| Total count of the inputs, must match with total number in connections for this function. |
+|        |  `numericType`| Numeric type can be either real or integer. |
+|       | `dimension`| Dimension of the vector. |
 
 ```xml
    <Functions>
@@ -107,12 +115,14 @@ This is especially important when different models are provided by different ven
 ### _`<Connection>` attributes:_
 As defined in the MSMI specification, `connections` are configured through variables and variableGroups. It is highly recommended to follow the specification for its interfaces when exporting a model for connections.
 
-| Connection      |    attributes                    |Description                                                                                                                              |
+| sub-element     |    attribute                   |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
-| <*VariableConnection*>          | `simulator`; `name`|  Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to, and the `name` of the variable|
-| <*SignalConnection*>        |`simulator`; `function`; `name`| Contains sub-elements `<Variable>` and/or `<Signal>` with attributes specifying the `simulator` and/or `function` of which the signal belongs to, and the `name` of the signal |
-| <*VariableGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the variable group belongs to, and the `name` of the variable group|
-| <*SignalGroupConnection*>         | `simulator`;`function`; `name`| Contains sub-elements `<VariableGroup>` and/or `<SignalGroup>` with attributes specifying the `simulator` and/or `function` of which the signal group belongs to, and the `name` of the signal croup |
+| <*VariableConnection*>          | `simulator`; `name`|  Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and name of the variable.|
+| <*SignalConnection*>        |`simulator`; `name`| Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and `name` of the variable.|
+|        |`function`; `name`| Contains sub-elements `<Signal>` with attributes specifying the `function` of which the signal belongs to and name of the signal.|
+| <*VariableGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the variable group belongs to, and the `name` of the variable group.|
+| <*SignalGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the signal group belongs to, and the `name` of the variable group. |
+|       | `function`; `name`| Contains sub-elements `<SignalGroup>` with attributes specifying the `function` of which the signal group belongs to, and the `name` of the signal group. |
 
 ```xml
     <Connections>
