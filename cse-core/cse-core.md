@@ -60,6 +60,7 @@ Description of the OspSystemStructure elements and their attributes are shown be
 
 ### _`<Simulator>` attributes:_ 
 Each running simulator must be assigned to a model(fmu). One FMU can be used by several simulators given different names.
+
 | attributes       | Description                                                                                                                              |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
 | *name*           | Define an unique name for each simulator.  |
