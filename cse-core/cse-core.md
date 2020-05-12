@@ -121,7 +121,7 @@ As defined in the MSMI specification, `connections` are configured through varia
 | <*SignalConnection*>        |`simulator`; `name`| Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and `name` of the variable.|
 |        |`function`; `name`| Contains sub-elements `<Signal>` with attributes specifying the `function` of which the signal belongs to and name of the signal.|
 | <*VariableGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the variable group belongs to, and the `name` of the variable group.|
-| <*SignalGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the signal group belongs to, and the `name` of the variable group. |
+| <*SignalGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the variable group belongs to, and the `name` of the variable group. |
 |       | `function`; `name`| Contains sub-elements `<SignalGroup>` with attributes specifying the `function` of which the signal group belongs to, and the `name` of the signal group. |
 
 ```xml
