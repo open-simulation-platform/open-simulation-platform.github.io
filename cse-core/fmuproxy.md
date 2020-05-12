@@ -11,28 +11,11 @@ that enables language and platform independent access to FMUs.
 In short, FMU-proxy provides remote procedure call (RPC) mapping to the FMI 2.0 
 for co-simulation interface. This is achieved by wrapping one or more FMU in a 
 server program supporting multiple schema-based and language-independent RPC systems
- over several network protocols. The use of schema-based RPCs allows users to easily 
- auto-generate client/server code for a wide range of common programming languages. 
- The framework is independent of the master algorithm, and can therefore be re-used
- in different software projects. 
+over several network protocols. The use of schema-based RPCs allows users to easily 
+auto-generate client/server code for a wide range of common programming languages. 
+The framework is independent of the master algorithm, and can therefore be re-used
+in different software projects. 
  
- See below for details on how to enable distributed co-simulation in CSE using FMU-proxy. 
-
-##  Install dependencies:
-### Conan:
-Run conan install with the additional option:
-```bash
--o fmuproxy=True
-```
-e.g.
-```bash
-conan install . -s build_type=Release --install-folder=cmake-build-release --build=missing -o fmuproxy=True
-```
-
-### Manual building:
-[Thrift](https://thrift.apache.org) can be built manually following these [steps](https://thrift.apache.org/lib/cpp).
-
-
 ## Download and run the FMU-proxy server:
 
 Download an FMU-proxy server from [here](https://github.com/NTNU-IHB/FMU-proxy/releases/tag/v0.6.1).
