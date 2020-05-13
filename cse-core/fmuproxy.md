@@ -1,12 +1,25 @@
 ---
 layout: default
-title: "FMU Proxy"
+title: "Distributed co-simulation"
 permalink: /cse-core/fmuproxy
 has_toc: false
 parent: "CSE Core"
+nav_order: 4
 ---
+# Distributed co-simulation
+CSE Core can run distributed co-simulation which allows you to:
 
-# FMU-proxy
+1. Run multiple instances of a model even though the FMU only allows it to be instantiated once.
+2. Run FMUs that are not compatible with your OS or bitness.
+3. Parallelize the workload onto multiple computation nodes.
+
+Distributed simulation is currently enabled through integration with the software FMU-proxy. 
+Both FMI 1.0 and FMI 2.0 for Co-simulation is supported.
+
+The [Demo Cases](/demo-cases) include configuration for distributed co-simulation with FMU-Proxy, and this 
+[section](/cse-demo-app/user-guide#distributed-co-simulation-using-fmu-proxy) shows how it's done with the CSE Demo App.
+
+## FMU-proxy
 [FMU-proxy](https://github.com/NTNU-IHB/FMU-proxy) is an open-source framework 
 that enables language and platform independent access to FMUs. 
 In short, FMU-proxy provides remote procedure call (RPC) mapping to the FMI 2.0 
