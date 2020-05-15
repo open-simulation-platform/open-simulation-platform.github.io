@@ -17,6 +17,7 @@ The open-source software coined the CSE produced in the OSP JIP consists of the 
 - [CSE Demo App](./cse-demo-app/cse-demo-app)
 - [CSE Java-wrapper](./cse-java-wrapper)
 - [Model interface validator](./model-interface-validator)
+- [Kopl Configurator](./kopl)
 
 
 The conceptual architecture of the co-simulation is illustrated as in figure below. The models are connected using the standardized Functional Mock-up Interface (FMI) co-simulation interface. Based on the input-output variable mapping included in the configuration file, the OSP master algorithm routes the data between the models. 
