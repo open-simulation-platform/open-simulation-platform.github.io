@@ -6,6 +6,8 @@ has_toc: false
 nav_order: 2
 ---
 
+#### [cosim on GitHub](https://github.com/open-simulation-platform/cse-cli)
+
 # cosim CLI
 Cosim CLI is a command-line interface (CLI) to libcosim for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
 It has three primary use cases:
