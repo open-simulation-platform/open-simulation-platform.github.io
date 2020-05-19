@@ -3,7 +3,7 @@ layout: default
 title: "Results logging"
 permalink: /cse-core/logging
 has_toc: false
-parent: "CSE Core"
+parent: "libcosim"
 nav_order: 3
 ---
 # Results logging
@@ -11,7 +11,7 @@ nav_order: 3
 In order to log signal values from a simulation to data files, an output directory must be specified in the result folder field on the simulation setup. By
 default, all signals will be logged and persisted on every sample. There will be one file generated pr. simulator. This can quickly lead to a large
 amount of data being generated, so it is recommended instead specifying what signals to log using the configurable log format outlined below.
-CSE supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named "LogConfig.xml" (exactly
+`libcosim` supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named `LogConfig.xml` (exactly
 including case) and placed in the same folder as the simulators. 
 
 ```xml
