@@ -7,7 +7,14 @@ has_toc: false
 nav_order: 1
 ---
 
-#### [libcosim](https://github.com/open-simulation-platform/libcosim) and [libcosimc](https://github.com/open-simulation-platform/libcosimc) on GitHub
+<div style="text-align: right">
+    <b>
+        <a href="https://github.com/open-simulation-platform/libcosim">libcosim</a>
+        and  
+        <a href="https://github.com/open-simulation-platform/libcosimc">libcosimc</a>   
+        on GitHub
+    </b>
+</div>
 
 # libcosim
 The OSP co-simulation C/C++ libraries that orchestrates the co-simulation of models that conform to the Functional Mock-up Interface (FMI). 
