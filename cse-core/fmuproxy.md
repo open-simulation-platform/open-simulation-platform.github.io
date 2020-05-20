@@ -3,11 +3,11 @@ layout: default
 title: "Distributed co-simulation"
 permalink: /cse-core/fmuproxy
 has_toc: false
-parent: "CSE Core"
+parent: "libcosim"
 nav_order: 4
 ---
 # Distributed co-simulation
-CSE Core can run distributed co-simulation which allows you to:
+`libcosim` can run distributed co-simulation which allows you to:
 
 1. Run multiple instances of a model even though the FMU only allows it to be instantiated once.
 2. Run FMUs that are not compatible with your OS or bitness.
@@ -41,7 +41,7 @@ To see all available commands type:
 java -jar fmu-proxy.jar -h
  ```
 
-In the context of CSE, only the Thrift RPC option is supported.
+In the context of `libcosim`, only the Thrift RPC option is supported.
  
  
 The command `java -jar fmu-proxy.jar -thrift/tcp 9090`

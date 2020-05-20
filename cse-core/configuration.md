@@ -3,7 +3,7 @@ layout: default
 title: "Simulation configuration"
 permalink: /cse-core/configuration
 has_toc: false
-parent: "CSE Core"
+parent: "libcosim"
 nav_order: 1
 ---
 # Simulation configuration
@@ -133,4 +133,4 @@ As defined in the MSMI specification, `connections` are configured through varia
 
 Alternatively, co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also supported. The SSP standard is one of the standardization projects of the FMI standard. 
 The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10).
-In cse environment, “OspSystemStructure.xml” is recommended and prioritized when both the .xml and .ssd files are available. 
+`OspSystemStructure.xml` is recommended and prioritized when both the .xml and .ssd files are available. 

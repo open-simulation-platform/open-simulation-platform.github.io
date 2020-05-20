@@ -3,7 +3,7 @@ layout: default
 title: "Scenario"
 permalink: /cse-core/scenario
 has_toc: false
-parent: "CSE Core"
+parent: "libcosim"
 nav_order: 2
 ---
 # Scenario
