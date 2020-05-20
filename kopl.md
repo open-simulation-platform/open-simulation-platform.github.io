@@ -11,7 +11,7 @@ Kopl is a configurator to help set up and run a simulation. It can also be used 
 Kopl is not an open source software but can be freely used without any restrictions.
 
 <figure>
-<img src="/assets/img/kopl.png"> 
+<img src="/assets/img/Kopl.png"> 
 <figcaption>Kopl configurator </figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ See main menu->Tools->Preferences->CoSim configuration.
 When the simulation is done you should be able to see the results in the navigator and basic ploting is available.
 
 <figure>
-<img src="/assets/img/kopl-results.png"> 
+<img src="/assets/img/Kopl-results.png"> 
 <figcaption>Results after a simulation is done </figcaption>
 </figure>
 
