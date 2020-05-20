@@ -14,6 +14,12 @@ amount of data being generated, so it is recommended instead specifying what sig
 `libcosim` supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named `LogConfig.xml` (exactly
 including case) and placed in the same folder as the simulators. 
 
+| sub-element     | attribute | Description                                                                                                                              |
+| :--------------- | :------------| :-------------------------------------------------------------------------------------------------------------------------------------- |
+| <*simulator*>          | `name`  | Contains all variables to be logged, attribute `name` declares of the name of the variable.
+|         | `decimationFactor`  | attribute `decimationFactor` declares the sampling rate of the simulation results. For example, decimationFactor=1 means the results of every simulation step of the simulator are logged. And decimationFactor=10 means every 10th of the simulation results are logged. |
+| <*variable*>        | `name` | Declare the name of the variable.
+
 ```xml
 <simulators>
     <simulator name="model1" decimationFactor="10">

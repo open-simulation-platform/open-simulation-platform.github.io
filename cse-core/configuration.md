@@ -47,9 +47,9 @@ Each running simulator must be assigned to a model(fmu). One FMU can be used by 
 
 | attribute       | Description                                                                                                                              |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| *name*           | Define an unique name for each simulator.  |
-| *source*         | Source of the simulator, example below shows three different options to specify the path to a simulator.|
-| *stepSize*        | Simulation step size for this individual simulator, aka. micro time step size.|
+| `name`           | Define an unique name for each simulator.  |
+| `source`         | Source of the simulator, example below shows three different options to specify the path to a simulator.|
+| `stepSize`        | Simulation step size for this individual simulator, aka. micro time step size.|
 
 | sub-element      | attribute | Description                                                                                                                              |
 | :--------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
