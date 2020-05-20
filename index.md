@@ -12,7 +12,7 @@ The open-source software coined the CSE produced in the OSP JIP consists of the 
 
 {% include youtubePlayer.html id=page.youtubeId %}
 
-- [CSE Core](./cse-core/cse)
+- [CSE Core](libcosim/cse)
 - [CSE Command-line interface (CLI)](./cse-cli)
 - [CSE Demo App](./cse-demo-app/cse-demo-app)
 - [CSE Java-wrapper](./cse-java-wrapper)
