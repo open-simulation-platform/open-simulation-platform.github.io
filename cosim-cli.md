@@ -1,15 +1,20 @@
 ---
 layout: default
-title: "cosim CLI"
-permalink: /cosim-cli
+title: "cosim"
+permalink: /cosim
 has_toc: false
 nav_order: 2
 ---
 
-#### [cosim on GitHub](https://github.com/open-simulation-platform/cse-cli)
+<div style="text-align: right">
+    <b>
+        <a href="https://github.com/open-simulation-platform/cse-cli">cosim</a>
+        on GitHub
+    </b>
+</div>
 
-# cosim CLI
-Cosim CLI is a command-line interface (CLI) to libcosim for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
+# cosim
+`cosim` is a command-line interface (CLI) to libcosim for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
 It has three primary use cases:
 
 - Running simulations from other programs or scripts
@@ -22,7 +27,7 @@ With the CLI, the co-simulation library is used to enable co-simulation from the
 
 ## Functional specification
 
-cosim is able to perform the following tasks:
+`cosim` is able to perform the following tasks:
 
 - Run a simulation, where the system to simulate is specified as an SSP file.
 - Provide information about a model (usually an FMU).
