@@ -36,7 +36,7 @@ It's not harmful and you can allow it to run.*
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
-![foo](/assets/img/CSEuserguideFig1.png "Figure 1")
+![foo](/assets/img/UserguideFig1.png "Root folder and extracted files")
 
 >**Linux:**
 
@@ -57,7 +57,7 @@ It's not harmful and you can allow it to run.*
 4. Previously used configurations are available below.
 5. Click "Load simulation" to load the configuration.
 
-![foo](/assets/img/CSEuserguideFig2.png "Figure 2")
+![foo](/assets/img/UserguideFig2.png "Load a configuration")
 
 A typical configuration folder will contain simulation models (FMUs) and configuration files. 
 Connections between models and initialization values are configured through the files "OspSystemStructure.xml" or "SystemStructure.ssd". 
@@ -71,7 +71,7 @@ If you would like to load your simulation with the connections as defined on the
 1. After loading the configuration, the simulation models are shown on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
 
-![foo](/assets/img/CSEuserguideFig3.png "Figure 3")
+![foo](/assets/img/UserguideFig3.png "Navigating through simulation models and variables")
 
 [back to top](./user-guide#user-guide)
 
@@ -85,7 +85,7 @@ as the hardware allows).
 5. At the navigation bar, click on "Play/Pause" to start or pause the simulation.
 6. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
 
-![foo](/assets/img/CSEuserguideFig4.png "Figure 4")
+![foo](/assets/img/UserguideFig4.png "Control the simulation")
 
 [back to top](./user-guide#user-guide)
 
@@ -96,8 +96,8 @@ as the hardware allows).
 3. Select where to plot the variable from the list of available plots.
 4. Click the plot name to see the chart.
 
-![foo](/assets/img/CSEuserguideFig5.png "Figure 5")
-![foo](/assets/img/CSEuserguideFig6.png "Figure 6")
+![foo](/assets/img/UserguideFig5.png "Adding variables to a plot")
+![foo](/assets/img/UserguideFig6.png "Plot view")
 
 ### Configurable Plot
 Two types of plot are supported by the cosim-demo-application: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
@@ -148,7 +148,7 @@ It is possible to override any variable value.
 2. Type in the value and click the check icon to confirm the new value.
 3. Click the eraser symbol to remove the override.
 
-![foo](/assets/img/CSEuserguideFig7.png "Figure 7")
+![foo](/assets/img/UserguideFig7.png "Override variable values")
 
 [back to top](./user-guide#user-guide)
 
@@ -162,7 +162,7 @@ The scenario management allows to automatically change the value of variables at
 3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
 See more details on [libcosim](../cse-core/cse#scenario)
-![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
+![foo](/assets/img/UserguideFig9.png "Scenario view")
 
 [back to top](./user-guide#user-guide)
 
@@ -238,7 +238,7 @@ There are three different ways to specify the FMU source to be loaded by the fmu
 Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
 
 The cosim demo application distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
-![foo](/assets/img/CSEuserguideFig1.png "Figure 10")
+![foo](/assets/img/UserguideFig1.png "Root folder files")
 
 Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
 ```bash
@@ -257,6 +257,6 @@ Steps to run the cosim demo application with fmu-proxy:
 
 The image below shows the models loaded in the cosim demo application after they were loaded by the fmu-proxy server.  
 
-![foo](/assets/img/CSEuserguideFig11.png "Figure 11")
+![foo](/assets/img/UserguideFig11.png "Simulation models loaded through fmu-proxy")
 
 [back to top](./user-guide#user-guide)
