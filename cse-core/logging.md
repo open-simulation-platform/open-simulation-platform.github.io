@@ -11,7 +11,7 @@ nav_order: 3
 By default, all signals will be logged and persisted on every sample. There will be one file generated pr. simulator. This can quickly lead to a large
 amount of data being generated, so it is recommended instead specifying what signals to log using the configurable log format outlined below.
 `libcosim` supports basic configuration of specific signals to log from any simulator via an XML file. This file must be named `LogConfig.xml` (exactly
-including case) and placed in the same folder as the configuration file (OspSystemStructure.xml or SystemStructure.ssd). 
+including case) and placed in the same folder as the configuration file (`OspSystemStructure.xml` or `SystemStructure.ssd`). 
 
 | sub-element     | attribute | Description                                                                                                                              |
 | :--------------- | :------------| :-------------------------------------------------------------------------------------------------------------------------------------- |
@@ -32,5 +32,5 @@ including case) and placed in the same folder as the configuration file (OspSyst
 </simulators>
 ```
 
-The simulators to be logged must be enclosed in a <simulators> tag, and each signal must specify its name in separate <variable> tags under each <simulator>. Leaving out any <variable> tags on a <simulator> will lead to all variables for that simulator being logged. As aforementioned this could results in a large amount of data to be saved. 
-It helps to reduce the logged data by the optional attribute `decimationFactor` if not every sample data is required. Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in CSV format only, there is currently no support for binary or other log formats.
+The simulators to be logged must be enclosed in a `<simulators>` tag, and each signal must specify its name in separate `<variable>` tags under each `<simulator>`. Leaving out any `<variable>` tags on a `<simulator>` will lead to all variables for that simulator being logged. As aforementioned this could results in a large amount of data to be saved. 
+It helps to reduce the logged data by the optional attribute `decimationFactor` if not every sample data is required. Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in .csv format only, there is currently no support for binary or other log formats.

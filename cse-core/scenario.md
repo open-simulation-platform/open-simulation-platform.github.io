@@ -13,14 +13,14 @@ A scenario file defines the simulation scenario which shall be performed. This s
 | data       | element | Description                                                                                                                              |
 | :--------------- | :---------------| :-------------------------------------------------------------------------------------------------------------------------------------- |
 | `description`    |        | Commenting description of the simulation scenario.  |
-| `defaults`      |       | Contains the default attributes for the events, for example `model` `variable`and `action`, where all events apply to this variable in this model and have the same action type. Alternatively, the `model`, `variable` and `action` attributes can be included in individual event. |
-| |    `model`    | Declare which model the events are triggered.|
+| `defaults`      |       | Contains the default elements for the events, for example `model` `variable` and `action`, where all events apply to this variable in this model and have the same action type. Alternatively, the `model`, `variable` and `action` elements can be included in individual event. |
+| |    `model`    | Declares which model the events are triggered.|
 | |`action`        | Declares the action type which can be "override" , "bias" or "reset".|
+| |`variable`        | Declares the variable name to be updated at this event.|
 | `events`   |    | Contains all actions of this scenario including the time, the updated variable and the new value.|
-| |`time`        | Declare the time in second when the action takes place.|
-| |`variable`        | Declare the variable name to be updated at this event.|
-| | `value`        | Declare the updated value of the variable, "true" or "false" if it's a boolean type of variable. Action type "reset" doesn’t require value for the variables.|
-|   |   `end`   | Declare the stop time in seconds of the scenario. Naturally the stop time should be bigger than the last event time.|
+| |`time`        | Declares the time in second when the action takes place.|
+| | `value`        | Declares the updated value of the variable, "true" or "false" if it's a boolean type of variable. Action type "reset" doesn’t require value for the variables.|
+|   |   `end`   | Declares the stop time in seconds of the scenario. Naturally the stop time should be bigger than the last event time.|
 
 **Scenario.json**
 ```json
