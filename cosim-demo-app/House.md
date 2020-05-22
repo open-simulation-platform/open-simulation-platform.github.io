@@ -4,7 +4,7 @@ title: "House"
 parent: "Demo Cases"
 nav_order: 3
 has_toc: false
-permalink: /cse-demo-app/House
+permalink: /cosim-demo-app/House
 ---
 
 # CSE demo application - House
@@ -45,7 +45,7 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 |        |    `T_heatStop`     | `T_room2`    |    `roomStates`   |
 |        |    `transferTime`     |    |       |
 
-## Simulation using the cse-demo-app
+## Simulation using the cosim-demo-app
 
 Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
 

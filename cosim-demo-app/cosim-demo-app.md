@@ -1,15 +1,22 @@
 ---
 layout: default
-title: "CSE Demo App"
+title: "cosim demo app"
 has_children: true
-permalink: /cse-demo-app/cse-demo-app
+permalink: /cosim-demo-app/cosim-demo-app
 has_toc: false
 nav_order: 3
 ---
 
-# CSE Demo App
+<div style="text-align: right">
+    <b>
+        <a href="https://github.com/open-simulation-platform/cosim-demo-app">cosim-demo-app</a>
+        on GitHub
+    </b>
+</div>
 
-Load a configuration, control the simulation or explore in a easy way some of the features included in the CSE-library. The demo application was developed to showcase how the CSE co-simulation library can be used in an application and to provide a graphical user interface to manage co-simulations. 
+# cosim demo app
+
+Load a configuration, control the simulation or explore in a easy way some of the features included in libcosim. The demo application was developed to showcase how the library can be used in an application and to provide a graphical user interface to manage co-simulations. 
 
 There are options for real time execution or simulation in free mode (as fast as the hardware allows). During simulation, the user can observe simulation variables, manipulate these and visualise the results in charts. 
 A scenario management feature allows change of the simulation variables automatically based on a scenario file. It is also possible to log to file the simulation variable values of all models.
@@ -23,4 +30,4 @@ Main features covered by the demo-app:
 - [Run pre-configured scenarios](./user-guide#run-scenarios)
 - [Log simulation results to file](./user-guide#log-simulation-results)
 
-More information on how to use the CSE-demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
+More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.

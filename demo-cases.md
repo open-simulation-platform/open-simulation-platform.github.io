@@ -9,9 +9,9 @@ has_toc: false
 
 # Demo Cases
 
-- [DPShip](./cse-demo-app/DPShip)
-- [Quarter-Truck](./cse-demo-app/Quarter-Truck)
-- [House](./cse-demo-app/House)
+- [DPShip](./cosim-demo-app/DPShip)
+- [Quarter-Truck](./cosim-demo-app/Quarter-Truck)
+- [House](./cosim-demo-app/House)
 
 
 ## Demo simulation models

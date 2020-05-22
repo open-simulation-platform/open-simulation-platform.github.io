@@ -14,7 +14,7 @@ The open-source software coined the CSE produced in the OSP JIP consists of the 
 
 - [CSE Core](./cse-core/cse)
 - [CSE Command-line interface (CLI)](./cse-cli)
-- [CSE Demo App](./cse-demo-app/cse-demo-app)
+- [cosim demo app](./cosim-demo-app/cosim-demo-app)
 - [CSE Java-wrapper](./cse-java-wrapper)
 - [Model interface validator](./model-interface-validator)
 - [Kopl Configurator](./kopl)

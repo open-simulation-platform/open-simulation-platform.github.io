@@ -4,7 +4,7 @@ title: "DPShip"
 parent: "Demo Cases"
 nav_order: 1
 has_toc: false
-permalink: /cse-demo-app/DPShip
+permalink: /cosim-demo-app/DPShip
 ---
 
 # CSE demo application - DP Ship
@@ -254,9 +254,9 @@ ThMPC.refMz             <-  DPController.ControlMz
 
 ```
 
-## Simulation using the cse-demo-app
+## Simulation using the cosim-demo-app
 
-User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.
+User guide of the cse demo application, i.e., cse-server-go can be found [cosim-demo-app](cosim-demo-app.md). Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.
 
 ![foo](/assets/img/DPShipFig1.png "Figure 1")
 ![foo](/assets/img/DPShipFig2.png "Figure 2")

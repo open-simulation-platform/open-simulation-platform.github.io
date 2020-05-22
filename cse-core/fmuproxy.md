@@ -17,7 +17,7 @@ Distributed simulation is currently enabled through integration with the softwar
 Both FMI 1.0 and FMI 2.0 for Co-simulation is supported.
 
 The [Demo Cases](/demo-cases) include configuration for distributed co-simulation with FMU-Proxy, and this 
-[section](/cse-demo-app/user-guide#distributed-co-simulation-using-fmu-proxy) shows how it's done with the CSE Demo App.
+[section](/cosim-demo-app/user-guide#distributed-co-simulation-using-fmu-proxy) shows how it's done with the CSE Demo App.
 
 ## FMU-proxy
 [FMU-proxy](https://github.com/NTNU-IHB/FMU-proxy) is an open-source framework 

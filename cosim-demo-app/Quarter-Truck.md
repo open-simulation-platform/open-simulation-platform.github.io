@@ -4,7 +4,7 @@ title: "Quarter-Truck"
 parent: "Demo Cases"
 nav_order: 2
 has_toc: false
-permalink: /cse-demo-app/Quarter-Truck
+permalink: /cosim-demo-app/Quarter-Truck
 ---
 
 # CSE demo application - Quarter-Truck
@@ -62,8 +62,8 @@ The accuracy can be improved by applying advanced master algorithms provided var
 <figcaption>Fig.4 Displacement of the wheel and chassis with ECCO</figcaption>
 </figure>
 
-## Simulation using cse-demo-app 
-User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 5 shows the demo application set up and Figure 6 shows the time series of the simulation output.
+## Simulation using cosim-demo-app 
+User guide of the cse demo application, i.e., cse-server-go can be found [cosim-demo-app](cosim-demo-app.md). Figure 5 shows the demo application set up and Figure 6 shows the time series of the simulation output.
 
 <figure>
 <img src="/assets/img/QuarterTruckFig5.png" > 
