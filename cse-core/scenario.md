@@ -10,7 +10,7 @@ nav_order: 2
 
 A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file, which can be in the format of .json or .yml.
 
-| attribute        | attribute  | Description                                                                                                                              |
+| data       | element | Description                                                                                                                              |
 | :--------------- | :---------------| :-------------------------------------------------------------------------------------------------------------------------------------- |
 | `description`    |        | Commenting description of the simulation scenario.  |
 | `defaults`      |       | Contains the default attributes for the events, for example `model` `variable`and `action`, where all events apply to this variable in this model and have the same action type. Alternatively, the `model`, `variable` and `action` attributes can be included in individual event. |
@@ -20,11 +20,11 @@ A scenario file defines the simulation scenario which shall be performed. This s
 | |`time`        | Declare the time in second when the action takes place.|
 | |`variable`        | Declare the variable name to be updated at this event.|
 | | `value`        | Declare the updated value of the variable, "true" or "false" if it's a boolean type of variable. Action type "reset" doesn’t require value for the variables.|
-| `end`  |      | Declare the stop time in seconds of the scenario. Naturally the stop time should be bigger than the last event time.|
+|   |   `end`   | Declare the stop time in seconds of the scenario. Naturally the stop time should be bigger than the last event time.|
 
 **Scenario.json**
 ```json
-{
+{ "description": "description of the scenario",
   "defaults": {
     "model": "slave uno",
     "variable": "realOut",
