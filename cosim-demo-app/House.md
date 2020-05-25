@@ -7,19 +7,14 @@ has_toc: false
 permalink: /cosim-demo-app/House
 ---
 
-# CSE demo application - House
-This file contains a minimal description of the House demo case.
+# House
 
-## Introduction
 This demo case simulates the temperature deviations of a house which consists of two rooms.  
 
 ## Model Description
 A simplified model represents the heat exchange dynamics of a house as shown in Figure 1.  
 
-<figure>
-<img src="/assets/img/HouseFig1.png" width="400"> 
-<figcaption>Fig.1 A simplified house model</figcaption>
-</figure>
+![foo](/assets/img/HouseFig1.png "Fig.1 A simplified house model")
 
 **Table 1:** *List of FMUs of the house model and their input/output variables for connection.*
 
@@ -45,10 +40,7 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 |        |    `T_heatStop`     | `T_room2`    |    `roomStates`   |
 |        |    `transferTime`     |    |       |
 
-## Simulation using the cosim-demo-app
+Figure 2 shows the simulation results of the temperature of each room over time.
+![foo](/assets/img/HouseFig3.png "Simulation results of Room1 and Room2 temperature")
 
-Figure 2 shows the demo application set up. Figure 3 and Figure 4 shows the time series of the simulation output, specifically, the room temperatures and their variations.
-
-![foo](/assets/img/HouseFig2.png "Figure 2")
-![foo](/assets/img/HouseFig3.png "Figure 3")
-![foo](/assets/img/HouseFig4.png "Figure 4")
+More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.

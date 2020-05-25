@@ -7,21 +7,18 @@ has_toc: false
 permalink: /cosim-demo-app/Quarter-Truck
 ---
 
-# CSE demo application - Quarter-Truck
+# Quarter-Truck
 
 ## System Description
 
-This example describes a low-level test case for the performance of the cse in terms of accuracy and efficiency. 
-Figure 1 shows a simplified model of a quarter truck with two masses mWheel and mChassis representing the mass of wheel and chassis respectively. Both masses have single vertical degree of freedom and coupled by linear spring-damper systems representing the suspension force and tire force. The ground profile is give as external input. 
+This example describes a low-level test case for the performance of libcosim in terms of accuracy and efficiency. 
+Figure 1 shows a simplified model of a quarter truck with two masses mWheel and mChassis representing the mass of wheel and chassis respectively. Both masses have a single vertical degree of freedom coupled by a linear spring-damper system representing the suspension force and tire force. The ground profile is given as external input. 
 
-<figure>
-<img src="/assets/img/QuarterTruckFig1.png" width="500"> 
-<figcaption>Fig.1 A simplified quarter truck model</figcaption>
-</figure>
+![foo](/assets/img/QuarterTruckFig1.png "Fig.1 A simplified quarter truck model")
     
 ## Model Description
 
-For co-simulation, three FMUs are generated namely the chassis, wheel and ground. The ground and chassis each have one variable group for connection to the wheel which has two variable groups that are commutative to those of the ground and chassis. Table 1 shows the connections for these variables. Specifically for this example, the first element in the variable name indicates which fmu it belongs to. 
+For co-simulation, three FMUs are generated namely the chassis, wheel and ground. The ground and chassis each have one variable group for connecting to the wheel which has two variable groups that are commutative to those of the ground and chassis. Table 1 shows the connections for these variables. Specifically for this example, the first element in the variable name indicates which fmu it belongs to. 
 The local default parameters used in the model are listed in Table 2.
 
 **Table 1:** *Input and output variables of the quarter truck fmus for connection*
@@ -46,33 +43,14 @@ The local default parameters used in the model are listed in Table 2.
 |  `dChassis`     |  1000 Nsm^-1      |Chassis Damper Coefficient         |
 
 ## Simulation Results 
-The following scenario is performed as example. The system starts from equilibrium state where *zWheel* = *zChassis* = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. 
-<figure>
-<img src="/assets/img/QuarterTruckFig2.png" width="500" >
-  <figcaption>Fig.2 Displacement of the wheel and chassis in cse</figcaption>
-</figure>
-<figure>
-<img src="/assets/img/QuarterTruckFig3.png" width="500" > 
-<figcaption>Fig.3 Displacement of the wheel and chassis in cse</figcaption>
-</figure>
+The following scenario is performed as example: The system starts from equilibrium state where *zWheel* = *zChassis* = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. 
+![foo](/assets/img/QuarterTruckFig2.png "Fig.2 Displacement of the wheel and chassis in libcosim")
+![foo](/assets/img/QuarterTruckFig3.png "Fig.3 Displacement of the wheel and chassis in libcosim")
 
 The accuracy can be improved by applying advanced master algorithms provided variable co-simulation time steps, and optionally th support of setting/getting derivatives, getting/setting states. In order to enforce reliable macro-step control algorithms, error estimation is needed. Classic Richardson extrapolation and a modified error estimator is described in [1]. Figure 4 show the results of using an energy-based algorithm (ECCO) for error correction [2].     
-<figure>
-<img src="/assets/img/QuarterTruckFig4.png" > 
-<figcaption>Fig.4 Displacement of the wheel and chassis with ECCO</figcaption>
-</figure>
+![foo](/assets/img/QuarterTruckFig4.png "Fig.4 Displacement of the wheel and chassis with ECCO")
 
-## Simulation using cosim-demo-app 
-User guide of the cse demo application, i.e., cse-server-go can be found [cosim-demo-app](cosim-demo-app.md). Figure 5 shows the demo application set up and Figure 6 shows the time series of the simulation output.
-
-<figure>
-<img src="/assets/img/QuarterTruckFig5.png" > 
-<figcaption>Fig.5 Quarter truck case in cse demo application setup </figcaption>
-</figure>
-<figure>
-<img src="/assets/img/QuarterTruckFig6.png" > 
-<figcaption>Fig.6 Displacement of the wheel and chassis in cse demo application </figcaption>
-</figure>
+More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
 
 ## References 
 [1] Arnold, M., Clauss, C., & Schierz, T. (2014). Error analysis and error estimates for co-simulation in FMI for model exchange and co-simulation V2. 0. In Progress in Differential-Algebraic Equations (pp. 107-125). Springer, Berlin, Heidelberg.
