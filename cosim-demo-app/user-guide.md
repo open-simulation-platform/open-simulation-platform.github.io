@@ -1,9 +1,9 @@
 ---
 layout: default
 title: "User guide"
-permalink: /cse-demo-app/user-guide
+permalink: /cosim-demo-app/user-guide
 has_toc: false
-parent: "CSE Demo App"
+parent: "cosim demo app"
 ---
 
 # User guide
@@ -25,24 +25,21 @@ Features covered in this user guide:
 
 ## Download and install 
 
-*Antivirus alert: Be aware that your virus protection software might react to the cse application. 
-It's not harmful and you can allow it to run.*
+**Windows:**
 
->**Windows:**
-
-1. [Download](https://github.com/open-simulation-platform/cse-server-go/releases) the CSE demo application.
+1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract the files and you will have a root folder looking like the figure below
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the demo configuration for CSE (dp-ship is one of the examples included). 
+3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case. 
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
-![foo](/assets/img/CSEuserguideFig1.png "Figure 1")
+![foo](/assets/img/UserguideFig1.png "Root folder and extracted files")
 
->**Linux:**
+**Linux:**
 
-1. [Download](https://github.com/open-simulation-platform/cse-server-go/releases) the CSE demo application.
-2. Extract archive: tar -xzvf cse-server-go-vX.Y.Z.tar.gz
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the demo configuration for CSE (dp-ship is one of the examples included).
+1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
+2. Extract archive: tar -xzvf cosim-demo-app-vX.Y.Z.tar.gz
+3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case.
 4. Extract the demo configuration
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
@@ -52,17 +49,17 @@ It's not harmful and you can allow it to run.*
 ## Load a Configuration
 *Note: Each item below is highlighted in the figure below with its corresponding number.*
 1. Switch to your web browser at url http://localhost:8000.
-2. Enter the path to the dp-ship folder on your machine (for example: C:\cse-demos\dp-ship\) 
+2. Enter the path to the dp-ship folder on your machine (for example: C:\cosim-demos\dp-ship\) 
 3. Enter the path to a directory where you want the logs to be written. Leave it blank to disable file logging.
 4. Previously used configurations are available below.
 5. Click "Load simulation" to load the configuration.
 
-![foo](/assets/img/CSEuserguideFig2.png "Figure 2")
+![foo](/assets/img/UserguideFig2.png "Load a configuration")
 
 A typical configuration folder will contain simulation models (FMUs) and configuration files. 
 Connections between models and initialization values are configured through the files "OspSystemStructure.xml" or "SystemStructure.ssd". 
 If your configuration directory contains both ("OspSystemStructure.xml" and a "SystemStructure.ssd"), the .xml file will be prioritized. 
-If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cse-demos\dp-ship\SystemStructure.ssd)
+If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cosim-demos\dp-ship\SystemStructure.ssd)
 
 [back to top](./user-guide#user-guide)
 
@@ -71,7 +68,7 @@ If you would like to load your simulation with the connections as defined on the
 1. After loading the configuration, the simulation models are shown on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
 
-![foo](/assets/img/CSEuserguideFig3.png "Figure 3")
+![foo](/assets/img/UserguideFig3.png "Navigating through simulation models and variables")
 
 [back to top](./user-guide#user-guide)
 
@@ -85,7 +82,7 @@ as the hardware allows).
 5. At the navigation bar, click on "Play/Pause" to start or pause the simulation.
 6. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
 
-![foo](/assets/img/CSEuserguideFig4.png "Figure 4")
+![foo](/assets/img/UserguideFig4.png "Control the simulation")
 
 [back to top](./user-guide#user-guide)
 
@@ -96,11 +93,11 @@ as the hardware allows).
 3. Select where to plot the variable from the list of available plots.
 4. Click the plot name to see the chart.
 
-![foo](/assets/img/CSEuserguideFig5.png "Figure 5")
-![foo](/assets/img/CSEuserguideFig6.png "Figure 6")
+![foo](/assets/img/UserguideFig5.png "Adding variables to a plot")
+![foo](/assets/img/UserguideFig6.png "Plot view")
 
 ### Configurable Plot
-Two types of plot are supported by the cse-demo-application: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
+Two types of plot are supported by the _cosim demo app_: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
 
 In order to quickly setup the simulation environment, it is possible to store the plot configuration in a file. Start by creating a file named "PlotConfig.json" in the configuration folder. The file content is as defined in the example below. When the configuration is loaded the pre-defined plots will be automatically generated. In this configuration, simulator refers to the simulation models.
 
@@ -148,7 +145,7 @@ It is possible to override any variable value.
 2. Type in the value and click the check icon to confirm the new value.
 3. Click the eraser symbol to remove the override.
 
-![foo](/assets/img/CSEuserguideFig7.png "Figure 7")
+![foo](/assets/img/UserguideFig7.png "Override variable values")
 
 [back to top](./user-guide#user-guide)
 
@@ -161,18 +158,18 @@ The scenario management allows to automatically change the value of variables at
 2. The "Events" section show a list containing when each variable value will be modified and to which value.
 3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
-See more details on [cse-core.](../libcosim/cse#scenario)
-![foo](/assets/img/CSEuserguideFig9.png "Figure 9")
+See more details on [libcosim](../libcosim/scenario)
+![foo](/assets/img/UserguideFig9.png "Scenario view")
 
 [back to top](./user-guide#user-guide)
 
 ## Log simulation results
 In order to log to file signal values from a simulation, an output directory must be specified in the "Log folder" field when [loading a configuration](./user-guide#load-a-configuration). By
 default, all signals will be logged and persisted on every sample. There will be one file generated per simulator (simulation model). This can quickly lead to a large
-amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here](../libcosim/cse#results-logging).
+amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here](../libcosim/logging).
 
-CSE supports a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
-(include the camel casing) and placed in the same folder as the configuration. See more details on [cse-core.](../libcosim/cse#results-logging)
+There is support for a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
+(include the camel casing) and placed in the same folder as the configuration. See more details on [libcosim.](../libcosim/logging)
 
 [back to top](./user-guide#user-guide)
 
@@ -237,8 +234,8 @@ There are three different ways to specify the FMU source to be loaded by the fmu
 
 Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
 
-The CSE demo application distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
-![foo](/assets/img/CSEuserguideFig1.png "Figure 10")
+The _cosim demo app_ distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
+![foo](/assets/img/UserguideFig1.png "Root folder files")
 
 Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
 ```bash
@@ -250,13 +247,13 @@ where -thrift/tcp 9090 tells fmu-proxy to start a server listening to port 9090,
 Multiple servers can be started on the same PC, but remember to use unique port numbers for each one. Please also check that this port matches the
 one(s) used in the configuration file. 
 
-Steps to run the CSE demo application with fmu-proxy:
+Steps to run the _cosim demo app_ with fmu-proxy:
 1. Execute "run-fmuproxy.cmd" to start the fmu-proxy server. 
-2. Start the CSE demo application.
+2. Start the _cosim demo app_.
 3. Load the configuration for DP-ship available under the fmu-proxy folder.
 
-The image below shows the models loaded in the CSE demo application after they were loaded by the fmu-proxy server.  
+The image below shows the models loaded in the _cosim demo app_ after they were loaded by the fmu-proxy server.  
 
-![foo](/assets/img/CSEuserguideFig11.png "Figure 11")
+![foo](/assets/img/UserguideFig11.png "Simulation models loaded through fmu-proxy")
 
 [back to top](./user-guide#user-guide)

@@ -1,18 +1,15 @@
 ---
 layout: default
-title: "DPShip"
+title: "DP-Ship"
 parent: "Demo Cases"
 nav_order: 1
 has_toc: false
-permalink: /cse-demo-app/DPShip
+permalink: /cosim-demo-app/DPShip
 ---
 
-# CSE demo application - DP Ship
+# DP-Ship
 
-This file contains a minimal description of the DP-vessel demonstrator.
-
-## Introduction
-This co-simulation demonstrator is based on the work presented in [1,2], and the reader is referred to these references and the references within for more details. Hence, any in-depth details regarding the submodels are considered out of scope here, except information useful for running the co-simulation demonstrator.
+This co-simulation demonstrator is based in the work presented in [1,2], and the reader is referred to these references and the references within for more details. Hence, any in-depth details regarding the submodels are considered out of scope here, except information useful for running the co-simulation demonstrator.
 
 The demonstrator includes five different fmus, and a short description of these are given in Table 1.
 
@@ -254,13 +251,7 @@ ThMPC.refMz             <-  DPController.ControlMz
 
 ```
 
-## Simulation using the cse-demo-app
-
-User guide of the cse demo application, i.e., cse-server-go can be found [cse-demo-app](cse-demo-app.md). Figure 1 shows the demo application set up. Figure 2 and Figure 3 shows the time series of the simulation output, specifically, the north-east position and the heading of the ship.
-
-![foo](/assets/img/DPShipFig1.png "Figure 1")
-![foo](/assets/img/DPShipFig2.png "Figure 2")
-![foo](/assets/img/DPShipFig3.png "Figure 3")
+More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the DP-Ship demo test case was used as an example.
 
 ## References and Footnotes
 
