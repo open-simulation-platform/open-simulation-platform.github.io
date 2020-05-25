@@ -11,7 +11,7 @@ permalink: /cosim-demo-app/Quarter-Truck
 
 ## System Description
 
-This example describes a low-level test case for the performance of libcosim in terms of accuracy and efficiency. 
+This example describes a low-level test case for the performance of libcosim in terms of accuracy and efficiency [1]. 
 Figure 1 shows a simplified model of a quarter truck with two masses mWheel and mChassis representing the mass of wheel and chassis respectively. Both masses have a single vertical degree of freedom coupled by a linear spring-damper system representing the suspension force and tire force. The ground profile is given as external input. 
 
 ![foo](/assets/img/QuarterTruckFig1.png "Fig.1 A simplified quarter truck model")
@@ -43,16 +43,13 @@ The local default parameters used in the model are listed in Table 2.
 |  `dChassis`     |  1000 Nsm^-1      |Chassis Damper Coefficient         |
 
 ## Simulation Results 
-The following scenario is performed as example: The system starts from equilibrium state where *zWheel* = *zChassis* = 0. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show the vertical displacements of the wheel and the chassis. We accept the result using very fine time step (0.001s) as the benchmark and increased time step (0.01s) for co-simulation. 
-![foo](/assets/img/QuarterTruckFig2.png "Fig.2 Displacement of the wheel and chassis in libcosim")
-![foo](/assets/img/QuarterTruckFig3.png "Fig.3 Displacement of the wheel and chassis in libcosim")
+The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show simulation using the cosim-demo-app and the results of the vertical displacements of the wheel and the chassis.
 
-The accuracy can be improved by applying advanced master algorithms provided variable co-simulation time steps, and optionally th support of setting/getting derivatives, getting/setting states. In order to enforce reliable macro-step control algorithms, error estimation is needed. Classic Richardson extrapolation and a modified error estimator is described in [1]. Figure 4 show the results of using an energy-based algorithm (ECCO) for error correction [2].     
-![foo](/assets/img/QuarterTruckFig4.png "Fig.4 Displacement of the wheel and chassis with ECCO")
+![foo](/assets/img/QuarterTruckFig5.png "Fig.2 Displacement of the wheel and chassis in libcosim")
+
+![foo](/assets/img/QuarterTruckFig6.png "Fig.3 Displacement of the wheel and chassis in libcosim")
 
 More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
 
 ## References 
 [1] Arnold, M., Clauss, C., & Schierz, T. (2014). Error analysis and error estimates for co-simulation in FMI for model exchange and co-simulation V2. 0. In Progress in Differential-Algebraic Equations (pp. 107-125). Springer, Berlin, Heidelberg.
-
-[2] Sadjina, S., Kyllingstad, L. T., Rindarøy, M., Skjong, S., Æsøy, V., and Pedersen, E. (September 12, 2018). "Distributed Co-simulation of Maritime Systems and Operations." ASME. J. Offshore Mech. Arct. Eng. February 2019; 141(1): 011302. https://doi.org/10.1115/1.4040473
