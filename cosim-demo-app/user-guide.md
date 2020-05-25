@@ -27,9 +27,9 @@ Features covered in this user guide:
 
 **Windows:**
 
-1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the cosim demo application.
+1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract the files and you will have a root folder looking like the figure below
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the demo configuration for cosim (dp-ship is one of the examples included). 
+3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case. 
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
@@ -37,9 +37,9 @@ Features covered in this user guide:
 
 **Linux:**
 
-1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the cosim demo application.
+1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract archive: tar -xzvf cosim-demo-app-vX.Y.Z.tar.gz
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the demo configuration for cosim (dp-ship is one of the examples included).
+3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case.
 4. Extract the demo configuration
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
@@ -97,7 +97,7 @@ as the hardware allows).
 ![foo](/assets/img/UserguideFig6.png "Plot view")
 
 ### Configurable Plot
-Two types of plot are supported by the cosim-demo-application: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
+Two types of plot are supported by the _cosim demo app_: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
 
 In order to quickly setup the simulation environment, it is possible to store the plot configuration in a file. Start by creating a file named "PlotConfig.json" in the configuration folder. The file content is as defined in the example below. When the configuration is loaded the pre-defined plots will be automatically generated. In this configuration, simulator refers to the simulation models.
 
@@ -168,7 +168,7 @@ In order to log to file signal values from a simulation, an output directory mus
 default, all signals will be logged and persisted on every sample. There will be one file generated per simulator (simulation model). This can quickly lead to a large
 amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here](../libcosim/logging).
 
-cosim supports a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
+There is support for a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
 (include the camel casing) and placed in the same folder as the configuration. See more details on [libcosim.](../libcosim/logging)
 
 [back to top](./user-guide#user-guide)
@@ -234,7 +234,7 @@ There are three different ways to specify the FMU source to be loaded by the fmu
 
 Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
 
-The cosim demo application distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
+The _cosim demo app_ distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
 ![foo](/assets/img/UserguideFig1.png "Root folder files")
 
 Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
@@ -247,12 +247,12 @@ where -thrift/tcp 9090 tells fmu-proxy to start a server listening to port 9090,
 Multiple servers can be started on the same PC, but remember to use unique port numbers for each one. Please also check that this port matches the
 one(s) used in the configuration file. 
 
-Steps to run the cosim demo application with fmu-proxy:
+Steps to run the _cosim demo app_ with fmu-proxy:
 1. Execute "run-fmuproxy.cmd" to start the fmu-proxy server. 
-2. Start the cosim demo application.
+2. Start the _cosim demo app_.
 3. Load the configuration for DP-ship available under the fmu-proxy folder.
 
-The image below shows the models loaded in the cosim demo application after they were loaded by the fmu-proxy server.  
+The image below shows the models loaded in the _cosim demo app_ after they were loaded by the fmu-proxy server.  
 
 ![foo](/assets/img/UserguideFig11.png "Simulation models loaded through fmu-proxy")
 

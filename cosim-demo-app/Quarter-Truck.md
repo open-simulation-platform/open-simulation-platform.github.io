@@ -50,7 +50,7 @@ The following scenario is performed as example: The system starts from equilibri
 The accuracy can be improved by applying advanced master algorithms provided variable co-simulation time steps, and optionally th support of setting/getting derivatives, getting/setting states. In order to enforce reliable macro-step control algorithms, error estimation is needed. Classic Richardson extrapolation and a modified error estimator is described in [1]. Figure 4 show the results of using an energy-based algorithm (ECCO) for error correction [2].     
 ![foo](/assets/img/QuarterTruckFig4.png "Fig.4 Displacement of the wheel and chassis with ECCO")
 
-More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
+More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
 
 ## References 
 [1] Arnold, M., Clauss, C., & Schierz, T. (2014). Error analysis and error estimates for co-simulation in FMI for model exchange and co-simulation V2. 0. In Progress in Differential-Algebraic Equations (pp. 107-125). Springer, Berlin, Heidelberg.

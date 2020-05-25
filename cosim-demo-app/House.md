@@ -16,7 +16,7 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 
 ![foo](/assets/img/HouseFig1.png "Fig.1 A simplified house model")
 
-**Table 1:** *List of FMUs of the house model and their input/output variables for connection.*
+**Table 1:** *List of FMUs of the house configuration and their input/output variables for connection.*
 
 | FMU Name      | Local Parameters    | Input      | Output        |
 | :---          |:---:                | :---:      | :---:         |
@@ -43,4 +43,4 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 Figure 2 shows the simulation results of the temperature of each room over time.
 ![foo](/assets/img/HouseFig3.png "Simulation results of Room1 and Room2 temperature")
 
-More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
+More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.

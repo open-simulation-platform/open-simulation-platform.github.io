@@ -9,7 +9,7 @@ nav_order: 3
 
 <div style="text-align: right">
     <b>
-        <a href="https://github.com/open-simulation-platform/cosim-demo-app">cosim-demo-app</a>
+        <a href="https://github.com/open-simulation-platform/cosim-demo-app">cosim demo app</a>
         on GitHub
     </b>
 </div>
@@ -30,4 +30,4 @@ Main features covered by the demo-app:
 - [Run pre-configured scenarios](./user-guide#run-scenarios)
 - [Log simulation results to file](./user-guide#log-simulation-results)
 
-More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
+More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.

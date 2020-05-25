@@ -251,7 +251,7 @@ ThMPC.refMz             <-  DPController.ControlMz
 
 ```
 
-More information on how to use the cosim demo application is available in the [user guide](./user-guide), where the DP-Ship demo test case was used as an example.
+More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the DP-Ship demo test case was used as an example.
 
 ## References and Footnotes
 
