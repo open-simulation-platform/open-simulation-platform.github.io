@@ -25,10 +25,7 @@ Features covered in this user guide:
 
 ## Download and install 
 
-*Antivirus alert: Be aware that your virus protection software might react to the cosim application. 
-It's not harmful and you can allow it to run.*
-
->**Windows:**
+**Windows:**
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the cosim demo application.
 2. Extract the files and you will have a root folder looking like the figure below
@@ -38,7 +35,7 @@ It's not harmful and you can allow it to run.*
 6. The application should open in your web browser at url http://localhost:8000.
 ![foo](/assets/img/UserguideFig1.png "Root folder and extracted files")
 
->**Linux:**
+**Linux:**
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the cosim demo application.
 2. Extract archive: tar -xzvf cosim-demo-app-vX.Y.Z.tar.gz
@@ -161,7 +158,7 @@ The scenario management allows to automatically change the value of variables at
 2. The "Events" section show a list containing when each variable value will be modified and to which value.
 3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
-See more details on [libcosim](../cse-core/cse#scenario)
+See more details on [libcosim](../libcosim/scenario)
 ![foo](/assets/img/UserguideFig9.png "Scenario view")
 
 [back to top](./user-guide#user-guide)
@@ -169,10 +166,10 @@ See more details on [libcosim](../cse-core/cse#scenario)
 ## Log simulation results
 In order to log to file signal values from a simulation, an output directory must be specified in the "Log folder" field when [loading a configuration](./user-guide#load-a-configuration). By
 default, all signals will be logged and persisted on every sample. There will be one file generated per simulator (simulation model). This can quickly lead to a large
-amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here](../cse-core/cse#results-logging).
+amount of data being stored, so it is recommended to specify which signals to log using the configurable log format as described [here](../libcosim/logging).
 
 cosim supports a basic configuration containing specific signals to be logged from any simulator model via an XML file. This file must be named "LogConfig.xml" 
-(include the camel casing) and placed in the same folder as the configuration. See more details on [libcosim.](../cse-core/cse#results-logging)
+(include the camel casing) and placed in the same folder as the configuration. See more details on [libcosim.](../libcosim/logging)
 
 [back to top](./user-guide#user-guide)
 
@@ -221,7 +218,7 @@ Note: The new MSMI connection types are not supported when using the SSP standar
 ## Distributed co-simulation using fmu-proxy
 
 Distributed simulation using fmu-proxy allows you to run multiple instances of a model, run models that are not compatible
-with your operational system or to parallelize the workload onto multiple computation nodes. See more details on [fmu-proxy.](../cse-core/fmuproxy)
+with your operational system or to parallelize the workload onto multiple computation nodes. See more details on [fmu-proxy.](../libcosim/fmuproxy)
 
 The demo case dp-ship has a specific configuration to be used with fmu-proxy (see the file “OspSystemStructure.xml” or “SystemStructure.ssd” 
 under the folder *\fmuproxy*). Note that the only difference when comparing to the regular configuration is related to the source of the FMU file. 
@@ -245,7 +242,7 @@ Use the bundled startup script or start the server executable fmu-proxy.jar from
 java -jar fmu-proxy.jar -thrift/tcp=9090
 ```
 
-where -thrift/tcp 9090 tells fmu-proxy to start a server listening to port 9090, see more details on [fmu-proxy](../cse-core/fmuproxy).
+where -thrift/tcp 9090 tells fmu-proxy to start a server listening to port 9090, see more details on [fmu-proxy](../libcosim/fmuproxy).
 
 Multiple servers can be started on the same PC, but remember to use unique port numbers for each one. Please also check that this port matches the
 one(s) used in the configuration file. 
