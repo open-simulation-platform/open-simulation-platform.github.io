@@ -13,7 +13,7 @@ nav_order: 4
 </div>
 
 # cosim4j
-The Java wrapper - _cosim4j_ - enables Java applications to make use of `libcosim`.
+The Java wrapper - _cosim4j_ - enables Java applications to make use of _libcosim_.
 It uses the Java Native Interface (JNI) to efficiently interact with _libcosim_. 
 To make it accessible, all native dependencies for Linux and Windows have been pre-built and are bundled with the library.
 
@@ -27,7 +27,7 @@ tool - the model can be exported as it is. This is possible thanks
 to deep integration with [FMI4j](https://github.com/NTNU-IHB/FMI4j){:target="_blank"}, a software package for
 dealing with FMUs on the JVM.
  
-The code below shows the minimal required code to write FMI 2.0 compatible models in Java using FMI4j.
+The code below shows the minimal required to write FMI 2.0 compatible models in Java using FMI4j.
 
 ```java
 public class JavaSlave extends Fmi2Slave {
