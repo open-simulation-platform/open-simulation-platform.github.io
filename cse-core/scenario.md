@@ -10,7 +10,7 @@ nav_order: 2
 
 A scenario file defines the simulation scenario which shall be performed. This serves for dynamic systems where actions to be made to trigger any event, activate models or sending signals to the controllers, etc. The example below shows the syntax structure of a scenario file, which can be in the format of .json or .yml.
 
-| data       | element | Description                                                                                                                              |
+| item       | sub-item | Description                                                                                                                              |
 | :--------------- | :---------------| :-------------------------------------------------------------------------------------------------------------------------------------- |
 | `description`    |        | Commenting description of the simulation scenario.  |
 | `defaults`      |       | Contains the default elements for the events, for example `model` `variable` and `action`, where all events apply to this variable in this model and have the same action type. Alternatively, the `model`, `variable` and `action` elements can be included in individual event. |

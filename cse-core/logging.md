@@ -32,5 +32,5 @@ including case) and placed in the same folder as the configuration file (`OspSys
 </simulators>
 ```
 
-The simulators to be logged must be enclosed in a `<simulators>` tag, and each signal must specify its name in separate `<variable>` tags under each `<simulator>`. Leaving out any `<variable>` tags on a `<simulator>` will lead to all variables for that simulator being logged. As aforementioned this could results in a large amount of data to be saved. 
+The simulators to be logged must be enclosed in a `<simulators>` tag, and each signal must specify its name in separate `<variable>` tags under each `<simulator>`. A <simulator> element with no <variable> child elements will lead to all variables being logged. As aforementioned this could results in a large amount of data to be saved. 
 It helps to reduce the logged data by the optional attribute `decimationFactor` if not every sample data is required. Leaving out a simulator from the configuration will disable logging for that simulator. The log is written in .csv format only, there is currently no support for binary or other log formats.
