@@ -24,8 +24,8 @@ The co-simulation library includes a fixed-step master algorithm with a configur
 Examples include arithmetics, logical operations, transformations, unit conversions and more. This is necessity if variables connected between models must be summed or transformed by linear transformation or between coordinate frames. There are interfaces for client applications to include their own implementation of many of the included features. 
 
 Detailed API documentation is found here:
-[`libcosim`](./doxygen/libcosim/0.7.0){:target="_blank"}
-[`libcosimc`](./doxygen/libcosimc/0.7.0){:target="_blank"}.
+[`libcosim`](/libcosim/doxygen/libcosim/0.7.0){:target="_blank"}
+[`libcosimc`](/libcosim/doxygen/libcosimc/0.7.0){:target="_blank"}.
 
 ## libcosim concepts
 - Slaves
