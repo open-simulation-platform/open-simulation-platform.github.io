@@ -15,7 +15,7 @@ The open-source software coined the CSE produced in the OSP JIP consists of the 
 - [libcosim](./libcosim)
 - [cosim](./cosim)
 - [cosim demo app](./cosim-demo-app/cosim-demo-app)
-- [CSE Java-wrapper](./cse-java-wrapper)
+- [java wrapper)](./cosim4j)
 - [Model interface validator](./model-interface-validator)
 - [Kopl Configurator](./kopl)
 
