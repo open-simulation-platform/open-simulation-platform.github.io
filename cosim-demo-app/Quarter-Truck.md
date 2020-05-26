@@ -47,10 +47,13 @@ The local default parameters used in the model are listed in Table 2.
 
 ## Simulation Results 
 The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. 
-
 Figure 2 below shows the simulation results using the *cosim demo app*. In the plot the vertical displacements of the wheel and the chassis are displayed.
-![foo](/assets/img/QuarterTruckFig6.png "Fig.2 Displacement of the wheel and chassis")
-  
+
+<figure>
+<img src="/assets/img/QuarterTruckFig6.png"> 
+<figcaption>Fig.2 Displacement of the wheel and chassis.</figcaption>
+</figure>
+<br/>
 More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
 
 ## References 
