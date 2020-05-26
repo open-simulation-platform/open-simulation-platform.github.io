@@ -7,7 +7,7 @@ nav_order: 6
 ---
 <div style="text-align: right">
     <b>
-        <a href="https://github.com/open-simulation-platform/msmi-validator">msmi validator</a>   
+        <a href="https://github.com/open-simulation-platform/msmi-validator">osp validator</a>   
         on GitHub
     </b>
 </div>
