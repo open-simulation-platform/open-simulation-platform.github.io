@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "cosim4j"
+title: "java wrapper"
 permalink: /cosim4j
 has_toc: false
 nav_order: 4
@@ -12,7 +12,7 @@ nav_order: 4
     </b>
 </div>
 
-# cosim4j
+# Java Wrapper
 The Java wrapper - _cosim4j_ - enables Java applications to make use of _libcosim_.
 It uses the Java Native Interface (JNI) to efficiently interact with _libcosim_. 
 To make it accessible, all native dependencies for Linux and Windows have been pre-built and are bundled with the library.
