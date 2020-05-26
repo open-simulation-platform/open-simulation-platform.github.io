@@ -43,9 +43,7 @@ The local default parameters used in the model are listed in Table 2.
 |  `dChassis`     |  1000 Nsm^-1      |Chassis Damper Coefficient         |
 
 ## Simulation Results 
-The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 and Figure 3 show simulation using the cosim-demo-app and the results of the vertical displacements of the wheel and the chassis.
-
-![foo](/assets/img/QuarterTruckFig5.png "Fig.2 Displacement of the wheel and chassis in libcosim")
+The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 shows the simulation results using the *cosim demo app*. In the plot the vertical displacements of the wheel and the chassis are displayed.
 
 ![foo](/assets/img/QuarterTruckFig6.png "Fig.3 Displacement of the wheel and chassis in libcosim")
 
