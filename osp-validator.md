@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "msmi validator"
-permalink: /msmi-validator
+title: "osp validator"
+permalink: /osp-validator
 has_toc: false
 nav_order: 6
 ---
@@ -13,7 +13,7 @@ nav_order: 6
 </div>
 
 
-# msmi validator
+# osp validator
 The Model interface validator is a tool to verify that the simulation model complies to the [msmi]() specification. 
 The validator loads the `OSPModelDescription.xml` and the [ontology](), and checks that the configuration is correct. It can be used to verify that a given FMU with an `OSPModelDescription.xml` complies to the msmi specification. And it can be used to verify that the connections between two FMUs are semantically correct.
 
