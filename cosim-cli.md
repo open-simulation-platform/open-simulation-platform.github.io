@@ -8,7 +8,7 @@ nav_order: 2
 
 <div style="text-align: right">
     <b>
-        <a href="https://github.com/open-simulation-platform/cse-cli">cosim</a>
+        <a href="https://github.com/open-simulation-platform/cosim-cli">cosim cli</a>
         on GitHub
     </b>
 </div>

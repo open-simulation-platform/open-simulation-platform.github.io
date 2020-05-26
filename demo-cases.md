@@ -6,6 +6,12 @@ permalink: /demo-cases
 nav_order: 5
 has_toc: false
 ---
+<div style="text-align: right">
+    <b>
+        <a href="https://github.com/open-simulation-platform/demo-cases">demo-cases</a>   
+        on GitHub
+    </b>
+</div>
 
 # Demo Cases
 
