@@ -8,7 +8,7 @@ has_toc: false
 ---
 <div style="text-align: right">
     <b>
-        <a href="https://github.com/open-simulation-platform/cse-demos">demo cases</a>   
+        <a href="https://github.com/open-simulation-platform/demo-cases">demo-cases</a>   
         on GitHub
     </b>
 </div>
