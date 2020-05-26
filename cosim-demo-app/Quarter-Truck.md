@@ -14,8 +14,11 @@ permalink: /cosim-demo-app/Quarter-Truck
 This example describes a low-level test case for the performance of libcosim in terms of accuracy and efficiency [1]. 
 Figure 1 shows a simplified model of a quarter truck with two masses mWheel and mChassis representing the mass of wheel and chassis respectively. Both masses have a single vertical degree of freedom coupled by a linear spring-damper system representing the suspension force and tire force. The ground profile is given as external input. 
 
-![foo](/assets/img/QuarterTruckFig1.png "Fig.1 A simplified quarter truck model")
-    
+<figure>
+<img src="/assets/img/QuarterTruckFig1.png" width="500"> 
+<figcaption>Fig.1 A simplified quarter truck model.</figcaption>
+</figure>
+
 ## Model Description
 
 For co-simulation, three FMUs are generated namely the chassis, wheel and ground. The ground and chassis each have one variable group for connecting to the wheel which has two variable groups that are commutative to those of the ground and chassis. Table 1 shows the connections for these variables. Specifically for this example, the first element in the variable name indicates which fmu it belongs to. 
@@ -43,10 +46,11 @@ The local default parameters used in the model are listed in Table 2.
 |  `dChassis`     |  1000 Nsm^-1      |Chassis Damper Coefficient         |
 
 ## Simulation Results 
-The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. Figure 2 shows the simulation results using the *cosim demo app*. In the plot the vertical displacements of the wheel and the chassis are displayed.
+The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. 
 
-![foo](/assets/img/QuarterTruckFig6.png "Fig.3 Displacement of the wheel and chassis in libcosim")
-
+Figure 2 below shows the simulation results using the *cosim demo app*. In the plot the vertical displacements of the wheel and the chassis are displayed.
+![foo](/assets/img/QuarterTruckFig6.png "Fig.2 Displacement of the wheel and chassis")
+  
 More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
 
 ## References 
