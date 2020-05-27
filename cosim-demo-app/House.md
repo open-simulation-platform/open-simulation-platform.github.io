@@ -41,6 +41,7 @@ A simplified model represents the heat exchange dynamics of a house as shown in 
 |        |    `transferTime`     |    |       |
 
 Figure 2 shows the simulation results of the temperature of each room over time.
-![foo](/assets/img/HouseFig3.png "Simulation results of Room1 and Room2 temperature")
+
+[![A diagram that ...](/assets/img/HouseFig3.png " Fig.2 Simulation results of Room1 and Room2 temperature")](/assets/img/HouseFig3.png)
 
 More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
