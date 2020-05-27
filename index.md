@@ -36,12 +36,12 @@ With OSP, simulation models are interconnected using the Functional Mock-up Inte
 co-simulation interface. Based on input-output variable mapping, the OSP master algorithm routes the data between the 
 models. 
 
-There are currently support for FMI 2.0 and FMI 1.0 and FMI 3.0 will be supported when this standard becomes 
-operational. The structure of the co-simulated system can be defined using the System Structure & Parameterization 
+There is currently support for FMI 2.0 (including FMI 2.0.1) and FMI 1.0. FMI 3.0 will be supported when this standard 
+becomes operational. The structure of the co-simulated system can be defined using the System Structure & Parameterization 
 standard ([SSP](https://ssp-standard.org/)) or the new model interface standard OSP Interface Specification 
 ([OSP-IS]()) developed in the OSP project. 
 
-The benefits introduced with OSP-IS is the possibility to define FMU interconnections at a higher level, i.e. variable 
+The main benefit introduced with OSP-IS is the possibility to define FMU interconnections at a higher level, i.e. variable 
 group connections rather than scalar connections. Additionally, it enables automatic unit conversions and provides the a 
 priori validation of the system configuration utilizing an ontology that models the connection types. 
 
