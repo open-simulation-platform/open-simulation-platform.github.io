@@ -59,4 +59,4 @@ These are:
 
 Each `execution` can only have one `algorithm`, but it can contain any number of the others.
 
-![A diagram that shows the main classes and interfaces in libcosim and the relationships between them](/assets/img/libcosim-architecture.png "libcosim architecture")
+![A diagram that shows the main classes and interfaces in libcosim and the relationships between them](/assets/img/libcosim-architecture.svg "libcosim architecture")
