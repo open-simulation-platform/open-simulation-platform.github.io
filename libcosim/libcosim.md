@@ -36,19 +36,27 @@ Detailed API documentation is found here:
 [`libcosim`](/libcosim/doxygen/libcosim/0.7.0){:target="_blank"}
 [`libcosimc`](/libcosim/doxygen/libcosimc/0.7.0){:target="_blank"}.
 
-## libcosim concepts
-- Slaves
-- Functions
-- Manipulator
-- Observer
-- Modifiers
+## Architecture
+The figure below shows a schematic of the main classes and interfaces in libcosim and how they hang together.
 
-![foo](/assets/img/cseFig2.png "Figure 2")
+The top part shows classes that are typically used in the pre-simulation phase.
+These can be used to set up the system model in an "offline" manner,
+without loading any external model code or connecting to remote simulators.
+The central class here is [`system_structure`](/libcosim/doxygen/libcosim/0.7.0/classcosim_1_1system__structure.html){:target="_blank"},
+which, as the name suggests, contains the entire system structure.
 
+The lower part shows classes that are used in the simulation phase.
+Here, the central one is [`execution`](/libcosim/doxygen/libcosim/0.7.0/classcosim_1_1execution.html){:target="_blank"},
+which represents and controls a single run, or _execution_, of the simulation.
+It offers several customisation points in the form of interfaces that can be implemented by classes which perform specific tasks during a simulation.
+These are:
 
+  - `algorithm`: Controls the step size and the routing of variable values between `simulators` and `functions`. Typical uses: Generic or special-purpose co-simulation algorithms.
+  - `slave`, `async_slave`: A component of the simulated system. Typical uses: Mathematical models, hardware interfaces, interfaces to external software.
+  - `function`: An operation performed _between_ time steps. Typical uses: Transformations, signal arithmetic, logical operations.
+  - `observer`: An entity that has a read-only view of the simulation. Typical uses: Logging, visualisation, real-time postprocessing.
+  - `manipulator`: An entity that can modify certain aspects of the simulation, such as simulator input variables. Typical uses: Scenario control, signal modification.
 
+Each `execution` can only have one `algorithm`, but it can contain any number of the others.
 
-
-
-
-
+![A diagram that shows the main classes and interfaces in libcosim and the relationships between them](/assets/img/libcosim-architecture.svg "libcosim architecture")
