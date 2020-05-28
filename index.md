@@ -16,7 +16,7 @@ youtubeId: E5KumnkeKO8
 The open source software for co-simulation is built on a combination of technical solutions from the 
 Open Simulation Platform (OSP) initiators and other established industrial solutions. 
 The key working principle has been to use the best available technology and knowledge to meet the requirements for 
-the OSP to efficiently serve its purpose. The source code is made available on 
+the OSP to efficiently serve its purpose. The source code for all software except `kopl` is made available on 
 [GitHub](https://github.com/open-simulation-platform), free of charge, through the MPL 2.0 open source licence.
 
 {% include youtubePlayer.html id=page.youtubeId %}
@@ -45,5 +45,5 @@ The main benefit introduced with OSP-IS is the possibility to define FMU interco
 group connections rather than scalar connections. Additionally, it enables automatic unit conversions and provides the a 
 priori validation of the system configuration utilizing an ontology that models the connection types. 
 
-OSP comes with example configurations containing FMUs and co-simulation configuration exemplified using both OSP-IS and 
+OSP comes with [example configurations](/demo-cases) containing FMUs and co-simulation configuration exemplified using both OSP-IS and 
 SSP.
