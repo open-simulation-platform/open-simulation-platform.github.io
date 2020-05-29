@@ -78,7 +78,7 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="async__slave_8hpp.html">cosim/async_slave.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="file__cache_8hpp.html">cosim/file_cache.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="importer_8hpp.html">cosim/fmi/importer.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model_8hpp.html">cosim/model.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model__description_8hpp.html">cosim/model_description.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="uri_8hpp.html">cosim/uri.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
@@ -163,12 +163,12 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclasscosim_1_1model__uri__sub__resolver_html"><div class="ttname"><a href="classcosim_1_1model__uri__sub__resolver.html">cosim::model_uri_sub_resolver</a></div><div class="ttdoc">An interface for classes that resolve model URIs of one or more specific URI schemes.</div><div class="ttdef"><b>Definition:</b> orchestration.hpp:53</div></div>
 <div class="ttc" id="ashared_ptr_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a></div></div>
-<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:25</div></div>
+<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:26</div></div>
 <div class="ttc" id="avector_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/container/vector.html">std::vector</a></div></div>
-<div class="ttc" id="amodel_8hpp_html"><div class="ttname"><a href="model_8hpp.html">model.hpp</a></div></div>
 <div class="ttc" id="aclasscosim_1_1model__uri__sub__resolver_html_a874ae2ef2bbdccb64bffe3bf3dae3b9a"><div class="ttname"><a href="classcosim_1_1model__uri__sub__resolver.html#a874ae2ef2bbdccb64bffe3bf3dae3b9a">cosim::model_uri_sub_resolver::lookup_model</a></div><div class="ttdeci">virtual std::shared_ptr&lt; model &gt; lookup_model(const uri &amp;baseUri, const uri &amp;modelUriReference)</div><div class="ttdoc">Tries to resolve a model URI relative to some base URI.</div></div>
 <div class="ttc" id="aimporter_8hpp_html"><div class="ttname"><a href="importer_8hpp.html">importer.hpp</a></div></div>
 <div class="ttc" id="aclasscosim_1_1model_html_ac4e83c2e2f2dbd4b93f2c59f7793c649"><div class="ttname"><a href="classcosim_1_1model.html#ac4e83c2e2f2dbd4b93f2c59f7793c649">cosim::model::instantiate</a></div><div class="ttdeci">virtual std::shared_ptr&lt; async_slave &gt; instantiate(std::string_view name)=0</div><div class="ttdoc">Instantiates a slave.</div></div>
+<div class="ttc" id="amodel__description_8hpp_html"><div class="ttname"><a href="model__description_8hpp.html">model_description.hpp</a></div></div>
 <div class="ttc" id="aclasscosim_1_1model_html"><div class="ttname"><a href="classcosim_1_1model.html">cosim::model</a></div><div class="ttdoc">A model, i.e., a blueprint from which slaves can be instantiated.</div><div class="ttdef"><b>Definition:</b> orchestration.hpp:29</div></div>
 <div class="ttc" id="aasync__slave_8hpp_html"><div class="ttname"><a href="async__slave_8hpp.html">async_slave.hpp</a></div></div>
 <div class="ttc" id="aclasscosim_1_1fmu__file__uri__sub__resolver_html"><div class="ttname"><a href="classcosim_1_1fmu__file__uri__sub__resolver.html">cosim::fmu_file_uri_sub_resolver</a></div><div class="ttdoc">A resolver for file:// model URIs with .fmu file extension.</div><div class="ttdef"><b>Definition:</b> orchestration.hpp:172</div></div>

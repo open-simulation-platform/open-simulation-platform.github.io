@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_5ftype_3027',['logger_type',['../logger_8hpp.html#a23ae64d7850a0dec4974dfa9ba55025b',1,'cosim::log']]]
+  ['logger_5ftype_3008',['logger_type',['../logger_8hpp.html#a23ae64d7850a0dec4974dfa9ba55025b',1,'cosim::log']]]
 ];

@@ -75,113 +75,114 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef COSIM_ASYNC_SLAVE_HPP</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define COSIM_ASYNC_SLAVE_HPP</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model_8hpp.html">cosim/model.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model__description_8hpp.html">cosim/model_description.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="slave_8hpp.html">cosim/slave.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;boost/fiber/future/future.hpp&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;gsl/span&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;optional&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="time_8hpp.html">cosim/time.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;boost/fiber/future/future.hpp&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;gsl/span&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecosim.html">cosim</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecosim.html">cosim</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">   29</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">slave_state</a></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2ae2fa538867c3830a859a5b17ab24644b">created</a>,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a3e52131e6b272be51242ee00310b7252">initialisation</a>,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a9e083ec666c9f3db044bb7c381640227">simulation</a>,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2add4b8c762f1258f89c4383961c5be121">terminated</a>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2acb5e100e5a9a3e7f6d1fd97512215282">error</a>,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a44560d82707cce3b8111a770924cf0e2">indeterminate</a>,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">   30</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">slave_state</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2ae2fa538867c3830a859a5b17ab24644b">created</a>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a3e52131e6b272be51242ee00310b7252">initialisation</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a9e083ec666c9f3db044bb7c381640227">simulation</a>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2add4b8c762f1258f89c4383961c5be121">terminated</a>,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2acb5e100e5a9a3e7f6d1fd97512215282">error</a>,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a44560d82707cce3b8111a770924cf0e2">indeterminate</a>,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classcosim_1_1async__slave.html">  106</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcosim_1_1async__slave.html">async_slave</a></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classcosim_1_1async__slave.html">async_slave</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">slave_state</a> <a class="code" href="classcosim_1_1async__slave.html#ae1479a80f13ff0dd913550cd34447a91">state</a>() <span class="keyword">const</span> noexcept = 0;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;cosim::model_description&gt; <a class="code" href="classcosim_1_1async__slave.html#a41df1198b850e8ddeaf078f9ac0ac3f6">model_description</a>() = 0;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#a6071d8c43e1eba2d6a342147a67cdbbb">setup</a>(</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/time_point.html">time_point</a> startTime,</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        std::optional&lt;time_point&gt; stopTime,</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        std::optional&lt;double&gt; relativeTolerance) = 0;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#aa9f0386c4c698302a420846a04f0c3c3">start_simulation</a>() = 0;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#abf10843a1df8dd0cb2a2725e36563944">end_simulation</a>() = 0;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;step_result&gt; <a class="code" href="classcosim_1_1async__slave.html#ad73782bfec811dd813e1b88b9cdf77b5">do_step</a>(</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/time_point.html">time_point</a> currentT,</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/duration.html">duration</a> deltaT) = 0;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html">  194</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structcosim_1_1async__slave_1_1variable__values.html">variable_values</a></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
-<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#a4a1279f27c1158b90bd9d791a3d28e96">  197</a></span>&#160;        gsl::span&lt;double&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#a4a1279f27c1158b90bd9d791a3d28e96">real</a>;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#ad66746165db5099e72b3a86d4d27cf8f">  200</a></span>&#160;        gsl::span&lt;int&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#ad66746165db5099e72b3a86d4d27cf8f">integer</a>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#a3c6056e5d4ead84d282e40cd6e5e5e01">  203</a></span>&#160;        gsl::span&lt;bool&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#a3c6056e5d4ead84d282e40cd6e5e5e01">boolean</a>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#a425cdf40e221d754fdb3d76fe81340c4">  206</a></span>&#160;        gsl::span&lt;std::string&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#a425cdf40e221d754fdb3d76fe81340c4">string</a>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    };</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;variable_values&gt; <a class="code" href="classcosim_1_1async__slave.html#a0c99e2f69e4c600886d1c6021f40690a">get_variables</a>(</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        gsl::span&lt;const value_reference&gt; realVariables,</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        gsl::span&lt;const value_reference&gt; integerVariables,</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        gsl::span&lt;const value_reference&gt; booleanVariables,</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        gsl::span&lt;const value_reference&gt; stringVariables) = 0;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#a9447ad9e67d89e378170a9b74a71a4e4">set_variables</a>(</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        gsl::span&lt;const value_reference&gt; realVariables,</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        gsl::span&lt;const double&gt; realValues,</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        gsl::span&lt;const value_reference&gt; integerVariables,</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        gsl::span&lt;const int&gt; integerValues,</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        gsl::span&lt;const value_reference&gt; booleanVariables,</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        gsl::span&lt;const bool&gt; booleanValues,</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        gsl::span&lt;const value_reference&gt; stringVariables,</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        gsl::span&lt;const std::string&gt; stringValues) = 0;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;};</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classcosim_1_1async__slave.html">  107</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcosim_1_1async__slave.html">async_slave</a></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classcosim_1_1async__slave.html">async_slave</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">slave_state</a> <a class="code" href="classcosim_1_1async__slave.html#ae1479a80f13ff0dd913550cd34447a91">state</a>() <span class="keyword">const</span> noexcept = 0;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;cosim::model_description&gt; <a class="code" href="classcosim_1_1async__slave.html#a41df1198b850e8ddeaf078f9ac0ac3f6">model_description</a>() = 0;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#a6071d8c43e1eba2d6a342147a67cdbbb">setup</a>(</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/time_point.html">time_point</a> startTime,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        std::optional&lt;time_point&gt; stopTime,</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        std::optional&lt;double&gt; relativeTolerance) = 0;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#aa9f0386c4c698302a420846a04f0c3c3">start_simulation</a>() = 0;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#abf10843a1df8dd0cb2a2725e36563944">end_simulation</a>() = 0;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;step_result&gt; <a class="code" href="classcosim_1_1async__slave.html#ad73782bfec811dd813e1b88b9cdf77b5">do_step</a>(</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/time_point.html">time_point</a> currentT,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/duration.html">duration</a> deltaT) = 0;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html">  195</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structcosim_1_1async__slave_1_1variable__values.html">variable_values</a></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#a4a1279f27c1158b90bd9d791a3d28e96">  198</a></span>&#160;        gsl::span&lt;double&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#a4a1279f27c1158b90bd9d791a3d28e96">real</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#ad66746165db5099e72b3a86d4d27cf8f">  201</a></span>&#160;        gsl::span&lt;int&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#ad66746165db5099e72b3a86d4d27cf8f">integer</a>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#a3c6056e5d4ead84d282e40cd6e5e5e01">  204</a></span>&#160;        gsl::span&lt;bool&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#a3c6056e5d4ead84d282e40cd6e5e5e01">boolean</a>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structcosim_1_1async__slave_1_1variable__values.html#a425cdf40e221d754fdb3d76fe81340c4">  207</a></span>&#160;        gsl::span&lt;std::string&gt; <a class="code" href="structcosim_1_1async__slave_1_1variable__values.html#a425cdf40e221d754fdb3d76fe81340c4">string</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    };</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;variable_values&gt; <a class="code" href="classcosim_1_1async__slave.html#a0c99e2f69e4c600886d1c6021f40690a">get_variables</a>(</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        gsl::span&lt;const value_reference&gt; realVariables,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        gsl::span&lt;const value_reference&gt; integerVariables,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        gsl::span&lt;const value_reference&gt; booleanVariables,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        gsl::span&lt;const value_reference&gt; stringVariables) = 0;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keyword">virtual</span> boost::fibers::future&lt;void&gt; <a class="code" href="classcosim_1_1async__slave.html#a9447ad9e67d89e378170a9b74a71a4e4">set_variables</a>(</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        gsl::span&lt;const value_reference&gt; realVariables,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        gsl::span&lt;const double&gt; realValues,</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        gsl::span&lt;const value_reference&gt; integerVariables,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        gsl::span&lt;const int&gt; integerValues,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        gsl::span&lt;const value_reference&gt; booleanVariables,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        gsl::span&lt;const bool&gt; booleanValues,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        gsl::span&lt;const value_reference&gt; stringVariables,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        gsl::span&lt;const std::string&gt; stringValues) = 0;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;};</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;async_slave&gt;</a> <a class="code" href="namespacecosim.html#a00c3372175460057172aeca97c9e07fe">make_pseudo_async</a>(<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;slave&gt;</a> s);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;async_slave&gt;</a> <a class="code" href="namespacecosim.html#a00c3372175460057172aeca97c9e07fe">make_pseudo_async</a>(<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;slave&gt;</a> s);</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;async_slave&gt;</a> <a class="code" href="namespacecosim.html#aae23b80687694466824f036497b1c62c">make_background_thread_slave</a>(<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;slave&gt;</a> <a class="code" href="classcosim_1_1slave.html">slave</a>);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;async_slave&gt;</a> <a class="code" href="namespacecosim.html#aae23b80687694466824f036497b1c62c">make_background_thread_slave</a>(<a class="codeRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr&lt;slave&gt;</a> <a class="code" href="classcosim_1_1slave.html">slave</a>);</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;} <span class="comment">// namespace cosim</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor">#endif // header guard</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;} <span class="comment">// namespace cosim</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor">#endif // header guard</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">cosim::slave_state</a></div><div class="ttdeci">slave_state</div><div class="ttdoc">Symbolic constants that represent the state of a slave.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:29</div></div>
+<div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2">cosim::slave_state</a></div><div class="ttdeci">slave_state</div><div class="ttdoc">Symbolic constants that represent the state of a slave.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:30</div></div>
 <div class="ttc" id="ashared_ptr_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a></div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_ae1479a80f13ff0dd913550cd34447a91"><div class="ttname"><a href="classcosim_1_1async__slave.html#ae1479a80f13ff0dd913550cd34447a91">cosim::async_slave::state</a></div><div class="ttdeci">virtual slave_state state() const noexcept=0</div><div class="ttdoc">Returns the slave's current state.</div></div>
-<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:25</div></div>
-<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_a425cdf40e221d754fdb3d76fe81340c4"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#a425cdf40e221d754fdb3d76fe81340c4">cosim::async_slave::variable_values::string</a></div><div class="ttdeci">gsl::span&lt; std::string &gt; string</div><div class="ttdoc">String variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:206</div></div>
+<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:26</div></div>
+<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_a425cdf40e221d754fdb3d76fe81340c4"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#a425cdf40e221d754fdb3d76fe81340c4">cosim::async_slave::variable_values::string</a></div><div class="ttdeci">gsl::span&lt; std::string &gt; string</div><div class="ttdoc">String variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:207</div></div>
 <div class="ttc" id="anamespacecosim_html_a00c3372175460057172aeca97c9e07fe"><div class="ttname"><a href="namespacecosim.html#a00c3372175460057172aeca97c9e07fe">cosim::make_pseudo_async</a></div><div class="ttdeci">std::shared_ptr&lt; async_slave &gt; make_pseudo_async(std::shared_ptr&lt; slave &gt; s)</div><div class="ttdoc">Wraps a synchronous slave in an asynchronous interface.</div></div>
-<div class="ttc" id="amodel_8hpp_html"><div class="ttname"><a href="model_8hpp.html">model.hpp</a></div></div>
 <div class="ttc" id="aduration_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/chrono/duration.html">std::chrono::duration</a></div></div>
-<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html">cosim::async_slave::variable_values</a></div><div class="ttdoc">Result type for get_variables().</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:194</div></div>
+<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html">cosim::async_slave::variable_values</a></div><div class="ttdoc">Result type for get_variables().</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:195</div></div>
 <div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2a44560d82707cce3b8111a770924cf0e2"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a44560d82707cce3b8111a770924cf0e2">cosim::slave_state::indeterminate</a></div><div class="ttdeci">@ indeterminate</div><div class="ttdoc">The slave is in an indeterminate state.</div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_ad73782bfec811dd813e1b88b9cdf77b5"><div class="ttname"><a href="classcosim_1_1async__slave.html#ad73782bfec811dd813e1b88b9cdf77b5">cosim::async_slave::do_step</a></div><div class="ttdeci">virtual boost::fibers::future&lt; step_result &gt; do_step(time_point currentT, duration deltaT)=0</div><div class="ttdoc">Performs model calculations for the time step which starts at the time point currentT and has a durat...</div></div>
 <div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2acb5e100e5a9a3e7f6d1fd97512215282"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2acb5e100e5a9a3e7f6d1fd97512215282">cosim::slave_state::error</a></div><div class="ttdeci">@ error</div><div class="ttdoc">An irrecoverable error occurred.</div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_a0c99e2f69e4c600886d1c6021f40690a"><div class="ttname"><a href="classcosim_1_1async__slave.html#a0c99e2f69e4c600886d1c6021f40690a">cosim::async_slave::get_variables</a></div><div class="ttdeci">virtual boost::fibers::future&lt; variable_values &gt; get_variables(gsl::span&lt; const value_reference &gt; realVariables, gsl::span&lt; const value_reference &gt; integerVariables, gsl::span&lt; const value_reference &gt; booleanVariables, gsl::span&lt; const value_reference &gt; stringVariables)=0</div><div class="ttdoc">Retrieves variable values.</div></div>
-<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_a4a1279f27c1158b90bd9d791a3d28e96"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#a4a1279f27c1158b90bd9d791a3d28e96">cosim::async_slave::variable_values::real</a></div><div class="ttdeci">gsl::span&lt; double &gt; real</div><div class="ttdoc">Real variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:197</div></div>
+<div class="ttc" id="amodel__description_8hpp_html"><div class="ttname"><a href="model__description_8hpp.html">model_description.hpp</a></div></div>
+<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_a4a1279f27c1158b90bd9d791a3d28e96"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#a4a1279f27c1158b90bd9d791a3d28e96">cosim::async_slave::variable_values::real</a></div><div class="ttdeci">gsl::span&lt; double &gt; real</div><div class="ttdoc">Real variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:198</div></div>
 <div class="ttc" id="atime_point_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/chrono/time_point.html">std::chrono::time_point</a></div></div>
-<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_ad66746165db5099e72b3a86d4d27cf8f"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#ad66746165db5099e72b3a86d4d27cf8f">cosim::async_slave::variable_values::integer</a></div><div class="ttdeci">gsl::span&lt; int &gt; integer</div><div class="ttdoc">Integer variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:200</div></div>
+<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_ad66746165db5099e72b3a86d4d27cf8f"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#ad66746165db5099e72b3a86d4d27cf8f">cosim::async_slave::variable_values::integer</a></div><div class="ttdeci">gsl::span&lt; int &gt; integer</div><div class="ttdoc">Integer variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:201</div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_abf10843a1df8dd0cb2a2725e36563944"><div class="ttname"><a href="classcosim_1_1async__slave.html#abf10843a1df8dd0cb2a2725e36563944">cosim::async_slave::end_simulation</a></div><div class="ttdeci">virtual boost::fibers::future&lt; void &gt; end_simulation()=0</div><div class="ttdoc">Informs the slave that the simulation run has ended.</div></div>
 <div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2add4b8c762f1258f89c4383961c5be121"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2add4b8c762f1258f89c4383961c5be121">cosim::slave_state::terminated</a></div><div class="ttdeci">@ terminated</div><div class="ttdoc">The slave is terminated.</div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_aa9f0386c4c698302a420846a04f0c3c3"><div class="ttname"><a href="classcosim_1_1async__slave.html#aa9f0386c4c698302a420846a04f0c3c3">cosim::async_slave::start_simulation</a></div><div class="ttdeci">virtual boost::fibers::future&lt; void &gt; start_simulation()=0</div><div class="ttdoc">Informs the slave that the initialisation stage ends and the simulation begins.</div></div>
@@ -189,11 +190,12 @@ $(function() {
 <div class="ttc" id="aclasscosim_1_1async__slave_html_a41df1198b850e8ddeaf078f9ac0ac3f6"><div class="ttname"><a href="classcosim_1_1async__slave.html#a41df1198b850e8ddeaf078f9ac0ac3f6">cosim::async_slave::model_description</a></div><div class="ttdeci">virtual boost::fibers::future&lt; cosim::model_description &gt; model_description()=0</div><div class="ttdoc">Returns a model description.</div></div>
 <div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2a9e083ec666c9f3db044bb7c381640227"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2a9e083ec666c9f3db044bb7c381640227">cosim::slave_state::simulation</a></div><div class="ttdeci">@ simulation</div><div class="ttdoc">The slave is in simulation mode.</div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_a9447ad9e67d89e378170a9b74a71a4e4"><div class="ttname"><a href="classcosim_1_1async__slave.html#a9447ad9e67d89e378170a9b74a71a4e4">cosim::async_slave::set_variables</a></div><div class="ttdeci">virtual boost::fibers::future&lt; void &gt; set_variables(gsl::span&lt; const value_reference &gt; realVariables, gsl::span&lt; const double &gt; realValues, gsl::span&lt; const value_reference &gt; integerVariables, gsl::span&lt; const int &gt; integerValues, gsl::span&lt; const value_reference &gt; booleanVariables, gsl::span&lt; const bool &gt; booleanValues, gsl::span&lt; const value_reference &gt; stringVariables, gsl::span&lt; const std::string &gt; stringValues)=0</div><div class="ttdoc">Sets variable values.</div></div>
-<div class="ttc" id="aclasscosim_1_1async__slave_html"><div class="ttname"><a href="classcosim_1_1async__slave.html">cosim::async_slave</a></div><div class="ttdoc">An asynchronous co-simulation slave interface.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:106</div></div>
+<div class="ttc" id="aclasscosim_1_1async__slave_html"><div class="ttname"><a href="classcosim_1_1async__slave.html">cosim::async_slave</a></div><div class="ttdoc">An asynchronous co-simulation slave interface.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:107</div></div>
 <div class="ttc" id="anamespacecosim_html_a1f6c024243f9c4008054d36177dcffb2ae2fa538867c3830a859a5b17ab24644b"><div class="ttname"><a href="namespacecosim.html#a1f6c024243f9c4008054d36177dcffb2ae2fa538867c3830a859a5b17ab24644b">cosim::slave_state::created</a></div><div class="ttdeci">@ created</div><div class="ttdoc">The slave exists but has not been configured yet.</div></div>
 <div class="ttc" id="aclasscosim_1_1async__slave_html_a6071d8c43e1eba2d6a342147a67cdbbb"><div class="ttname"><a href="classcosim_1_1async__slave.html#a6071d8c43e1eba2d6a342147a67cdbbb">cosim::async_slave::setup</a></div><div class="ttdeci">virtual boost::fibers::future&lt; void &gt; setup(time_point startTime, std::optional&lt; time_point &gt; stopTime, std::optional&lt; double &gt; relativeTolerance)=0</div><div class="ttdoc">Instructs the slave to perform pre-simulation setup and enter initialisation mode.</div></div>
-<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_a3c6056e5d4ead84d282e40cd6e5e5e01"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#a3c6056e5d4ead84d282e40cd6e5e5e01">cosim::async_slave::variable_values::boolean</a></div><div class="ttdeci">gsl::span&lt; bool &gt; boolean</div><div class="ttdoc">Boolean variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:203</div></div>
-<div class="ttc" id="aclasscosim_1_1slave_html"><div class="ttname"><a href="classcosim_1_1slave.html">cosim::slave</a></div><div class="ttdoc">An interface for classes that represent co-simulation slaves.</div><div class="ttdef"><b>Definition:</b> slave.hpp:51</div></div>
+<div class="ttc" id="astructcosim_1_1async__slave_1_1variable__values_html_a3c6056e5d4ead84d282e40cd6e5e5e01"><div class="ttname"><a href="structcosim_1_1async__slave_1_1variable__values.html#a3c6056e5d4ead84d282e40cd6e5e5e01">cosim::async_slave::variable_values::boolean</a></div><div class="ttdeci">gsl::span&lt; bool &gt; boolean</div><div class="ttdoc">Boolean variable values.</div><div class="ttdef"><b>Definition:</b> async_slave.hpp:204</div></div>
+<div class="ttc" id="atime_8hpp_html"><div class="ttname"><a href="time_8hpp.html">time.hpp</a></div></div>
+<div class="ttc" id="aclasscosim_1_1slave_html"><div class="ttname"><a href="classcosim_1_1slave.html">cosim::slave</a></div><div class="ttdoc">An interface for classes that represent co-simulation slaves.</div><div class="ttdef"><b>Definition:</b> slave.hpp:52</div></div>
 <div class="ttc" id="aslave_8hpp_html"><div class="ttname"><a href="slave_8hpp.html">slave.hpp</a></div></div>
 <div class="ttc" id="anamespacecosim_html_aae23b80687694466824f036497b1c62c"><div class="ttname"><a href="namespacecosim.html#aae23b80687694466824f036497b1c62c">cosim::make_background_thread_slave</a></div><div class="ttdeci">std::shared_ptr&lt; async_slave &gt; make_background_thread_slave(std::shared_ptr&lt; slave &gt; slave)</div><div class="ttdoc">Runs a slave in another thread.</div></div>
 <!-- start footer part -->

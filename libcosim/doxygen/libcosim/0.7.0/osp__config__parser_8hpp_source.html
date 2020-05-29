@@ -75,42 +75,44 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef LIBCOSIM_OSP_CONFIG_PARSER_HPP</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define LIBCOSIM_OSP_CONFIG_PARSER_HPP</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model_8hpp.html">cosim/model.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model__description_8hpp.html">cosim/model_description.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="orchestration_8hpp.html">cosim/orchestration.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="system__structure_8hpp.html">cosim/system_structure.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;boost/filesystem/path.hpp&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="time_8hpp.html">cosim/time.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;boost/filesystem/path.hpp&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecosim.html">cosim</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecosim.html">cosim</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structcosim_1_1osp__config.html">   23</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structcosim_1_1osp__config.html">osp_config</a></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classcosim_1_1system__structure.html">cosim::system_structure</a> <a class="code" href="classcosim_1_1system__structure.html">system_structure</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/time_point.html">time_point</a> start_time;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/duration.html">duration</a> step_size;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="codeRef" href="http://en.cppreference.com/w/cpp/container/unordered_map.html">variable_value_map</a> initial_values;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="structcosim_1_1osp__config.html">osp_config</a> load_osp_config(</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">const</span> boost::filesystem::path&amp; configPath,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classcosim_1_1model__uri__resolver.html">cosim::model_uri_resolver</a>&amp; resolver);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structcosim_1_1osp__config.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structcosim_1_1osp__config.html">osp_config</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classcosim_1_1system__structure.html">cosim::system_structure</a> <a class="code" href="classcosim_1_1system__structure.html">system_structure</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/time_point.html">time_point</a> start_time;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="codeRef" href="http://en.cppreference.com/w/cpp/chrono/duration.html">duration</a> step_size;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="codeRef" href="http://en.cppreference.com/w/cpp/container/unordered_map.html">variable_value_map</a> initial_values;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="structcosim_1_1osp__config.html">osp_config</a> load_osp_config(</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> boost::filesystem::path&amp; configPath,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classcosim_1_1model__uri__resolver.html">cosim::model_uri_resolver</a>&amp; resolver);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <span class="comment">// namespace cosim</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif //LIBCOSIM_OSP_CONFIG_PARSER_HPP</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} <span class="comment">// namespace cosim</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif //LIBCOSIM_OSP_CONFIG_PARSER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:25</div></div>
-<div class="ttc" id="amodel_8hpp_html"><div class="ttname"><a href="model_8hpp.html">model.hpp</a></div></div>
+<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:26</div></div>
 <div class="ttc" id="aduration_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/chrono/duration.html">std::chrono::duration</a></div></div>
+<div class="ttc" id="amodel__description_8hpp_html"><div class="ttname"><a href="model__description_8hpp.html">model_description.hpp</a></div></div>
 <div class="ttc" id="aorchestration_8hpp_html"><div class="ttname"><a href="orchestration_8hpp.html">orchestration.hpp</a></div></div>
 <div class="ttc" id="atime_point_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/chrono/time_point.html">std::chrono::time_point</a></div></div>
-<div class="ttc" id="aclasscosim_1_1system__structure_html"><div class="ttname"><a href="classcosim_1_1system__structure.html">cosim::system_structure</a></div><div class="ttdoc">A description of the structure of a modelled system.</div><div class="ttdef"><b>Definition:</b> system_structure.hpp:171</div></div>
+<div class="ttc" id="aclasscosim_1_1system__structure_html"><div class="ttname"><a href="classcosim_1_1system__structure.html">cosim::system_structure</a></div><div class="ttdoc">A description of the structure of a modelled system.</div><div class="ttdef"><b>Definition:</b> system_structure.hpp:172</div></div>
 <div class="ttc" id="asystem__structure_8hpp_html"><div class="ttname"><a href="system__structure_8hpp.html">system_structure.hpp</a></div></div>
 <div class="ttc" id="aclasscosim_1_1model__uri__resolver_html"><div class="ttname"><a href="classcosim_1_1model__uri__resolver.html">cosim::model_uri_resolver</a></div><div class="ttdoc">A generic model URI resolver.</div><div class="ttdef"><b>Definition:</b> orchestration.hpp:107</div></div>
-<div class="ttc" id="astructcosim_1_1osp__config_html"><div class="ttname"><a href="structcosim_1_1osp__config.html">cosim::osp_config</a></div><div class="ttdef"><b>Definition:</b> osp_config_parser.hpp:23</div></div>
+<div class="ttc" id="astructcosim_1_1osp__config_html"><div class="ttname"><a href="structcosim_1_1osp__config.html">cosim::osp_config</a></div><div class="ttdef"><b>Definition:</b> osp_config_parser.hpp:24</div></div>
+<div class="ttc" id="atime_8hpp_html"><div class="ttname"><a href="time_8hpp.html">time.hpp</a></div></div>
 <div class="ttc" id="aunordered_map_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/container/unordered_map.html">std::unordered_map&lt; full_variable_name, scalar_value &gt;</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef LIBCOSIM_TIMER_H</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define LIBCOSIM_TIMER_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="model_8hpp.html">cosim/model.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="time_8hpp.html">cosim/time.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
@@ -113,9 +113,8 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif //LIBCOSIM_TIMER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_aaf6ec9adbaa392488349dc6c3af97192"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#aaf6ec9adbaa392488349dc6c3af97192">cosim::real_time_timer::enable_real_time_simulation</a></div><div class="ttdeci">void enable_real_time_simulation()</div><div class="ttdoc">Enables real time simulation.</div></div>
-<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:25</div></div>
+<div class="ttc" id="anamespacecosim_html"><div class="ttname"><a href="namespacecosim.html">cosim</a></div><div class="ttdoc">Top-level libcosim namespace.</div><div class="ttdef"><b>Definition:</b> algorithm.hpp:26</div></div>
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html"><div class="ttname"><a href="classcosim_1_1real__time__timer.html">cosim::real_time_timer</a></div><div class="ttdoc">A class for controlling real-time execution.</div><div class="ttdef"><b>Definition:</b> timer.hpp:22</div></div>
-<div class="ttc" id="amodel_8hpp_html"><div class="ttname"><a href="model_8hpp.html">model.hpp</a></div></div>
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_a0e842fbf7ff263cc5841ebcb6bec9bde"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#a0e842fbf7ff263cc5841ebcb6bec9bde">cosim::real_time_timer::get_real_time_factor_target</a></div><div class="ttdeci">double get_real_time_factor_target() const</div><div class="ttdoc">Returns the current real time factor target.</div></div>
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_ae372d38c3aab8d768482d34558cded96"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#ae372d38c3aab8d768482d34558cded96">cosim::real_time_timer::set_real_time_factor_target</a></div><div class="ttdeci">void set_real_time_factor_target(double realTimeFactor)</div><div class="ttdoc">Sets a custom real time factor.</div></div>
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_ad8153a750ffb4ed1742e436590bc0f8d"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#ad8153a750ffb4ed1742e436590bc0f8d">cosim::real_time_timer::is_real_time_simulation</a></div><div class="ttdeci">bool is_real_time_simulation() const</div><div class="ttdoc">Returns if this is a real time simulation.</div></div>
@@ -125,6 +124,7 @@ $(function() {
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_a8687920572a1151c8850ad00ae812db5"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#a8687920572a1151c8850ad00ae812db5">cosim::real_time_timer::sleep</a></div><div class="ttdeci">void sleep(time_point currentTime)</div><div class="ttdoc">Calls thread sleep for the amount of time it would take to keep real time.</div></div>
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_a4ce1d491e9015350d0b195d0a1031c20"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#a4ce1d491e9015350d0b195d0a1031c20">cosim::real_time_timer::disable_real_time_simulation</a></div><div class="ttdeci">void disable_real_time_simulation()</div><div class="ttdoc">Disables real time simulation.</div></div>
 <div class="ttc" id="aclasscosim_1_1real__time__timer_html_a2f9e65128c6234c45620bc2f45d2b4f6"><div class="ttname"><a href="classcosim_1_1real__time__timer.html#a2f9e65128c6234c45620bc2f45d2b4f6">cosim::real_time_timer::get_measured_real_time_factor</a></div><div class="ttdeci">double get_measured_real_time_factor() const</div><div class="ttdoc">Returns the current real time factor.</div></div>
+<div class="ttc" id="atime_8hpp_html"><div class="ttname"><a href="time_8hpp.html">time.hpp</a></div></div>
 <div class="ttc" id="aunique_ptr_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/memory/unique_ptr.html">std::unique_ptr&lt; impl &gt;</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
