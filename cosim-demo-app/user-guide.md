@@ -29,7 +29,7 @@ Features covered in this user guide:
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract the files and you will have a root folder looking like the figure below
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case. 
+3. [Download](https://github.com/open-simulation-platform/demo-cases/releases) the _dp-ship_ demo case. 
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
@@ -39,7 +39,7 @@ Features covered in this user guide:
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract archive: tar -xzvf cosim-demo-app-vX.Y.Z.tar.gz
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case.
+3. [Download](https://github.com/open-simulation-platform/demo-cases/releases) the _dp-ship_ demo case.
 4. Extract the demo configuration
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
@@ -57,9 +57,9 @@ Features covered in this user guide:
 ![foo](/assets/img/UserguideFig2.png "Load a configuration")
 
 A typical configuration folder will contain simulation models (FMUs) and configuration files. 
-Connections between models and initialization values are configured through the files "OspSystemStructure.xml" or "SystemStructure.ssd". 
-If your configuration directory contains both ("OspSystemStructure.xml" and a "SystemStructure.ssd"), the .xml file will be prioritized. 
-If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cosim-demos\dp-ship\SystemStructure.ssd)
+Connections between models and initialization values are configured through the files `OspSystemStructure.xml` or `SystemStructure.ssd`. 
+If your configuration directory contains both (`OspSystemStructure.xml` and a `SystemStructure.ssd`), the .xml file will be prioritized. 
+If you would like to load your simulation with the connections as defined on the `SystemStructure.ssd` file, include it in the path (Example: C:\cosim-demos\dp-ship\SystemStructure.ssd)
 
 [back to top](./user-guide#user-guide)
 
@@ -80,7 +80,8 @@ as the hardware allows).
 3. At the navigation bar, the RTF (Real Time Factor) indicates the current simulation speed related to real time. For instance, a RTF = 2 means that simulation runs at twice the speed of real time.
 4. Real time factor target value can be altered to set a specific RTF.
 5. At the navigation bar, click on "Play/Pause" to start or pause the simulation.
-6. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
+6. At the navigation bar, click on "Reset" to stop a simulation and initialize it again. 
+7. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
 
 ![foo](/assets/img/UserguideFig4.png "Control the simulation")
 
@@ -88,10 +89,11 @@ as the hardware allows).
 
 ## Plot variables
 *Note: Each item below is highlighted in the figures below with its corresponding number.*
-1. Click "Create new time series" or "Create new XY plot" to obtain a time series plot or an XY plot that variables can be added to.
-2. Any variable can be added to a plot by clicking "Add to plot" in the variable overview.
-3. Select where to plot the variable from the list of available plots.
-4. Click the plot name to see the chart.
+1. Click "+ XY plot" or "+ Time series" to create a new XY plot or a new time series plot, respectively. The plots are initially empty. Navigate to a simulation model and add variables to a plot.
+2. Click "Save plot config" to save to file the current plot configuration. Next time the configuration is loaded the saved plots will be automatically loaded.
+3. Any variable can be added to a plot by clicking "Add to plot" in the variable overview.
+4. Select where to plot the variable from the list of available plots.
+5. Click the plot name to see the chart.
 
 ![foo](/assets/img/UserguideFig5.png "Adding variables to a plot")
 ![foo](/assets/img/UserguideFig6.png "Plot view")
