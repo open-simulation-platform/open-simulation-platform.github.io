@@ -15,12 +15,12 @@ Kopl is not an open source software but can be freely used without any restricti
 <figcaption>Kopl configurator </figcaption>
 </figure>
 
-# Short introduction video
+#### Short introduction video
 
 <video src="/assets/videos/Kopl.mp4" width="640" height="400" controls preload></video>
 
 
-# How to get started
+## How to get started
 
 * Get the appropriate version of Kopl [here](./downloads).
 * Unzip somewhere on disk and double click the kopl executable
@@ -31,18 +31,18 @@ Here you have two options,either to create an empty configuration or point to an
 * Expand the newly created configuration and double click the setup. This opens up the diagram for connecting several FMUs together.
 * Use the palette on the right hand side to drag and drop components onto the diagram
 
-# Adding a new FMU
+## Adding a new FMU
 * It is possible to drag an FMU from the file explorer onto the diagram or drag the FMU element from the Components menu in the Palette.
 * When an FMU block is added to the diagram, you can double click it to open the editor for it.
 * When creating a FMU block from the palette you need to point to the fmu on disk. 
 * Press the "load variables" action to read the model description within the FMU. The relevant variables should then be shown in the definitions tab
 * It is now possible to make variables available as input or output. Press the plus button and select the wanted variable to use as input/output within the under the "Input" or "output" tabs.
 
-# Connecting the FMUs
+## Connecting the FMUs
 * Once two or more FMUs are added to the diagram it is possible to add connections between the blocks. 
 Just start dragging from an output or input slot and drop when hovering over the correct terminal.
 
-# Variable groups (MSMI)
+## Variable groups (MSMI)
 * If you want to follow the MSMI standard, you can start creating variable groups in the definitions tab within the variable groups tab.
 * Click the green button or right click an empty space in the local navigator/tree widget
 * Created variable groups may then be choosen as input or output to the FMU
@@ -52,15 +52,15 @@ Just start dragging from an output or input slot and drop when hovering over the
 <figcaption>Definition of nested variable groups </figcaption>
 </figure>
 
-# MSMI validation
+## MSMI validation
 
 Right click the configuration and choose validate in the context menu to let the [MSMI validator](./model-interface-validator) validate the current setup
 
-# Export
+## Export
 
 Right click the configuration and choose export in the context menu, then choose between the different formats.
 
-# Simulation
+## Simulation
 
 Right click the configuration and choose "Simulation" in the context menu, or run simulation in the diagram.
 This will export the setup and use the CLI behind the scene. The CLI version can be switched (currently necessary on the Linux version) in the preferences.
