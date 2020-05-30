@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "cosim demo app"
+title: "Demo application"
 has_children: true
 permalink: /cosim-demo-app/cosim-demo-app
 has_toc: false
@@ -14,9 +14,9 @@ nav_order: 3
     </b>
 </div>
 
-# cosim demo app
+# Demo application
 
-Load a configuration, control the simulation or explore in a easy way some of the features included in libcosim. The demo application was developed to showcase how the library can be used in an application and to provide a graphical user interface to manage co-simulations. 
+Load a configuration, control the simulation or explore in a easy way some of the features included in `libcosim`. The `cosim demo app` was developed to showcase how the library can be used in an application and to provide a graphical user interface to manage co-simulations. 
 
 There are options for real time execution or simulation in free mode (as fast as the hardware allows). During simulation, the user can observe simulation variables, manipulate these and visualise the results in charts. 
 A scenario management feature allows change of the simulation variables automatically based on a scenario file. It is also possible to log to file the simulation variable values of all models.

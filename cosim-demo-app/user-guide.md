@@ -3,7 +3,7 @@ layout: default
 title: "User guide"
 permalink: /cosim-demo-app/user-guide
 has_toc: false
-parent: "cosim demo app"
+parent: "Demo application"
 ---
 
 # User guide
@@ -29,7 +29,7 @@ Features covered in this user guide:
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract the files and you will have a root folder looking like the figure below
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case. 
+3. [Download](https://github.com/open-simulation-platform/demo-cases/releases) the _dp-ship_ demo case. 
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
@@ -39,7 +39,7 @@ Features covered in this user guide:
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract archive: tar -xzvf cosim-demo-app-vX.Y.Z.tar.gz
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case.
+3. [Download](https://github.com/open-simulation-platform/demo-cases/releases) the _dp-ship_ demo case.
 4. Extract the demo configuration
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.

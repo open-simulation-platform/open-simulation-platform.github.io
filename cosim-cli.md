@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "cosim"
+title: "Command line interface"
 permalink: /cosim
 has_toc: false
 nav_order: 2
@@ -13,8 +13,8 @@ nav_order: 2
     </b>
 </div>
 
-# cosim
-`cosim` is a command-line interface (CLI) to libcosim for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
+# Command line interface
+`cosim` is a command line interface (CLI) to libcosim for the cases where a graphical user interface is not available or needed. It facilitates for running co-simulations of systems configured with SSP or MSMI. 
 It has three primary use cases:
 
 - Running simulations from other programs or scripts
