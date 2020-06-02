@@ -14,7 +14,7 @@ This demo case simulates the temperature deviations of a house which consists of
 ## Model Description
 A simplified model represents the heat exchange dynamics of a house as shown in Figure 1.  
 
-[![foo](/assets/img/HouseFig1.png "Fig.1 A simplified house model"](/assets/img/HouseFig1.png)
+[![foo](/assets/img/HouseFig1.png "Fig.1 A simplified house model")](/assets/img/HouseFig1.png)
 
 **Table 1:** *List of FMUs of the house configuration and their input/output variables for connection.*
 
