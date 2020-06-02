@@ -28,7 +28,7 @@ The software produced in the OSP JIP consists of the following elements:
 - [cosim](./cosim) - command line interface
 - [cosim demo app](./cosim-demo-app/cosim-demo-app) - demo application with a graphical user interface
 - [cosim4j](./cosim4j) - libcosim java wrapper
-- [osp-validator](./model-interface-validator) validation tools for configuration and model interfaces
+- [osp-validator](./osp-validator) validation tools for configuration and model interfaces
 - [kopl](./kopl) - co-simulation configuration tool
 
 

@@ -7,7 +7,7 @@ nav_order: 7
 ---
 
 # Kopl configurator
-Kopl is a configurator to help set up and run a simulation. It can also be used to validate the model using the [MSMI validator](./model-interface-validator). 
+Kopl is a configurator to help set up and run a simulation. It can also be used to validate the model using the [OSP validator](./osp-validator). 
 Kopl is not an open source software but can be freely used without any restrictions.
 
 <figure>
@@ -42,8 +42,8 @@ Here you have two options,either to create an empty configuration or point to an
 * Once two or more FMUs are added to the diagram it is possible to add connections between the blocks. 
 Just start dragging from an output or input slot and drop when hovering over the correct terminal.
 
-# Variable groups (MSMI)
-* If you want to follow the MSMI standard, you can start creating variable groups in the definitions tab within the variable groups tab.
+# Variable groups (OSP-IS)
+* If you want to follow the OSP-IS, you can start creating variable groups in the definitions tab within the variable groups tab.
 * Click the green button or right click an empty space in the local navigator/tree widget
 * Created variable groups may then be choosen as input or output to the FMU
 
@@ -52,9 +52,9 @@ Just start dragging from an output or input slot and drop when hovering over the
 <figcaption>Definition of nested variable groups </figcaption>
 </figure>
 
-# MSMI validation
+# OSP-IS validation
 
-Right click the configuration and choose validate in the context menu to let the [MSMI validator](./model-interface-validator) validate the current setup
+Right click the configuration and choose validate in the context menu to let the [OSP validator](./osp-validator) validate the current setup
 
 # Export
 
