@@ -10,10 +10,11 @@ nav_order: 7
 `Kopl` is a configurator to help set up and run a simulation. It can also be used to validate the model using the [MSMI validator](./model-interface-validator). 
 `Kopl` is not an open source software but can be freely used without any restrictions.
 
-<figure>
-<img src="/assets/img/Kopl.png"> 
-<figcaption>Kopl configurator </figcaption>
-</figure>
+{% include figure.html 
+    img="/assets/img/Kopl.png" 
+    num="1" 
+    caption="Kopl configurator" 
+%}
 
 #### Short introduction video
 
@@ -47,10 +48,11 @@ Just start dragging from an output or input slot and drop when hovering over the
 * Click the green button or right click an empty space in the local navigator/tree widget
 * Created variable groups may then be choosen as input or output to the FMU
 
-<figure>
-<img src="/assets/img/Kopl-variablegroups.png"> 
-<figcaption class="caption" >Definition of nested variable groups</figcaption>
-</figure>
+{% include figure.html 
+    img="/assets/img/Kopl-variablegroups.png" 
+    num="2" 
+    caption="Definition of nested variable groups" 
+%}
 
 ## MSMI validation
 
@@ -67,13 +69,8 @@ This will export the setup and use the CLI behind the scene. The CLI version can
 See main menu->Tools->Preferences->CoSim configuration.
 When the simulation is done you should be able to see the results in the navigator and basic ploting is available.
 
-<figure>
-<img src="/assets/img/Kopl-results.png"> 
-<figcaption>Results after a simulation is done </figcaption>
-</figure>
-
-
-
-
-
-
+{% include figure.html 
+    img="/assets/img/Kopl-results.png" 
+    num="3" 
+    caption="Results after a simulation is done" 
+%}
