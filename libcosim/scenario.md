@@ -3,7 +3,7 @@ layout: default
 title: "Scenario"
 permalink: /libcosim/scenario
 has_toc: false
-parent: "libcosim"
+parent: "Co-simulation C/C++ libraries"
 nav_order: 2
 ---
 # Scenario

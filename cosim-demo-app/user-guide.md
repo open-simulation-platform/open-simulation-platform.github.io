@@ -3,7 +3,7 @@ layout: default
 title: "User guide"
 permalink: /cosim-demo-app/user-guide
 has_toc: false
-parent: "cosim demo app"
+parent: "Demo application"
 ---
 
 # User guide
