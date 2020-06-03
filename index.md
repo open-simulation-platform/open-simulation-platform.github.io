@@ -16,9 +16,9 @@ youtubeId: E5KumnkeKO8
 The Open Simulation Platform ([OSP](http://open-simulation-platform.com)) project aims to create a maritime industry 
 ecosystem for co-simulation of “black-box” simulation models and “plug and play” configuration of systems. OSP relies 
 on the Functional Mock-up Interface ([FMI](https://fmi-standard.org/)) standard and the new OSP interface specification 
-([OSP-IS]()) for the simulation models interfaces. This facilitates the effective building of System Digital Twins and 
-vessels, which in turn can be used to solve challenges with designing, building, integrating, commissioning and 
-operating complex, integrated systems. With common tools, standards and specifications OSP seeks to foster co-simulation 
+([OSP-IS]()) for the simulation models interfaces. This facilitates the effective building of digital twins, which in 
+turn can be used to solve challenges with designing, building, integrating, commissioning and operating complex, 
+integrated systems. With common tools, standards and specifications OSP seeks to foster co-simulation 
 collaboration in the industry.
 
 {% include youtubePlayer.html id=page.youtubeId %}
