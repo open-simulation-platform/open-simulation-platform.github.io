@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "java wrapper"
+title: "Java wrapper"
 permalink: /cosim4j
 has_toc: false
 nav_order: 4
@@ -12,12 +12,12 @@ nav_order: 4
     </b>
 </div>
 
-# Java Wrapper
-The Java wrapper - _cosim4j_ - enables Java applications to make use of _libcosim_.
-It uses the Java Native Interface (JNI) to efficiently interact with _libcosim_. 
+# Java wrapper
+The Java wrapper `cosim4j` enables Java applications to make use of `libcosim`.
+It uses the Java Native Interface (JNI) to efficiently interact with `libcosim`. 
 To make it accessible, all native dependencies for Linux and Windows have been pre-built and are bundled with the library.
 
-A highly convenient and powerful feature found in _cosim4j_
+A highly convenient and powerful feature found in `cosim4j`
 is the ability to write inline FMI 2.0 compatible models
 using Java, i.e., models can be written as regular Java
 code that can be added directly to the simulation without first

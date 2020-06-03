@@ -3,7 +3,7 @@ layout: default
 title: "Results logging"
 permalink: /libcosim/logging
 has_toc: false
-parent: "libcosim"
+parent: "Co-simulation C/C++ libraries"
 nav_order: 3
 ---
 # Results logging

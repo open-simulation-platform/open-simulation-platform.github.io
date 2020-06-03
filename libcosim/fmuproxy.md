@@ -3,7 +3,7 @@ layout: default
 title: "Distributed co-simulation"
 permalink: /libcosim/fmuproxy
 has_toc: false
-parent: "libcosim"
+parent: "Co-simulation C/C++ libraries"
 nav_order: 4
 ---
 # Distributed co-simulation

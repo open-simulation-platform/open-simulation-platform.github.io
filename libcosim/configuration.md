@@ -3,7 +3,7 @@ layout: default
 title: "Simulation configuration"
 permalink: /libcosim/configuration
 has_toc: false
-parent: "libcosim"
+parent: "Co-simulation C/C++ libraries"
 nav_order: 1
 ---
 # Simulation configuration
