@@ -16,7 +16,7 @@ nav_order: 6
 
 The [osp-validator](https://github.com/open-simulation-platform/osp-validator) repository implements a java library and 
 command line interface which validates an FMU with accompanying `OspModelDescription.xml` file, according to the 
-[OSP-IS](/url/to/osp-is/document) standard. It also validates a simulation configuration as specified by a 
+[OSP-IS](/url/to/osp-is/document) specification. It also validates a simulation configuration as specified by a 
 `OspSystemStructure.xml` file.
 
 ## Java library
