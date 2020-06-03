@@ -38,7 +38,7 @@ validation errors, it will print error messages for all the violated rules.
 Calling the `osp-cli.jar` without any input arguments prints out usage help: 
 ```
 $ java -jar osp-cli.jar
-Usage: msmi-cli.jar [options] [command] [command options]
+Usage: osp-cli.jar [options] [command] [command options]
   Options:
     --help, -h
       Print help
