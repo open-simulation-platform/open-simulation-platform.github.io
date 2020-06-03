@@ -29,17 +29,17 @@ Features covered in this user guide:
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract the files and you will have a root folder looking like the figure below
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case. 
+3. [Download](https://github.com/open-simulation-platform/demo-cases/releases) the _dp-ship_ demo case. 
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
-![foo](/assets/img/UserguideFig1.png "Root folder and extracted files")
+[![foo](/assets/img/UserguideFig1.png "Root folder and extracted files")](/assets/img/UserguideFig1.png)
 
 **Linux:**
 
 1. [Download](https://github.com/open-simulation-platform/cosim-demo-app/releases) the _cosim demo app_.
 2. Extract archive: tar -xzvf cosim-demo-app-vX.Y.Z.tar.gz
-3. [Download](https://github.com/open-simulation-platform/cse-demos/releases) the _dp-ship_ demo case.
+3. [Download](https://github.com/open-simulation-platform/demo-cases/releases) the _dp-ship_ demo case.
 4. Extract the demo configuration
 5. Run startup script: run-linux
 6. The application should open in your web browser at url http://localhost:8000.
@@ -54,12 +54,12 @@ Features covered in this user guide:
 4. Previously used configurations are available below.
 5. Click "Load simulation" to load the configuration.
 
-![foo](/assets/img/UserguideFig2.png "Load a configuration")
+[![foo](/assets/img/UserguideFig2.png "Load a configuration")](/assets/img/UserguideFig2.png)
 
 A typical configuration folder will contain simulation models (FMUs) and configuration files. 
-Connections between models and initialization values are configured through the files "OspSystemStructure.xml" or "SystemStructure.ssd". 
-If your configuration directory contains both ("OspSystemStructure.xml" and a "SystemStructure.ssd"), the .xml file will be prioritized. 
-If you would like to load your simulation with the connections as defined on the "SystemStructure.ssd" file, include it in the path (Example: C:\cosim-demos\dp-ship\SystemStructure.ssd)
+Connections between models and initialization values are configured through the files `OspSystemStructure.xml` or `SystemStructure.ssd`. 
+If your configuration directory contains both (`OspSystemStructure.xml` and a `SystemStructure.ssd`), the .xml file will be prioritized. 
+If you would like to load your simulation with the connections as defined on the `SystemStructure.ssd` file, include it in the path (Example: C:\cosim-demos\dp-ship\SystemStructure.ssd)
 
 [back to top](./user-guide#user-guide)
 
@@ -68,7 +68,7 @@ If you would like to load your simulation with the connections as defined on the
 1. After loading the configuration, the simulation models are shown on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
 
-![foo](/assets/img/UserguideFig3.png "Navigating through simulation models and variables")
+[![foo](/assets/img/UserguideFig3.png "Navigating through simulation models and variables")](/assets/img/UserguideFig3.png)
 
 [back to top](./user-guide#user-guide)
 
@@ -80,21 +80,23 @@ as the hardware allows).
 3. At the navigation bar, the RTF (Real Time Factor) indicates the current simulation speed related to real time. For instance, a RTF = 2 means that simulation runs at twice the speed of real time.
 4. Real time factor target value can be altered to set a specific RTF.
 5. At the navigation bar, click on "Play/Pause" to start or pause the simulation.
-6. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
+6. At the navigation bar, click on "Reset" to stop a simulation and initialize it again. 
+7. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
 
-![foo](/assets/img/UserguideFig4.png "Control the simulation")
+[![foo](/assets/img/UserguideFig4.png "Control the simulation")](/assets/img/UserguideFig4.png)
 
 [back to top](./user-guide#user-guide)
 
 ## Plot variables
 *Note: Each item below is highlighted in the figures below with its corresponding number.*
-1. Click "Create new time series" or "Create new XY plot" to obtain a time series plot or an XY plot that variables can be added to.
-2. Any variable can be added to a plot by clicking "Add to plot" in the variable overview.
-3. Select where to plot the variable from the list of available plots.
-4. Click the plot name to see the chart.
+1. Click "+ XY plot" or "+ Time series" to create a new XY plot or a new time series plot, respectively. The plots are initially empty. Navigate to a simulation model and add variables to a plot.
+2. Click "Save plot config" to save to file the current plot configuration. Next time the configuration is loaded the saved plots will be automatically loaded.
+3. Any variable can be added to a plot by clicking "Add to plot" in the variable overview.
+4. Select where to plot the variable from the list of available plots.
+5. Click the plot name to see the chart.
 
-![foo](/assets/img/UserguideFig5.png "Adding variables to a plot")
-![foo](/assets/img/UserguideFig6.png "Plot view")
+[![foo](/assets/img/UserguideFig5.png "Adding variables to a plot")](/assets/img/UserguideFig5.png)
+[![foo](/assets/img/UserguideFig6.png "Plot view")](/assets/img/UserguideFig6.png)
 
 ### Configurable Plot
 Two types of plot are supported by the _cosim demo app_: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
@@ -145,7 +147,7 @@ It is possible to override any variable value.
 2. Type in the value and click the check icon to confirm the new value.
 3. Click the eraser symbol to remove the override.
 
-![foo](/assets/img/UserguideFig7.png "Override variable values")
+[![foo](/assets/img/UserguideFig7.png "Override variable values")](/assets/img/UserguideFig7.png)
 
 [back to top](./user-guide#user-guide)
 
@@ -159,7 +161,7 @@ The scenario management allows to automatically change the value of variables at
 3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
 See more details on [libcosim](../libcosim/scenario)
-![foo](/assets/img/UserguideFig9.png "Scenario view")
+[![foo](/assets/img/UserguideFig9.png "Scenario view")](/assets/img/UserguideFig9.png)
 
 [back to top](./user-guide#user-guide)
 
@@ -235,7 +237,7 @@ There are three different ways to specify the FMU source to be loaded by the fmu
 Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
 
 The _cosim demo app_ distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
-![foo](/assets/img/UserguideFig1.png "Root folder files")
+[![foo](/assets/img/UserguideFig1.png "Root folder files")](/assets/img/UserguideFig1.png)
 
 Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
 ```bash
@@ -254,6 +256,6 @@ Steps to run the _cosim demo app_ with fmu-proxy:
 
 The image below shows the models loaded in the _cosim demo app_ after they were loaded by the fmu-proxy server.  
 
-![foo](/assets/img/UserguideFig11.png "Simulation models loaded through fmu-proxy")
+[![foo](/assets/img/UserguideFig11.png "Simulation models loaded through fmu-proxy")](/assets/img/UserguideFig11.png)
 
 [back to top](./user-guide#user-guide)
