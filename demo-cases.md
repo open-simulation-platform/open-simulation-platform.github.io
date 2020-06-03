@@ -18,3 +18,4 @@ Demonstration cases including simulation models and configuration with OSP-IS an
 - [DPShip](./cosim-demo-app/DPShip)
 - [Quarter-Truck](./cosim-demo-app/Quarter-Truck)
 - [House](./cosim-demo-app/House)
+- [Open Modelica Thruster](./cosim-demo-app/Open-Modelica-Thruster)
