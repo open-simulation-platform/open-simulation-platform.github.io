@@ -1,14 +1,14 @@
 ---
 layout: default
-title: "Kopl configurator"
+title: "Configuration tool"
 permalink: /kopl
 has_toc: false
 nav_order: 7
 ---
 
-# Kopl configurator
-Kopl is a configurator to help set up and run a simulation. It can also be used to validate the model using the [MSMI validator](./model-interface-validator). 
-Kopl is not an open source software but can be freely used without any restrictions.
+# Configuration tool
+`Kopl` is a configurator to help set up and run a simulation. It can also be used to validate the model using the [MSMI validator](./model-interface-validator). 
+`Kopl` is not an open source software but can be freely used without any restrictions.
 
 <figure>
 <img src="/assets/img/Kopl.png"> 
@@ -22,8 +22,8 @@ Kopl is not an open source software but can be freely used without any restricti
 
 ## How to get started
 
-* Get the appropriate version of Kopl [here](./downloads).
-* Unzip somewhere on disk and double click the kopl executable
+* Get the appropriate version of `Kopl` [here](./downloads).
+* Unzip somewhere on disk and double click the `Kopl` executable
 * Choose a location for the workspace (working folder) or just hit OK to use the default workspace
 * Right click the navigator area to create a new CoSimulation Task. Give it a name or leave the default
 * Create a new configuration which represents a simulation.  Right click -> New configuration. 
@@ -49,7 +49,7 @@ Just start dragging from an output or input slot and drop when hovering over the
 
 <figure>
 <img src="/assets/img/Kopl-variablegroups.png"> 
-<figcaption>Definition of nested variable groups </figcaption>
+<figcaption class="caption" >Definition of nested variable groups</figcaption>
 </figure>
 
 ## MSMI validation

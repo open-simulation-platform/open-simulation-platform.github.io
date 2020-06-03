@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "libcosim"
+title: "Co-simulation C/C++ libraries"
 permalink: /libcosim
 has_children: true
 has_toc: false
@@ -16,7 +16,7 @@ nav_order: 1
     </b>
 </div>
 
-# libcosim
+# OSP co-simulation C/C++ libraries
 The OSP co-simulation C/C++ libraries that orchestrates the co-simulation of models that conform to the Functional Mock-up Interface (FMI). 
 `libcosim` is the C++ API and `libcosimc` is a C wrapper for a subset of `libcosim`. 
 
