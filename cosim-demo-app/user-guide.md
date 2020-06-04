@@ -33,7 +33,11 @@ Features covered in this user guide:
 4. Extract the demo configuration
 5. Run the startup script: run-windows.cmd
 6. The application should open in your web browser at url http://localhost:8000.
-[![foo](/assets/img/UserguideFig1.png "Root folder and extracted files")](/assets/img/UserguideFig1.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig1.png" 
+    num="1" 
+    caption="Root folder and extracted files" 
+%}
 
 **Linux:**
 
@@ -54,7 +58,11 @@ Features covered in this user guide:
 4. Previously used configurations are available below.
 5. Click "Load simulation" to load the configuration.
 
-[![foo](/assets/img/UserguideFig2.png "Load a configuration")](/assets/img/UserguideFig2.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig2.png" 
+    num="2" 
+    caption="Load a configuration" 
+%}
 
 A typical configuration folder will contain simulation models (FMUs) and configuration files. 
 Connections between models and initialization values are configured through the files `OspSystemStructure.xml` or `SystemStructure.ssd`. 
@@ -68,7 +76,11 @@ If you would like to load your simulation with the connections as defined on the
 1. After loading the configuration, the simulation models are shown on the left hand side.
 2. Browse the model variables by clicking the names. Their variables are organized in tabs based on causality.
 
-[![foo](/assets/img/UserguideFig3.png "Navigating through simulation models and variables")](/assets/img/UserguideFig3.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig3.png" 
+    num="3" 
+    caption="Navigating through simulation models and variables" 
+%}
 
 [back to top](./user-guide#user-guide)
 
@@ -83,7 +95,11 @@ as the hardware allows).
 6. At the navigation bar, click on "Reset" to stop a simulation and initialize it again. 
 7. To close the current simulation and to load another configuration, click the "Tear down" button. Note that the current simulation needs to be paused in order to enable this button.
 
-[![foo](/assets/img/UserguideFig4.png "Control the simulation")](/assets/img/UserguideFig4.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig4.png" 
+    num="4" 
+    caption="Control the simulation" 
+%}
 
 [back to top](./user-guide#user-guide)
 
@@ -95,8 +111,16 @@ as the hardware allows).
 4. Select where to plot the variable from the list of available plots.
 5. Click the plot name to see the chart.
 
-[![foo](/assets/img/UserguideFig5.png "Adding variables to a plot")](/assets/img/UserguideFig5.png)
-[![foo](/assets/img/UserguideFig6.png "Plot view")](/assets/img/UserguideFig6.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig5.png" 
+    num="5" 
+    caption="Adding variables to a plot" 
+%}
+{% include figure.html 
+    img="/assets/img/UserguideFig6.png" 
+    num="6" 
+    caption="Plot view" 
+%}
 
 ### Configurable Plot
 Two types of plot are supported by the _cosim demo app_: **trend** and **scatter**. The type trend (above defined as "time series") shows the curve of a variable over time, while the type scatter (above defined as "XY plot") shows the relation between two variables, of one versus the other.      
@@ -147,7 +171,11 @@ It is possible to override any variable value.
 2. Type in the value and click the check icon to confirm the new value.
 3. Click the eraser symbol to remove the override.
 
-[![foo](/assets/img/UserguideFig7.png "Override variable values")](/assets/img/UserguideFig7.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig7.png" 
+    num="7" 
+    caption="Override variable values" 
+%}
 
 [back to top](./user-guide#user-guide)
 
@@ -161,7 +189,12 @@ The scenario management allows to automatically change the value of variables at
 3. To execute a scenario click on "Load scenario". The scenario will run and the variable values will be modified according the event list.
 
 See more details on [libcosim](../libcosim/scenario)
-[![foo](/assets/img/UserguideFig9.png "Scenario view")](/assets/img/UserguideFig9.png)
+
+{% include figure.html 
+    img="/assets/img/UserguideFig8.png" 
+    num="8" 
+    caption="Scenario view" 
+%}
 
 [back to top](./user-guide#user-guide)
 
@@ -237,7 +270,12 @@ There are three different ways to specify the FMU source to be loaded by the fmu
 Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
 
 The _cosim demo app_ distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
-[![foo](/assets/img/UserguideFig1.png "Root folder files")](/assets/img/UserguideFig1.png)
+
+{% include figure.html 
+    img="/assets/img/UserguideFig1.png" 
+    num="9" 
+    caption="Root folder files" 
+%}
 
 Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
 ```bash
@@ -256,6 +294,10 @@ Steps to run the _cosim demo app_ with fmu-proxy:
 
 The image below shows the models loaded in the _cosim demo app_ after they were loaded by the fmu-proxy server.  
 
-[![foo](/assets/img/UserguideFig11.png "Simulation models loaded through fmu-proxy")](/assets/img/UserguideFig11.png)
+{% include figure.html 
+    img="/assets/img/UserguideFig9.png" 
+    num="10" 
+    caption="Simulation models loaded through fmu-proxy" 
+%}
 
 [back to top](./user-guide#user-guide)

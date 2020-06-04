@@ -14,7 +14,11 @@ permalink: /cosim-demo-app/Quarter-Truck
 This example describes a low-level test case for the performance of libcosim in terms of accuracy and efficiency [1]. 
 Figure 1 shows a simplified model of a quarter truck with two masses mWheel and mChassis representing the mass of wheel and chassis respectively. Both masses have a single vertical degree of freedom coupled by a linear spring-damper system representing the suspension force and tire force. The ground profile is given as external input. 
 
-[![foo](/assets/img/QuarterTruckFig1.png "Fig.1 A simplified quarter truck model.")](/assets/img/QuarterTruckFig1.png)
+{% include figure.html 
+    img="/assets/img/QuarterTruckFig1.png" 
+    num="1" 
+    caption="A simplified quarter truck model" 
+%}
 
 ## Model Description
 
@@ -46,7 +50,11 @@ The local default parameters used in the model are listed in Table 2.
 The following scenario is performed as example: The system starts from equilibrium state where `zWheel = zChassis = 0`. The ground profile is defined as a step function excited by a jump of 0.1m in vertical direction at 1s. 
 Figure 2 below shows the simulation results using the *cosim demo app*. In the plot the vertical displacements of the wheel and the chassis are displayed.
 
-[![foo](/assets/img/QuarterTruckFig6.png "Fig.2 Displacement of the wheel and chassis.")](/assets/img/QuarterTruckFig6.png)
+{% include figure.html 
+    img="/assets/img/QuarterTruckFig2.png" 
+    num="2" 
+    caption="Displacement of the wheel and chassis" 
+%}
 
 More information on how to use the _cosim demo app_ is available in the [user guide](./user-guide), where the [DP-Ship](./DPShip) demo test case was used as an example.
 
