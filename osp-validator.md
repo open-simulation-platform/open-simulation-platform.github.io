@@ -16,7 +16,8 @@ nav_order: 6
 The [osp-validator](https://github.com/open-simulation-platform/osp-validator) repository implements a java library and 
 command line interface tool which validates an FMU with accompanying `OspModelDescription.xml` file, according to the 
 [OSP-IS](/url/to/osp-is/document) specification. It also validates a simulation configuration as specified by a libcosim 
-`OspSystemStructure.xml` file defined [here](./libcosim/configuration.md).
+`OspSystemStructure.xml` file defined [here](./libcosim/configuration.md). The documentation for the xml schemas of both
+`OspModelDescription.xsd` and `OspSystemStructure.xsd` can be found [here](https://opensimulationplatform.com/xsd/)
 
 ## Java library
 The jar file `osp-validator-api-<version>.jar` is found in every release of `osp-validator`, downloadable from 
