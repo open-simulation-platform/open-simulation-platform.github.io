@@ -13,11 +13,13 @@ youtubeId: E5KumnkeKO8
 </div>
 
 # Open Simulation Platform Software
-The open source software for co-simulation is built on a combination of technical solutions from the 
-Open Simulation Platform (OSP) initiators and other established industrial solutions. 
-The key working principle has been to use the best available technology and knowledge to meet the requirements for 
-the OSP to efficiently serve its purpose. The source code for all software except `kopl` is made available on 
-[GitHub](https://github.com/open-simulation-platform), free of charge, through the MPL 2.0 open source licence.
+The Open Simulation Platform ([OSP](http://open-simulation-platform.com)) project aims to create a maritime industry 
+ecosystem for co-simulation of “black-box” simulation models and “plug and play” configuration of systems. OSP relies 
+on the Functional Mock-up Interface ([FMI](https://fmi-standard.org/)) standard and the new OSP interface specification 
+([OSP-IS]()) for the simulation models interfaces. This facilitates the effective building of digital twins, which in 
+turn can be used to solve challenges with designing, building, integrating, commissioning and operating complex, 
+integrated systems. With common tools, standards and specifications OSP seeks to foster co-simulation 
+collaboration in the industry.
 
 {% include youtubePlayer.html id=page.youtubeId %}
 
@@ -32,14 +34,12 @@ The software produced in the OSP JIP consists of the following elements:
 - [kopl](./kopl) - co-simulation configuration tool
 
 
-With OSP, simulation models are interconnected using the Functional Mock-up Interface ([FMI](https://fmi-standard.org/)) 
-co-simulation interface. Based on input-output variable mapping, the OSP master algorithm routes the data between the 
-models. 
+With OSP, simulation models are interconnected using the FMI co-simulation interface. Based on input-output variable 
+mapping, the OSP master algorithm routes the data between the models. 
 
 There is currently support for FMI 2.0 (including FMI 2.0.1) and FMI 1.0. FMI 3.0 will be supported when this standard 
 becomes operational. The structure of the co-simulated system can be defined using the System Structure & Parameterization 
-standard ([SSP](https://ssp-standard.org/)) or the new model interface standard OSP Interface Specification 
-([OSP-IS]()) developed in the OSP project. 
+standard ([SSP](https://ssp-standard.org/)) or the new [OSP System Structure](/libcosim/configuration) format that enables the use of OSP-IS. 
 
 The main benefit introduced with OSP-IS is the possibility to define FMU interconnections at a higher level, i.e. variable 
 group connections rather than scalar connections. Additionally, it enables automatic unit conversions and provides the a 
