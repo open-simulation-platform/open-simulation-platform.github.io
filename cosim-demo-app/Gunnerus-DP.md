@@ -23,9 +23,9 @@ This demo case demonstrates that doing simulations with this kind of topology is
 
 ## System Description
 
-The HIL/SIL toplogy is emulated by splitting the simulation into two instances: one running the control system (Figure 2) and another running the simulator models (Figure 3). Each instance can run separately on different hardware. A single system configuration (Figure 4), where the control plant and simulator is executed in the same instance, is also provied.
+The HIL/SIL toplogy is emulated by splitting the simulation into two instances: one running the control system (Figure 2) and another running the simulator models (Figure 3). Each instance can run separately on different hardware. A single system configuration (Figure 4), where the control plant and simulator is executed in the same instance, is also provided.
 
-The control system and simulator communicates using a network FMU, custom made for this demo. Each system instantiates a version with an interface for receiving and sending states. For instance, the network FMU in the control system sends thruster commands and receive vessel and environment states. The single system configuration does not use the network FMU.  
+The control system and simulator communicates using a network FMU, custom made for this demo. Each system instantiates a version with an interface for receiving and sending states. For instance, the network FMU in the control system sends thruster commands and receives vessel and environment states. The single system configuration does not use the network FMU.  
 
 A list of all FMUs are given in Table 1.
 
@@ -38,7 +38,7 @@ A list of all FMUs are given in Table 1.
 {% include figure.html
     img="/assets/img/gunnerus-dp/simulator.png"
     num="3"
-    caption="Simulator Configuration"
+    caption="Simulator Models Configuration"
 %}
 
 {% include figure.html
@@ -60,7 +60,7 @@ A list of all FMUs are given in Table 1.
 | *Thruster Dynamics* | Thruster dynamics
 | *Vessel Model* | 6-dof vessel model |
 
-Note that all these fmus contains binaries for `win64` only.
+Note that all these fmus contain binaries for `win64` only.
 
 ## FMU Descriptions
 
