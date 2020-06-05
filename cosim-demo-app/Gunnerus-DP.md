@@ -15,9 +15,11 @@ This toplogy is common when performing hardware-in-the-loop (HIL) simulations. I
 
 This demo case demonstrates that doing simulations with this kind of topology is feasible using libcosim and the OSP configuration format. The case simulates a DP controlled vessel performing a box maneuver while exposed to external forces. NTNU's research vessel, Gunnerus (Figure 1), has been used as reference for both the vessel and control plant.
 
-[![foo](/assets/img/gunnerus-dp/gunnerus.jpg "Gunnerus")](/assets/img/gunnerus-dp/gunnerus.jpg)
-
-**Figure 1:** *Gunnerus*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/gunnerus.jpg"
+    num="1"
+    caption="Gunnerus"
+%}
 
 ## System Description
 
@@ -27,14 +29,23 @@ The control system and simulator communicates using a network FMU, custom made f
 
 A list of all FMUs are given in Table 1.
 
-[![foo](/assets/img/gunnerus-dp/control_system.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/control_system.png)
-**Figure 2:** *Control System Configuration*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/control_system.png"
+    num="2"
+    caption="Control System Configuration"
+%}
 
-[![foo](/assets/img/gunnerus-dp/simulator.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/simulator.png)
-**Figure 3:** *Simulator Configuration*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/simulator.png"
+    num="3"
+    caption="Simulator Configuration"
+%}
 
-[![foo](/assets/img/gunnerus-dp/single_system.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/single_system.png)
-**Figure 4:** *Single System Configuration*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/single_system.png"
+    num="4"
+    caption="Single System Configuration"
+%}
 
 **Table 1:** *List of FMUs in the Gunnerus-DP case.*
 
@@ -57,12 +68,17 @@ Note that all these fmus contains binaries for `win64` only.
 
 The box reference FMU generates setpoints for north, east and yaw. The model is shown in Figure 5 and the output in Figure 6. The result is a box maneuver which takes the vessel between 0-40m north and 0-40m east. The setpoints are not intended to be directly sent to the DP controller, but should be passed through a reference filter first.
 
-[![foo](/assets/img/gunnerus-dp/box_reference.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/box_reference.png)
+{% include figure.html
+    img="/assets/img/gunnerus-dp/box_reference.png"
+    num="5"
+    caption="Box Reference Model"
+%}
 
-**Figure 5:** *Box Reference Model*
-
-[![foo](/assets/img/gunnerus-dp/box_maneuver.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/box_maneuver.png)
-**Figure 6:** *Box Reference Output*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/box_maneuver.png"
+    num="6"
+    caption="Box Reference Output"
+%}
 
 **Table 2:** *Box Reference model inputs and outputs (I/O).*
 
@@ -99,8 +115,11 @@ The current model FMU simulates 2D surface current that is used by the vessel mo
 
 The model is based on the Simulink diagram shown in Figure 8 and its interface is described in Table 4 and Table 5. The current velocity vector has six entries, however, only the x and y componentents are non-zero.
 
-[![foo](/assets/img/gunnerus-dp/current_model.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/current_model.png)
-**Figure 7:** *Current Model*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/current_model.png"
+    num="7"
+    caption="Current Model"
+%}
 
 **Table 4:** *Current Model inputs and outputs (I/O).*
 
@@ -164,8 +183,11 @@ The reference model provides smooth setpoint signals for the DP controller, ensu
 
 A simulink representation of the model is shown in Figure 8 and its inputs and outputs are described in Table 8.
 
-[![foo](/assets/img/gunnerus-dp/reference_model.png "Fig.1 Box reference model")](/assets/img/gunnerus-dp/reference_model.png)
-**Figure 8:** *Reference Model*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/reference_model.png"
+    num="8"
+    caption="Reference Model"
+%}
 
 **Table 8:** *Reference Model inputs and outputs (I/O).*
 
@@ -214,8 +236,11 @@ This FMU implements simplified thruster dynamics as a low pass filter which can 
 
 The FMU is based on the simulink model shown in Figure 9 and its interface is described in Table 10.
 
-[![foo](/assets/img/gunnerus-dp/thruster_dynamics.png "Thruster Dynamics")](/assets/img/gunnerus-dp/thruster_dynamics.png)
-**Figure 9:** *Thruster Dynamics*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/thruster_dynamics.png"
+    num="9"
+    caption="Thruster Model"
+%}
 
 **Table 10:** *Thruster Dynamics inputs and outputs (I/O).*
 
@@ -245,8 +270,11 @@ This FMU implements vessel dynamics. Its interface is shown in Figure 10. The su
 Additional external forces can be connected to either the wave forces or thrust port. Internally, they are both connected to the same summation block. The current velocity port only considers the x and y components of the input vector. The rest of the entries can be set to zero.
 The full list of inputs and outputs are shown in Table 10
 
-[![foo](/assets/img/gunnerus-dp/vessel_model.png "Vessel Model")](/assets/img/gunnerus-dp/vessel_model.png)
-**Figure 10:** *Vessel Dynamics*
+{% include figure.html
+    img="/assets/img/gunnerus-dp/vessel_model.png"
+    num="10"
+    caption="Vessel Model"
+%}
 
 **Table 10:** *Thruster Dynamics inputs and outputs (I/O).*
 
