@@ -15,7 +15,7 @@ has_toc: false
 
 # Example configurations
 Demonstration cases including simulation models and configuration with OSP-IS and SSP:
+- [Gunnerus-DP](./cosim-demo-app/Gunnerus-DP)
 - [DPShip](./cosim-demo-app/DPShip)
 - [Quarter-Truck](./cosim-demo-app/Quarter-Truck)
 - [House](./cosim-demo-app/House)
-- [Gunnerus-DP](./cosim-demo-app/Gunnerus-DP)
