@@ -56,7 +56,7 @@ A list of all FMUs are given in Table 1.
 | *[Current Model](#current-model)*    | Current model generating surface current velocities    |
 | *[DP Controller](#dp-controller)*          | 3-Dof DP controller |
 | *[Reference Model](#reference-model)*                 | Reference model providing setpoints to DP
-| *[Simulator Communication](#simulator-communication)* | Network FMU handling communiction between control system and simulator  |
+| *[Simulator Communication](#simulator-communication)* | Network FMU handling communication between control system and simulator. Shown in Figure 2 as FmiUdpAdapter.  |
 | *[Thruster Dynamics](#thruster-dynamics)* | Thruster dynamics
 | *[Vessel Model](#vessel-model)* | 6-dof vessel model |
 
@@ -142,7 +142,7 @@ The model is based on the Simulink diagram shown in Figure 8 and its interface i
 
 This FMU implements Gunnerus' DP control system. The control plant consists of proportional-derivative, integrator and reference feed forward parts, all of which can be independently enabled or disabled.
 
-The controller inputs are the vessel’s position in NED, velocity in BODY, position setpoint in NED, velocity setpoint in BODY and acceleration setpoint in BODY. The acceleration setpoint is required if the reference feed-forward part of the model is enabled.
+The controller inputs are the vessel’s position in NED (North-East-Down), velocity in BODY, position setpoint in NED, velocity setpoint in BODY and acceleration setpoint in BODY. The acceleration setpoint is required if the reference feed-forward part of the model is enabled.
 
 A complete list of inputs, outputs and tunables are shown in Table 6 and Table 7.
 
