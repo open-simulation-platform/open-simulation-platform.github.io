@@ -51,14 +51,14 @@ A list of all FMUs are given in Table 1.
 
 | FMU name                | Description                                                                                                                             |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| *Box Reference*         | Provides setpoints for a box maneuver                                                                               |
-| *Control System Communication*           | Network FMU handling communication between control system and simulator |
-| *Current Model*    | Current model generating surface current velocities    |
-| *DP Controller*          | 3-Dof DP controller |
-| *Reference Model*                 | Reference model providing setpoints to DP
-| *Simulator Communication* | Network FMU handling communiction between control system and simulator  |
-| *Thruster Dynamics* | Thruster dynamics
-| *Vessel Model* | 6-dof vessel model |
+| *[Box Reference](#box-reference-model)*      | Provides setpoints for a box maneuver                                                                               |
+| *[Control System Communication](#control-system-communication)*           | Network FMU handling communication between control system and simulator |
+| *[Current Model](#current-model)*    | Current model generating surface current velocities    |
+| *[DP Controller](#dp-controller)*          | 3-Dof DP controller |
+| *[Reference Model](#reference-model)*                 | Reference model providing setpoints to DP
+| *[Simulator Communication](#simulator-communication)* | Network FMU handling communiction between control system and simulator  |
+| *[Thruster Dynamics](#thruster-dynamics)* | Thruster dynamics
+| *[Vessel Model](#vessel-model)* | 6-dof vessel model |
 
 Note that all these fmus contain binaries for `win64` only.
 
