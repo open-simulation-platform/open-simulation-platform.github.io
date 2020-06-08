@@ -2,6 +2,6 @@ remote_theme: pmarsceill/just-the-docs
 repository: open-simulation-platform/cse-core
 logo: "/assets/img/Logo.png"
 title: "Open Simulation Platform"
-footer_content: "Copyright &copy; Open Simulation Platform."
+footer_content: "Copyright &copy; 2020 DNV GL AS, Kongsberg Maritime CM AS, SINTEF Ocean AS, and NTNU"
 description: "co-simulation software"
 search_enabled: true
