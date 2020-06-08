@@ -11,7 +11,7 @@ permalink: /cosim-demo-app/lars
 
 ## System Description
 
-The launch and recovery system (LARS) consist of two main subsystems, i.e., the A-Frame and the winch, as shown in Figure 1. Figure 2 depicts the modeling sketch of the LARS. The LARS model of interest has two degree of freedom (DoF) enabled by the tilting cylinder and the winch drum through the sheave connected to the A-Frame beam.
+The launch and recovery system (LARS) consist of two main subsystems, i.e., the A-Frame and the winch, as shown in Figure 1. Figure 2 depicts the modeling sketch of the LARS. The LARS model of interest has two degrees of freedom (DoF) enabled by the tilting cylinder and the winch drum through the sheave connected to the A-Frame beam.
 
 {%
     include figure.html img="/assets/img/lars/gunnerus_rov.png"
