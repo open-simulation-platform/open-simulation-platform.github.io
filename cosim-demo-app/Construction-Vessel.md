@@ -47,17 +47,21 @@ The simulated vessel has five thrusters: two azimuth thrusters and three tunnel 
 
 The power plant is responsible for providing power to the thruster, crane and hotel loads. Its topology is shown in Figure 1.
 
-[![foo](/assets/img/construction-vessel/power_plant.png "Power Plant")](/assets/img/construction-vessel/power_plant.png)
-
-**Figure 1:** *Power plant topology*
+{% include figure.html
+    img="/assets/img/construction-vessel/power_plant.png"
+    num="1"
+    caption="Power plant topology"
+%}
 
 ### Connections
 
 Connections between FMUs are defined using CSE’s internal system structure format. An equivalent simulator topology is shown in the Simulink diagram in Figure 2
 
-[![foo](/assets/img/construction-vessel/connections.png "Model connections")](/assets/img/construction-vessel/connections.png)
-
-**Figure 2:** *Model connections*
+{% include figure.html
+    img="/assets/img/construction-vessel/model_connections.png"
+    num="2"
+    caption="Model connections"
+%}
 
 ## FMUS
 
