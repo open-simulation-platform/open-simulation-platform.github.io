@@ -45,7 +45,7 @@ The simulated vessel has five thrusters: two azimuth thrusters and three tunnel 
 
 ### Power Plant
 
-The power plant is responsible for providing power to the thruster, crane and hotel loads. Its topology is shown in Figure 1. 
+The power plant is responsible for providing power to the thruster, crane and hotel loads. Its topology is shown in Figure 1.
 
 [![foo](/assets/img/construction-vessel/power_plant.png "Power Plant")](/assets/img/construction-vessel/power_plant.png)
 
@@ -70,7 +70,7 @@ The winch FMU combines winch dynamics and control. Inside is a PID controller pr
 
 The winch model calculates load depth by modelling the winch as a second order dynamic system. Vessel position is necessary to adjust load depth for heave motions. The model outputs load depth, motor speed and power consumption for use in the power plant FMU.
 
-A complete list of inputs and outputs are given in Table 3.
+Interface descriptions are given in Table 3 and Table 4.
 
 **Table 3:** *Winch model inputs and outputs (I/O).*
 
@@ -87,12 +87,22 @@ A complete list of inputs and outputs are given in Table 3.
 | `motor_speed`          | O | rad/s | Current winch motor speed |
 | `power_consumption`    | O | W | Power consumed |
 
+**Table 4:** *Winch model's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description                                                       |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `vessel_position`| `vessel_position.north`, `vessel_position.east`, `vessel_position.down`, `vessel_position.roll`, `vessel_position.pitch`, `vessel_position.yaw` | Vessel’s position in NED (North-East-Down) frame
+| `load_depth`           | `load_depth` | Wrapper group for load depth |
+| `motor_speed`          | `motor_speed` | Wrapper group for motor speed |
+| `power_consumption`    | `power_consumption` | Wrapper group for power consumed |
+
 ### Reference Model
 
-The reference model produces a smooth setpoint signal based on the desired vessel position. This is achieved by passing the setpoint through a rate limited second order system. 
-A complete list of inputs and outputs are given in Table 4.
+The reference model produces a smooth setpoint signal based on the desired vessel position. This is achieved by passing the setpoint through a rate limited second order system.
 
-**Table 4:** *Reference model inputs and outputs (I/O).*
+Lists of inputs and outputs are given in Table 5 and Table 6.
+
+**Table 5:** *Reference model inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | ------------- | ----- | ---- | ----------------------------------------------------------- |
@@ -103,14 +113,22 @@ A complete list of inputs and outputs are given in Table 4.
 | `filtered_setpoint.east`  | O | m | Reference filtered DP setpoint east |
 | `filtered_setpoint.yaw`   | O | rad | Reference filtered DP setpoint yaw |
 
+**Table 6:** *Reference model's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description                                                       |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `vessel_setpoint`| `vessel_setpoint.north`, `vessel_setpoint.east`, `vessel_setpoint.yaw` | Vessel position setpoint in NED (North-East-Down) frame
+| `filtered_vessel_setpoint`| `filtered_vessel_setpoint.north`, `filtered_vessel_setpoint.east`, `filtered_vessel_setpoint.yaw` | Reference filtered vessel position setpoint in NED (North-East-Down) frame
+
 ### Vessel Model
 
 The vessel model FMU simulates vessel dynamics. Its inputs are environmental forces produced by the wind and wave models and the thruster states from the thruster model. The resultant thrust force is calculated using the thruster layout in Table 2.
 
 The output is the vessel’s velocity expressed in the BODY frame and position expressed in NED.
-A complete list of inputs and outputs are given in Table 5.
 
-**Table 5:** *Vessel model inputs and outputs (I/O).*
+Lists of inputs and outputs are given in Table 7 and Table 8.
+
+**Table 7:** *Vessel model inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -151,13 +169,27 @@ A complete list of inputs and outputs are given in Table 5.
 | `ned_position.pitch` | O | rad | Vessel’s pitch orientation expressed in NED |
 | `ned_position.yaw`   | O | rad | Vessel’s yaw orientation expressed in NED |
 
+**Table 8:** *Vessel model's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description                                                       |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `wind_forces`| `wind_forces.surge`, `wind_forces.sway`, `wind_forces.heave`, `wind_forces.roll`, `wind_forces.pitch` `wind_forces.yaw` | Wind forces acting on vessel in BODY frame
+| `wave_forces`| `wave_forces.surge`, `wave_forces.sway`, `wave_forces.heave`, `wave_forces.roll`, `wave_forces.pitch` `wave_forces.yaw` | Wave forces acting on vessel in BODY frame
+| `tunnel_thruster_1`| `thruster_states.tunnel_thruster_1.power_consumption`, `thruster_states.tunnel_thruster_1.thrust` | Input group for tunnel thruster 1
+| `tunnel_thruster_2`| `thruster_states.tunnel_thruster_2.power_consumption`, `thruster_states.tunnel_thruster_2.thrust` | Input group for tunnel thruster 2
+| `tunnel_thruster_3`| `thruster_states.tunnel_thruster_3.power_consumption`, `thruster_states.tunnel_thruster_3.thrust` | Input group for tunnel thruster 3
+| `main_propeller_port`| `thruster_states.main_propeller_port.power_consumption`, `thruster_states.main_propeller_port.thrust`, `thruster_states.main_propeller_port.azimuth` | Input group for tunnel main propeller port
+| `main_propeller_starboard`| `thruster_states.main_propeller_starboard.power_consumption`, `thruster_states.main_propeller_starboard.thrust`, `thruster_states.main_propeller_starboard.azimuth` | Input group for tunnel main propeller starboard
+| `ned_position`| `ned_position.north`, `ned_position.east`, `ned_position.down`, `ned_position.roll`, `ned_position.pitch` `ned_position.yaw` | Vessel position in NED
+| `body_velocity`| `body_velocity.surge`, `body_velocity.sway`, `body_velocity.heave`, `body_velocity.roll`, `body_velocity.pitch` `body_velocity.yaw` | Vessel velocity in BODY
+
 ### Thrust Allocation
 
-The thrust allocation FMU transforms the force commands from DP to thruster setpoints. The setpoints are passed to the thruster model which calculates the resultant force. 
+The thrust allocation FMU transforms the force commands from DP to thruster setpoints. The setpoints are passed to the thruster model which calculates the resultant force.
 
-A complete list of inputs and outputs are given in Table 6.
+Lists of inputs and outputs are given in Table 9 and Table 10.
 
-**Table 6:** *Thrust allocation inputs and outputs (I/O).*
+**Table 9:** *Thrust allocation inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -172,13 +204,24 @@ A complete list of inputs and outputs are given in Table 6.
 | `thrust_command.tunnel_thruster_2.rpm`  | O | [ 0...1 ] | RPM command to tunnel thruster 2 |
 | `thrust_command.tunnel_thruster_3.rpm`  | O | [ 0...1 ] | RPM command to tunnel thruster 3 |
 
+**Table 10:** *Thrust Allocation's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `force_command`| `force_command.surge`, `force_command.sway`,  `force_command.yaw` | Force command from DP |
+| `tunnel_thruster_1_command`| `thrust_command.tunnel_thruster_1.rpm.` | Command to tunnel thruster 1 |
+| `tunnel_thruster_2_command`| `thrust_command.tunnel_thruster_2.rpm.` | Command to tunnel thruster 2 |
+| `tunnel_thruster_3_command`| `thrust_command.tunnel_thruster_3.rpm.` | Command to tunnel thruster 3 |
+| `main_propeller_port_command`| `thrust_command.main_propeller_port.rpm.`, `thrust_command.main_propeller_port.azimuth.` | Command to main propeller port |
+| `main_propeller_starboard_command`| `thrust_command.main_propeller_starboard.rpm.`, `thrust_command.main_propeller_starboard.azimuth.` | Command to main propeller starboard |
+
 ### Thruster Model
 
 The thruster model simulates thruster dynamics using setpoints produced by the thrust allocator. The output is a thruster state structure consisting of power consumption, thrust and, for azimuth thrusters, azimuth angle.
 
-A complete list of inputs and outputs are given in Table 7.
+Lists of inputs and outputs are given in Table 11 and Table 12.
 
-**Table 7:** *Thruster model inputs and outputs (I/O).*
+**Table 11:** *Thruster model inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -202,13 +245,28 @@ A complete list of inputs and outputs are given in Table 7.
 | `thruster_states.main_propeller_starboard.azimuth` | O | deg | Azimuth of starboard azimuth thruster  |
 | `thruster_states.main_propeller_starboard.thrust` | O | N | Thrust produced by starboard azimuth thruster  |
 
+**Table 12:** *Thruster Model's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `tunnel_thruster_1_command`| `thrust_command.tunnel_thruster_1.rpm.` | Command to tunnel thruster 1 |
+| `tunnel_thruster_2_command`| `thrust_command.tunnel_thruster_2.rpm.` | Command to tunnel thruster 2 |
+| `tunnel_thruster_3_command`| `thrust_command.tunnel_thruster_3.rpm.` | Command to tunnel thruster 3 |
+| `main_propeller_port_command`| `thrust_command.main_propeller_port.rpm.`, `thrust_command.main_propeller_port.azimuth.` | Command to main propeller port |
+| `main_propeller_starboard_command`| `thrust_command.main_propeller_starboard.rpm.`, `thrust_command.main_propeller_starboard.azimuth.` | Command to main propeller starboard |
+| `tunnel_thruster_1_state`| `thrust_command.tunnel_thruster_1.power_consumed`, `thrust_command.tunnel_thruster_1.rpm` | Tunnel thruster 1 state|
+| `tunnel_thruster_2_state`| `thrust_command.tunnel_thruster_2.power_consumed`, `thrust_command.tunnel_thruster_2.rpm` | Tunnel thruster 2 state|
+| `tunnel_thruster_3_state`| `thrust_command.tunnel_thruster_3.power_consumed`, `thrust_command.tunnel_thruster_3.rpm` | Tunnel thruster 3 state|
+| `main_propeller_port_state`| `thruster_states.main_propeller_port.power_consumption`, `thruster_states.main_propeller_port.thrust`, `thruster_states.main_propeller_port.azimuth` | Main propeller port state
+| `main_propeller_starboard_state`| `thruster_states.main_propeller_starboard.power_consumption`, `thruster_states.main_propeller_starboard.thrust`, `thruster_states.main_propeller_starboard.azimuth` | Main propeller starboard
+
 ### DP Controller
 
 The DP controller FMU calculates the forces necessary to keep the vessel at a desired position. The position setpoint is provided by the reference model and the current position by the vessel model. The forces calculated by DP is used as input the thrust allocation FMU. The control algorithm is simple and consists only of a PID controller for each degree of freedom.
 
-A complete list of inputs and outputs are given in Table 13 and Table 14.
+Lists of inputs and outputs are given in Table 13 and Table 14.
 
-**Table 8:** *DP controller inputs and outputs (I/O).*
+**Table 13:** *DP controller inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -225,13 +283,21 @@ A complete list of inputs and outputs are given in Table 13 and Table 14.
 | `force_command.sway`| O | N | Desired force in sway expressed in BODY |
 | `force_command.yaw`  | O | Nm | Desired moment in yaw expressed in BODY |
 
+**Table 14:** *DP controllers's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `ned_position`| `vessel_position.north`, `vessel_position.east`, `vessel_position.down`, `vessel_position.roll`, `vessel_position.pitch`, `vessel_position.yaw` |  Vessel position in NED |
+| `vessel_setpoint`| `vessel_setpoint.north`, `vessel_setpoint.east`, `vessel_setpoint.yaw` |  Vessel setpoint in NED |
+| `force_command`| `force_command.surge`, `force_command.sway`, `force_command.yaw` |  Force command from DP |
+
 ### Wind Model
 
 The wind model is responsible for modelling external wind forces acting on the vessel.
 
-A complete list of inputs and outputs are given Table 9.
+Lists of inputs and outputs are given Table 15 and Table 16.
 
-**Table 9:** *Wind model inputs and outputs (I/O).*
+**Table 15:** *Wind model inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -254,15 +320,23 @@ A complete list of inputs and outputs are given Table 9.
 | `wind_forces.pitch` | O | Nm | Wind moment in pitch expressed in BODY |
 | `wind_forces.yaw`   | O | Nm | Wind moment in yaw expressed in BODY |
 
+**Table 16:** *Wind model's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `ned_position`| `vessel_position.north`, `vessel_position.east`, `vessel_position.down`, `vessel_position.roll`, `vessel_position.pitch`, `vessel_position.yaw` |  Vessel position in NED |
+| `vessel_velocity`| `vessel_velocity.surge`, `vessel_velocity.sway`, `vessel_velocity.heave`, `vessel_velocity.roll`, `vessel_velocity.pitch`, `vessel_velocity.yaw` |  Vessel velocity in BODY |
+| `wind_forces`| `wind_forces.surge`, `wind_forces.sway`, `wind_forces.heave`, `wind_forces.roll`, `wind_forces.pitch` `wind_forces.yaw` | Wind forces acting on vessel in BODY frame
+
 ### Wave Model
 
 The wave model simulates first and second order wave forces acting on the vessel. The model is implemented as a linearized wave spectrum producing position disturbances. Meaning that wave disturbances are added directly to the vessel position calculated by the vessel model FMU.
 
-A complete list of outputs is given in Table 10.
+A complete list of outputs is given in Table 17.
 '
-The sea state and response magnitude can be tuned by changing the parameters listed in Table 11.
+The sea state and response magnitude can be tuned by changing the parameters listed in Table 18.
 
-**Table 10:** *Wave model inputs and outputs (I/O).*
+**Table 17:** *Wave model inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -279,7 +353,7 @@ The sea state and response magnitude can be tuned by changing the parameters lis
 | `drift_disturbances.pitch`| O | rad | Wave drift pitch |
 | `drift_disturbances.yaw`  | O | rad | Wave drift yaw |
 
-**Table 11:** *Wave model parameters*
+**Table 18:** *Wave model parameters*
 
 | Name      |    Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -297,12 +371,12 @@ The sea state and response magnitude can be tuned by changing the parameters lis
 
 ### Power System
 
-The power system simulates the power plant shown in Figure 4. There is no feedback from the plant to the thruster and the crane. Meaning that both act as if they have unlimited available power. 
+The power system simulates the power plant shown in Figure 4. There is no feedback from the plant to the thruster and the crane. Meaning that both act as if they have unlimited available power.
 However, power consumption is fed to the power system which calculates bus frequency, voltage and produced power
 
-A complete list of inputs and outputs is given in Table 12.
+List of inputs and outputs is given in Table 19 and Table 20.
 
-**Table 12:** *Wave model inputs and outputs (I/O).*
+**Table 19:** *Wave model inputs and outputs (I/O).*
 
 | Name          | I/O   | Unit | Description                                                       |
 | --------- | ----- | ---- | ----------------------------------------------------------- |
@@ -333,3 +407,15 @@ A complete list of inputs and outputs is given in Table 12.
 | `bus_power[1,2]`| O | W | Power produced on bus 2 |
 
 
+**Table 20:** *Power System's OSP-IS variable groups*
+
+| Name          | Comprised variables | Description |
+| ------------- |  ---- | ----------------------------------------------------------- |
+| `bus_1_loads`| `bus_1_loads.active_power`, `bus_1_load.reactive_power` |  Power loads on bus 1 |
+| `bus_2_loads`| `bus_2_loads.active_power`, `bus_2_load.reactive_power` |  Power loads on bus 2 |
+| `winch_power`| `bus_1_loads.active_power` |  Power consumed by the winch |
+| `tunnel_thruster_1_state`| `thrust_command.tunnel_thruster_1.power_consumed`, `thrust_command.tunnel_thruster_1.rpm` | Tunnel thruster 1 state|
+| `tunnel_thruster_2_state`| `thrust_command.tunnel_thruster_2.power_consumed`, `thrust_command.tunnel_thruster_2.rpm` | Tunnel thruster 2 state|
+| `tunnel_thruster_3_state`| `thrust_command.tunnel_thruster_3.power_consumed`, `thrust_command.tunnel_thruster_3.rpm` | Tunnel thruster 3 state|
+| `main_propeller_port_state`| `thruster_states.main_propeller_port.power_consumption`, `thruster_states.main_propeller_port.thrust`, `thruster_states.main_propeller_port.azimuth` | Main propeller port state
+| `main_propeller_starboard_state`| `thruster_states.main_propeller_starboard.power_consumption`, `thruster_states.main_propeller_starboard.thrust`, `thruster_states.main_propeller_starboard.azimuth` | Main propeller starboard
