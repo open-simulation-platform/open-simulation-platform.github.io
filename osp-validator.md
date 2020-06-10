@@ -13,25 +13,27 @@ nav_order: 6
 </div>
 
 # OSP validator
-The [osp-validator](https://github.com/open-simulation-platform/osp-validator) repository implements a java library and 
+The [osp-validator](https://github.com/open-simulation-platform/osp-validator){:target="_blank"}
+repository implements a java library and 
 command line interface tool which validates an FMU with accompanying `OspModelDescription.xml` file, according to the 
-[OSP-IS](/url/to/osp-is/document) specification. It also validates a simulation configuration as specified by a libcosim 
+[OSP-IS](https://opensimulationplatform.com/specification/){:target="_blank"} specification. 
+It also validates a simulation configuration as specified by a libcosim 
 `OspSystemStructure.xml` file defined [here](./libcosim/configuration.md). The documentation for the xml schemas of both
-`OspModelDescription.xsd` and `OspSystemStructure.xsd` can be found [here](https://opensimulationplatform.com/xsd/)
+`OspModelDescription.xsd` and `OspSystemStructure.xsd` can be found [here](https://opensimulationplatform.com/xsd/){:target="_blank"}
 
 ## Java library
 The jar file `osp-validator-api-<version>.jar` is found in every release of `osp-validator`, downloadable from 
-[here](https://github.com/open-simulation-platform/osp-validator/releases), and contains the java API.
+[here](https://github.com/open-simulation-platform/osp-validator/releases){:target="_blank"}, and contains the java API.
 
 The java library can be used by simulation configuration tools which needs to validate that the models and configuration
 is according to OSP-IS. The [kopl](./kopl.md) configuration tool uses this library for validation.
 
 Examples showing how it can be used in a java application can be found 
-[here](https://github.com/open-simulation-platform/osp-validator/tree/1.0.0/osp-validator-api/src/main/java/com/opensimulationplatform/api/examples)
+[here](https://github.com/open-simulation-platform/osp-validator/tree/0.11.0/osp-validator-api/src/main/java/com/opensimulationplatform/api/examples){:target="_blank"}
 
 ## Command line interface
 A command line tool to interface the validator called `osp-cli.jar` is produced when building the `osp-validator` 
-project, and it is downloadable from [here](https://github.com/open-simulation-platform/osp-validator/releases). The 
+project, and it is downloadable from [here](https://github.com/open-simulation-platform/osp-validator/releases){:target="_blank"}. The 
 command line interface tool can be used to verify that a given `OspModelDescription.xml` and FMU is according to the 
 OSP-IS. It can also validate simulation configurations defined by a `OspSystemStructure.xml` file. If there are no 
 validation errors, the output is empty. In case there are validation errors, it will print error messages for all the 

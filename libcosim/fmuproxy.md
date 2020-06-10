@@ -17,10 +17,10 @@ Distributed simulation is currently enabled through integration with the softwar
 Both FMI 1.0 and FMI 2.0 for Co-simulation is supported.
 
 The [Demo Cases](/demo-cases) include configuration for distributed co-simulation with FMU-Proxy, and this 
-[section](/cosim-demo-app/user-guide#distributed-co-simulation-using-fmu-proxy) shows how it's done with the _cosim demo app_.
+[section](/cosim-demo-app/user-guide#distributed-co-simulation-using-fmu-proxy) shows how it's done with the `cosim demo app`.
 
 ## FMU-proxy
-[FMU-proxy](https://github.com/NTNU-IHB/FMU-proxy) is an open-source framework 
+[FMU-proxy](https://github.com/NTNU-IHB/FMU-proxy){:target="_blank"} is an open-source framework 
 that enables language and platform independent access to FMUs. 
 In short, FMU-proxy provides remote procedure call (RPC) mapping to the FMI 2.0 
 for co-simulation interface. This is achieved by wrapping one or more FMU in a 
@@ -32,7 +32,7 @@ in different software projects.
  
 ## Download and run the FMU-proxy server:
 
-Download an FMU-proxy server from [here](https://github.com/NTNU-IHB/FMU-proxy/releases/tag/v0.6.1).
+Download an FMU-proxy server from [here](https://github.com/NTNU-IHB/FMU-proxy/releases/tag/v0.6.1){:target="_blank"}.
 
 To get started, start the server executable `fmu-proxy.jar` from the command line. <br>
 To see all available commands type:
