@@ -19,3 +19,4 @@ Demonstration cases including simulation models and configuration with OSP-IS an
 - [DPShip](./cosim-demo-app/DPShip)
 - [Quarter-Truck](./cosim-demo-app/Quarter-Truck)
 - [House](./cosim-demo-app/House)
+- [Launch and Recovery System](./cosim-demo-app/lars)

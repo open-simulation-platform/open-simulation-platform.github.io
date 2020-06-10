@@ -25,11 +25,11 @@ It allows for individually defined time steps for the models (with the requireme
  
 It is possible to apply arbitrary operations to variable values without modifying the models. 
 Examples include arithmetics, logical operations, transformations, unit conversions and more. 
-This is necessary if variables connected between models must be summed or even modified through a linear or a coordinate frame transformation, read more in [simulation configuration](./configuration) 
+This is necessary if variables connected between models must be summed or even modified through a linear or a coordinate frame transformation, read more in [simulation configuration](/libcosim/configuration) 
 
-During simulation, there are features to observe and manipulate simulation variables either through dedicated interfaces or with the help of a [scenario runner](./scenario).
+During simulation, there are features to observe and manipulate simulation variables either through dedicated interfaces or with the help of a [scenario runner](/libcosim/scenario).
 
-There is also support for [logging](./logging) the simulation results and for running [distributed co-simulation](./fmuproxy).
+There is also support for [logging](/libcosim/logging) the simulation results and for running [distributed co-simulation](/libcosim/fmuproxy).
 There are interfaces for client applications to include their own implementation of many of the included features. 
 
 Detailed API documentation is found here:

@@ -246,7 +246,7 @@ The code below is an example of a "OspSystemStructure.xml" file:
 
 If your configuration directory contains both (“OspSystemStructure.xml” and a “SystemStructure.ssd”), the .xml file will be prioritized. If you would like to load your simulation with the connections as defined on the “SystemStructure.ssd” file, include it in the path.
 
-Note: The new MSMI connection types are not supported when using the SSP standard.
+Note: The new OSP-IS connection types are not supported when using the SSP standard.
 
 [back to top](./user-guide#user-guide)
 

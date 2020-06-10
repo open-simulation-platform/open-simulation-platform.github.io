@@ -8,9 +8,11 @@ nav_order: 1
 ---
 # Simulation configuration
 
-The configuration format is based on the [MSMI specification]() and is used to configure the simulation system structure, including
+The OSP system structure configuration format is based on the OSP Inteface Specification 
+[OSP-IS](https://open-simulation-platform.com/specification/){:target="_blank"} 
+and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
-[OspSystemStructure.xsd](https://github.com/open-simulation-platform/cse-core/blob/master/test/data/msmi/schema/OspModelDescription.xsd). 
+[OspSystemStructure.xsd](https://open-simulation-platform.com/xsd/OspSystemStructure-0.1.xsd){:target="_blank"}. 
 Description of the OspSystemStructure elements and their attributes are shown below. Code implementation examples follow.
 
 ## \<OspSystemStructure>
@@ -28,8 +30,6 @@ Description of the OspSystemStructure elements and their attributes are shown be
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <OspSystemStructure
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
         xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure"
         version="0.1">
     <StartTime>0.0</StartTime>
@@ -96,7 +96,7 @@ This is especially important when different models are provided by different ven
 ```
 
 ## \<Connection>
-As defined in the MSMI specification, `connections` are configured through variables and variableGroups. It is highly recommended to follow the specification for its interfaces when exporting a model for connections.
+As defined in OSP-IS, `connections` are configured through variables and variableGroups. It is highly recommended to follow the specification for its interfaces when exporting a model for connections.
 
 | sub-element     |    attribute                   |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
@@ -131,6 +131,6 @@ As defined in the MSMI specification, `connections` are configured through varia
     </Connections>
 ```
 
-Alternatively, co-simulation configuration using the [SSP standard](https://ssp-standard.org/) is also supported. The SSP standard is one of the standardization projects of the FMI standard. 
-The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10).
+Alternatively, co-simulation configuration using the [SSP standard](https://ssp-standard.org/){:target="_blank"} is also supported. The SSP standard is one of the standardization projects of the FMI standard. 
+The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10){:target="_blank"}.
 `OspSystemStructure.xml` is recommended and prioritized when both the .xml and .ssd files are available. 
