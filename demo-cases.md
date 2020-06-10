@@ -19,3 +19,4 @@ Demonstration cases including simulation models and configuration with OSP-IS an
 - [Quarter-Truck](./cosim-demo-app/Quarter-Truck)
 - [House](./cosim-demo-app/House)
 - [Launch and Recovery System](./cosim-demo-app/lars)
+- [Gunnerus Path-following](./cosim-demo-app/gunnerus-path-following)
