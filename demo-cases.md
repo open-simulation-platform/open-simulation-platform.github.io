@@ -19,6 +19,7 @@ Demonstration cases including simulation models and configuration with OSP-IS an
 - [DPShip](./cosim-demo-app/DPShip)
 - [Quarter-Truck](./cosim-demo-app/Quarter-Truck)
 - [House](./cosim-demo-app/House)
+- [Open Modelica Thruster](./cosim-demo-app/Open-Modelica-Thruster)
 - [Launch and Recovery System](./cosim-demo-app/lars)
 - [Gunnerus Path-following](./cosim-demo-app/gunnerus-path-following)
 - [Construction Vessel](./cosim-demo-app/Construction-Vessel)
