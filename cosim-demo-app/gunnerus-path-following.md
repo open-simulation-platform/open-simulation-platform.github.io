@@ -146,3 +146,9 @@ Holds the vessel model and models applying environmental forces onto the vessel.
 | `cgShipMotion.angularVelocity.yaw` | O | The angular velocity of the vessel about the yaw axis (deg/s)  |
 | `cgShipMotion.linearVelocity` | O | Components of the vessel velocity along the surge, sway and heave axes (m/s)  |
 | `cg_x_rel_ap`, `cg_y_rel_cl`, `cg_z_rel_bl` | O | Location of the center of gravity (CG) of the vessel relative to AP/BL/CL  |
+
+{%
+    include figure.html img="/assets/img/gunnerus-waypoint/connections.png"
+    num="1"
+    caption="Connections for Gunnerus Waypoints"
+%}
