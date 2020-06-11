@@ -76,4 +76,3 @@ Demonstration cases including simulation models and configuration with OSP-IS an
 - [Launch and Recovery System](./cosim-demo-app/lars)
 - [Gunnerus Path-following](./cosim-demo-app/gunnerus-path-following)
 - [Construction Vessel](./cosim-demo-app/Construction-Vessel)
-- [Launch and Recovery System](./cosim-demo-app/lars)
