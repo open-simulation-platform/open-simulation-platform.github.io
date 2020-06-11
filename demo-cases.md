@@ -33,7 +33,7 @@ This page contains a list of marine reference models (Table 1) and [example conf
 | Generic thruster model | Open Modelica | Windows | 64 bit | None
 | Set of thruster models | Simulink | Windows | 64bit | [Construction vessel](https://github.com/open-simulation-platform/demo-cases/tree/master/construction-vessel)
 | Vessel model, Gunnerus (hull) | Simulink | Windows | 64bit | [Gunnerus-DP](https://github.com/open-simulation-platform/demo-cases/tree/master/gunnerus-dp)
-| Vessel model, [construction vessel](https://github.com/open-simulation-platform/demo-cases/tree/master/construction-vessel) (hull) | Simulink | Windows | 64bit | [Construction Vessel](https://github.com/open-simulation-platform/demo-cases/tree/master/construction-vessel)
+| Vessel model, construction vessel (hull) | Simulink | Windows | 64bit | [Construction Vessel](https://github.com/open-simulation-platform/demo-cases/tree/master/construction-vessel)
 | Vessel model, Gunnerus (hull + environment) | Vesim | Windows | 64bit | [Gunnerus Palfinger Crane](https://github.com/open-simulation-platform/demo-cases/tree/master/gunnerus-palfinger-crane) and[ Gunnerus Path-following](https://github.com/open-simulation-platform/demo-cases/tree/master/gunnerus-waypoint-following)
 | Vessel model (hull + environment + thrusters) | 20-sim | Windows | 64bit | [DP-Ship](https://github.com/open-simulation-platform/demo-cases/tree/master/dp-ship)
 | Current model | Simulink | Windows | 64bit | [Gunnerus-DP](https://github.com/open-simulation-platform/demo-cases/tree/master/gunnerus-dp)
