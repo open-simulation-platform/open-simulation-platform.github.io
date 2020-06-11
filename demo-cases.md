@@ -15,7 +15,7 @@ has_toc: false
 
 # Maritime Reference Models
 
-This page contains a list of marine reference models (Table 1) and links to [example configurations](#example-configurations) using these models.
+This page contains a list of marine reference models (Table 1) and [example configurations](#example-configurations) using these models.
 
 **Table 1:** *List of maritime reference models.*
 
