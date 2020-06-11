@@ -31,11 +31,12 @@ The code below shows the minimal required to write FMI 2.0 compatible models in 
 
 ```java
 public class JavaSlave extends Fmi2Slave {
+
     @ScalarVariable (causality=Fmi2Causality.output)
     private double realOutput;
 
-    public JavaSlave(String instanceName) {
-        super(instanceName);
+    public JavaSlave(Map<String, Object> args) {
+        super(args);
     }
 
     public void doStep(double t, double dt) {
