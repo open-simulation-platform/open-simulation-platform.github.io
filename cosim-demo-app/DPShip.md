@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "DP-Ship"
-parent: "Demo Cases"
+parent: "Maritime Reference Models"
 nav_order: 1
 has_toc: false
 permalink: /cosim-demo-app/DPShip

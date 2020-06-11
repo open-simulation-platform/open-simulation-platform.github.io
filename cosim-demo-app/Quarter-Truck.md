@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Quarter-Truck"
-parent: "Demo Cases"
+parent: "Maritime Reference Models"
 nav_order: 2
 has_toc: false
 permalink: /cosim-demo-app/Quarter-Truck
