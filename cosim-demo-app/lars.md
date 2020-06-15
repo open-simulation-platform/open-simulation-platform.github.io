@@ -40,9 +40,9 @@ The reference system model is divided into  eight sub-models and FMUs as shown i
 | FMU name                | Input | Output | Default Parameters |
 | ----------------------- | ----- |------- | ------------------ |
 | *WinchActuatorSetpoint*                  | | winchSetpoint | |
-| *WinchController*           | `winchSetpoint`, `loadSpeed`| `motorGain` | Proportional gain K = 10.<br/>  Derivative time constant Td = 0.1.<br/>  Derivative gain limitation N = 10.<br/>  Integral time constant Ti = 0.1. <br/> loadDepth_min max/init length 1m/1000,/200m |
+| *WinchController*           | `winchSetpoint`, `loadSpeed`| `motorGain` | Proportional gain K = 10.<br/>  Derivative time constant Td = 0.1.<br/>  Derivative gain limitation N = 10.<br/>  Integral time constant Ti = 0.1. <br/> loadDepth_min max/init length 1m/1000m,/200m |
 | *WinchActuator*    | `motorGain`, `motorSpeed`  | `motorTorque` | Max motor output torque T = 10kNm  |
-| *Winch*          | `motorTorque1`, `motorTorque2`, `motorTorque3` | `motorSpeed`, `loadSpeed`, `winchForce` | Gear ratio r = 173<br/> Gear efficiency e = 0.925<br/>  Drum inertia i = 160000kgm^2<br/>   Drum diameter d = 4.36m<br/>  Drum width B = 3m<br/>  Max wire length wireLmax = 1000m<br/>  Load mass m = 50000kg<br/>  Wire diameter D= 0.02m<br/>  Wire Young's Modulus E = 85e9<br/>  Wire damping critical coefficient  c= 0.5<br/>  Total friction coefficient r = 1  |
+| *Winch*          | `motorTorque1`, `motorTorque2`, `motorTorque3` | `motorSpeed`, `loadSpeed`, `winchForce` | Gear ratio r = 141<br/> Gear efficiency e = 0.925<br/>  Drum inertia i = 1600kgm^2<br/>   Drum diameter d = 1.36m<br/>  Drum width B = 1.1m<br/>  Max wire length wireLmax = 1000m<br/>  Load mass m = 500kg<br/>  Wire diameter D= 0.02m<br/>  Wire Young's Modulus E = 85e9<br/>  Wire damping critical coefficient  c= 0.5<br/>  Total friction coefficient r = 1  |
 | *AFrameActuatorSetpoint*          | | `aFrameSetpoint` | |
 | *AFrameController*                 | `aFrameSetpoint`, `cylinderSpeed`  | `cylinderGain` | Proportional gain K = 2<br/> Derivative time constant Td = 0.01<br/> Derivative gain limitation N = 10<br/> Integral time constant Ti = 0.01<br/> Cylinder min/max/init length 1.2/1.7/1.7m |
 | *AFrameActuator*                 | `cylinderGain`, `cylinderSpeed`  | `cylinderForce`  | Max cylinder output force F = 5000kN |
