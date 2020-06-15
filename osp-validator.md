@@ -88,7 +88,7 @@ because they have different types [Force, LinearMechanicalPort]
 `CraneController_OspModelDescription.xml`
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
-<OspModelDescription xmlns="http://opensimulationplatform.com/osp-is/OSPModelDescription" version="1.0">
+<OspModelDescription xmlns="https://open-simulation-platform.com/OspModelDescription/1.0.0" version="1.0">
   <VariableGroups>
     <Generic name="actuator_limits">
       <Variable ref="Act_Limits[1]"/>
@@ -114,7 +114,7 @@ because they have different types [Force, LinearMechanicalPort]
 `KnuckleBoomCrane_OspModelDescription.xml`
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
-<OspModelDescription xmlns="http://opensimulationplatform.com/osp-is/OSPModelDescription" version="1.0">
+<OspModelDescription xmlns="https://open-simulation-platform.com/OspModelDescription/1.0.0" version="1.0">
   <VariableGroups>
     <Generic name="actuator_limits">
       <Variable ref="Act_Limits[1]"/>
