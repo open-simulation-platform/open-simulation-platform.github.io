@@ -65,8 +65,9 @@ Usage: osp-cli.jar [options] [command] [command options]
 ```
 
 ### Usage example
-Download latest `osp-cli.jar` from [here](), and example `OspSystemStructure.xml`, `OspModelDescription.xml` and FMUs 
-from [here](https://github.com/open-simulation-platform/osp-validator/tree/master/osp-validator-cli/src/main/resources/example). 
+Download latest `osp-cli.jar` from [here](https://github.com/open-simulation-platform/osp-validator/releases), and 
+example `OspSystemStructure.xml`, `OspModelDescription.xml` and FMUs from 
+[here](https://github.com/open-simulation-platform/osp-validator/tree/master/osp-validator-cli/src/main/resources/example). 
 The FMUs only contain a `modelDescription.xml` file in order to be able to test `osp-cli.jar`. This configuration is 
 valid and so the `osp-cli.jar` will produce no output when validating, as shown below.
 
