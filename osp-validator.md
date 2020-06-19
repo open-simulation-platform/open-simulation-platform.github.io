@@ -65,94 +65,26 @@ Usage: osp-cli.jar [options] [command] [command options]
 ```
 
 ### Usage example
-The .xml files shown below, which represents a valid configuration, can be validated with `osp-cli.jar` as follows:
+Download latest `osp-cli.jar` from [here](https://github.com/open-simulation-platform/osp-validator/releases), and 
+example `OspSystemStructure.xml`, `OspModelDescription.xml` and FMUs from 
+[here](https://github.com/open-simulation-platform/osp-validator/tree/master/osp-validator-cli/src/main/resources/example). 
+The FMUs only contain a `modelDescription.xml` file in order to be able to test `osp-cli.jar`. This configuration is 
+valid and so the `osp-cli.jar` will produce no output when validating, as shown below.
 
 ```
-$ java -jar osp-cli.jar osp-system-structure -file OspSystemStructure.xml
+$ java -jar osp-cli.jar osp-system-structure -file OspSystemStructure_Crane.xml
 ```
 
-This produces no output, meaning all models, and the configuration itself is valid according to 
-OSP-IS. If we change the line `<VariableGroup simulator="crane_controller" name="linear_mechanical_port"/>` in 
-`OspSystemStructure.xml` to `<VariableGroup simulator="crane_controller" name="force"/>` and run the validation again, 
-we see that the validator prints out an error message associated with the violated rules, and accompanying line 
-number for where the error is:
-
+If we change line 12 in `OspSystemStructure_Crane.xml` from 
+`<VariableGroup simulator="crane_controller" name="linear_mechanical_port"/>` to 
+`<VariableGroup simulator="crane_controller" name="force"/>` and re-run the validator, it prints the validation error
+messages to standard out, as shown below.
 ```
-$ java -jar osp-cli.jar osp-system-structure -file OspSystemStructure.xml
-Validation error in OspSystemStructure.xml on line 11: 
-VariableGroupConnection [crane_controller.force, knuckle_boom_crane.linear_mechanical_port] is invalid 
-because they have different types [Force, LinearMechanicalPort]
+$ java -jar osp-cli.jar osp-system-structure -file OspSystemStructure_Crane.xml
+Validation error in OspSystemStructure_Crane.xml on line 11: VariableGroupConnection 
+[crane_controller.force, knuckle_boom_crane.linear_mechanical_port] is invalid because they have different types 
+[Force, LinearMechanicalPort]
 ```
 
-### Example XML files
-`CraneController_OspModelDescription.xml`
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<OspModelDescription xmlns="http://opensimulationplatform.com/osp-is/OSPModelDescription" version="1.0">
-  <VariableGroups>
-    <Generic name="actuator_limits">
-      <Variable ref="Act_Limits[1]"/>
-      <Variable ref="Act_Limits[2]"/>
-      <Variable ref="Act_Limits[3]"/>
-    </Generic>
-    <LinearMechanicalPort name="linear_mechanical_port">
-      <Force name="force">
-        <Variable ref="p_Crane.e[1]"/>
-        <Variable ref="p_Crane.e[2]"/>
-        <Variable ref="p_Crane.e[3]"/>
-      </Force>
-      <LinearVelocity name="linear_velocity">
-        <Variable ref="p_Crane.f[1]"/>
-        <Variable ref="p_Crane.f[2]"/>
-        <Variable ref="p_Crane.f[3]"/>
-      </LinearVelocity>
-    </LinearMechanicalPort>
-  </VariableGroups>
-</OspModelDescription>
-```
-
-`KnuckleBoomCrane_OspModelDescription.xml`
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<OspModelDescription xmlns="http://opensimulationplatform.com/osp-is/OSPModelDescription" version="1.0">
-  <VariableGroups>
-    <Generic name="actuator_limits">
-      <Variable ref="Act_Limits[1]"/>
-      <Variable ref="Act_Limits[2]"/>
-      <Variable ref="Act_Limits[3]"/>
-    </Generic>
-    <LinearMechanicalPort name="linear_mechanical_port">
-      <Force name="force">
-        <Variable ref="p_Crane.e[1]"/>
-        <Variable ref="p_Crane.e[2]"/>
-        <Variable ref="p_Crane.e[3]"/>
-      </Force>
-      <LinearVelocity name="linear_velocity">
-        <Variable ref="p_Crane.f[1]"/>
-        <Variable ref="p_Crane.f[2]"/>
-        <Variable ref="p_Crane.f[3]"/>
-      </LinearVelocity>
-    </LinearMechanicalPort>
-  </VariableGroups>
-</OspModelDescription>
-```
-
-`OspSystemStructure.xml`
-```xml
-<OspSystemStructure version="0.1" xmlns="http://opensimulationplatform.com/MSMI/OSPSystemStructure">
-  <Simulators>
-    <Simulator name="crane_controller" source="CraneController.fmu" stepSize="1.051732E7"/>
-    <Simulator name="knuckle_boom_crane" source="KnuckleBoomCrane.fmu" stepSize="1.051732E7"/>
-  </Simulators>
-  <Connections>
-    <VariableConnection>
-      <Variable simulator="crane_controller" name="Act_Limits[1]"/>
-      <Variable simulator="knuckle_boom_crane" name="Act_Limits[1]"/>
-    </VariableConnection>
-    <VariableGroupConnection>
-      <VariableGroup simulator="crane_controller" name="linear_mechanical_port"/>
-      <VariableGroup simulator="knuckle_boom_crane" name="linear_mechanical_port"/>
-    </VariableGroupConnection>
-  </Connections>
-</OspSystemStructure>
-```
+As we can see from the output, the `VariableGroupConnection` found on line 11 in `OspSystemStructure_Crane.xml` is 
+invalid, because it tries to connect two variable groups of incompatible types (`Force` and `LinearMechanicalPort`).
