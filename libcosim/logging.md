@@ -15,6 +15,7 @@ including case) and placed in the same folder as the configuration file (`OspSys
 
 | sub-element     | attribute | Description                                                                                                                              |
 | :--------------- | :------------| :-------------------------------------------------------------------------------------------------------------------------------------- |
+| <*simulators*>         | `timeStampedFileNames` | Whether or not the output filenames should contain a trailing time-stamp. `Default="True"`.
 | <*simulator*>          | `name`  | Contains all variables to be logged, attribute `name` declares of the name of the simulator.
 |         | `decimationFactor`  | Optional attribute `decimationFactor` declares the sampling rate of the simulation results. For example, decimationFactor=1 means the results of every simulation step of the simulator are logged. And decimationFactor=10 means every 10th of the simulation results are logged. |
 | <*variable*>        | `name` | Declares the name of the simulator variable to be logged.
