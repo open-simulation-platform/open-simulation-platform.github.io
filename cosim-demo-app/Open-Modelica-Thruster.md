@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Open Modelica Thruster"
-parent: "Demo Cases"
+parent: "Maritime Reference Models"
 nav_order: 2
 has_toc: false
 permalink: /cosim-demo-app/Open-Modelica-Thruster

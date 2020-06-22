@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "House"
-parent: "Demo Cases"
+parent: "Maritime Reference Models"
 nav_order: 3
 has_toc: false
 permalink: /cosim-demo-app/House

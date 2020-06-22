@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Construction Vessel"
-parent: "Demo Cases"
+parent: "Maritime Reference Models"
 nav_order: 1
 has_toc: false
 permalink: /cosim-demo-app/Construction-Vessel

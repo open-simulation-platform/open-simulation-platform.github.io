@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Gunnerus Path-following"
-parent: "Demo Cases"
+parent: "Maritime Reference Models"
 nav_order: 1
 has_toc: false
 permalink: /cosim-demo-app/gunnerus-path-following
