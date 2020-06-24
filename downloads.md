@@ -11,7 +11,7 @@ has_toc: false
 
 You can use this page to download: 
 
-- [cosim (command line interface)](https://github.com/open-simulation-platform/cse-cli/releases){:target="_blank"}
+- [cosim (command line interface)](https://github.com/open-simulation-platform/cosim-cli/releases){:target="_blank"}
 - [cosim demo app](https://github.com/open-simulation-platform/cosim-demo-app/releases){:target="_blank"}
 - [cosim4j (java wrapper)](https://github.com/open-simulation-platform/cosim4j/releases){:target="_blank"}
 - [demo simulation models](https://github.com/open-simulation-platform/demo-cases/releases){:target="_blank"}
