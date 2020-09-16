@@ -5,3 +5,7 @@ title: "Open Simulation Platform"
 footer_content: "Copyright &copy; 2020 DNV GL AS, Kongsberg Maritime CM AS, SINTEF Ocean AS and NTNU"
 description: "co-simulation software"
 search_enabled: true
+
+# Google Analytics Tracking
+ga_tracking: UA-44542433-8
+ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true by default)
