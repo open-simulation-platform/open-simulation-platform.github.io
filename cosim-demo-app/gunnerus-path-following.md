@@ -22,10 +22,10 @@ Each component/FMU of the simulation case will be described in the following sec
 | *TrajectoryController*                  | Controls the speed and heading angle to make vessel follow path..                                                                               |
 | *WaypointProvider2DOF*           | Issues waypoints (target and previous) to controller. |
 | *Converter*    | A simple unit conversion |
-| *ThrusterDrive*          | |
-| *PMAzimuth*                 | |
-| *PowerPlant*                 | |
-| *VesselFmu*                 | |
+| *ThrusterDrive*          | Thruster drive calculates the rmp of the thruster given the desired thrust command (propulsion force) [1] |
+| *PMAzimuth*                 | Main propuslion azimuth thruster |
+| *PowerPlant*                 | Provides power to the thruster drive [2] |
+| *VesselFmu*                 | 6DOF hull model including the environment model |
 
 ## Trajectory Controller
 
@@ -146,6 +146,11 @@ Holds the vessel model and models applying environmental forces onto the vessel.
 | `cgShipMotion.angularVelocity.yaw` | O | The angular velocity of the vessel about the yaw axis (deg/s)  |
 | `cgShipMotion.linearVelocity` | O | Components of the vessel velocity along the surge, sway and heave axes (m/s)  |
 | `cg_x_rel_ap`, `cg_y_rel_cl`, `cg_z_rel_bl` | O | Location of the center of gravity (CG) of the vessel relative to AP/BL/CL  |
+
+### References
+[1] S. Skjong, M. Rindarøy, L. T. Kyllingstad, V. Æsøy, and E. Pedersen, “Virtual prototyping of maritime systems and operations: applications of distributed co-simulations,” J. Mar. Sci. Technol., pp. 1–19, 2017.  
+[2] S. Skjong and E. Pedersen, “A real-time simulator framework for marine power plants with weak power grids,” Mechatronics, vol. 47, pp. 24–36, Nov. 2017.  
+
 
 {%
     include figure.html img="/assets/img/gunnerus-waypoint/connections.png"
