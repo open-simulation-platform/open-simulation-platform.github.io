@@ -261,7 +261,7 @@ under the folder *\proxyfmu*). Note that the only difference when comparing to t
 Below is an example of how to specify proxyfmu sources for the "OspSystemStructure.xml":
 ```xml
 <Simulators>
-    <Simulator name="FMU1" source="proxyfmu://localhost?file=path/to/fmu1.fmu"/>
+	<Simulator name="FMU1" source="proxyfmu://localhost?file=path/to/fmu1.fmu"/>
 	<Simulator name="FMU1" source="proxyfmu://127.0.0.1:9090?file=path/to/fmu2.fmu"/>
 </Simulators>
 ```
