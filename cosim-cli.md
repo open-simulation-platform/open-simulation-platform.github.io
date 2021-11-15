@@ -115,22 +115,6 @@ variables:
     variability: continuous
 ```
 
-```
-> cosim inspect fmu-proxy://10.0.0.65:9090?url=http://simple-models.com/circle_area.fmu
-name: math.geometry.area.circle
-author: Archimedes
-version: 3.14.159
-description: Calculates the area of a circle, A = pi r^2
-variables:
-  - name: radius
-    type: real
-    causality: input
-    variability: continuous
-  - name: area
-    type: real
-    causality: output
-    variability: continuous
-```
 ### Running a simulation
 
 ```

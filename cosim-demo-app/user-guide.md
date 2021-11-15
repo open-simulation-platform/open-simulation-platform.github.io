@@ -255,7 +255,7 @@ Note: The new OSP-IS connection types are not supported when using the SSP stand
 Distributed simulation using proxyfmu allows you to run multiple instances of a model, run models that are not compatible
 with your operational system or to parallelize the workload onto multiple computation nodes. See more details on [proxyfmu.](../libcosim/distributed)
 
-The demo case dp-ship has a specific configuration to be used with fmu-proxy (see the file “OspSystemStructure.xml” or “SystemStructure.ssd” 
+The demo case dp-ship has a specific configuration to be used with proxyfmu (see the file “OspSystemStructure.xml” or “SystemStructure.ssd” 
 under the folder *\proxyfmu*). Note that the only difference when comparing to the regular configuration is related to the source of the FMU file. 
 
 Below is an example of how to specify proxyfmu sources for the "OspSystemStructure.xml":
