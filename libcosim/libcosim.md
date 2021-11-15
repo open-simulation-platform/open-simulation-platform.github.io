@@ -33,8 +33,8 @@ There is also support for [logging](/libcosim/logging) the simulation results an
 There are interfaces for client applications to include their own implementation of many of the included features. 
 
 Detailed API documentation is found here:
-[`libcosim`](/libcosim/doxygen/libcosim/0.7.0){:target="_blank"}
-[`libcosimc`](/libcosim/doxygen/libcosimc/0.7.0){:target="_blank"}.
+[`libcosim`](/libcosim/doxygen/libcosim/0.8.2){:target="_blank"}
+[`libcosimc`](/libcosim/doxygen/libcosimc/0.8.2){:target="_blank"}.
 
 ## Architecture
 The figure below shows a schematic of the main classes and interfaces in libcosim and how they hang together.
