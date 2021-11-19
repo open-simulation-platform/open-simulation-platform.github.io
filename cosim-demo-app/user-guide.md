@@ -262,11 +262,13 @@ Below is an example of how to specify proxyfmu sources for the "OspSystemStructu
 ```xml
 <Simulators>
 	<Simulator name="FMU1" source="proxyfmu://localhost?file=path/to/fmu1.fmu"/>
-	<Simulator name="FMU1" source="proxyfmu://127.0.0.1:9090?file=path/to/fmu2.fmu"/>
+	<Simulator name="FMU1" source="proxyfmu://localhost?file=file:///C:/path/to/fmu2.fmu"/>
+	<Simulator name="FMU1" source="proxyfmu://127.0.0.1:9090?file=path/to/fmu3.fmu"/>
 </Simulators>
 ```
 
-When choosing localhost without specifying a port, new processes will automatically be spawned on the current system.
+Both relative and absolute file paths are supported, but absolute paths must begin with `file:///`.
+Also note that, when choosing localhost without specifying a port, new processes will automatically be spawned on the current system.
 If you need to run the model on a different PC, start `proxyfmu_booter` on the target PC and supply the IP and port to the configuration.
 
 [back to top](./user-guide#user-guide)
