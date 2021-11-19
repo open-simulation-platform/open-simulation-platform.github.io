@@ -262,8 +262,8 @@ Below is an example of how to specify proxyfmu sources for the "OspSystemStructu
 ```xml
 <Simulators>
 	<Simulator name="FMU1" source="proxyfmu://localhost?file=path/to/fmu1.fmu"/>
-	<Simulator name="FMU1" source="proxyfmu://localhost?file=file:///C:/path/to/fmu2.fmu"/>
-	<Simulator name="FMU1" source="proxyfmu://127.0.0.1:9090?file=path/to/fmu3.fmu"/>
+	<Simulator name="FMU2" source="proxyfmu://localhost?file=file:///C:/path/to/fmu2.fmu"/>
+	<Simulator name="FMU3" source="proxyfmu://127.0.0.1:9090?file=path/to/fmu3.fmu"/>
 </Simulators>
 ```
 
