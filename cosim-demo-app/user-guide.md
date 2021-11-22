@@ -19,7 +19,7 @@ Features covered in this user guide:
 - [Run scenarios](./user-guide#run-scenarios)
 - [Log simulation results](./user-guide#log-simulation-results)
 - [Co-simulation configuration](./user-guide#co-simulation-configuration)
-- [Distributed co-simulation using fmu-proxy](./user-guide#distributed-co-simulation-using-fmu-proxy)
+- [Distributed co-simulation using proxyfmu](./user-guide#distributed-co-simulation-using-proxyfmu)
 
 <hr>
 
@@ -250,54 +250,25 @@ Note: The new OSP-IS connection types are not supported when using the SSP stand
 
 [back to top](./user-guide#user-guide)
 
-## Distributed co-simulation using fmu-proxy
+## Distributed co-simulation using proxyfmu
 
-Distributed simulation using fmu-proxy allows you to run multiple instances of a model, run models that are not compatible
-with your operational system or to parallelize the workload onto multiple computation nodes. See more details on [fmu-proxy.](../libcosim/fmuproxy)
+Distributed simulation using proxyfmu allows you to run multiple instances of a model, run models that are not compatible
+with your operational system or to parallelize the workload onto multiple computation nodes. See more details on [proxyfmu.](../libcosim/distributed)
 
-The demo case dp-ship has a specific configuration to be used with fmu-proxy (see the file “OspSystemStructure.xml” or “SystemStructure.ssd” 
-under the folder *\fmuproxy*). Note that the only difference when comparing to the regular configuration is related to the source of the FMU file. 
+The demo case dp-ship has a specific configuration to be used with proxyfmu (see the file “OspSystemStructure.xml” or “SystemStructure.ssd” 
+under the folder *\proxyfmu*). Note that the only difference when comparing to the regular configuration is related to the source of the FMU file. 
 
-There are three different ways to specify the FMU source to be loaded by the fmu-proxy. Below is an example for the "OspSystemStructure.xml":
+Below is an example of how to specify proxyfmu sources for the "OspSystemStructure.xml":
 ```xml
 <Simulators>
-    <Simulator name="FMU1" source="fmu-proxy://localhost:9090?file=path/to/fmu1.fmu"/>
-    <Simulator name="FMU2" source="fmu-proxy://localhost:9090?http://example.com/fmu2.fmu"/>
-    <Simulator name="FMU3" source="fmu-proxy://localhost:9090?guid=<fmu-guid-from-modelDescriptiongoes-here>"/>
+	<Simulator name="FMU1" source="proxyfmu://localhost?file=path/to/fmu1.fmu"/>
+	<Simulator name="FMU2" source="proxyfmu://localhost?file=file:///C:/path/to/fmu2.fmu"/>
+	<Simulator name="FMU3" source="proxyfmu://127.0.0.1:9090?file=path/to/fmu3.fmu"/>
 </Simulators>
 ```
 
-Replace localhost and 9090 with the actual host name and port of the server you want to connect to.
-
-The _cosim demo app_ distribution comes with a bundled startup script (*run-fmuproxy.cmd*), as seen in the image below.  
-
-{% include figure.html 
-    img="/assets/img/UserguideFig1.png" 
-    num="9" 
-    caption="Root folder files" 
-%}
-
-Use the bundled startup script or start the server executable fmu-proxy.jar from a command line:
-```bash
-java -jar fmu-proxy.jar -thrift/tcp=9090
-```
-
-where -thrift/tcp 9090 tells fmu-proxy to start a server listening to port 9090, see more details on [fmu-proxy](../libcosim/fmuproxy).
-
-Multiple servers can be started on the same PC, but remember to use unique port numbers for each one. Please also check that this port matches the
-one(s) used in the configuration file. 
-
-Steps to run the _cosim demo app_ with fmu-proxy:
-1. Execute "run-fmuproxy.cmd" to start the fmu-proxy server. 
-2. Start the _cosim demo app_.
-3. Load the configuration for DP-ship available under the fmu-proxy folder.
-
-The image below shows the models loaded in the _cosim demo app_ after they were loaded by the fmu-proxy server.  
-
-{% include figure.html 
-    img="/assets/img/UserguideFig9.png" 
-    num="10" 
-    caption="Simulation models loaded through fmu-proxy" 
-%}
+Both relative and absolute file paths are supported, but absolute paths must begin with `file:///`.
+Also note that, when choosing localhost without specifying a port, new processes will automatically be spawned on the current system.
+If you need to run the model on a different PC, start `proxyfmu_booter` on the target PC and supply the IP and port to the configuration.
 
 [back to top](./user-guide#user-guide)

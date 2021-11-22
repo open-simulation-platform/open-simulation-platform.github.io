@@ -69,7 +69,7 @@ Each running simulator must be assigned to a model(fmu). One FMU can be used by 
             </InitialValues>
         </Simulator>
         <Simulator name="model2" source="fmu2.fmu" stepSize="0.001"/>
-        <Simulator name="model3" source="fmu-proxy://localhost:9090?file=fmu3.fmu" stepSize="0.001"/>
+        <Simulator name="model3" source="proxyfmu://localhost?file=fmu3.fmu" stepSize="0.001"/>
         ...
     </Simulators>
 ```
