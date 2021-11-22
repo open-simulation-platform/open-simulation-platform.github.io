@@ -26,7 +26,6 @@ See below for ways to load an FMU using proxyfmu.
         source="proxyfmu://localhost?file=path/to/fmu1.fmu"/>
     <Simulator name="FMU2"
         source="proxyfmu://127.0.0.1:9090?file=path/to/fmu2.fmu"/>
-here>"/>
 </Simulators>
 ```
 
@@ -38,7 +37,6 @@ here>"/>
         source="proxyfmuy://localhost?file=path/to/fmu1.fmu"/>
     <ssd:Component name="FMU2"
         source="proxyfmu://127.0.0.1:9090?file=path/to/fmu1.fmu"/>
-here>"/>
 </ssd:Elements>
 ```
 
