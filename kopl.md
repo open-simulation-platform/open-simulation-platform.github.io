@@ -7,7 +7,7 @@ nav_order: 7
 ---
 
 # Configuration tool
-`Kopl` is a configurator to help set up and run a simulation. It can also be used to validate the model using the [OSP validator](./osp-validator). 
+`Kopl` is a configurator to help set up and run a simulation. 
 `Kopl` is not an open source software but can be freely used without any restrictions.
 
 {% include figure.html 
@@ -53,10 +53,6 @@ Just start dragging from an output or input slot and drop when hovering over the
     num="2" 
     caption="Definition of nested variable groups" 
 %}
-
-## OSP-IS validation
-
-Right click the configuration and choose validate in the context menu to let the [OSP validator](./osp-validator) validate the current setup
 
 ## Export
 
