@@ -12,20 +12,21 @@ The OSP system structure configuration format is based on the OSP Inteface Speci
 [OSP-IS](https://open-simulation-platform.com/specification/){:target="_blank"} 
 and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
-[OspSystemStructure.xsd](https://open-simulation-platform.com/xsd/OspSystemStructure-0.1.xsd){:target="_blank"}. 
+[OspSystemStructure.xsd](https://open-simulation-platform.com/xsd/OspSystemStructure-0.1.1.xsd){:target="_blank"}. 
 Description of the OspSystemStructure elements and their attributes are shown below. Code implementation examples follow.
 
 ## \<OspSystemStructure>
 `<OspSystemStructure>` is the root element that contains xml elements as specified below. 
 
-| `<OspSystemStructure>`  | Description                                                                                                                               |
+| Sub-element  | Description                                                                                                                               |
 | :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
 | <*StartTime*>             | Simulation starting time, unit in seconds.|
 | <*BaseStepSize*>          | Base step size of co-simulation, aka, macro time step size, unit in seconds.|
-| <*Algorithm*>             | Co-simulation master algorithm, currently a `fixedStep` algorithm is supported.|
+| <*Algorithm*>             | Co-simulation master algorithm. Currently supports `fixedStep` and `ecco`.|
 | <*Simulators*>            | Contains all sub-simulators in the system specified as `<simulator>` elements.|
 | <*Functions*>             | Contains all functions, currently supported functions include  `LinearTransformation`, `Sum`, `VectorSum`.                            |
 | <*Connections*>          | Contains all scalar and variableGroup connections between simulators, or between simulators and functions. Sub-elements may include: `<VariableConnection>`, `<SignalConnection>`, `<VariableGroupConnection>` and `<SignalGroupConnection>`.                                   |
+| <*EccoConfiguration*>    | Contains configuration specific to the ECCO *(Energy-Conservation-based Co-simulation)* algorithm.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -38,6 +39,7 @@ Description of the OspSystemStructure elements and their attributes are shown be
     <Simulators> ... <Simulators>
     <Functions> ... </Functions>
     <Connections> ... </Connections>
+    <EccoConfiguration> ... </EccoConfiguration>
 </OspSystemStructure>
 ```
 
@@ -45,13 +47,13 @@ Description of the OspSystemStructure elements and their attributes are shown be
 Each running simulator must be assigned to a model(fmu). One FMU can be used by several simulators given different names. 
 `<Simulator>` may contain sub-element `<InitialValues>`. `<InitialValues>` is optional when initial values of one or multiple variables in the simulator needs to be defined.
 
-| attribute       | Description                                                                                                                              |
+| Attribute       | Description                                                                                                                              |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`           | Define an unique name for each simulator.  |
+| `name`           | Defines an unique name for each simulator.  |
 | `source`         | Source of the simulator, example below shows three different options to specify the path to a simulator.|
 | `stepSize`        | Simulation step size for this individual simulator, aka. micro time step size.|
 
-| sub-element      | attribute | Description                                                                                                                              |
+| Sub-element      | Attribute | Description                                                                                                                              |
 | :--------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
 | <*InitialValues*> | `variable` | Contains sub-element  <*InitialValue*> defying all initial values of variables in need. Attribute `variable` is a string that refers to a variable in the simulator.|
 | <*InitialValue*> | `value`  | Contains sub-element specifying the variable type which can be `<Real>`, `<Integer>`, `<Boolean>`, or `<String>`. Attribute `value` gives the initial value of the variable.|
@@ -78,7 +80,7 @@ Each running simulator must be assigned to a model(fmu). One FMU can be used by 
 `Functions` are provided to handle manipulations of variables outside individual FMUs, for example, arithmetical operation. 
 This is especially important when different models are provided by different vendors.
 
-| Function      |    attribute                       |Description                                                                                                                              |
+| Function      |    Attribute                       |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
 | *LinearTransformation*           | `offset`|  The linear transformation function is the operation that preserves the operations of addition and scalar multiplication, with attribute `offset` being the additional part.|
 |        | `factor`|  `factor` is the multiplication factor of the linear transformation function.|
@@ -98,7 +100,7 @@ This is especially important when different models are provided by different ven
 ## \<Connection>
 As defined in OSP-IS, `connections` are configured through variables and variableGroups. It is highly recommended to follow the specification for its interfaces when exporting a model for connections.
 
-| sub-element     |    attribute                   |Description                                                                                                                              |
+| Sub-element     |    Attribute                   |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
 | <*VariableConnection*>          | `simulator`; `name`|  Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and name of the variable.|
 | <*SignalConnection*>        |`simulator`; `name`| Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and `name` of the variable.|
@@ -130,6 +132,26 @@ As defined in OSP-IS, `connections` are configured through variables and variabl
         </SignalGroupConnection>
     </Connections>
 ```
+## \<EccoConfiguration>
+`EccoConfiguration` is an *optional* element that shall be included if the `Algorithm` is chosen as `ecco`. This element contains a list of configuration options specific to the ECCO algorithm. Sensible default values to start with are also provided. 
+
+| sub-element     |    Default value                   |Description                                                                                                                              |
+| :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
+| <*SafetyFactor*>          | 0.99 | A tuning factor to account for the fact that the error terms in general cannot be exactly compensated for.  |
+| <*StepSize*>          | 0.01 | The step size the algorithms starts with, effectively it's initial value.  |
+| <*MinimumStepSize*>   | 0.1 | The maximum step size the step size controller is allowed to set.     |  |
+| <*MaximumStepSize*>   | 1e-4  |  The minimum step size the step size controller is allowed to set.   |  
+| <*MinimumChangeRate*> | 0.2  | Multiplicative factor expressing the minimum rate of change of the step size for each iteration.  |
+| <*MaximumChangeRate*> | 1.5  | Multiplicative factor expressing the maximum rate of change of the step size for each iteration.  |
+| <*ProportionalGain*>  | 0.2  |   The proportional gain of the underlying PI-controller.  |
+| <*IntegralGain*>      | 0.15  |  The integral gain of the underlying PI-controller.  |
+| <*RelativeTolerance*> | 1e-6  |  Error tolerance for the relative error.  |
+| <*AbsoluteTolerance*>        | 1e-6  | Error tolerance for the absolute error.  |
+
+
+
+
+
 
 Alternatively, co-simulation configuration using the [SSP standard](https://ssp-standard.org/){:target="_blank"} is also supported. The SSP standard is one of the standardization projects of the FMI standard. 
 The normative XML Schema 1.0 schema for the MAP SSP can be found [here](https://github.com/open-simulation-platform/cse-core/tree/master/test/data/ssp/SSP10){:target="_blank"}.
