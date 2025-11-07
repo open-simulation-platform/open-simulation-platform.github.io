@@ -135,7 +135,7 @@ As defined in OSP-IS, `connections` are configured through variables and variabl
 ## \<EccoConfiguration>
 `EccoConfiguration` is an *optional* element that shall be included if the `Algorithm` is chosen as `ecco`. This element contains a list of configuration options specific to the ECCO algorithm. Sensible default values to start with are also provided. 
 
-| sub-element     |    Default value                   |Description                                                                                                                              |
+| Sub-element     |    Default value                   |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
 | <*SafetyFactor*>          | 0.99 | A tuning factor to account for the fact that the error terms in general cannot be exactly compensated for.  |
 | <*StepSize*>          | 0.01 | The step size the algorithms starts with, effectively it's initial value.  |
