@@ -102,7 +102,7 @@ As defined in OSP-IS, `connections` are configured through variables and variabl
 
 | Sub-element     |    Attribute                   |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
-| <*VariableConnection*>          | `simulator`; `name`|  Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and name of the variable.|
+| <*VariableConnection*>          | `simulator`; `name`|  Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and name of the variable. Optionally specify which *power bond* the connection represents by adding the `powerBond` atttribute. Setting this attribute to the same value on two different connections will define a unique powerbond.|
 | <*SignalConnection*>        |`simulator`; `name`| Contains sub-elements `<Variable>` with attributes specifying the `simulator` of which the variable belongs to and `name` of the variable.|
 |        |`function`; `name`| Contains sub-elements `<Signal>` with attributes specifying the `function` of which the signal belongs to and name of the signal.|
 | <*VariableGroupConnection*>         | `simulator`; `name`| Contains sub-elements `<VariableGroup>` with attributes specifying the `simulator` of which the variable group belongs to, and the `name` of the variable group.|
