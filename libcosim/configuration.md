@@ -137,7 +137,7 @@ As defined in OSP-IS, `connections` are configured through variables and variabl
 
 | Sub-element     |    Default value                   |Description                                                                                                                              |
 | :--------------- | :----------------------------------| :----------------------------------------------------------------------------------------------------- |
-| <*SafetyFactor*>          | 0.99 | A tuning factor to account for the fact that the error terms in general cannot be exactly compensated for.  |
+| <*SafetyFactor*>          | 0.99 | A tuning factor to account for numerical error terms that in general are not exactly compensated for.  |
 | <*StepSize*>          | 0.01 | The initial value of the step size used in the step size controller.  |
 | <*MinimumStepSize*>   | 0.1 | The maximum step size the step size controller is allowed to set.     |  |
 | <*MaximumStepSize*>   | 1e-4  |  The minimum step size the step size controller is allowed to set.   |  
