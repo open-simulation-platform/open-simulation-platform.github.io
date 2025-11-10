@@ -9,10 +9,10 @@ nav_order: 1
 # Simulation configuration
 
 The OSP system structure configuration format is based on the OSP Inteface Specification 
-[OSP-IS](https://open-simulation-platform.com/specification/){:target="_blank"} 
+[OSP-IS](https://opensimulationplatform.com/specification/){:target="_blank"} 
 and is used to configure the simulation system structure, including
 connections between FMUs and setting of initial values for input and parameter variables. The configuration format is XML according to schema
-[OspSystemStructure.xsd](https://open-simulation-platform.com/xsd/OspSystemStructure-0.1.1.xsd){:target="_blank"}. 
+[OspSystemStructure.xsd](/assets/files/OspSystemStructure-0.1.1.xsd){:target="_blank"}. 
 Description of the OspSystemStructure elements and their attributes are shown below. Code implementation examples follow.
 
 ## \<OspSystemStructure>
